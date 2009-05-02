@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: "map(map(\xE2\x80\xA6))"
+desc: die Paare mit dem selben Wort aus der Quellsprache als map von map statt jeweils als paar speichern
+type: :task
+component: Translator
+release: 
+reporter: Chefslayer <inga.herber@web.de>
+status: :unstarted
+disposition: 
+creation_time: 2009-05-02 11:42:39.546000 Z
+references: []
+
+id: 3e96f3717482594f427f4c0808fe7a7fbd07a18e
+log_events: 
+- - 2009-05-02 11:42:40.870113 Z
+  - Chefslayer <inga.herber@web.de>
+  - created
+  - ""

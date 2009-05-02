@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Wahrscheinlichkeiten
+desc: "richtigen H\xC3\xA4ufigkeiten speichern, und die richtige Wahrscheinlichkeit ausrechnen"
+type: :bugfix
+component: Translator
+release: 
+reporter: Chefslayer <inga.herber@web.de>
+status: :unstarted
+disposition: 
+creation_time: 2009-05-02 11:35:31.217114 Z
+references: []
+
+id: cebe96ba15ec72de1e1c8308a46bf8e451d29586
+log_events: 
+- - 2009-05-02 11:35:36.573158 Z
+  - Chefslayer <inga.herber@web.de>
+  - created
+  - ""

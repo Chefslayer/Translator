@@ -1,0 +1,22 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: einlesen
+desc: nicht die gesamten datein e und f einlesen
+type: :bugfix
+component: Translator
+release: 
+reporter: Chefslayer <inga.herber@web.de>
+status: :closed
+disposition: :fixed
+creation_time: 2009-05-02 11:38:10.179115 Z
+references: []
+
+id: 9f030c9d58751825fa31635f4d89155874b8cdf4
+log_events: 
+- - 2009-05-02 11:38:12.234712 Z
+  - Chefslayer <inga.herber@web.de>
+  - created
+  - ""
+- - 2009-05-02 11:45:23.466742 Z
+  - Chefslayer <inga.herber@web.de>
+  - closed with disposition fixed
+  - ""

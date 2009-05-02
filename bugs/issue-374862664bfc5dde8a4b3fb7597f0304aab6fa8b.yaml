@@ -1,0 +1,22 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Vector
+desc: "die benutzten maps in Lexicon und SingleCount zu Vectoren \xC3\xA4ndern"
+type: :task
+component: Translator
+release: 
+reporter: Chefslayer <inga.herber@web.de>
+status: :closed
+disposition: :fixed
+creation_time: 2009-05-02 11:46:37.207315 Z
+references: []
+
+id: 374862664bfc5dde8a4b3fb7597f0304aab6fa8b
+log_events: 
+- - 2009-05-02 11:46:39.720697 Z
+  - Chefslayer <inga.herber@web.de>
+  - created
+  - ""
+- - 2009-05-02 11:47:16.201205 Z
+  - Chefslayer <inga.herber@web.de>
+  - closed with disposition fixed
+  - ""
