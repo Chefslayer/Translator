@@ -42,8 +42,6 @@ int main(int argc, char* argv[])
 		cerr << "ERROR: Opening file failed.\n";
 		return 0; // EXIT_FAILURE;
 	}
-	
-	// read files
 
 	//alignment
 	while(alig >> word)
@@ -53,12 +51,12 @@ int main(int argc, char* argv[])
 			//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
 			getline(src,line);
 			srcWords = insertAndConvert2intVector(line, f, singlesF);
-	
+			
 			getline(dest,line);
 			destWords = insertAndConvert2intVector(line, e, singlesE);
 
-			//alig >> sentenceNum;
-			//..
+			alig >> sentenceNum;
+			
 			//cout << "in Satz " << sentenceNum << " sind folgende Wortpaare einander zugeordnet:"<< endl;
 		}
 		else if (word == "S")
@@ -77,7 +75,6 @@ int main(int argc, char* argv[])
 			}
 		}
 	}
-	
 	//output
 	showFreq(pairs, singlesF, singlesE, f, e);
 	return 0; //EXIT_SUCCESS;

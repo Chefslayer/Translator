@@ -27,8 +27,7 @@ vector<string> stringSplit(string str, string delim)
 	}
 }
 
-/*	gets a line, lexicon and singleCount object
-	puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
+/*	gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
 	
 	@param line				a sentence
 	@param lex				the lexicon
@@ -49,11 +48,10 @@ vector<unsigned int> insertAndConvert2intVector(string line, Lexicon &lex, Singl
 		sinlgesObject.insert(val);
 		result[i] = val;
 	}
-
-	return result;
+	return result;
 }
 
-void showFreq( PairCount &pairs, SingleCount &singlesF, SingleCount &singlesE, Lexicon &f, Lexicon &e)
+void showFreq( PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, Lexicon& f, Lexicon& e)
 {
 	for (pairs.begin(); !pairs.isEnd(); pairs.next())
 	{
