@@ -1,2 +1,0 @@
-#define VECTOR_INIT_SIZE 	1000
-#define VECTOR_RESIZE		200
