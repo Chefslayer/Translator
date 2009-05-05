@@ -8,6 +8,7 @@ all: main
 
 main:	${OBJ} main.cpp
 	g++ ${LDFLAGS} ${OBJ} main.cpp -o main
+
 singleWordExtract: ${OBJ}
 	g++ ${LDFLAGS} ${OBJ} -o singleWordExtract
 singleWordExtract.o: singleWordExtract.cpp ${L}gzstream.h

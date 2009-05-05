@@ -5,12 +5,12 @@
 #include <map>
 #include <utility>
 #include <math.h>
-#include "includes/constants.h"
-#include "lib/gzstream.h"
-#include "classes/Lexicon.h"
-#include "classes/SingleCount.h"
-#include "classes/PairCount.h"
-#include "includes/functions.h"
+#include "constants.h"
+#include "gzstream.h"
+#include "Lexicon.h"
+#include "SingleCount.h"
+#include "PairCount.h"
+#include "functions.h"
 
 using namespace std;
 
