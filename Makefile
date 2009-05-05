@@ -13,8 +13,8 @@ singleWordExtract: ${OBJ}
 	g++ ${LDFLAGS} ${OBJ} -o singleWordExtract
 singleWordExtract.o: singleWordExtract.cpp gzstream.h
 	g++ ${CCFLAGS} -c singleWordExtract.cpp
-gzstream.o: gzstream.cpp gzstream.h
-	g++ ${CCFLAGS} -c gzstream.cpp
+gzstream.o: gzstream.C gzstream.h
+	g++ ${CCFLAGS} -c gzstream.C
 functions.o: functions.cpp functions.h
 	g++ ${CCFLAGS} -c functions.cpp
 Lexicon.o: Lexicon.cpp Lexicon.h
