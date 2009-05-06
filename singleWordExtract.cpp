@@ -37,16 +37,19 @@ int main(int argc, char* argv[])
 	ifstream src(argv[1]);
 	ifstream dest(argv[2]);
 	igzstream alig(argv[3]);
+
 	if (!src.good())
 	{
 		cerr << "ERROR: Opening source-language ("<< argv[1] <<") failed.\n";
 		return 0; // EXIT_FAILURE;
 	}
+
 	if (!dest.good())
 	{
 		cerr << "ERROR: Opening target-language ("<< argv[1] <<") failed.\n";
 		return 0; // EXIT_FAILURE;
 	}
+
 	if (!alig.good())
 	{
 		cerr << "ERROR: Opening alignment ("<< argv[1] <<") failed.\n";
