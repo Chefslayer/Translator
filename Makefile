@@ -1,5 +1,6 @@
 LDFLAGS  = -lz
 CCFLAGS = -g
+PROFILE = -pg
 #OBJ = singleWordExtract.o gzstream.o functions.o Lexicon.o
 OBJ = gzstream.o functions.o Lexicon.o
 C = classes/
@@ -8,11 +9,11 @@ L = lib/
 all: main
 
 main:	${OBJ} main.cpp
-	g++ ${LDFLAGS} ${OBJ} main.cpp -o main
+	g++ ${LDFLAGS} ${CCFLAGS} ${OBJ} main.cpp -o main ${PROFILE}
 #singleWordExtract: ${OBJ}
-#	g++ ${LDFLAGS} ${OBJ} -o singleWordExtract
+#	g++ ${LDFLAGS} ${OBJ} -o singleWordExtract ${PROFILE}
 #singleWordExtract.o: singleWordExtract.cpp ${L}gzstream.h
-#	g++ ${CCFLAGS} -c singleWordExtract.cpp
+#	g++ ${CCFLAGS} -c singleWordExtract.cpp ${PROFILE}
 gzstream.o: ${L}gzstream.C ${L}gzstream.h
 	g++ ${CCFLAGS} -c ${L}gzstream.C
 functions.o: ${I}functions.cpp ${I}functions.h
