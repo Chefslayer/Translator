@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include <vector>
 #include <map>
 #include <utility>
@@ -48,23 +49,37 @@ int main(int argc, char* argv[])
 	{
 		struct trans_tab_struct current;
 		char *pch;
+		string str;
 		// line is formatted like: <double> <double> # <string> # <string>
 
-		pch = strtok (line," ");
-		current.relFreqF = (double)sprintf("%s",pch);
+		//cons_cast usable cause we'll not change the line (read only)
+		pch = strtok (const_cast<char*>(line.c_str())," ");
+
+		//make string and convert into double
+		str = sprintf("%s",pch);
+		istringstream isstrF(str);
+		double temp;
+		isstrF >> temp;
+
+		current.relFreqF = temp;
 
 		pch = strtok (NULL," ");
-		current.relFreqE = (double)sprintf("%s",pch);
+		str = sprintf("%s",pch);
+		istringstream isstrE(str);
+		isstrE >> temp;
+		current.relFreqE = temp;
 
 		pch = strtok (NULL," "); // #
 
 		pch = strtok (NULL," ");
-		current.f = f.insert(sprintf("%s",pch));
+		str = sprintf("%s",pch);
+		current.f = f.insert(str);
 
 		pch = strtok (NULL," "); // #
 
 		pch = strtok (NULL," ");
-		current.e = e.insert(sprintf("%s",pch));
+		str = sprintf("%s",pch);
+		current.e = e.insert(str);
 
 		trans_tab_vec.push_back(current);
 	}
