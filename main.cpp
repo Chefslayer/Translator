@@ -49,39 +49,27 @@ int main(int argc, char* argv[])
 	{
 		struct trans_tab_struct current;
 		char *pch;
-		string str;
 		// line is formatted like: <double> <double> # <string> # <string>
 
-		//cons_cast usable cause we'll not change the line (read only)
-		pch = strtok (const_cast<char*>(line.c_str())," ");
+		// strtok isn't the right thing to use here. see manpage (Bugs)
+		// we may re-implement stringSplit if we need to make it more efficient
+		vector<string> line_vec = stringSplit(line, " ");
 
-		//make string and convert into double
-		str = sprintf("%s",pch);
-		istringstream isstrF(str);
+		istringstream isstrF(line_vec[0]);
 		double temp;
 		isstrF >> temp;
-
 		current.relFreqF = temp;
 
-		pch = strtok (NULL," ");
-		str = sprintf("%s",pch);
-		istringstream isstrE(str);
+		istringstream isstrE(line_vec[1]);
 		isstrE >> temp;
 		current.relFreqE = temp;
 
-		pch = strtok (NULL," "); // #
+		current.f = f.insert(line_vec[3]);
 
-		pch = strtok (NULL," ");
-		str = sprintf("%s",pch);
-		current.f = f.insert(str);
-
-		pch = strtok (NULL," "); // #
-
-		pch = strtok (NULL," ");
-		str = sprintf("%s",pch);
-		current.e = e.insert(str);
+		current.e = e.insert(line_vec[5]);
 
 		trans_tab_vec.push_back(current);
+		// cout << f.getWord(current.f) << " " << current.relFreqF << endl;
 	}
 
 	// translate src_doc
@@ -89,7 +77,7 @@ int main(int argc, char* argv[])
 	{
 		string translation;
 		// find best Hypothesis
-		translation = "hallo";
+		translation = "(not translated yet) " + line;
 		cout << translation << endl;
 	}
 
