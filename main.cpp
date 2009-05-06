@@ -32,12 +32,12 @@ int main(int argc, char* argv[])
 	ifstream src_doc(argv[2]);
 	if (!trans_tab.good())
 	{
-		cerr << "ERROR: Opening translation table ("<< argv[1] <<") failed.\n";
+		cerr << "ERROR: Opening translation table ("<< argv[1] <<") failed." << endl;
 		return 0; // EXIT_FAILURE;
 	}
 	if (!src_doc.good())
 	{
-		cerr << "ERROR: Opening source document ("<< argv[2] <<") failed.\n";
+		cerr << "ERROR: Opening source document ("<< argv[2] <<") failed." << endl;
 		return 0; // EXIT_FAILURE;
 	}
 
