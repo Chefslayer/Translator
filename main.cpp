@@ -41,6 +41,7 @@ int main(int argc, char* argv[])
 		return 0; // EXIT_FAILURE;
 	}
 
+	//TODO: optimize vector by initializing and counting i++ in while etc..
 	vector<struct trans_tab_struct> trans_tab_vec;
 	vector<string> tokens;
 
