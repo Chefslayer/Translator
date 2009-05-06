@@ -40,19 +40,19 @@ int main(int argc, char* argv[])
 
 	if (!src.good())
 	{
-		cerr << "ERROR: Opening source-language ("<< argv[1] <<") failed.\n";
+		cerr << "ERROR: Opening source-language ("<< argv[1] <<") failed." << endl;
 		return 0; // EXIT_FAILURE;
 	}
 
 	if (!dest.good())
 	{
-		cerr << "ERROR: Opening target-language ("<< argv[2] <<") failed.\n";
+		cerr << "ERROR: Opening target-language ("<< argv[2] <<") failed." << endl;
 		return 0; // EXIT_FAILURE;
 	}
 
 	if (!alig.good())
 	{
-		cerr << "ERROR: Opening alignment ("<< argv[3] <<") failed.\n";
+		cerr << "ERROR: Opening alignment ("<< argv[3] <<") failed."  << endl;
 		return 0; // EXIT_FAILURE;
 	}
 
