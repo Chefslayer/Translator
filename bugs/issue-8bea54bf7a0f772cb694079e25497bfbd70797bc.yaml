@@ -6,8 +6,8 @@ type: :task
 component: Translator
 release: 
 reporter: Chefslayer <inga.herber@web.de>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2009-05-11 19:23:36.220886 Z
 references: []
 
@@ -17,3 +17,7 @@ log_events:
   - Chefslayer <inga.herber@web.de>
   - created
   - ""
+- - 2009-05-11 22:22:24.799971 Z
+  - Robert Heim <Robert.Heim@rwth-aachen.de>
+  - closed with disposition fixed
+  - bitte mal in der Funktion sie Kommentare lesen.
