@@ -27,23 +27,34 @@ struct trans_tab_struct{
 
 void createhyp(string &line, vector<trans_tab_struct>  &translationtab)
 {
-	int stacknum = 1;
-	//TODO stacks vector so groß machen wie der Satz Wörter hat…
-	vector< stack < Hypothesis > > stacks;
+	// statt stacknum koennen wir auch i+1 benutzen
+	// (wobei wir die doch auch von 0 zaehlen - also eifnach i verwenden koennen, oder nicht? sonst bitte aendern in i+1)
+	// unsigned int stacknum = 1;
 	vector<string> stringwords = stringSplit(line, " ");
-	vector<int> words;
-	for (int i = 0; i < words.size(); i++)
+	vector< stack < Hypothesis > > stacks;
+	stacks.resize(stringwords.size());
+	vector<unsigned int> words(stringwords.size(), 0);
+
+	for (unsigned int i = 0; i < stringwords.size(); i++)
 	{
 		words[i] = f.getNum(stringwords[i]);
-		for (int j = 0; j < translationtab.size(); j++)
+		//TODO klug suchen -> in der trans_tab sind die eintraege doch geordnet nach dem franzoesischen wort oder?
+		//dann koennen wir abbrechen, sobald ein anderes wort im franz. vorkommt, nachdem wir das passende einmal gesehen haben?
+		//habs mal implementiert
+		bool found_word = false;
+		for (unsigned int j = 0; j < translationtab.size(); j++)
 		{
-			//TODO klug suchen, da nach dem letzten erscheinen kein mal mehr kommt
 			if (words[i] == (translationtab[j].f))
 			{
-				stacks[stacknum].push(Hypothesis(translationtab[j].f));
+				found_word = true;
+				stacks[i].push(Hypothesis(translationtab[j].f));
+			}
+			else if (found_word = true)
+			{
+				break;
 			}
 		}
-		stacknum++;
+		// stacknum++;
 	}
 }
 
