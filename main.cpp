@@ -6,11 +6,13 @@
 #include <map>
 #include <utility>
 #include <math.h>
+#include <stack>
 #include "includes/constants.h"
 #include "lib/gzstream.h"
 #include "classes/Lexicon.h"
 #include "classes/SingleCount.h"
 #include "classes/PairCount.h"
+#include "includes/hypothesis.h"
 #include "includes/functions.h"
 
 using namespace std;
@@ -20,8 +22,31 @@ static Lexicon e("englisch");
 
 struct trans_tab_struct{
 	double relFreqF, relFreqE;
-	unsigned int e,f;
+	unsigned int f,e;
 };
+
+void createhyp(string &line, vector<trans_tab_struct>  &translationtab)
+{
+	int stacknum = 1;
+	//TODO stacks vector so groß machen wie der Satz Wörter hat…
+	vector< stack < Hypothesis > > stacks;
+	vector<string> stringwords = stringSplit(line, " ");
+	vector<int> words;
+	for (int i = 0; i < words.size(); i++)
+	{
+		words[i] = f.getNum(stringwords[i]);
+		for (int j = 0; j < translationtab.size(); j++)
+		{
+			//TODO klug suchen, da nach dem letzten erscheinen kein mal mehr kommt
+			if (words[i] == (translationtab[j].f))
+			{
+				stacks[stacknum].push(Hypothesis(translationtab[j].f));
+			}
+		}
+		stacknum++;
+	}
+}
+
 
 int main(int argc, char* argv[])
 {
@@ -77,6 +102,8 @@ int main(int argc, char* argv[])
 	while (getline(src_doc, line))
 	{
 		string translation;
+		createhyp(line, trans_tab_vec);
+		//translation = translate(line);
 		// find best Hypothesis
 		translation = "(not translated yet) " + line;
 		cout << translation << endl;
