@@ -77,8 +77,10 @@ int main(int argc, char* argv[])
 		return 0; // EXIT_FAILURE;
 	}
 
-	//TODO: optimize vector by initializing and counting i++ in while etc..
+	unsigned int i = 0;
 	vector<struct trans_tab_struct> trans_tab_vec;
+	trans_tab_vec.resize(VECTOR_INIT_SIZE);
+
 	vector<string> tokens;
 
 	// read trans_tab into trans_tab_vec
@@ -105,7 +107,11 @@ int main(int argc, char* argv[])
 
 		current.e = e.insert(line_vec[5]);
 
-		trans_tab_vec.push_back(current);
+		if (i >= trans_tab_vec.size())
+		{
+			trans_tab_vec.resize(trans_tab_vec.size() + VECTOR_RESIZE);
+		}
+		trans_tab_vec[i] = current;
 		// cout << f.getWord(current.f) << " " << current.relFreqF << endl;
 	}
 
