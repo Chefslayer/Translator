@@ -1,6 +1,11 @@
-struct Hypothesis
+#include <vector>
+#include "hypothesis.h"
+using namespace std;
+
+Hypothesis::Hypothesis(unsigned int cost)
 {
-	vector<double> costs;
-	Hypothesis *prevHyp;
-	Hypothesis *prevTrans;
+	costs.push_back(cost);
+	prevHyp = NULL;
+	prevTrans = NULL;
 }
+

@@ -1,11 +1,13 @@
-//#include "functions.h"
 #include <string>
 #include <vector>
+//#include <utility>
 #include <iostream>
 #include <math.h>
+//#include "functions.h"
 #include "../classes/Lexicon.h"
 #include "../classes/PairCount.h"
 #include "../classes/SingleCount.h"
+
 using namespace std;
 
 vector<string> stringSplit(string str, string delim)
@@ -34,7 +36,7 @@ vector<string> stringSplit(string str, string delim)
 	@param singlesObject	the SingleCount Object to count the singles
 	@return					a vector with the sentence in values
 */
-vector<unsigned int> insertAndConvert2intVector(string line, Lexicon &lex, SingleCount &sinlgesObject)
+vector<unsigned int> insertAndConvert2intVector(string line, Lexicon& lex, SingleCount& sinlgesObject)
 {
 	vector<string>words = stringSplit(line," ");
 			
