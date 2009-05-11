@@ -61,6 +61,13 @@ void createhyp(string &line, vector<trans_tab_struct>  &translationtab)
 
 int main(int argc, char* argv[])
 {
+
+	if (argc < 3)
+	{
+		cerr << "ERROR: not enough parameters" << endl << "Usage: " << argv[0] << " translation-table source-document" << endl;
+		return 0; // EXIT_FAILURE;
+	}
+
 	string line;
 
 	// open files
