@@ -2,12 +2,15 @@
 #define __PAIRCOUNT_H__
 
 #include <map>
+#include <utility>
+
+using namespace std;
 
 class PairCount
 {
 	private:
 		map<pair<unsigned int, unsigned int>, unsigned int> pairCounts;
-		map<pair<unsigned int, unsigned int>, unsigned int> ::iterator it;
+		map<pair<unsigned int, unsigned int>, unsigned int>::iterator it;
 	public:
 		inline void insert(pair<unsigned int, unsigned int> wordpair)
 		{

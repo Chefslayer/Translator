@@ -5,6 +5,7 @@
 #include <string>
 
 using namespace std;
+
 class Lexicon
 {
 	private:
@@ -20,7 +21,7 @@ class Lexicon
 		returns the value of the word
 		*/
 		unsigned int 	insert(string word);
-		
+
 		/*
 		 *Get associated word for value
 		 */ 

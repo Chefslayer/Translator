@@ -1,9 +1,9 @@
 #include <string>
 #include <vector>
-//#include <utility>
+#include <utility>
 #include <iostream>
 #include <math.h>
-//#include "functions.h"
+#include "functions.h"
 #include "../classes/Lexicon.h"
 #include "../classes/PairCount.h"
 #include "../classes/SingleCount.h"
