@@ -9,7 +9,7 @@ struct Hypothesis
 {
 	vector<double> costs;
 	Hypothesis *prevHyp;
-	Hypothesis *prevTrans;
-	Hypothesis(unsigned int cost);
+	unsigned int prevTrans; //bin mir immer noch nicht sicher was mit letzter übersetzung gemeint ist…
+	Hypothesis(unsigned int cost, unsigned int translation);
 };
 #endif //HYPOTHESIS_H //
