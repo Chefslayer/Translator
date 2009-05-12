@@ -2,18 +2,21 @@ C = classes/
 I = includes/
 L = lib/
 
-SRC = main.cpp ${L}gzstream.cpp ${I}functions.cpp ${C}Lexicon.cpp ${I}hypothesis.cpp
+SRC =translate.cpp  ${L}gzstream.cpp ${I}functions.cpp ${C}Lexicon.cpp ${I}hypothesis.cpp
 OBJ = $(SRC:%cpp=%o)
 
 CFLAGS = -g
 LDFLAGS = -lz
 
-all: main
+all: translate
 clean:
-	-rm $(OBJ) main
-rebuild: clean main
+	-rm $(OBJ) translate
+rebuild: clean translate
 
-main: $(OBJ)
+#singleWordExtract: $(OBJ)
+#	$(CXX) $^ -o $@ $(LDFLAGS)
+
+translate: $(OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 %o: %cpp

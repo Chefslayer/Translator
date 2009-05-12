@@ -3,10 +3,10 @@
 
 using namespace std;
 
-Hypothesis::Hypothesis(unsigned int cost,unsigned int translation)
+Hypothesis::Hypothesis(Hypothesis *_prevHyp, double _costs,unsigned int _prevTrans)
 {
-	costs.push_back(cost);
-	prevHyp = NULL;
-	prevTrans = translation;
+	costs = _costs;
+	prevHyp = _prevHyp ;
+	prevTrans = _prevTrans;
 }
 
