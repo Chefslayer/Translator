@@ -3,10 +3,10 @@
 
 using namespace std;
 
-Hypothesis::Hypothesis(Hypothesis *_prevHyp, double _costs,unsigned int _prevTrans)
+Hypothesis::Hypothesis(Hypothesis *_prevHyp, double _costs,unsigned int _trans)
 {
 	costs = _costs;
 	prevHyp = _prevHyp ;
-	prevTrans = _prevTrans;
+	trans = _trans;
 }
 
