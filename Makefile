@@ -2,7 +2,7 @@ C = classes/
 I = includes/
 L = lib/
 
-SRC =translate.cpp  ${L}gzstream.cpp ${I}functions.cpp ${C}Lexicon.cpp ${I}hypothesis.cpp
+SRC = translate.cpp ${L}gzstream.cpp ${I}functions.cpp ${C}Lexicon.cpp ${I}hypothesis.cpp
 OBJ = $(SRC:%cpp=%o)
 
 CFLAGS = -g

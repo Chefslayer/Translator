@@ -29,9 +29,6 @@ struct trans_tab_struct{
 
 Hypothesis searchTranslation(string &line, vector<trans_tab_struct>  &translationtab)
 {
-	// statt stacknum koennen wir auch i+1 benutzen
-	// (wobei wir die doch auch von 0 zaehlen - also eifnach i verwenden koennen, oder nicht? sonst bitte aendern in i+1)
-	// unsigned int stacknum = 1;
 	vector<string> stringwords = stringSplit(line, " ");
 	stacks.resize((stringwords.size()+1));
 	stacks[0].push(Hypothesis(NULL,0,0));
@@ -39,30 +36,36 @@ Hypothesis searchTranslation(string &line, vector<trans_tab_struct>  &translatio
 
 	for (unsigned int i = 0; i < words.size(); i++)
 	{
+
 		words[i] = f.getNum(stringwords[i]);
-		while(!stacks[i].empty())
+
+		while (!stacks[i].empty())
 		{
-		bool found_word = false;
-		for (unsigned int j = 0; j < translationtab.size(); j++)
-		{
-			if (words[i] == (translationtab[j].f))
+			unsigned int j = 0;
+			// find first occurance of word[i] in transtab
+
+			// TODO: stacks werden sehr schnell sehr groß... bei i=3 schon > 7000... kann man vergessen..
+			// cout << "s" << stacks[i].size() << endl;
+
+			while (j < translationtab.size() && words[i] != (translationtab[j].f))
 			{
-				found_word = true;
-				Hypothesis h = Hypothesis(NULL , translationtab[j].relFreqF, translationtab[j].e);
+				j++;
+			}
+			// make hyps for all the possible translations
+			while (j < translationtab.size() && words[i] == (translationtab[j].f))
+			{
+				Hypothesis *prev = &(stacks[i].top());
+				Hypothesis h = Hypothesis(prev, translationtab[j].relFreqF, translationtab[j].e);
 				h.costs = h.costs + h.prevHyp->costs;
 				stacks[i+1].push(h);
+				j++;
 			}
-			else if (found_word = true)
-			{
-				break;
-			}
-		}
-		stacks[i].pop();
+			stacks[i].pop();
 		}
 	}
 	// find best Hypothesis
 	Hypothesis current = Hypothesis(NULL,0,0);
-	while ( !stacks[words.size()].empty())
+	while (!stacks[words.size()].empty())
 	{
 		current = stacks[words.size()].top();
 		stacks[words.size()].pop();
@@ -133,22 +136,22 @@ int main(int argc, char* argv[])
 		}
 		trans_tab_vec[i] = current;
 		// cout << f.getWord(current.f) << " " << current.relFreqF << endl;
+		i++;
 	}
 
 	// translate src_doc
+	while (getline(src_doc, line))
+	{
 		string translation = "";
-		while (getline(src_doc, line))
+		Hypothesis transHyp = searchTranslation(line, trans_tab_vec);
+		translation = translation + e.getWord(transHyp.trans);
+		while (transHyp.prevHyp != NULL)
 		{
-			Hypothesis transHyp = searchTranslation(line, trans_tab_vec);
-			while (transHyp.prevHyp != NULL)
-			{
-				translation = translation + e.getWord(transHyp.trans);
-				transHyp = *transHyp.prevHyp;
-			}
-		//translation = "(not translated yet) " + line;
+			transHyp = *(transHyp.prevHyp);
+			translation = translation + e.getWord(transHyp.trans);
+		}
 		cout << translation << endl;
 	}
-//	cout << translation;
 
 	return 0; //EXIT_SUCCESS;
 }
