@@ -44,7 +44,7 @@ Hypothesis searchTranslation(string &line, vector<trans_tab_struct>  &translatio
 			unsigned int j = 0;
 			// find first occurance of word[i] in transtab
 
-			// TODO: stacks werden sehr schnell sehr groß... bei i=3 schon > 7000... kann man vergessen..
+			// TODO: stacks werden sehr schnell sehr groß... bei i=3 schon stacks[i].size() > 7000... kann man vergessen..
 			// cout << "s" << stacks[i].size() << endl;
 
 			while (j < translationtab.size() && words[i] != (translationtab[j].f))
@@ -64,13 +64,13 @@ Hypothesis searchTranslation(string &line, vector<trans_tab_struct>  &translatio
 		}
 	}
 	// find best Hypothesis
-	Hypothesis current = Hypothesis(NULL,0,0);
+	Hypothesis current = stacks[words.size()].top();
+	stacks[words.size()].pop();
 	while (!stacks[words.size()].empty())
-	{
-		current = stacks[words.size()].top();
-		stacks[words.size()].pop();
+	{		
 		if ((stacks[words.size()].top().costs) < (current.costs))
 			current = stacks[words.size()].top();
+		stacks[words.size()].pop();
 	}
 	return current;
 }
@@ -144,11 +144,11 @@ int main(int argc, char* argv[])
 	{
 		string translation = "";
 		Hypothesis transHyp = searchTranslation(line, trans_tab_vec);
-		translation = translation + e.getWord(transHyp.trans);
+		translation = translation + " " + e.getWord(transHyp.trans);
 		while (transHyp.prevHyp != NULL)
 		{
 			transHyp = *(transHyp.prevHyp);
-			translation = translation + e.getWord(transHyp.trans);
+			translation = translation + " " + e.getWord(transHyp.trans);
 		}
 		cout << translation << endl;
 	}
