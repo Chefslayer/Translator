@@ -10,6 +10,6 @@ struct Hypothesis
 	double costs;
 	Hypothesis *prevHyp;
 	unsigned int trans; //bin mir immer noch nicht sicher was mit letzter übersetzung gemeint ist…
-	Hypothesis(Hypothesis *_prevHyp, double _costs, unsigned int trans);
+	Hypothesis(Hypothesis *_prevHyp, double _costs, unsigned int _trans);
 };
 #endif //HYPOTHESIS_H //

@@ -41,7 +41,10 @@ unsigned int Lexicon::insert(string word)
 
 string Lexicon::getWord(unsigned int value)
 {
-	return int2str[value];
+	if (value >= int2str.size())
+		return "?";
+	string re = int2str[value];
+	return re;
 }
 
 unsigned int Lexicon::getNum(string word)
