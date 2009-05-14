@@ -11,6 +11,7 @@ Lexicon::Lexicon(string lang)
 	language = lang;
 	i = 0; //number of inserted words
 	vector<string> int2str(VECTOR_INIT_SIZE, "");
+	insert("(?)");
 }
 
 /*

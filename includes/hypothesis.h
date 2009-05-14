@@ -1,15 +1,16 @@
 #ifndef HYPOTHESIS_H
 #define HYPOTHESIS_H
 
-//include <vector>
+#include <vector>
 
 using namespace std;
 
 struct Hypothesis
 {
-	double costs;
 	Hypothesis *prevHyp;
-	unsigned int trans; //bin mir immer noch nicht sicher was mit letzter übersetzung gemeint ist…
-	Hypothesis(Hypothesis *_prevHyp, double _costs, unsigned int _trans);
+	vector<double> costs;
+	double totalCosts;
+	unsigned int trans;
+	Hypothesis(Hypothesis *p, double c, unsigned int t);
 };
 #endif //HYPOTHESIS_H //

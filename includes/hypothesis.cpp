@@ -3,10 +3,19 @@
 
 using namespace std;
 
-Hypothesis::Hypothesis(Hypothesis *_prevHyp, double _costs, unsigned int _trans)
+Hypothesis::Hypothesis(Hypothesis *p , double c, unsigned int t)
 {
-	costs = _costs;
-	prevHyp = _prevHyp;
-	trans = _trans;
+	prevHyp = p;
+	if (p!=NULL)
+	{
+		costs = p->costs;
+		totalCosts = p->totalCosts;
+	}
+	else
+	{
+		totalCosts = 0;
+	}
+	costs.push_back(c);
+	totalCosts += c;
+	trans = t;
 }
-
