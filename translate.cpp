@@ -27,6 +27,7 @@ struct trans_tab_struct{
 };
 
 /** Prunes the Stack to KEEP_N_BEST_HYPOS elements.
+*
 *   \param s reference to stack of hypthesis
 *   \return s reference to best Hypothesis in s
 */
@@ -65,6 +66,7 @@ Hypothesis* pruneStack(stack < Hypothesis* > &s)
 
 /**
 * searches a translation for a given line of text
+*
 * \param line line of text which will be translatet
 * \param translationtab table of translations
 * \return best Hypothesis 

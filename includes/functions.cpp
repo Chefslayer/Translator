@@ -11,6 +11,13 @@
 
 using namespace std;
 
+/**
+* splits a string into tokens
+*
+* \param str the string to split
+* \param delim delim[0] is used as delimiter
+* \return a vector with all tokens
+*/
 vector<string> stringSplit(string str, string delim)
 {
 	vector<string> result;
@@ -23,12 +30,13 @@ vector<string> stringSplit(string str, string delim)
 	return result;
 }
 
-/*	gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
-	
-	@param line				a sentence
-	@param lex				the lexicon
-	@param singlesObject	the SingleCount Object to count the singles
-	@return					a vector with the sentence in values
+/**
+* gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
+*
+* \param line a sentence
+* \param lex the lexicon
+* \param singlesObject the SingleCount Object to count the singles
+* \return a vector with the sentence in values
 */
 vector<unsigned int> insertAndConvert2intVector(string line, Lexicon& lex, SingleCount& sinlgesObject)
 {
@@ -47,6 +55,15 @@ vector<unsigned int> insertAndConvert2intVector(string line, Lexicon& lex, Singl
 	return result;
 }
 
+/**
+* displays the Freqs on the cout
+*
+* \param pairs the pairs-object
+* \param singlesF singles-object for source lang
+* \param singlesE singles-object for target lang
+* \param f lexicon to look up the words of the source lang
+* \param e lexicon to look up the words of the target lang
+*/
 void showFreq( PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, Lexicon& f, Lexicon& e)
 {
 	for (pairs.begin(); !pairs.isEnd(); pairs.next())
