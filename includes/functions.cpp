@@ -2,6 +2,7 @@
 #include <vector>
 #include <utility>
 #include <iostream>
+#include <sstream>
 #include <math.h>
 #include "functions.h"
 #include "../classes/Lexicon.h"
@@ -12,28 +13,14 @@ using namespace std;
 
 vector<string> stringSplit(string str, string delim)
 {
-	int cutAt;
 	vector<string> result;
-	while((cutAt = str.find_first_of(delim)) != str.npos)
-	{
-		if(cutAt > 0)
-		{
-			result.push_back(str.substr(0,cutAt));
-		}
-		str = str.substr(cutAt+1);
-	}
-	if(str.length() > 0)
-	{
-		result.push_back(str);
-		return result;
-	}
-	/*vector<string> result;
 	istringstream iss(str);
-   	while ( getline(iss, token, delim) )
+	string token;
+   	while (getline(iss, token, delim[0]))
 	{
 		result.push_back(token);
 	}
-	return result;*/
+	return result;
 }
 
 /*	gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
@@ -45,7 +32,7 @@ vector<string> stringSplit(string str, string delim)
 */
 vector<unsigned int> insertAndConvert2intVector(string line, Lexicon& lex, SingleCount& sinlgesObject)
 {
-	vector<string>words = stringSplit(line," ");
+	vector<string>words = stringSplit(line, " ");
 			
 	vector<unsigned int> result(words.size(), 0);
 	

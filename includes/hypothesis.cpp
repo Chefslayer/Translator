@@ -19,3 +19,8 @@ Hypothesis::Hypothesis(Hypothesis *p , double c, unsigned int t)
 	totalCosts += c;
 	trans = t;
 }
+
+bool cmp_Hyp(Hypothesis* i, Hypothesis* j)
+{
+	return (i->totalCosts < j->totalCosts);
+}
