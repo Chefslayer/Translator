@@ -118,7 +118,7 @@ Hypothesis* searchTranslation(string &line, vector<trans_tab_struct>  &translati
 		minCostsHyp = pruneStack(stacks[i+1]);
 
 	}
-	// find best Hypothesis
+	// return best Hypothesis of the last stack
 	return minCostsHyp;
 }
 
