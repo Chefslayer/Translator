@@ -14,9 +14,10 @@ Lexicon::Lexicon(string lang)
 	insert("(?)");
 }
 
-/*
+/**
 inserts a word in the lexicon
-returns the value of the word
+\param word inserts the word
+\return the value of the word
 */
 unsigned int Lexicon::insert(string word)
 {
@@ -39,7 +40,11 @@ unsigned int Lexicon::insert(string word)
 		return (*temp.first).second;
 	}
 }
-
+/**
+* Get Word by Code
+* \param value 
+* \return word für given code
+*/
 string Lexicon::getWord(unsigned int value)
 {
 	if (value >= int2str.size())
@@ -47,6 +52,12 @@ string Lexicon::getWord(unsigned int value)
 	string re = int2str[value];
 	return re;
 }
+
+/**
+* get code for word
+* \param word string wich will be convertet into a int
+* \return code
+*/
 
 unsigned int Lexicon::getNum(string word)
 {
