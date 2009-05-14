@@ -27,6 +27,13 @@ vector<string> stringSplit(string str, string delim)
 		result.push_back(str);
 		return result;
 	}
+	/*vector<string> result;
+	istringstream iss(str);
+   	while ( getline(iss, token, delim) )
+	{
+		result.push_back(token);
+	}
+	return result;*/
 }
 
 /*	gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
