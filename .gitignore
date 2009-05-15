@@ -2,3 +2,6 @@
 *.o
 *~
 Alignment
+.ditz-config
+f-test
+e-test
