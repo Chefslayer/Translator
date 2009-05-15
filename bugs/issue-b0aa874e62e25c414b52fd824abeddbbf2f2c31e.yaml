@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: keine language namen
+desc: new Lexicon("italienisch") Namen nicht hardcoden
+type: :task
+component: Translator
+release: 
+reporter: Robert Heim <Robert.Heim@rwth-aachen.de>
+status: :unstarted
+disposition: 
+creation_time: 2009-05-15 12:17:42.198320 Z
+references: []
+
+id: b0aa874e62e25c414b52fd824abeddbbf2f2c31e
+log_events: 
+- - 2009-05-15 12:17:42.198598 Z
+  - Robert Heim <Robert.Heim@rwth-aachen.de>
+  - created
+  - ""

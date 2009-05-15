@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <map>
+#include <math.h>
 #include "includes/constants.h"
 #include "includes/hypothesis.h"
 
@@ -10,18 +11,18 @@ using namespace std;
 
 struct trans_struct {
 	string trans,target;
-	double rate;
+	double BLEU_score;
 };
 
 
 /**
-* calcs the levensthein distance
+* calcs the levenshtein distance
 *
 * \param &trans		translation by machine
 * \param &target	translation by human
 * \return 
 */
-unsigned int levensthein_distance(string &trans, string &target)
+unsigned int levenshtein_distance(string &trans, string &target)
 {
 	// TODO
 	return 0;
@@ -41,12 +42,13 @@ unsigned int count_n_grams(unsigned int n, Hypothesis* H)
 }
 
 /**
-* calcs the precision of a Hypothesis
+* calcs the precision of a Hypothesis with n-grams
 *
 * \param C reference to the Hypothesis to calc the precision for
+* \param n count of grams
 * \return precision p_n
 */
-double precision(Hypothesis* C)
+double precision(Hypothesis* C, unsigned int n)
 {
 	// TODO
 	return 0;
@@ -64,27 +66,28 @@ double brevity_penalty()
 }
 
 /**
+* calcs the BLEU-score for a Hypothesis
 *
-*
+* \param N
+* \param H reference to a Hypothesis to calc the BLEU-score for
 * \return BLEU_score
 */
-double BLEU_score()
+double BLEU_score(unsigned int N, Hypothesis* H)
 {
-	// TODO
-	return 0;
-}
+	if (N==0)
+	{
+		cerr << "BLEU_score: invalid N" << endl;
+		return 0;
+	}
+	/* um die Summe zu berechnen:
+	* 1. 1/N kann man ausklammern
+	* 2. log(a)+log(b) = log(a*b) => es reicht die p_n zu multiplizieren und am Ende einmal den log zu berechnen.
+	*/
+	double akku=0;
+	for (unsigned int i=1; i<=N; i++)
+		akku *= precision(H, i);
 
-/**
-* Rates if the translation (trans) by comparing it to a human translation (target)
-*
-* \param trans	translation done by machine
-* \param target	translation done by human
-* \return 	rating
-*/
-double rate(string &trans, string &target)
-{
-	//TODO
-	return 0;
+	return brevity_penalty()*exp(log(akku)/(double)N);
 }
 
 int main(int argc, char* argv[])
@@ -111,17 +114,21 @@ int main(int argc, char* argv[])
 	}
 
 	unsigned int i = 0;
+	string	trans_line,
+		target_line = "";
+	double	average_levenshtein_dist,
+		average_posindependent_levenshtein_dist = 0;
 	vector<struct trans_struct> trans_vec;
 	trans_vec.resize(VECTOR_INIT_SIZE);
-	string trans_line, target_line;
 
-	// read trans_tab into trans_tab_vec
+	// read trans and target into trans_vec
 	while (getline(trans, trans_line) && getline(trans, target_line))
 	{
 		struct trans_struct current;
 		current.trans = trans_line;
 		current.target = target_line;
-		current.rate = rate(trans_line, target_line);
+		// TODO Hypothesen aufstellen?
+		current.BLEU_score = 0;
 		if (i >= trans_vec.size())
 		{
 			trans_vec.resize(trans_vec.size() + VECTOR_RESIZE);
