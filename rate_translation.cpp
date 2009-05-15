@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include "includes/constants.h"
+#include "includes/hypothesis.h"
 
 using namespace std;
 
@@ -12,6 +13,79 @@ struct trans_struct {
 	double rate;
 };
 
+
+/**
+* calcs the levensthein distance
+*
+* \param &trans		translation by machine
+* \param &target	translation by human
+* \return 
+*/
+unsigned int levensthein_distance(string &trans, string &target)
+{
+	// TODO
+	return 0;
+}
+
+/**
+*
+*
+* \param n
+* \param H reference to the Hypothesis to count the n-grams for
+* \return 
+*/
+unsigned int count_n_grams(unsigned int n, Hypothesis* H)
+{
+	// TODO
+	return 0;
+}
+
+/**
+* calcs the precision of a Hypothesis
+*
+* \param C reference to the Hypothesis to calc the precision for
+* \return precision p_n
+*/
+double precision(Hypothesis* C)
+{
+	// TODO
+	return 0;
+}
+
+/**
+*
+*
+* \return Brevity Penalty
+*/
+double brevity_penalty()
+{
+	// TODO
+	return 0;
+}
+
+/**
+*
+*
+* \return BLEU_score
+*/
+double BLEU_score()
+{
+	// TODO
+	return 0;
+}
+
+/**
+* Rates if the translation (trans) by comparing it to a human translation (target)
+*
+* \param trans	translation done by machine
+* \param target	translation done by human
+* \return 	rating
+*/
+double rate(string &trans, string &target)
+{
+	//TODO
+	return 0;
+}
 
 int main(int argc, char* argv[])
 {
@@ -47,8 +121,7 @@ int main(int argc, char* argv[])
 		struct trans_struct current;
 		current.trans = trans_line;
 		current.target = target_line;
-		//TODO: rate(trans_line, target_line)
-		current.rate = 0;
+		current.rate = rate(trans_line, target_line);
 		if (i >= trans_vec.size())
 		{
 			trans_vec.resize(trans_vec.size() + VECTOR_RESIZE);
