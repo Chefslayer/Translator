@@ -3,16 +3,12 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <map>
 #include <utility>
 #include <math.h>
 #include <stack>
 #include <algorithm>
 #include "includes/constants.h"
-#include "lib/gzstream.h"
 #include "classes/Lexicon.h"
-#include "classes/SingleCount.h"
-#include "classes/PairCount.h"
 #include "includes/hypothesis.h"
 #include "includes/functions.h"
 
@@ -131,8 +127,6 @@ int main(int argc, char* argv[])
 		return 0; // EXIT_FAILURE;
 	}
 
-	string line;
-
 	// open files
 	ifstream trans_tab(argv[1]);
 	ifstream src_doc(argv[2]);
@@ -150,22 +144,18 @@ int main(int argc, char* argv[])
 	unsigned int i = 0;
 	vector<struct trans_tab_struct> trans_tab_vec;
 	trans_tab_vec.resize(VECTOR_INIT_SIZE);
-
-	vector<string> tokens;
+	string line;
 
 	// read trans_tab into trans_tab_vec
 	while (getline(trans_tab, line))
 	{
 		struct trans_tab_struct current;
-		char *pch;
+		double temp;
 		// line is formatted like: <double> <double> # <string> # <string>
 
-		// strtok isn't the right thing to use here. see manpage (Bugs)
-		// we may re-implement stringSplit if we need to make it more efficient
 		vector<string> line_vec = stringSplit(line, " ");
 
 		istringstream isstrF(line_vec[0]);
-		double temp;
 		isstrF >> temp;
 		current.relFreqF = temp;
 
@@ -191,7 +181,7 @@ int main(int argc, char* argv[])
 	while (getline(src_doc, line))
 	{
 		Hypothesis* transHyp = searchTranslation(line, trans_tab_vec);
-		string translation = "";//e.getWord(transHyp.trans);
+		string translation = "";
 		while (transHyp->prevHyp != NULL)
 		{
 			translation = e.getWord(transHyp->trans) + " " + translation;
