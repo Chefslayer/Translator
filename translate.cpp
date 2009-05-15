@@ -7,6 +7,7 @@
 #include <utility>
 #include <math.h>
 #include <stack>
+#include <algorithm>
 #include "includes/constants.h"
 #include "lib/gzstream.h"
 #include "classes/Lexicon.h"
@@ -26,10 +27,12 @@ struct trans_tab_struct{
 };
 
 /** Prunes the Stack to KEEP_N_BEST_HYPOS elements.
-*   \param s reference to stack of hypthesis 
+*
+*   \param s reference to stack of hypthesis
+*   \return s reference to best Hypothesis in s
 */
 
-void pruneStack(stack < Hypothesis* > &s)
+Hypothesis* pruneStack(stack < Hypothesis* > &s)
 {
 	vector<Hypothesis*> v;
 	unsigned int size = s.size();
@@ -38,37 +41,42 @@ void pruneStack(stack < Hypothesis* > &s)
 	for (unsigned int i=0; !s.empty(); i++)
 	{
 		v[i] = s.top();
-		v.push_back(s.top());
 		s.pop();
 	}
+	sort(v.begin(), v.end(), cmp_Hyp);
 
 	for (unsigned int i=0; i<size && i<KEEP_N_BEST_HYPOS ;i++)
 	{
-		Hypothesis* min = v[i];
+/*		unsigned int min = i;
 		for (unsigned int j=i+1; j<v.size(); j++)
 		{
-			if (v[j]->totalCosts < min->totalCosts)
+			if (v[j]->totalCosts < v[min]->totalCosts)
 			{
-				Hypothesis* h = min;
-				min = v[j];
-				v[j] = h;
+				min = j;
 			}
 		}
-		s.push(min);
+		Hypothesis* h = v[min];
+		v[min] = v[i];
+		v[i] = h;*/
+		s.push(v[i]);
 	}
+	//return best Hypo
+	return v[0];
 }
 
 /**
 * searches a translation for a given line of text
+*
 * \param line line of text which will be translatet
 * \param translationtab table of translations
 * \return best Hypothesis 
 */
 Hypothesis* searchTranslation(string &line, vector<trans_tab_struct>  &translationtab)
 {
+	Hypothesis* minCostsHyp;
 	vector<string> stringwords = stringSplit(line, " ");
 	vector< stack < Hypothesis* > > stacks;
-	stacks.resize((stringwords.size()+10));
+	stacks.resize((stringwords.size()+1));
 	Hypothesis* h = new Hypothesis(NULL,0,0);
 	stacks[0].push(h);
 
@@ -107,19 +115,11 @@ Hypothesis* searchTranslation(string &line, vector<trans_tab_struct>  &translati
 			}
 			stacks[i].pop();
 		}
-		pruneStack(stacks[i+1]);
+		minCostsHyp = pruneStack(stacks[i+1]);
 
 	}
-	// find best Hypothesis
-	Hypothesis* current = stacks[words.size()].top();
-	stacks[words.size()].pop();
-	while (!stacks[words.size()].empty())
-	{		
-		if ((stacks[words.size()].top()->totalCosts) < (current->totalCosts))
-			current = stacks[words.size()].top();
-		stacks[words.size()].pop();
-	}
-	return current;
+	// return best Hypothesis of the last stack
+	return minCostsHyp;
 }
 
 int main(int argc, char* argv[])

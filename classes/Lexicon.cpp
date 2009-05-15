@@ -6,6 +6,11 @@
 #include <map>
 using namespace std;
 
+/**
+* inits a new lexicon
+*
+* \param lang name of the language
+*/
 Lexicon::Lexicon(string lang)
 {
 	language = lang;
@@ -15,9 +20,10 @@ Lexicon::Lexicon(string lang)
 }
 
 /**
-inserts a word in the lexicon
-\param word inserts the word
-\return the value of the word
+* inserts a word in the lexicon
+*
+* \param word inserts the word
+* \return the value of the word
 */
 unsigned int Lexicon::insert(string word)
 {
@@ -41,9 +47,10 @@ unsigned int Lexicon::insert(string word)
 	}
 }
 /**
-* Get Word by Code
-* \param value 
-* \return word für given code
+* get word by code
+*
+* \param value
+* \return word for given code
 */
 string Lexicon::getWord(unsigned int value)
 {
@@ -55,7 +62,8 @@ string Lexicon::getWord(unsigned int value)
 
 /**
 * get code for word
-* \param word string wich will be convertet into a int
+*
+* \param word string wich will be convertet into an int
 * \return code
 */
 
