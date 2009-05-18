@@ -9,7 +9,7 @@ OBJ = $(SRC:%cpp=%o)
 CFLAGS = -g
 LDFLAGS = -lz
 
-all: translate
+all: translate rate_translation
 clean:
 	-rm $(OBJ) translate hyptest.o
 rebuild: clean translate
@@ -18,6 +18,9 @@ rebuild: clean translate
 #	$(CXX) $^ -o $@ $(LDFLAGS)
 
 translate: $(OBJ)
+	$(CXX) $^ -o $@ $(LDFLAGS)
+
+rate_translation: rate_translation.cpp $(C)bleu.cpp
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 hypTest: $(T)hypTest.cpp $(I)hypothesis.o
