@@ -1,8 +1,11 @@
 #ifndef __LEXICON_H__
 #define __LEXICON_H__
-#include <map>
-#include <vector>
+
+#include "Lexicon.h"
+#include "../includes/constants.h"
 #include <string>
+#include <vector>
+#include <map>
 
 using namespace std;
 

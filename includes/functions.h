@@ -4,6 +4,10 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <iostream>
+#include <sstream>
+#include <math.h>
+#include "functions.h"
 #include "../classes/Lexicon.h"
 #include "../classes/PairCount.h"
 #include "../classes/SingleCount.h"

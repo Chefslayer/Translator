@@ -19,6 +19,12 @@ static Lexicon e;
 
 int main(int argc, char* argv[])
 {
+	if (argc < 4)
+	{
+		cerr << "ERROR: not enough parameters" << endl << "Usage: " << argv[0] << " source-doc target-doc alignment" << endl;
+		return 0; // EXIT_FAILURE;
+	}
+
 	vector<string> source;
 	vector<string> destination;
 	vector<unsigned int> srcWords;
@@ -64,7 +70,7 @@ int main(int argc, char* argv[])
 			//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
 			getline(src,line);
 			srcWords = insertAndConvert2intVector(line, f, singlesF);
-			
+
 			getline(dest,line);
 			destWords = insertAndConvert2intVector(line, e, singlesE);
 

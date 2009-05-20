@@ -14,14 +14,15 @@ clean:
 	-rm $(OBJ) translate hypTest.o
 rebuild: clean translate rate_translation
 
-#singleWordExtract: $(OBJ)
-#	$(CXX) $^ -o $@ $(LDFLAGS)
-
 translate: $(OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 rate_translation: rate_translation.cpp
 	$(CXX) $^ -o $@ $(LDFLAGS)
+
+#kompiliert nicht weiss aber nicht warum
+#singleWordExtract: singleWordExtract.cpp
+#	$(CXX) $^ -o $@ $(LDFLAGS)
 
 hypTest: $(T)hypTest.cpp $(I)hypothesis.o
 	$(CXX) $^ -o hypTest.o
