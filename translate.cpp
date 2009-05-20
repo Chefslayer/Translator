@@ -25,7 +25,7 @@ struct trans_tab_struct{
 /** Prunes the Stack to KEEP_N_BEST_HYPOS elements.
 *
 *   \param s reference to stack of hypthesis
-*   \return s reference to best Hypothesis in s
+*   \return reference to best Hypothesis in s
 */
 
 Hypothesis* pruneStack(stack < Hypothesis* > &s)
@@ -43,17 +43,6 @@ Hypothesis* pruneStack(stack < Hypothesis* > &s)
 
 	for (unsigned int i=0; i<size && i<KEEP_N_BEST_HYPOS ;i++)
 	{
-/*		unsigned int min = i;
-		for (unsigned int j=i+1; j<v.size(); j++)
-		{
-			if (v[j]->totalCosts < v[min]->totalCosts)
-			{
-				min = j;
-			}
-		}
-		Hypothesis* h = v[min];
-		v[min] = v[i];
-		v[i] = h;*/
 		s.push(v[i]);
 	}
 	//return best Hypo
@@ -61,26 +50,22 @@ Hypothesis* pruneStack(stack < Hypothesis* > &s)
 }
 
 /**
-* searches a translation for a given line of text
+* searches a translation for a given line of text.
 *
-* \param line line of text which will be translatet
+* \param words a vector of words which will be translatet
 * \param translationtab table of translations
-* \return best Hypothesis 
+* \return best Hypothesis
 */
-Hypothesis* searchTranslation(string &line, vector<trans_tab_struct>  &translationtab)
+Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_struct>  &translationtab)
 {
 	Hypothesis* minCostsHyp;
-	vector<string> stringwords = stringSplit(line, " ");
 	vector< stack < Hypothesis* > > stacks;
-	stacks.resize((stringwords.size()+1));
+	stacks.resize((words.size()+1));
 	Hypothesis* h = new Hypothesis(NULL,0,0);
 	stacks[0].push(h);
 
-	vector<unsigned int> words(stringwords.size(), 0);
 	for (unsigned int i = 0; i < words.size(); i++)
 	{
-
-		words[i] = f.getNum(stringwords[i]);
 
 		unsigned int j = 0;
 		// find first occurance of word[i] in transtab
@@ -180,7 +165,16 @@ int main(int argc, char* argv[])
 	// translate src_doc
 	while (getline(src_doc, line))
 	{
-		Hypothesis* transHyp = searchTranslation(line, trans_tab_vec);
+		vector<string> stringwords = stringSplit(line, " ");
+		vector<unsigned int> words(stringwords.size(), 0);
+
+		for (unsigned int i = 0; i < stringwords.size(); i++)
+		{
+			words[i] = f.getNum(stringwords[i]);
+		}
+
+		Hypothesis* transHyp = searchTranslation(words, trans_tab_vec);
+
 		string translation = "";
 		while (transHyp->prevHyp != NULL)
 		{

@@ -12,7 +12,7 @@ LDFLAGS = -lz
 all: translate rate_translation
 clean:
 	-rm $(OBJ) translate hypTest.o
-rebuild: clean translate rate_translate
+rebuild: clean translate rate_translation
 
 #singleWordExtract: $(OBJ)
 #	$(CXX) $^ -o $@ $(LDFLAGS)
