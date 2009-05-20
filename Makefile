@@ -17,7 +17,7 @@ rebuild: clean translate rate_translation
 translate: $(OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
-rate_translation: rate_translation.cpp
+rate_translation: rate_translation.cpp ${I}functions.o ${C}Lexicon.o $(C)Bleu.o $(C)Levenshtein.o
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 #kompiliert nicht weiss aber nicht warum

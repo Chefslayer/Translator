@@ -33,7 +33,6 @@ int main(int argc, char* argv[])
 		return 1; // EXIT_FAILURE;
 	}
 
-	unsigned int i = 0;
 	string	trans_line,
 		reference_line = "";
 	double	average_levenshtein_dist,
