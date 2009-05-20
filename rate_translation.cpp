@@ -11,59 +11,40 @@
 
 using namespace std;
 
-struct trans_struct {
-	string trans,target;
-	double BLEU_score;
-};
-
-
 int main(int argc, char* argv[])
 {
-
 	if (argc < 3)
 	{
-		cerr << "ERROR: not enough parameters" << endl << "Usage: " << argv[0] << " translation target_translation" << endl;
+		cerr << "ERROR: not enough parameters" << endl << "Usage: " << argv[0] << " translation reference" << endl;
 		return 0; // EXIT_FAILURE;
 	}
 
 	// open files
 	ifstream trans(argv[1]);
-	ifstream target(argv[2]);
+	ifstream reference(argv[2]);
 	if (!trans.good())
 	{
 		cerr << "ERROR: Opening translation ("<< argv[1] <<") failed." << endl;
 		return 1; // EXIT_FAILURE;
 	}
-	if (!target.good())
+	if (!reference.good())
 	{
-		cerr << "ERROR: Opening target_translation ("<< argv[2] <<") failed." << endl;
+		cerr << "ERROR: Opening reference ("<< argv[2] <<") failed." << endl;
 		return 1; // EXIT_FAILURE;
 	}
 
 	unsigned int i = 0;
 	string	trans_line,
-		target_line = "";
+		reference_line = "";
 	double	average_levenshtein_dist,
 		average_posindependent_levenshtein_dist = 0;
-	vector<struct trans_struct> trans_vec;
-	trans_vec.resize(VECTOR_INIT_SIZE);
 
-	// read trans and target into trans_vec
-	while (getline(trans, trans_line) && getline(trans, target_line))
+	// read trans and reference into trans_vec
+	while (getline(trans, trans_line) && getline(reference, reference_line))
 	{
-		struct trans_struct current;
-		current.trans = trans_line;
-		current.target = target_line;
-		// TODO Hypothesen aufstellen?
-		current.BLEU_score = 0;
-		if (i >= trans_vec.size())
-		{
-			trans_vec.resize(trans_vec.size() + VECTOR_RESIZE);
-		}
-		trans_vec[i] = current;
-		i++;
+		Bleu *current = new Bleu(trans_line, reference_line);
+		// cout << current->bla() << endl;
 	}
-	trans_vec.resize(i);
 
 	return 0; //EXIT_SUCCESS;
 }

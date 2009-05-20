@@ -1,39 +1,57 @@
 #ifndef __BLEU_H__
 #define __BLEU_H__
+
+#include <string>
+#include <vector>
 #include <math.h>
-#include <iostream>
-#include "../includes/hypothesis.h"
+#include "../includes/functions.h"
+
 
 using namespace std;
 
 class Bleu
 {
+	private:
+		string trans_str, ref_str;
+		vector<string> trans, ref;
 	public:
-		unsigned int count_n_grams(unsigned int n, Hypothesis* H);
+		/** Constructor
+		*
+		* \param translation
+		* \param reference
+		* \return
+		*/
+		Bleu(string &translation, string &reference);
 
 		/**
-		* calcs the precision of a Hypothesis with n-grams
+		* Counts all n-grams for a hypothesis and it's reference
 		*
-		* \param C reference to the Hypothesis to calc the precision for
+		* \param n length of word-sequence
+		* \return
+		*/
+		unsigned int count_n_grams(unsigned int n);
+
+		/**
+		* calcs the precision of a Hypothesis with n-grams.
+		*
 		* \param n count of grams
 		* \return precision p_n
 		*/
-		double precision(Hypothesis* C, unsigned int n);
+		double precision(unsigned int n);
 
 		/**
 		*
 		*
 		* \return Brevity Penalty
 		*/
-		double brevity_penalty(unsigned int c,unsigned int r);
+		double brevity_penalty();
 
 		/**
-		* calcs the BLEU-score for a Hypothesis
+		* calcs the BLEU-score for a hypothesis.
 		*
 		* \param N
-		* \param H reference to a Hypothesis to calc the BLEU-score for
 		* \return BLEU_score
 		*/
-		double BLEU_score(unsigned int N, Hypothesis* H,unsigned int c,unsigned int r);
+		double BLEU_score(unsigned int N);
 };
 #endif

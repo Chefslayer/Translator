@@ -1,32 +1,45 @@
-#include <math.h>
-#include <iostream>
 #include "Bleu.h"
-#include "../includes/hypothesis.h"
+#include <string>
+#include <vector>
+#include <math.h>
+#include "../includes/functions.h"
+
 using namespace std;
 
-unsigned int Bleu::count_n_grams(unsigned int n, Hypothesis* H)
+Bleu::Bleu(string &translation, string &reference)
+{
+	trans_str = translation;
+	ref_str	  = reference;	
+	trans	  = stringSplit(translation, " ");
+	ref	  = stringSplit(reference  , " ");	
+}
+
+unsigned int Bleu::count_n_grams(unsigned int n)
 {
 	// TODO
  	return 0;
 }
 
-double Bleu::precision(Hypothesis* C, unsigned int n)
+double Bleu::precision(unsigned int n)
 {
 	// TODO
-	return 0;
+	return 1;
 }
 
-double Bleu::brevity_penalty(unsigned int c,unsigned int r)
+double Bleu::brevity_penalty()
 {
+	unsigned int c = this->trans.size();
+	unsigned int r = this->ref.size();
+
 	if (c > r)
 		return 1;
 	if (c <= r)
-		return exp((double)(1-r)/ (double)c);
+		return exp((double)(1-r)/(double)c);
 	else
 		return 0;
 }
 
-double Bleu::BLEU_score(unsigned int N, Hypothesis* H,unsigned int c,unsigned int r)
+double Bleu::BLEU_score(unsigned int N)
 {
 	if (N==0)
 	{
@@ -37,8 +50,8 @@ double Bleu::BLEU_score(unsigned int N, Hypothesis* H,unsigned int c,unsigned in
  	* 1. 1/N kann man ausklammern
 	* 2. log(a)+log(b) = log(a*b) => es reicht die p_n zu multiplizieren und am Ende einmal den log zu berechnen.
 	*/
-	double akku=0;
+	double akku=1;
 	for (unsigned int i=1; i<=N; i++)
-		akku *= precision(H, i);
-	return brevity_penalty(c, r)*exp(log(akku)/(double)N);
+		akku *= precision(i);
+	return brevity_penalty()*exp(log(akku)/(double)N);
 }
