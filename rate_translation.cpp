@@ -2,10 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <map>
-#include <math.h>
-#include "includes/constants.h"
-#include "includes/hypothesis.h"
 #include "classes/Bleu.h"
 #include "classes/Levenshtein.h"
 
