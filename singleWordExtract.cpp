@@ -14,8 +14,8 @@
 
 using namespace std;
 
-static Lexicon f("italienisch");
-static Lexicon e("englisch");
+static Lexicon f;
+static Lexicon e;
 
 int main(int argc, char* argv[])
 {

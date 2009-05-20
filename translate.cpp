@@ -14,8 +14,8 @@
 
 using namespace std;
 
-static Lexicon f("italienisch");
-static Lexicon e("englisch");
+static Lexicon f;
+static Lexicon e;
 
 struct trans_tab_struct{
 	double relFreqF, relFreqE;

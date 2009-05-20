@@ -14,7 +14,7 @@ class Lexicon
 		vector<string> int2str;
 		string language;
 	public:
-		Lexicon(string lang);
+		Lexicon();
 		
 		/*
 		inserts a word in the lexicon

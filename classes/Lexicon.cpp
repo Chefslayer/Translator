@@ -11,9 +11,8 @@ using namespace std;
 *
 * \param lang name of the language
 */
-Lexicon::Lexicon(string lang)
+Lexicon::Lexicon()
 {
-	language = lang;
 	i = 0; //number of inserted words
 	vector<string> int2str(VECTOR_INIT_SIZE, "");
 	insert("(?)");
