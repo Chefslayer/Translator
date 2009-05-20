@@ -6,6 +6,8 @@
 #include <math.h>
 #include "includes/constants.h"
 #include "includes/hypothesis.h"
+#include "classes/Bleu.h"
+#include "classes/Levenshtein.h"
 
 using namespace std;
 
@@ -14,19 +16,6 @@ struct trans_struct {
 	double BLEU_score;
 };
 
-
-/**
-* calcs the levenshtein distance
-*
-* \param &trans		translation by machine
-* \param &target	translation by human
-* \return 
-*/
-unsigned int levenshtein_distance(string &trans, string &target)
-{
-	// TODO
-	return 0;
-}
 
 int main(int argc, char* argv[])
 {
