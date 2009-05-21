@@ -23,34 +23,9 @@ vector<string> stringSplit(string str, string delim)
 	vector<string> result;
 	istringstream iss(str);
 	string token;
-   	while (getline(iss, token, delim[0]))
+	while (getline(iss, token, delim[0]))
 	{
 		result.push_back(token);
-	}
-	return result;
-}
-
-/**
-* gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
-*
-* \param line a sentence
-* \param lex the lexicon
-* \param singlesObject the SingleCount Object to count the singles
-* \return a vector with the sentence in values
-*/
-vector<unsigned int> insertAndConvert2intVector(string line, Lexicon& lex, SingleCount& sinlgesObject)
-{
-	vector<string>words = stringSplit(line, " ");
-			
-	vector<unsigned int> result(words.size(), 0);
-	
-	//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
-	unsigned int i;
-	for (i=0; i<words.size(); i++)
-	{
-		unsigned int val = lex.insert(words[i]);
-		sinlgesObject.insert(val);
-		result[i] = val;
 	}
 	return result;
 }
