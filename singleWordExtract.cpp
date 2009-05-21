@@ -69,10 +69,10 @@ int main(int argc, char* argv[])
 		{
 			//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
 			getline(src,line);
-			srcWords = insertAndConvert2intVector(line, f, singlesF);
+			srcWords = f.insertSentence(line, &singlesF);
 
 			getline(dest,line);
-			destWords = insertAndConvert2intVector(line, e, singlesE);
+			destWords = e.insertSentence(line, &singlesE);
 
 			alig >> sentenceNum;
 			
