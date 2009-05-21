@@ -1,6 +1,8 @@
 // Implementierung
 #include "Lexicon.h"
+#include "../includes/functions.h"
 #include "../includes/constants.h"
+#include "SingleCount.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -14,8 +16,8 @@ using namespace std;
 Lexicon::Lexicon()
 {
 	i = 0; //number of inserted words
-	vector<string> int2str(VECTOR_INIT_SIZE, "");
-	insert("(?)");
+	vector<string> int2strAssignment(VECTOR_INIT_SIZE, "");
+	insertWord("(?)");
 }
 
 /**
@@ -24,27 +26,57 @@ Lexicon::Lexicon()
 * \param word inserts the word
 * \return the value of the word
 */
-unsigned int Lexicon::insert(string word)
+unsigned int Lexicon::insertWord(string word)
 {
-	pair<map<string,unsigned int>::iterator, bool> temp = str2int.insert(pair<string,unsigned int> (word,i));
-	if(temp.second) //has word alredy been inserted?
+	//insert word in str2intAssignment
+	pair<map<string,unsigned int>::iterator, bool> temp = str2intAssignment.insert(pair<string,unsigned int> (word,i)); //returns an iterator and a bool which is false if the same word has alredy been inserted
+	
+	if(temp.second) //is the word new to the assignment
 	{
-		if (i >= int2str.size())
-		{
-			int2str.resize(int2str.size() + VECTOR_RESIZE);
-		}
-
-		// word has been inserted
-		int2str[i] = word;
+		//word is new
+		if (i >= int2strAssignment.size()) //resize vector if necessary
+			{
+				int2strAssignment.resize(int2strAssignment.size() + VECTOR_RESIZE);
+			}
+		// insert word in int2strAssignment
+		int2strAssignment[i] = word;
 		i++;
 		return (i-1);
 	}
 	else
 	{
-		// word is already saved
+		// word is already inserted in both assignments
 		return (*temp.first).second;
 	}
 }
+
+/**
+* gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
+*
+* \param line a sentence
+* \param lex the lexicon
+* \param singlesObject the SingleCount Object to count the singles
+* \return a vector with the sentence in values
+*/
+vector<unsigned int> Lexicon::insertSentence(string line, SingleCount *singlesObject)
+{
+	vector<string>words = stringSplit(line, " ");
+	vector<unsigned int> result(words.size(), 0);
+	//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
+	unsigned int i;
+	for (i=0; i < words.size(); i++)
+	{
+	unsigned int val = this->insertWord(words[i]);
+
+	// nur zählen wenn auch ein SingleCount objekt übergeben wurde
+	if (singlesObject != NULL)
+	singlesObject->insert(val);
+
+	result[i] = val;
+	}
+	return result;
+}
+
 /**
 * get word by code
 *
@@ -53,9 +85,9 @@ unsigned int Lexicon::insert(string word)
 */
 string Lexicon::getWord(unsigned int value)
 {
-	if (value >= int2str.size())
+	if (value >= int2strAssignment.size())
 		return "?";
-	string re = int2str[value];
+	string re = int2strAssignment[value];
 	return re;
 }
 
@@ -68,5 +100,5 @@ string Lexicon::getWord(unsigned int value)
 
 unsigned int Lexicon::getNum(string word)
 {
-	return (str2int.find(word))->second;
+	return (str2intAssignment.find(word))->second;
 }

@@ -3,6 +3,7 @@
 
 #include "Lexicon.h"
 #include "../includes/constants.h"
+#include "SingleCount.h"
 #include <string>
 #include <vector>
 #include <map>
@@ -13,8 +14,8 @@ class Lexicon
 {
 	private:
 		unsigned int i;
-		map<string,unsigned int> str2int;
-		vector<string> int2str;
+		map<string,unsigned int> str2intAssignment;
+		vector<string> int2strAssignment;
 		string language;
 	public:
 		Lexicon();
@@ -23,16 +24,19 @@ class Lexicon
 		inserts a word in the lexicon
 		returns the value of the word
 		*/
-		unsigned int 	insert(string word);
+		unsigned int insertWord(string word);
+
+
+		vector<unsigned int> insertSentence(string line, SingleCount *singlesObject = NULL);
 
 		/*
 		 *Get associated word for value
 		 */ 
 		
-		string 			getWord(unsigned int value);
+		string getWord(unsigned int value);
 		/*
 		 *Get associated value for word
 		 */
-		unsigned int 	getNum(string word);
+		unsigned int getNum(string word);
 };
 #endif
