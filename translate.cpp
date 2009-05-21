@@ -148,9 +148,9 @@ int main(int argc, char* argv[])
 		isstrE >> temp;
 		current.relFreqE = temp;
 
-		current.f = f.insert(line_vec[3]);
+		current.f = f.insertWord(line_vec[3]);
 
-		current.e = e.insert(line_vec[5]);
+		current.e = e.insertWord(line_vec[5]);
 
 		if (i >= trans_tab_vec.size())
 		{
