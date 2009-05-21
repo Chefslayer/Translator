@@ -1,17 +1,15 @@
-#include "Bleu.h"
 #include <string>
 #include <vector>
 #include <math.h>
+#include "Bleu.h"
 #include "../includes/functions.h"
 
 using namespace std;
 
-Bleu::Bleu(string &translation, string &reference)
+Bleu::Bleu(vector<unsigned int> translation, vector<unsigned int> reference)
 {
-	trans_str = translation;
-	ref_str	  = reference;	
-	trans	  = stringSplit(translation, " ");
-	ref	  = stringSplit(reference  , " ");	
+	trans = translation;
+	ref = reference;
 }
 
 unsigned int Bleu::count_n_grams(unsigned int n)
@@ -20,6 +18,10 @@ unsigned int Bleu::count_n_grams(unsigned int n)
  	return 0;
 }
 
+unsigned int Bleu::count_matching_n_grams(unsigned int n)
+{
+	return 1;
+}
 double Bleu::precision(unsigned int n)
 {
 	// TODO
