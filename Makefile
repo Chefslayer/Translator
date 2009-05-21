@@ -3,7 +3,7 @@ I = includes/
 L = lib/
 T = test/
 
-SRC = translate.cpp ${L}gzstream.cpp ${I}functions.cpp ${C}Lexicon.cpp ${I}hypothesis.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp
+SRC = ${L}gzstream.cpp ${I}functions.cpp ${C}Lexicon.cpp ${I}hypothesis.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp
 OBJ = $(SRC:%cpp=%o)
 
 CFLAGS = -g
@@ -11,18 +11,18 @@ LDFLAGS = -lz
 
 all: translate rate_translation
 clean:
-	-rm $(OBJ) translate hypTest.o
+	-rm $(OBJ) translate rate_translation hypTest.o lexiconTest.o
 rebuild: clean translate rate_translation
 
-translate: $(OBJ)
+translate: translate.cpp $(OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 rate_translation: rate_translation.cpp ${I}functions.o ${C}Lexicon.o $(C)Bleu.o $(C)Levenshtein.o
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
 #kompiliert nicht weiss aber nicht warum
-#singleWordExtract: singleWordExtract.cpp
-#	$(CXX) $^ -o $@ $(LDFLAGS)
+singleWordExtract: singleWordExtract.cpp $(OBJ)
+	$(CXX) $^ -o $@ $(LDFLAGS)
 
 hypTest: $(T)hypTest.cpp $(I)hypothesis.o
 	$(CXX) $^ -o hypTest.o
