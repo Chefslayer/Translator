@@ -20,3 +20,7 @@ log_events:
   - Robert Heim <Robert.Heim@rwth-aachen.de>
   - closed with disposition fixed
   - Die Schleife dazu befindet sich nun in der main und die searchTranslation wird nur mit dem words-vector aufgerufen
+- - 2009-05-21 12:59:54.282243 Z
+  - Chefslayer <inga.herber@web.de>
+  - closed with disposition fixed
+  - die Wahrscheinlichkeiten scheinen ja jetzt zu stimmen
