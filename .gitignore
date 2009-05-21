@@ -2,6 +2,7 @@
 *.o
 *~
 Alignment
+alignment.gz
 .ditz-config
 f-test
 e-test
