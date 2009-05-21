@@ -2,10 +2,13 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "classes/Lexicon.h"
 #include "classes/Bleu.h"
 #include "classes/Levenshtein.h"
 
 using namespace std;
+
+static Lexicon e;
 
 int main(int argc, char* argv[])
 {
@@ -29,15 +32,16 @@ int main(int argc, char* argv[])
 		return 1; // EXIT_FAILURE;
 	}
 
-	string	trans_line,
+	string trans_line,
 		reference_line = "";
-	double	average_levenshtein_dist,
+	double average_levenshtein_dist,
 		average_posindependent_levenshtein_dist = 0;
 
 	// read trans and reference into trans_vec
 	while (getline(trans, trans_line) && getline(reference, reference_line))
 	{
-		Bleu *current = new Bleu(trans_line, reference_line);
+		//Bleu *current = 
+		new Bleu(e.insertSentence(trans_line), e.insertSentence(reference_line));
 		// cout << current->bla() << endl;
 	}
 
