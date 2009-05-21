@@ -11,7 +11,7 @@ LDFLAGS = -lz
 
 all: translate rate_translation
 clean:
-	-rm $(OBJ) translate rate_translation hypTest.o lexiconTest.o
+	-rm $(OBJ) translate rate_translation singleWordExtract hypTest.o lexiconTest.o
 rebuild: clean translate rate_translation
 
 translate: translate.cpp $(OBJ)
