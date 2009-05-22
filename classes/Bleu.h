@@ -23,20 +23,12 @@ class Bleu
 		Bleu(vector<unsigned int> translation, vector<unsigned int> reference); // wenn ich Referenzen benutze compiliert es nicht mehr^^
 
 		/**
-		* Counts all n-grams for the reference
-		*
-		* \param n length of word-sequence
-		* \return
-		*/
-		unsigned int count_n_grams(unsigned int n);
-
-		/**
 		* Counts all matching n-grams in the Hypothesis and it's reference
 		*
 		* \param n length of word-sequence
 		* \return
 		*/
-		unsigned int count_matching_n_grams(unsigned int n);
+		int nGramsMatching(unsigned int n);
 
 		/**
 		* calcs the precision of a Hypothesis with n-grams.
@@ -51,7 +43,7 @@ class Bleu
 		*
 		* \return Brevity Penalty
 		*/
-		double brevity_penalty();
+		double brevityPenalty();
 
 		/**
 		* calcs the BLEU-score for a hypothesis.
@@ -59,6 +51,6 @@ class Bleu
 		* \param N
 		* \return BLEU_score
 		*/
-		double BLEU_score(unsigned int N);
+		double bleuScore(unsigned int N);
 };
 #endif

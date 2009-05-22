@@ -1,3 +1,4 @@
+#include <iostream>
 #include <string>
 #include <vector>
 #include <math.h>
@@ -12,36 +13,67 @@ Bleu::Bleu(vector<unsigned int> translation, vector<unsigned int> reference)
 	ref = reference;
 }
 
-unsigned int Bleu::count_n_grams(unsigned int n)
+int Bleu::nGramsMatching(unsigned int n)
 {
-	// TODO
- 	return 0;
-}
-
-unsigned int Bleu::count_matching_n_grams(unsigned int n)
-{
-	return 1;
+	int num = 0;
+	unsigned int temp = 0;
+	for (int i = 0; i < ref.size();i++)
+	{
+		for (int transposition = 0; transposition < trans.size(); transposition++)
+		{
+			if (trans[transposition] == ref[i])
+			{
+				temp = 1;
+				for (int j = 1; j < n; j++)
+				{
+					if ((i+j) >= ref.size() or (transposition + j) >= trans.size())
+					{
+						break;
+					}
+					else
+						if (trans[transposition + j] == ref[i + j]) temp++;
+				}
+			if (temp == n)
+			{
+				num++;
+				break;
+			}
+			}
+		}
+	}
+	return num;
 }
 double Bleu::precision(unsigned int n)
 {
-	// TODO
-	return 1;
+	double precision = 0;
+	if ((ref.size() + 1 - n) <= 0)
+	{
+		cout << "Hilfe durch 0 teilen!!!!" << endl;
+		return -1;
+	}
+	precision = (double)nGramsMatching(n)/(double)(ref.size() + 1 - n);
+	return precision;
 }
 
-double Bleu::brevity_penalty()
+double Bleu::brevityPenalty()
 {
-	unsigned int c = this->trans.size();
-	unsigned int r = this->ref.size();
+	int c = this->trans.size();
+	int r = this->ref.size();
 
 	if (c > r)
 		return 1;
 	if (c <= r)
-		return exp((double)(1-r)/(double)c);
-	else
-		return 0;
+	{
+		//cout << "r:" << (double)r << "c:" << (double)c << "(1-r)/c:" << (double)(1-r)/(double)c <<  endl;
+		if (c <= 0)
+			cout << "Die Länge der Referenzübersetzung ist <= 0..." << endl;
+		return (double)exp(((double)(1-r)/(double)c));
+	}
+//	else
+//		return 0;
 }
 
-double Bleu::BLEU_score(unsigned int N)
+double Bleu::bleuScore(unsigned int N)
 {
 	if (N==0)
 	{
@@ -52,8 +84,12 @@ double Bleu::BLEU_score(unsigned int N)
  	* 1. 1/N kann man ausklammern
 	* 2. log(a)+log(b) = log(a*b) => es reicht die p_n zu multiplizieren und am Ende einmal den log zu berechnen.
 	*/
-	double akku=1;
+	double akku = 1.0;
 	for (unsigned int i=1; i<=N; i++)
-		akku *= precision(i);
-	return brevity_penalty()*exp(log(akku)/(double)N);
+	{
+	//	akku = akku + log((double)precision(i));
+	akku = akku * precision(i);
+	//	cout << "precision:" << precision(i) << endl;
+	}
+		return brevityPenalty()*exp(log(akku)/(double)N);
 }

@@ -1,11 +1,13 @@
 // Implementierung
-#include "Lexicon.h"
-#include "../includes/functions.h"
-#include "../includes/constants.h"
-#include "SingleCount.h"
+
 #include <string>
 #include <vector>
 #include <map>
+#include "../includes/functions.h"
+#include "Lexicon.h"
+#include "SingleCount.h"
+#include "../includes/constants.h"
+
 using namespace std;
 
 /**
@@ -51,27 +53,24 @@ unsigned int Lexicon::insertWord(string word)
 }
 
 /**
-* gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
+* gets a line, lexicon and singleCount* object (if not defined set to NULL) puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
 *
 * \param line a sentence
-* \param lex the lexicon
-* \param singlesObject the SingleCount Object to count the singles
+* \param singlesObject the SingleCount* Object to count the singles
 * \return a vector with the sentence in values
 */
-vector<unsigned int> Lexicon::insertSentence(string line, SingleCount *singlesObject)
+vector<unsigned int> Lexicon::insertSentence(string line, SingleCount* singlesObject)
 {
-	vector<string>words = stringSplit(line, " ");
+	vector<string> words = stringSplit(line, " ");
 	vector<unsigned int> result(words.size(), 0);
 	//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
 	unsigned int i;
 	for (i=0; i < words.size(); i++)
 	{
 	unsigned int val = this->insertWord(words[i]);
-
 	// nur zählen wenn auch ein SingleCount objekt übergeben wurde
 	if (singlesObject != NULL)
-	singlesObject->insert(val);
-
+		singlesObject->insert(val);
 	result[i] = val;
 	}
 	return result;
