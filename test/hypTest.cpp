@@ -1,6 +1,6 @@
 
-#include "../includes/hypothesis.h"
 #include <iostream>
+#include "../includes/hypothesis.h"
 
 using namespace std;
 
