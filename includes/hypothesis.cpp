@@ -11,20 +11,19 @@ using namespace std;
 * \param c costs for this Hypothesis
 * \param t word in the target lang / translation
 */
-Hypothesis::Hypothesis(Hypothesis *p , double c, unsigned int t)
+Hypothesis::Hypothesis(Hypothesis *p ,double fCost, double eCost, unsigned int t)
 {
 	prevHyp = p;
 	if (p!=NULL)
 	{
-		costs = p->costs;
-		totalCosts = p->totalCosts;
+		costs[0] += fCost;
+		costs[1] += eCost;
 	}
 	else
 	{
-		totalCosts = 0;
+		costs.push_back = fCost;
+		costs.push_back = eCost;
 	}
-	costs.push_back(c);
-	totalCosts += c;
 	trans = t;
 }
 
@@ -37,5 +36,5 @@ Hypothesis::Hypothesis(Hypothesis *p , double c, unsigned int t)
 */
 bool cmp_Hyp(Hypothesis* i, Hypothesis* j)
 {
-	return (i->totalCosts < j->totalCosts);
+	return (i->costs[0] < j->costs[0]);
 }

@@ -9,9 +9,8 @@ struct Hypothesis
 {
 	Hypothesis *prevHyp;
 	vector<double> costs;
-	double totalCosts;
 	unsigned int trans;
-	Hypothesis(Hypothesis *p, double c, unsigned int t);
+	Hypothesis(Hypothesis *p,double fCost, double eCost, unsigned int t);
 };
 
 bool cmp_Hyp(Hypothesis* i, Hypothesis* j);

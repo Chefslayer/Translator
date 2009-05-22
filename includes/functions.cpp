@@ -1,13 +1,8 @@
 #include <string>
 #include <vector>
-#include <utility>
 #include <iostream>
 #include <sstream>
-#include <math.h>
 #include "functions.h"
-#include "../classes/Lexicon.h"
-#include "../classes/PairCount.h"
-#include "../classes/SingleCount.h"
 
 using namespace std;
 
@@ -30,22 +25,3 @@ vector<string> stringSplit(string str, string delim)
 	return result;
 }
 
-/**
-* displays the Freqs on the cout
-*
-* \param pairs the pairs-object
-* \param singlesF singles-object for source lang
-* \param singlesE singles-object for target lang
-* \param f lexicon to look up the words of the source lang
-* \param e lexicon to look up the words of the target lang
-*/
-void showFreq( PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, Lexicon& f, Lexicon& e)
-{
-	for (pairs.begin(); !pairs.isEnd(); pairs.next())
-	{
-		pair<unsigned int, unsigned int> wordpair = pairs.current();
-		double relFreq_f = -log(((double)pairs.getFreq(wordpair))/((double)singlesF.getFreq(wordpair.first)));
-		double relFreq_e = -log(((double)pairs.getFreq(wordpair))/((double)singlesE.getFreq(wordpair.second)));
-		cout << relFreq_f << " " << relFreq_e << " # " << f.getWord(wordpair.first) << " # " << e.getWord(wordpair.second) << endl;
-	}
-}
