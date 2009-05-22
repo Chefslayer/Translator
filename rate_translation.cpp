@@ -40,9 +40,8 @@ int main(int argc, char* argv[])
 	// read trans and reference into trans_vec
 	while (getline(trans, trans_line) && getline(reference, reference_line))
 	{
-		//Bleu *current = 
-		new Bleu(e.insertSentence(trans_line), e.insertSentence(reference_line));
-		// cout << current->bla() << endl;
+		Bleu *current = new Bleu(e.insertSentence(trans_line), e.insertSentence(reference_line));
+		 cout << current->bleuScore(4) << endl;
 	}
 
 	return 0; //EXIT_SUCCESS;
