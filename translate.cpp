@@ -11,6 +11,7 @@
 #include "classes/Lexicon.h"
 #include "includes/hypothesis.h"
 #include "includes/functions.h"
+#include "includes/output.h"
 
 using namespace std;
 
@@ -61,7 +62,7 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_stru
 	Hypothesis* minCostsHyp;
 	vector< stack < Hypothesis* > > stacks;
 	stacks.resize((words.size()+1));
-	Hypothesis* h = new Hypothesis(NULL,0,0);
+	Hypothesis* h = new Hypothesis(NULL,0,0,0);
 	stacks[0].push(h);
 
 	for (unsigned int i = 0; i < words.size(); i++)
@@ -85,14 +86,14 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_stru
 			while (j < translationtab.size() && words[i] == (translationtab[j].f))
 			{
 				found_at_least_one_hypo = true;
-				Hypothesis *h = new Hypothesis(prev, translationtab[j].relFreqF, translationtab[j].e);
+				Hypothesis *h = new Hypothesis(prev, translationtab[j].relFreqF, translationtab[j].relFreqF, translationtab[j].e);
 				stacks[i+1].push(h);
 				j++;
 			}
 			if (!found_at_least_one_hypo)
 			{
 				// insert '(?)'
-				stacks[i+1].push(new Hypothesis(prev, 0, 0));
+				stacks[i+1].push(new Hypothesis(prev,0, 0, 0));
 			}
 			stacks[i].pop();
 		}

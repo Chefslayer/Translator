@@ -10,7 +10,7 @@
 #include "classes/Lexicon.h"
 #include "classes/SingleCount.h"
 #include "classes/PairCount.h"
-#include "includes/functions.h"
+#include "includes/output.h"
 
 using namespace std;
 
