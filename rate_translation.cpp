@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 	while (getline(trans, trans_line) && getline(reference, reference_line))
 	{
 		Bleu *current = new Bleu(e.insertSentence(trans_line), e.insertSentence(reference_line));
-		 cout << current->bleuScore(4) << endl;
+		cout << current->bleuScore(4) << ":\n\t t: " << trans_line << "\n\t r: " << reference_line << endl;;
 	}
 
 	return 0; //EXIT_SUCCESS;
