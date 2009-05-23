@@ -16,13 +16,13 @@ Hypothesis::Hypothesis(Hypothesis *p ,double fCost, double eCost, unsigned int t
 	prevHyp = p;
 	if (p!=NULL)
 	{
-		costs[0] += fCost;
-		costs[1] += eCost;
+		costs.push_back(p->costs[0]+fCost);
+		costs.push_back(p->costs[1]+eCost);
 	}
 	else
 	{
-		costs.push_back = fCost;
-		costs.push_back = eCost;
+		costs.push_back(fCost);
+		costs.push_back(eCost);
 	}
 	trans = t;
 }

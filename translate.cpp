@@ -86,7 +86,7 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_stru
 			while (j < translationtab.size() && words[i] == (translationtab[j].f))
 			{
 				found_at_least_one_hypo = true;
-				Hypothesis *h = new Hypothesis(prev, translationtab[j].relFreqF, translationtab[j].relFreqF, translationtab[j].e);
+				Hypothesis *h = new Hypothesis(prev, translationtab[j].relFreqF, translationtab[j].relFreqE, translationtab[j].e);
 				stacks[i+1].push(h);
 				j++;
 			}
