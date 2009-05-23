@@ -31,7 +31,7 @@ int Bleu::nGramsMatching(unsigned int n)
 				if (j == n)
 				{
 					num++;
-					//break; nicht breaken, weil auch ab einer position im ref-string mehrmals im trans-string gematched werden kann, oder irre ich mich?
+					break;
 				}
 			}
 		}
@@ -47,7 +47,7 @@ double Bleu::precision(unsigned int n)
 		cerr << "Bleu::precision: Division durch 0." << endl;
 		return -1;
 	}
-	precision = (double)nGramsMatching(n)/(double)(ref.size() + 1 - n);
+	precision = (double)nGramsMatching(n)/(double)(trans.size() + 1 - n);
 	return precision;
 }
 
