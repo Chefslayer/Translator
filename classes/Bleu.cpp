@@ -41,14 +41,14 @@ int Bleu::nGramsMatching(unsigned int n)
 
 double Bleu::precision(unsigned int n)
 {
-	double precision = 0;
-	if ((ref.size() + 1 - n) <= 0)
+	int nGrams = trans.size() + 1 - n;
+	if ( nGrams <= 0)
 	{
+		// was wenn nGrams < 0 ? wäre das gültig?
 		cerr << "Bleu::precision: Division durch 0." << endl;
 		return -1;
 	}
-	precision = (double)nGramsMatching(n)/(double)(trans.size() + 1 - n);
-	return precision;
+	return (double)nGramsMatching(n)/(double)nGrams;
 }
 
 double Bleu::brevityPenalty()
