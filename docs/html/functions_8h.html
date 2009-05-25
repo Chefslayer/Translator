@@ -22,10 +22,6 @@
 <a class="el" href="dir_f6297647dc63acca7137160abeffb8aa.html">includes</a></div>
 <h1>functions.h File Reference</h1><code>#include &lt;string&gt;</code><br>
 <code>#include &lt;vector&gt;</code><br>
-<code>#include &lt;utility&gt;</code><br>
-<code>#include &quot;<a class="el" href="Lexicon_8h-source.html">../classes/Lexicon.h</a>&quot;</code><br>
-<code>#include &quot;<a class="el" href="PairCount_8h-source.html">../classes/PairCount.h</a>&quot;</code><br>
-<code>#include &quot;<a class="el" href="SingleCount_8h-source.html">../classes/SingleCount.h</a>&quot;</code><br>
 
 <p>
 <a href="functions_8h-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -33,125 +29,9 @@
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8h.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a> (string str, string delim)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8h.html#4e4305b7f2e22cb2e2e952f8c3e68593">insertAndConvert2intVector</a> (string line, <a class="el" href="classLexicon.html">Lexicon</a> &amp;lex, <a class="el" href="classSingleCount.html">SingleCount</a> &amp;sinlgesObject)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="functions_8h.html#2f10edab51f9310a34981094fc4f1c02">showFreq</a> (<a class="el" href="classPairCount.html">PairCount</a> &amp;pairs, <a class="el" href="classSingleCount.html">SingleCount</a> &amp;singlesF, <a class="el" href="classSingleCount.html">SingleCount</a> &amp;singlesE, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#b0d999ac80206f649d82c532f582f2ae">f</a>, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#465c739f7c8e59a5b31ca98551e1e7b7">e</a>)</td></tr>
-
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">splits a string into tokens  <a href="#db745cc353cdbbf26fd3cc0f9e96ddf9"></a><br></td></tr>
 </table>
 <hr><h2>Function Documentation</h2>
-<a class="anchor" name="4e4305b7f2e22cb2e2e952f8c3e68593"></a><!-- doxytag: member="functions.h::insertAndConvert2intVector" ref="4e4305b7f2e22cb2e2e952f8c3e68593" args="(string line, Lexicon &amp;lex, SingleCount &amp;sinlgesObject)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">vector&lt;unsigned int&gt; insertAndConvert2intVector           </td>
-          <td>(</td>
-          <td class="paramtype">string&nbsp;</td>
-          <td class="paramname"> <em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>lex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classSingleCount.html">SingleCount</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>sinlgesObject</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td width="100%"></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-gets a line, lexicon and singleCount object puts all words of the sentence in the lexicon and saves the word-values in the singlesObject<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>line</em>&nbsp;</td><td>a sentence </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>lex</em>&nbsp;</td><td>the lexicon </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>singlesObject</em>&nbsp;</td><td>the <a class="el" href="classSingleCount.html">SingleCount</a> Object to count the singles </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>a vector with the sentence in values </dd></dl>
-
-<p>
-Definition at line <a class="el" href="functions_8cpp-source.html#l00041">41</a> of file <a class="el" href="functions_8cpp-source.html">functions.cpp</a>.
-<p>
-References <a class="el" href="SingleCount_8h-source.html#l00015">SingleCount::insert()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00028">Lexicon::insert()</a>, and <a class="el" href="functions_8cpp-source.html#l00021">stringSplit()</a>.
-<p>
-Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00020">main()</a>.
-</div>
-</div><p>
-<a class="anchor" name="2f10edab51f9310a34981094fc4f1c02"></a><!-- doxytag: member="functions.h::showFreq" ref="2f10edab51f9310a34981094fc4f1c02" args="(PairCount &amp;pairs, SingleCount &amp;singlesF, SingleCount &amp;singlesE, Lexicon &amp;f, Lexicon &amp;e)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void showFreq           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classPairCount.html">PairCount</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>pairs</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classSingleCount.html">SingleCount</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>singlesF</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classSingleCount.html">SingleCount</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>singlesE</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td width="100%"></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-displays the Freqs on the cout<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>pairs</em>&nbsp;</td><td>the pairs-object </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>singlesF</em>&nbsp;</td><td>singles-object for source lang </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>singlesE</em>&nbsp;</td><td>singles-object for target lang </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>f</em>&nbsp;</td><td>lexicon to look up the words of the source lang </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td>lexicon to look up the words of the target lang </td></tr>
-  </table>
-</dl>
-
-<p>
-Definition at line <a class="el" href="functions_8cpp-source.html#l00067">67</a> of file <a class="el" href="functions_8cpp-source.html">functions.cpp</a>.
-<p>
-References <a class="el" href="PairCount_8h-source.html#l00027">PairCount::begin()</a>, <a class="el" href="PairCount_8h-source.html#l00039">PairCount::current()</a>, <a class="el" href="singleWordExtract_8cpp.html#465c739f7c8e59a5b31ca98551e1e7b7">e</a>, <a class="el" href="singleWordExtract_8cpp.html#b0d999ac80206f649d82c532f582f2ae">f</a>, <a class="el" href="SingleCount_8h-source.html#l00023">SingleCount::getFreq()</a>, <a class="el" href="PairCount_8h-source.html#l00019">PairCount::getFreq()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00055">Lexicon::getWord()</a>, <a class="el" href="PairCount_8h-source.html#l00035">PairCount::isEnd()</a>, and <a class="el" href="PairCount_8h-source.html#l00031">PairCount::next()</a>.
-<p>
-Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00020">main()</a>.
-</div>
-</div><p>
 <a class="anchor" name="db745cc353cdbbf26fd3cc0f9e96ddf9"></a><!-- doxytag: member="functions.h::stringSplit" ref="db745cc353cdbbf26fd3cc0f9e96ddf9" args="(string str, string delim)" -->
 <div class="memitem">
 <div class="memproto">
@@ -178,7 +58,8 @@ Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00020">mai
 <div class="memdoc">
 
 <p>
-splits a string into tokens<p>
+splits a string into tokens 
+<p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>the string to split </td></tr>
@@ -188,12 +69,12 @@ splits a string into tokens<p>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>a vector with all tokens </dd></dl>
 
 <p>
-Definition at line <a class="el" href="functions_8cpp-source.html#l00021">21</a> of file <a class="el" href="functions_8cpp-source.html">functions.cpp</a>.
+Definition at line <a class="el" href="functions_8cpp-source.html#l00016">16</a> of file <a class="el" href="functions_8cpp-source.html">functions.cpp</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00041">insertAndConvert2intVector()</a>, <a class="el" href="translate_8cpp-source.html#l00125">main()</a>, and <a class="el" href="translate_8cpp-source.html#l00074">searchTranslation()</a>.
+Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00042">Lexicon::insertSentence()</a>, and <a class="el" href="translate_8cpp-source.html#l00107">main()</a>.
 </div>
 </div><p>
-<hr size="1"><address style="align: right;"><small>Generated on Thu May 14 19:22:54 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon May 25 13:39:07 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

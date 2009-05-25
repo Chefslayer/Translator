@@ -1,3 +1,13 @@
+/**
+ * @file
+ * @author  Gruppe 2
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * The Lexicon class holds all words for a specific language and maps them to int values.
+ */
+
 #ifndef __LEXICON_H__
 #define __LEXICON_H__
 
@@ -8,36 +18,54 @@
 
 using namespace std;
 
+
+/**
+ * The Lexicon class holds all words and them to int values.
+ * The Lexicon class holds all words for a specific language and maps them to int values.
+ */
 class Lexicon
 {
 	private:
+		/// number of inserted words
 		unsigned int i;
 		map<string,unsigned int> str2intAssignment;
 		vector<string> int2strAssignment;
-		string language;
 	public:
+		/**
+		 * inits a new lexicon
+		 */
 		Lexicon();
 		
-		/*
-		*inserts a word in the lexicon
-		*returns the value of the word
-		*/
+		/**
+		 * inserts a word in the lexicon
+		 *
+		 * \param word inserts the word
+		 * \return the value of the word
+		 */
 		unsigned int insertWord(string word);
 
-		/*
-		*inserts a sentence in the lexicon
-		*returns a vector withe the value of the words
-		*if no singlesObject is defined it is set to NULL
-		*/
+		/**
+		 * gets a line, lexicon and singleCount* object (if not defined set to NULL) puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
+		 *
+		 * \param line a sentence
+		 * \param singlesObject the SingleCount* Object to count the singles
+		 * \return a vector with the sentence in values
+		 */
 		vector<unsigned int> insertSentence(string line, SingleCount* singlesObject = NULL);
 
-		/*
-		 *Get associated word for value
+		/**
+		 * Get associated word for a given code
+		 *
+		 * \param value
+		 * \return word for given code
 		 */
 		string getWord(unsigned int value);
 		
-		/*
-		 *Get associated value for word
+		/**
+		 * Get associated code for a given word
+		 *
+		 * \param word string wich will be convertet into an int
+		 * \return code
 		 */
 		unsigned int getNum(string word);
 };

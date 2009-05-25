@@ -1,3 +1,13 @@
+/**
+ * @file
+ * @author  Gruppe 2
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * The Bleu class calculates the BLEU-Score rating for a translation.
+ */
+
 #ifndef __BLEU_H__
 #define __BLEU_H__
 
@@ -8,49 +18,53 @@
 
 using namespace std;
 
+/**
+ * The Bleu class calculates the BLEU-Score rating for a translation.
+ * The Bleu class calculates the bleuScore rating for a translation, by computing the brevityPenalty, precision and nGramsMatching / nGrams.
+ */
 class Bleu
 {
 	private:
 		unsigned int transWord, refWord;
 		vector<unsigned int> trans, ref;
 	public:
-		/** Constructor
-		*
-		* \param translation
-		* \param reference
-		* \return
-		*/
+		/**
+		 * Constructor sets up the initial values.
+		 *
+		 * \param translation
+		 * \param reference
+		 */
 		Bleu(vector<unsigned int> translation, vector<unsigned int> reference); // wenn ich Referenzen benutze compiliert es nicht mehr^^
 
 		/**
-		* Counts all matching n-grams in the Hypothesis and it's reference
-		*
-		* \param n length of word-sequence
-		* \return
-		*/
+		 * Counts all matching n-grams in the Hypothesis and it's reference.
+		 *
+		 * \param n length of word-sequence
+		 * \return
+		 */
 		int nGramsMatching(unsigned int n);
 
 		/**
-		* calcs the precision of a Hypothesis with n-grams.
-		*
-		* \param n count of grams
-		* \return precision p_n
-		*/
+		 * calcs the precision of a Hypothesis with n-grams.
+		 *
+		 * \param n count of grams
+		 * \return precision p_n
+		 */
 		double precision(unsigned int n);
 
 		/**
-		*
-		*
-		* \return Brevity Penalty
-		*/
+		 * calcs the Brevity Penalty.
+		 *
+		 * \return Brevity Penalty
+		 */
 		double brevityPenalty();
 
 		/**
-		* calcs the BLEU-score for a hypothesis.
-		*
-		* \param N
-		* \return BLEU_score
-		*/
+		 * calcs the BLEU-score for a hypothesis.
+		 *
+		 * \param N
+		 * \return BLEU_score
+		 */
 		double bleuScore(unsigned int N);
 };
 #endif

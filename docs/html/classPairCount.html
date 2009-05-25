@@ -20,26 +20,36 @@
     <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
     <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
   </ul></div>
-<h1>PairCount Class Reference</h1><!-- doxytag: class="PairCount" --><code>#include &lt;<a class="el" href="PairCount_8h-source.html">PairCount.h</a>&gt;</code>
+<h1>PairCount Class Reference</h1><!-- doxytag: class="PairCount" -->The <a class="el" href="classPairCount.html">PairCount</a> class holds and counts the occurrence of word-pairs.  
+<a href="#_details">More...</a>
+<p>
+<code>#include &lt;<a class="el" href="PairCount_8h-source.html">PairCount.h</a>&gt;</code>
 <p>
 <a href="classPairCount-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#925081c7194c3289dc78431f47c3997e">insert</a> (pair&lt; unsigned int, unsigned int &gt; wordpair)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">inserts and/or increments the count of a word-pair.  <a href="#925081c7194c3289dc78431f47c3997e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#e47601fefbf6ddfbe880b274547932b3">getFreq</a> (pair&lt; unsigned int, unsigned int &gt; wordpair)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets the count of occurrence of a word-pair.  <a href="#e47601fefbf6ddfbe880b274547932b3"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#5e9eaf120148df6888a08cc27a483e37">getSize</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets the count of inserted pairs.  <a href="#5e9eaf120148df6888a08cc27a483e37"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#af78e39fd42da4b6f9eee017d9361d33">begin</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">sets the map-iterator to the begin of the pairCount-map.  <a href="#af78e39fd42da4b6f9eee017d9361d33"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#d1299ef29433ebd8e921b68a3bd2f10e">next</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">sets the map-iterator to the next position.  <a href="#d1299ef29433ebd8e921b68a3bd2f10e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#c38dba059a1fded2afea071b00008980">isEnd</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">checks whether the map-iterator is at the end of the pairCount-map.  <a href="#c38dba059a1fded2afea071b00008980"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">pair&lt; unsigned int, unsigned <br>
 int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#ca4924a9ce3a205fab09e71007236b7a">current</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets the current pair at the map-iterators position.  <a href="#ca4924a9ce3a205fab09e71007236b7a"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">map&lt; pair&lt; unsigned int, unsigned <br>
 int &gt;, unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPairCount.html#f1564062c27d8e76ae2bb91f89dd4269">pairCounts</a></td></tr>
@@ -49,11 +59,11 @@ int &gt;, unsigned int &gt;::iterator&nbsp;</td><td class="memItemRight" valign=
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-
+The <a class="el" href="classPairCount.html">PairCount</a> class holds and counts the occurrence of word-pairs. 
 <p>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00009">9</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.<hr><h2>Member Function Documentation</h2>
+Definition at line <a class="el" href="PairCount_8h-source.html#l00022">22</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.<hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="925081c7194c3289dc78431f47c3997e"></a><!-- doxytag: member="PairCount::insert" ref="925081c7194c3289dc78431f47c3997e" args="(pair&lt; unsigned int, unsigned int &gt; wordpair)" -->
 <div class="memitem">
 <div class="memproto">
@@ -71,11 +81,18 @@ Definition at line <a class="el" href="PairCount_8h-source.html#l00009">9</a> of
 <div class="memdoc">
 
 <p>
+inserts and/or increments the count of a word-pair. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>wordpair</em>&nbsp;</td><td>the word-pair to insert </td></tr>
+  </table>
+</dl>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00015">15</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00033">33</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00012">pairCounts</a>.
+References <a class="el" href="PairCount_8h-source.html#l00025">pairCounts</a>.
 <p>
 Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00020">main()</a>.
 </div>
@@ -97,13 +114,21 @@ Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00020">mai
 <div class="memdoc">
 
 <p>
+gets the count of occurrence of a word-pair. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>wordpair</em>&nbsp;</td><td>the word-pair to get the count for. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>count of occurrence of the given word pair. </dd></dl>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00019">19</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00044">44</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00012">pairCounts</a>.
+References <a class="el" href="PairCount_8h-source.html#l00025">pairCounts</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()</a>.
+Referenced by <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <a class="anchor" name="5e9eaf120148df6888a08cc27a483e37"></a><!-- doxytag: member="PairCount::getSize" ref="5e9eaf120148df6888a08cc27a483e37" args="()" -->
@@ -122,11 +147,14 @@ Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()<
 <div class="memdoc">
 
 <p>
+gets the count of inserted pairs. 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>count of inserted pairs = size of the pairCoutns-map. </dd></dl>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00023">23</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00054">54</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00012">pairCounts</a>.
+References <a class="el" href="PairCount_8h-source.html#l00025">pairCounts</a>.
 </div>
 </div><p>
 <a class="anchor" name="af78e39fd42da4b6f9eee017d9361d33"></a><!-- doxytag: member="PairCount::begin" ref="af78e39fd42da4b6f9eee017d9361d33" args="()" -->
@@ -145,13 +173,15 @@ References <a class="el" href="PairCount_8h-source.html#l00012">pairCounts</a>.
 <div class="memdoc">
 
 <p>
+sets the map-iterator to the begin of the pairCount-map. 
+<p>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00027">27</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00062">62</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00013">it</a>, and <a class="el" href="PairCount_8h-source.html#l00012">pairCounts</a>.
+References <a class="el" href="PairCount_8h-source.html#l00026">it</a>, and <a class="el" href="PairCount_8h-source.html#l00025">pairCounts</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()</a>.
+Referenced by <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <a class="anchor" name="d1299ef29433ebd8e921b68a3bd2f10e"></a><!-- doxytag: member="PairCount::next" ref="d1299ef29433ebd8e921b68a3bd2f10e" args="()" -->
@@ -170,13 +200,15 @@ Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()<
 <div class="memdoc">
 
 <p>
+sets the map-iterator to the next position. 
+<p>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00031">31</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00070">70</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00013">it</a>.
+References <a class="el" href="PairCount_8h-source.html#l00026">it</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()</a>.
+Referenced by <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <a class="anchor" name="c38dba059a1fded2afea071b00008980"></a><!-- doxytag: member="PairCount::isEnd" ref="c38dba059a1fded2afea071b00008980" args="()" -->
@@ -195,13 +227,16 @@ Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()<
 <div class="memdoc">
 
 <p>
+checks whether the map-iterator is at the end of the pairCount-map. 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>true if the map iterator is at the end, false otherwise. </dd></dl>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00035">35</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00080">80</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00013">it</a>, and <a class="el" href="PairCount_8h-source.html#l00012">pairCounts</a>.
+References <a class="el" href="PairCount_8h-source.html#l00026">it</a>, and <a class="el" href="PairCount_8h-source.html#l00025">pairCounts</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()</a>.
+Referenced by <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <a class="anchor" name="ca4924a9ce3a205fab09e71007236b7a"></a><!-- doxytag: member="PairCount::current" ref="ca4924a9ce3a205fab09e71007236b7a" args="()" -->
@@ -220,13 +255,16 @@ Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()<
 <div class="memdoc">
 
 <p>
+gets the current pair at the map-iterators position. 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>the pair at the map-iterators position. </dd></dl>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00039">39</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00090">90</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00013">it</a>.
+References <a class="el" href="PairCount_8h-source.html#l00026">it</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()</a>.
+Referenced by <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -244,9 +282,9 @@ Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()<
 <p>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00012">12</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00025">25</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-Referenced by <a class="el" href="PairCount_8h-source.html#l00027">begin()</a>, <a class="el" href="PairCount_8h-source.html#l00019">getFreq()</a>, <a class="el" href="PairCount_8h-source.html#l00023">getSize()</a>, <a class="el" href="PairCount_8h-source.html#l00015">insert()</a>, and <a class="el" href="PairCount_8h-source.html#l00035">isEnd()</a>.
+Referenced by <a class="el" href="PairCount_8h-source.html#l00062">begin()</a>, <a class="el" href="PairCount_8h-source.html#l00044">getFreq()</a>, <a class="el" href="PairCount_8h-source.html#l00054">getSize()</a>, <a class="el" href="PairCount_8h-source.html#l00033">insert()</a>, and <a class="el" href="PairCount_8h-source.html#l00080">isEnd()</a>.
 </div>
 </div><p>
 <a class="anchor" name="b4c8f2fe29afefa11b0dbea2f4125b39"></a><!-- doxytag: member="PairCount::it" ref="b4c8f2fe29afefa11b0dbea2f4125b39" args="" -->
@@ -263,14 +301,14 @@ Referenced by <a class="el" href="PairCount_8h-source.html#l00027">begin()</a>, 
 <p>
 
 <p>
-Definition at line <a class="el" href="PairCount_8h-source.html#l00013">13</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
+Definition at line <a class="el" href="PairCount_8h-source.html#l00026">26</a> of file <a class="el" href="PairCount_8h-source.html">PairCount.h</a>.
 <p>
-Referenced by <a class="el" href="PairCount_8h-source.html#l00027">begin()</a>, <a class="el" href="PairCount_8h-source.html#l00039">current()</a>, <a class="el" href="PairCount_8h-source.html#l00035">isEnd()</a>, and <a class="el" href="PairCount_8h-source.html#l00031">next()</a>.
+Referenced by <a class="el" href="PairCount_8h-source.html#l00062">begin()</a>, <a class="el" href="PairCount_8h-source.html#l00090">current()</a>, <a class="el" href="PairCount_8h-source.html#l00080">isEnd()</a>, and <a class="el" href="PairCount_8h-source.html#l00070">next()</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>classes/<a class="el" href="PairCount_8h-source.html">PairCount.h</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Thu May 14 19:22:55 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon May 25 13:39:08 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

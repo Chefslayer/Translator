@@ -1,5 +1,3 @@
-// Implementierung
-
 #include <string>
 #include <vector>
 #include <map>
@@ -10,33 +8,22 @@
 
 using namespace std;
 
-/**
-* inits a new lexicon
-*
-* \param lang name of the language
-*/
 Lexicon::Lexicon()
 {
-	i = 0; //number of inserted words
+	i = 0; // number of inserted words
 	vector<string> int2strAssignment(VECTOR_INIT_SIZE, "");
 	insertWord("(?)");
 }
 
-/**
-* inserts a word in the lexicon
-*
-* \param word inserts the word
-* \return the value of the word
-*/
 unsigned int Lexicon::insertWord(string word)
 {
-	//insert word in str2intAssignment
+	// insert word in str2intAssignment
 	pair<map<string,unsigned int>::iterator, bool> temp = str2intAssignment.insert(pair<string,unsigned int> (word,i)); //returns an iterator and a bool which is false if the same word has alredy been inserted
 	
-	if(temp.second) //is the word new to the assignment
+	if(temp.second) // is the word new to the assignment
 	{
-		//word is new
-		if (i >= int2strAssignment.size()) //resize vector if necessary
+		// word is new
+		if (i >= int2strAssignment.size()) // resize vector if necessary
 			{
 				int2strAssignment.resize(int2strAssignment.size() + VECTOR_RESIZE);
 			}
@@ -52,18 +39,11 @@ unsigned int Lexicon::insertWord(string word)
 	}
 }
 
-/**
-* gets a line, lexicon and singleCount* object (if not defined set to NULL) puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
-*
-* \param line a sentence
-* \param singlesObject the SingleCount* Object to count the singles
-* \return a vector with the sentence in values
-*/
 vector<unsigned int> Lexicon::insertSentence(string line, SingleCount* singlesObject)
 {
 	vector<string> words = stringSplit(line, " ");
 	vector<unsigned int> result(words.size(), 0);
-	//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
+	// put all words of the sentence in source language-lexicon and the value of the word into the lang-object
 	unsigned int i;
 	for (i=0; i < words.size(); i++)
 	{
@@ -76,12 +56,6 @@ vector<unsigned int> Lexicon::insertSentence(string line, SingleCount* singlesOb
 	return result;
 }
 
-/**
-* get word by code
-*
-* \param value
-* \return word for given code
-*/
 string Lexicon::getWord(unsigned int value)
 {
 	if (value >= int2strAssignment.size())
@@ -89,13 +63,6 @@ string Lexicon::getWord(unsigned int value)
 	string re = int2strAssignment[value];
 	return re;
 }
-
-/**
-* get code for word
-*
-* \param word string wich will be convertet into an int
-* \return code
-*/
 
 unsigned int Lexicon::getNum(string word)
 {

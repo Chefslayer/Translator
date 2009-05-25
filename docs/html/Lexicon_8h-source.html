@@ -20,42 +20,37 @@
   </ul></div>
 <div class="nav">
 <a class="el" href="dir_2d19748cc2c901bc152a4a1ad8756531.html">classes</a></div>
-<h1>Lexicon.h</h1><a href="Lexicon_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#ifndef __LEXICON_H__</span>
-<a name="l00002"></a>00002 <span class="preprocessor"></span><span class="preprocessor">#define __LEXICON_H__</span>
-<a name="l00003"></a>00003 <span class="preprocessor"></span><span class="preprocessor">#include &lt;map&gt;</span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;vector&gt;</span>
-<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;string&gt;</span>
-<a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="keyword">using namespace </span>std;
-<a name="l00008"></a>00008 
-<a name="l00009"></a><a class="code" href="classLexicon.html">00009</a> <span class="keyword">class </span><a class="code" href="classLexicon.html">Lexicon</a>
-<a name="l00010"></a>00010 {
-<a name="l00011"></a>00011         <span class="keyword">private</span>:
-<a name="l00012"></a><a class="code" href="classLexicon.html#3c4983ae5e436f91c9686ade95b4cb79">00012</a>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#3c4983ae5e436f91c9686ade95b4cb79">i</a>;
-<a name="l00013"></a><a class="code" href="classLexicon.html#68fb5ff2dd7a9fde4693e5489f52f7c7">00013</a>                 map&lt;string,unsigned int&gt; <a class="code" href="classLexicon.html#68fb5ff2dd7a9fde4693e5489f52f7c7">str2int</a>;
-<a name="l00014"></a><a class="code" href="classLexicon.html#d78b1992048345800a411f268cc58033">00014</a>                 vector&lt;string&gt; <a class="code" href="classLexicon.html#d78b1992048345800a411f268cc58033">int2str</a>;
-<a name="l00015"></a><a class="code" href="classLexicon.html#096669d015dfab4497cbbc76079678f6">00015</a>                 string <a class="code" href="classLexicon.html#096669d015dfab4497cbbc76079678f6">language</a>;
-<a name="l00016"></a>00016         <span class="keyword">public</span>:
-<a name="l00017"></a>00017                 <a class="code" href="classLexicon.html#b6f330569396427f3cae6fb24fe3f51b">Lexicon</a>(string lang);
-<a name="l00018"></a>00018                 
-<a name="l00019"></a>00019                 <span class="comment">/*</span>
-<a name="l00020"></a>00020 <span class="comment">                inserts a word in the lexicon</span>
-<a name="l00021"></a>00021 <span class="comment">                returns the value of the word</span>
-<a name="l00022"></a>00022 <span class="comment">                */</span>
-<a name="l00023"></a>00023                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    <a class="code" href="classLexicon.html#330862432abd0f555e95654a98dd2ed8">insert</a>(string word);
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025                 <span class="comment">/*</span>
-<a name="l00026"></a>00026 <span class="comment">                 *Get associated word for value</span>
-<a name="l00027"></a>00027 <span class="comment">                 */</span> 
-<a name="l00028"></a>00028                 
-<a name="l00029"></a>00029                 string                  <a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">getWord</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> value);
-<a name="l00030"></a>00030                 <span class="comment">/*</span>
-<a name="l00031"></a>00031 <span class="comment">                 *Get associated value for word</span>
-<a name="l00032"></a>00032 <span class="comment">                 */</span>
-<a name="l00033"></a>00033                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    <a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">getNum</a>(string word);
-<a name="l00034"></a>00034 };
-<a name="l00035"></a>00035 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Thu May 14 19:22:54 2009 for Translator by&nbsp;
+<h1>Lexicon.h</h1><a href="Lexicon_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
+<a name="l00011"></a>00011 <span class="preprocessor">#ifndef __LEXICON_H__</span>
+<a name="l00012"></a>00012 <span class="preprocessor"></span><span class="preprocessor">#define __LEXICON_H__</span>
+<a name="l00013"></a>00013 <span class="preprocessor"></span>
+<a name="l00014"></a>00014 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00015"></a>00015 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00016"></a>00016 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include "<a class="code" href="SingleCount_8h.html">SingleCount.h</a>"</span>
+<a name="l00018"></a>00018 
+<a name="l00019"></a>00019 <span class="keyword">using namespace </span>std;
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 
+<a name="l00026"></a><a class="code" href="classLexicon.html">00026</a> <span class="keyword">class </span><a class="code" href="classLexicon.html">Lexicon</a>
+<a name="l00027"></a>00027 {
+<a name="l00028"></a>00028         <span class="keyword">private</span>:
+<a name="l00030"></a><a class="code" href="classLexicon.html#3c4983ae5e436f91c9686ade95b4cb79">00030</a>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#3c4983ae5e436f91c9686ade95b4cb79">i</a>;
+<a name="l00031"></a><a class="code" href="classLexicon.html#fd84e795d94910bdcb252c7e3f92db51">00031</a>                 map&lt;string,unsigned int&gt; <a class="code" href="classLexicon.html#fd84e795d94910bdcb252c7e3f92db51">str2intAssignment</a>;
+<a name="l00032"></a><a class="code" href="classLexicon.html#b5fa5f8561be83c1ef65547b43826cad">00032</a>                 vector&lt;string&gt; <a class="code" href="classLexicon.html#b5fa5f8561be83c1ef65547b43826cad">int2strAssignment</a>;
+<a name="l00033"></a>00033         <span class="keyword">public</span>:
+<a name="l00037"></a>00037                 <a class="code" href="classLexicon.html#a62f83480879f9c6489633cb83a0736f">Lexicon</a>();
+<a name="l00038"></a>00038                 
+<a name="l00045"></a>00045                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(string word);
+<a name="l00046"></a>00046 
+<a name="l00054"></a>00054                 vector&lt;unsigned int&gt; <a class="code" href="classLexicon.html#02c24b37a10b21c6385e4f1bc546fffd">insertSentence</a>(string line, <a class="code" href="classSingleCount.html">SingleCount</a>* singlesObject = NULL);
+<a name="l00055"></a>00055 
+<a name="l00062"></a>00062                 string <a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">getWord</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> value);
+<a name="l00063"></a>00063                 
+<a name="l00070"></a>00070                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">getNum</a>(string word);
+<a name="l00071"></a>00071 };
+<a name="l00072"></a>00072 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon May 25 13:39:07 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

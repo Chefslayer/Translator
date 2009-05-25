@@ -20,29 +20,36 @@
     <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
     <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
   </ul></div>
-<h1>SingleCount Class Reference</h1><!-- doxytag: class="SingleCount" --><code>#include &lt;<a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>&gt;</code>
+<h1>SingleCount Class Reference</h1><!-- doxytag: class="SingleCount" -->The <a class="el" href="classSingleCount.html">SingleCount</a> class holds and counts the occurrence of single-words.  
+<a href="#_details">More...</a>
+<p>
+<code>#include &lt;<a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>&gt;</code>
 <p>
 <a href="classSingleCount-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSingleCount.html#4951658f1fabdd4e9b5d1d3711cf47ff">SingleCount</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor inits the wordcounts vector size.  <a href="#4951658f1fabdd4e9b5d1d3711cf47ff"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSingleCount.html#1f678b5a3bfb80f784102712f206f5d0">insert</a> (unsigned int word)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">inserts and/or increments the count of a single-word.  <a href="#1f678b5a3bfb80f784102712f206f5d0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSingleCount.html#5afa88471e0470e2b424b4e477973514">getFreq</a> (unsigned int word)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets the count of occurrence of a word.  <a href="#5afa88471e0470e2b424b4e477973514"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSingleCount.html#6853b8714b65bf8c14044ddc29e67ffa">getSize</a> ()</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets the count of inserted words.  <a href="#6853b8714b65bf8c14044ddc29e67ffa"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a></td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-
+The <a class="el" href="classSingleCount.html">SingleCount</a> class holds and counts the occurrence of single-words. 
 <p>
 
 <p>
-Definition at line <a class="el" href="SingleCount_8h-source.html#l00006">6</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.<hr><h2>Constructor &amp; Destructor Documentation</h2>
+Definition at line <a class="el" href="SingleCount_8h-source.html#l00021">21</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.<hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="4951658f1fabdd4e9b5d1d3711cf47ff"></a><!-- doxytag: member="SingleCount::SingleCount" ref="4951658f1fabdd4e9b5d1d3711cf47ff" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -59,11 +66,13 @@ Definition at line <a class="el" href="SingleCount_8h-source.html#l00006">6</a> 
 <div class="memdoc">
 
 <p>
+Constructor inits the wordcounts vector size. 
+<p>
 
 <p>
-Definition at line <a class="el" href="SingleCount_8h-source.html#l00011">11</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
+Definition at line <a class="el" href="SingleCount_8h-source.html#l00029">29</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
 <p>
-References <a class="el" href="constants_8h-source.html#l00001">VECTOR_INIT_SIZE</a>, and <a class="el" href="SingleCount_8h-source.html#l00009">wordcounts</a>.
+References <a class="el" href="constants_8h-source.html#l00001">VECTOR_INIT_SIZE</a>, and <a class="el" href="SingleCount_8h-source.html#l00024">wordcounts</a>.
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -84,13 +93,20 @@ References <a class="el" href="constants_8h-source.html#l00001">VECTOR_INIT_SIZE
 <div class="memdoc">
 
 <p>
+inserts and/or increments the count of a single-word. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>word</em>&nbsp;</td><td>word to insert </td></tr>
+  </table>
+</dl>
 
 <p>
-Definition at line <a class="el" href="SingleCount_8h-source.html#l00015">15</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
+Definition at line <a class="el" href="SingleCount_8h-source.html#l00039">39</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
 <p>
-References <a class="el" href="constants_8h-source.html#l00002">VECTOR_RESIZE</a>, and <a class="el" href="SingleCount_8h-source.html#l00009">wordcounts</a>.
+References <a class="el" href="constants_8h-source.html#l00002">VECTOR_RESIZE</a>, and <a class="el" href="SingleCount_8h-source.html#l00024">wordcounts</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00041">insertAndConvert2intVector()</a>.
+Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00042">Lexicon::insertSentence()</a>.
 </div>
 </div><p>
 <a class="anchor" name="5afa88471e0470e2b424b4e477973514"></a><!-- doxytag: member="SingleCount::getFreq" ref="5afa88471e0470e2b424b4e477973514" args="(unsigned int word)" -->
@@ -110,13 +126,21 @@ Referenced by <a class="el" href="functions_8cpp-source.html#l00041">insertAndCo
 <div class="memdoc">
 
 <p>
+gets the count of occurrence of a word. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>word</em>&nbsp;</td><td>the word to get the count for. </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>count of occurrence of the given word. </dd></dl>
 
 <p>
-Definition at line <a class="el" href="SingleCount_8h-source.html#l00023">23</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
+Definition at line <a class="el" href="SingleCount_8h-source.html#l00054">54</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
 <p>
-References <a class="el" href="SingleCount_8h-source.html#l00009">wordcounts</a>.
+References <a class="el" href="SingleCount_8h-source.html#l00024">wordcounts</a>.
 <p>
-Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()</a>.
+Referenced by <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <a class="anchor" name="6853b8714b65bf8c14044ddc29e67ffa"></a><!-- doxytag: member="SingleCount::getSize" ref="6853b8714b65bf8c14044ddc29e67ffa" args="()" -->
@@ -135,11 +159,14 @@ Referenced by <a class="el" href="functions_8cpp-source.html#l00067">showFreq()<
 <div class="memdoc">
 
 <p>
+gets the count of inserted words. 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>count of inserted words = size of the wordcounts-map. </dd></dl>
 
 <p>
-Definition at line <a class="el" href="SingleCount_8h-source.html#l00027">27</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
+Definition at line <a class="el" href="SingleCount_8h-source.html#l00064">64</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
 <p>
-References <a class="el" href="SingleCount_8h-source.html#l00009">wordcounts</a>.
+References <a class="el" href="SingleCount_8h-source.html#l00024">wordcounts</a>.
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -157,14 +184,14 @@ References <a class="el" href="SingleCount_8h-source.html#l00009">wordcounts</a>
 <p>
 
 <p>
-Definition at line <a class="el" href="SingleCount_8h-source.html#l00009">9</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
+Definition at line <a class="el" href="SingleCount_8h-source.html#l00024">24</a> of file <a class="el" href="SingleCount_8h-source.html">SingleCount.h</a>.
 <p>
-Referenced by <a class="el" href="SingleCount_8h-source.html#l00023">getFreq()</a>, <a class="el" href="SingleCount_8h-source.html#l00027">getSize()</a>, <a class="el" href="SingleCount_8h-source.html#l00015">insert()</a>, and <a class="el" href="SingleCount_8h-source.html#l00011">SingleCount()</a>.
+Referenced by <a class="el" href="SingleCount_8h-source.html#l00054">getFreq()</a>, <a class="el" href="SingleCount_8h-source.html#l00064">getSize()</a>, <a class="el" href="SingleCount_8h-source.html#l00039">insert()</a>, and <a class="el" href="SingleCount_8h-source.html#l00029">SingleCount()</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li>classes/<a class="el" href="SingleCount_8h-source.html">SingleCount.h</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Thu May 14 19:22:55 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon May 25 13:39:09 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <math.h>
+#include <algorithm>
 #include "Bleu.h"
 #include "../includes/functions.h"
 
@@ -15,39 +16,49 @@ Bleu::Bleu(vector<unsigned int> translation, vector<unsigned int> reference)
 
 int Bleu::nGramsMatching(unsigned int n)
 {
-	int num = 0;
-	for (int i = 0; i + n < ref.size(); i++)
+	vector<bool>bitvec; // saves whether a ref-ngram  is already used or not.
+	bitvec.resize(ref.size(),0);
+
+	unsigned int nGramsMatchingCount=0;
+	
+	for (unsigned int i=0; i+n-1<trans.size(); i++)
 	{
-		for (int transposition = 0; transposition + n < trans.size(); transposition++)
+		for (unsigned int j=0; j+n-1<ref.size(); j++)
 		{
-			if (trans[transposition] == ref[i])
+			if (bitvec[j]==0) // this ngram in the ref is not used yet
 			{
-				int j=1;
-				while (		j < n
-						&& (i+j) < ref.size()
-						&& (transposition + j) < trans.size()
-						&& trans[transposition + j] == ref[i + j]
-				      								) j++;
-				if (j == n)
+				//check if ngrams match
+				unsigned int pos = 0;
+				while (	pos < n
+					&& trans[i+pos] == ref[j+pos]
+				      							) pos++;
+				if (pos == n)
 				{
-					num++;
-					break;
+					// matched
+					nGramsMatchingCount++;
+	
+					// mark ngram in reference as used in the bitvector
+					bitvec[j]=1;
+					
+					// dont count more occurrences in ref for this trans-ngram
+					break; // for (..j..)
 				}
 			}
 		}
 	}
-	return num;
+	return nGramsMatchingCount;
 }
 
 double Bleu::precision(unsigned int n)
 {
 	int nGrams = trans.size() + 1 - n;
-	if ( nGrams <= 0)
+	// we dont expect nGrams<=0 here, since we're not going to calc the precisions if there are no ngrams for this n
+	/*if ( nGrams <= 0)
 	{
-		// was wenn nGrams < 0 ? wäre das gültig?
+		// was wenn nGrams < 0 ?
 		cerr << "Bleu::precision: Division durch 0." << endl;
-		return -1;
-	}
+		return 1;
+	}*/
 	return (double)nGramsMatching(n)/(double)nGrams;
 }
 
@@ -77,11 +88,15 @@ double Bleu::bleuScore(unsigned int N)
 	* 2. log(a)+log(b) = log(a*b) => es reicht die p_n zu multiplizieren und am Ende einmal den log zu berechnen.
 	*/
 	double akku = 1.0;
-	for (unsigned int i=1; i<=N; i++)
+
+	// maybe there are less words in the trans or ref than we would try to get n-grams for.. so we search for the maximum N we can use here.
+	unsigned int maxN = min(min(N, trans.size()-1), ref.size()-1);
+	
+	for (unsigned int i=1; i<=maxN; i++)
 	{
-	//	akku += log((double)precision(i));
 		akku *= precision(i);
-	//	cout << "precision:" << precision(i) << endl;
 	}
-	return brevityPenalty()*exp(log(akku)/(double)N);
+	if (akku<=0)
+		return 0;
+	return brevityPenalty()*exp(log(akku)/(double)maxN);
 }

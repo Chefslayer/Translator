@@ -2,13 +2,14 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include "includes/constants.h"
 #include "classes/Lexicon.h"
 #include "classes/Bleu.h"
 #include "classes/Levenshtein.h"
 
 using namespace std;
 
-static Lexicon e;
+static Lexicon l;
 
 int main(int argc, char* argv[])
 {
@@ -38,11 +39,32 @@ int main(int argc, char* argv[])
 		average_posindependent_levenshtein_dist = 0;
 
 	// read trans and reference into trans_vec
+	unsigned int sentenceCount = 0;
+	Levenshtein *sentence50_lev;
+	string sentence50_trans, sentence50_ref;
+
 	while (getline(trans, trans_line) && getline(reference, reference_line))
 	{
-		Bleu *current = new Bleu(e.insertSentence(trans_line), e.insertSentence(reference_line));
-		cout << current->bleuScore(4) << ":\n\t t: " << trans_line << "\n\t r: " << reference_line << endl;;
+		vector<unsigned int> current_trans = l.insertSentence(trans_line);
+		vector<unsigned int> current_ref = l.insertSentence(reference_line);
+
+		Bleu *current_bleu	 = new Bleu(current_trans, current_ref);
+		Levenshtein *current_lev = new Levenshtein(current_trans, current_ref);
+
+		cout << "\n***\nBLEU-Score:\t" << current_bleu->bleuScore(MAX_N_GRAMS) << "\nLevenshtein:\t" << current_lev->getDistance() << "\n\t t: " << trans_line << "\n\t r: " << reference_line << endl;
+
+		sentenceCount++;
+
+		if (sentenceCount==50)
+		{
+			sentence50_lev = current_lev;
+			sentence50_trans = trans_line;
+			sentence50_ref = reference_line;
+		}
 	}
+
+	cout << "\n***\n\n***\nSentence50:\nLevenshtein:\t\t" << sentence50_lev->getDistance()
+			  << "\nLevenshtein-Path:\t" << sentence50_lev->getPath() << "\n\t t: " << sentence50_trans << "\n\t r: " << sentence50_ref << endl;
 
 	return 0; //EXIT_SUCCESS;
 }
