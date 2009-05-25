@@ -1,3 +1,13 @@
+/**
+ * @file
+ * @author  Gruppe 2
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * This file defines functions for outputting some information on the standard output during a traning of the translator.
+ */
+
 #ifndef __OUTPUT_H__
 #define __OUTPUT_H__
 
@@ -23,4 +33,3 @@ using namespace std;
 void showFreq(PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, Lexicon& f, Lexicon& e);
 
 #endif
-

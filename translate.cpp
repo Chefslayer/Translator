@@ -1,3 +1,15 @@
+/**
+ * @file
+ * @author  Gruppe 2
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * This program translates a source-document line by line.
+ * It expects 2 parameters: a <b>translation-table</b> and the <b>source-document</b> which is going to be translated.
+ * Output is the guessed translation line by line.
+ */
+
 #include <string>
 #include <iostream>
 #include <fstream>

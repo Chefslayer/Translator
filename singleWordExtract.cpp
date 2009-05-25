@@ -1,3 +1,16 @@
+/**
+ * @file
+ * @author  Gruppe 2
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * This program calculates a translation table, which is used during a translation to find the best hypothesis.
+ * It expects 3 parameters: a <b>source-doc</b>, a <b>target-doc</b> and the <b>alignment</b>.
+ * It outputs the translation-table in this format line by line:
+ * 		<double> relFreq_f <double> relFreq_e # <string> fWord # <string> eWord
+ */
+
 #include <string>
 #include <iostream>
 #include <fstream>

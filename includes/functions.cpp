@@ -6,13 +6,6 @@
 
 using namespace std;
 
-/**
-* splits a string into tokens
-*
-* \param str the string to split
-* \param delim delim[0] is used as delimiter
-* \return a vector with all tokens
-*/
 vector<string> stringSplit(string str, string delim)
 {
 	vector<string> result;
@@ -24,4 +17,3 @@ vector<string> stringSplit(string str, string delim)
 	}
 	return result;
 }
-

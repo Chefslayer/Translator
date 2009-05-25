@@ -1,3 +1,14 @@
+/**
+ * @file
+ * @author  Gruppe 2
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * This program rates a translation with the BLEU-Score and the Levenshtein-Distance.
+ * It expects 2 parameters: a <b>translation</b> and its <b>reference</b>.
+ */
+
 #include <string>
 #include <iostream>
 #include <fstream>
