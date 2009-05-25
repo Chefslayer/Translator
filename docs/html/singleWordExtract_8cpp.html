@@ -18,7 +18,10 @@
     <li><a href="files.html"><span>File&nbsp;List</span></a></li>
     <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
   </ul></div>
-<h1>singleWordExtract.cpp File Reference</h1><code>#include &lt;string&gt;</code><br>
+<h1>singleWordExtract.cpp File Reference</h1><dl class="author" compact><dt><b>Author:</b></dt><dd>Gruppe 2 </dd></dl>
+<a href="#_details">More...</a>
+<p>
+<code>#include &lt;string&gt;</code><br>
 <code>#include &lt;iostream&gt;</code><br>
 <code>#include &lt;fstream&gt;</code><br>
 <code>#include &lt;vector&gt;</code><br>
@@ -44,7 +47,16 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classLexicon.html">Lexicon</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a></td></tr>
 
 </table>
-<hr><h2>Function Documentation</h2>
+<hr><a name="_details"></a><h2>Detailed Description</h2>
+<dl class="author" compact><dt><b>Author:</b></dt><dd>Gruppe 2 </dd></dl>
+
+<p>
+<dl class="version" compact><dt><b>Version:</b></dt><dd>1.0</dd></dl>
+<h2><a class="anchor" name="DESCRIPTION">
+DESCRIPTION</a></h2>
+This program calculates a translation table, which is used during a translation to find the best hypothesis. It expects 3 parameters: a <b>source-doc</b>, a <b>target-doc</b> and the <b>alignment</b>. It outputs the translation-table in this format line by line: &lt;double&gt; relFreq_f &lt;double&gt; relFreq_e # &lt;string&gt; fWord # &lt;string&gt; eWord 
+<p>
+Definition in file <a class="el" href="singleWordExtract_8cpp-source.html">singleWordExtract.cpp</a>.<hr><h2>Function Documentation</h2>
 <a class="anchor" name="0ddf1224851353fc92bfbff6f499fa97"></a><!-- doxytag: member="singleWordExtract.cpp::main" ref="0ddf1224851353fc92bfbff6f499fa97" args="(int argc, char *argv[])" -->
 <div class="memitem">
 <div class="memproto">
@@ -73,9 +85,9 @@
 <p>
 
 <p>
-Definition at line <a class="el" href="singleWordExtract_8cpp-source.html#l00020">20</a> of file <a class="el" href="singleWordExtract_8cpp-source.html">singleWordExtract.cpp</a>.
+Definition at line <a class="el" href="singleWordExtract_8cpp-source.html#l00033">33</a> of file <a class="el" href="singleWordExtract_8cpp-source.html">singleWordExtract.cpp</a>.
 <p>
-References <a class="el" href="rate__translation_8cpp-source.html#l00011">e</a>, <a class="el" href="singleWordExtract_8cpp-source.html#l00017">f</a>, <a class="el" href="PairCount_8h-source.html#l00033">PairCount::insert()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00042">Lexicon::insertSentence()</a>, and <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
+References <a class="el" href="singleWordExtract_8cpp-source.html#l00031">e</a>, <a class="el" href="singleWordExtract_8cpp-source.html#l00030">f</a>, <a class="el" href="PairCount_8h-source.html#l00033">PairCount::insert()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00042">Lexicon::insertSentence()</a>, and <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <hr><h2>Variable Documentation</h2>
@@ -93,7 +105,9 @@ References <a class="el" href="rate__translation_8cpp-source.html#l00011">e</a>,
 <p>
 
 <p>
-Definition at line <a class="el" href="singleWordExtract_8cpp-source.html#l00018">18</a> of file <a class="el" href="singleWordExtract_8cpp-source.html">singleWordExtract.cpp</a>.
+Definition at line <a class="el" href="singleWordExtract_8cpp-source.html#l00031">31</a> of file <a class="el" href="singleWordExtract_8cpp-source.html">singleWordExtract.cpp</a>.
+<p>
+Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00033">main()</a>, <a class="el" href="translate_8cpp-source.html#l00072">searchTranslation()</a>, and <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
 <a class="anchor" name="9a3c38c3427c111e6882aa62d1f0e71f"></a><!-- doxytag: member="singleWordExtract.cpp::f" ref="9a3c38c3427c111e6882aa62d1f0e71f" args="" -->
@@ -110,12 +124,12 @@ Definition at line <a class="el" href="singleWordExtract_8cpp-source.html#l00018
 <p>
 
 <p>
-Definition at line <a class="el" href="singleWordExtract_8cpp-source.html#l00017">17</a> of file <a class="el" href="singleWordExtract_8cpp-source.html">singleWordExtract.cpp</a>.
+Definition at line <a class="el" href="singleWordExtract_8cpp-source.html#l00030">30</a> of file <a class="el" href="singleWordExtract_8cpp-source.html">singleWordExtract.cpp</a>.
 <p>
-Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00020">main()</a>, and <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
+Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00033">main()</a>, and <a class="el" href="output_8cpp-source.html#l00011">showFreq()</a>.
 </div>
 </div><p>
-<hr size="1"><address style="align: right;"><small>Generated on Mon May 25 13:39:08 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon May 25 16:18:59 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>
