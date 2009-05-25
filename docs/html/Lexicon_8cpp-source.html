@@ -61,36 +61,41 @@
 <a name="l00039"></a>00039         }
 <a name="l00040"></a>00040 }
 <a name="l00041"></a>00041 
-<a name="l00042"></a><a class="code" href="classLexicon.html#02c24b37a10b21c6385e4f1bc546fffd">00042</a> vector&lt;unsigned int&gt; <a class="code" href="classLexicon.html#02c24b37a10b21c6385e4f1bc546fffd">Lexicon::insertSentence</a>(string line, <a class="code" href="classSingleCount.html">SingleCount</a>* singlesObject)
+<a name="l00042"></a><a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">00042</a> vector&lt;unsigned int&gt; <a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">Lexicon::insertSentence</a>(vector&lt;string&gt; words, <a class="code" href="classSingleCount.html">SingleCount</a>* singlesObject)
 <a name="l00043"></a>00043 {
-<a name="l00044"></a>00044         vector&lt;string&gt; words = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(line, <span class="stringliteral">" "</span>);
-<a name="l00045"></a>00045         vector&lt;unsigned int&gt; result(words.size(), 0);
-<a name="l00046"></a>00046         <span class="comment">// put all words of the sentence in source language-lexicon and the value of the word into the lang-object</span>
-<a name="l00047"></a>00047         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#3c4983ae5e436f91c9686ade95b4cb79">i</a>;
-<a name="l00048"></a>00048         <span class="keywordflow">for</span> (i=0; i &lt; words.size(); i++)
-<a name="l00049"></a>00049         {
-<a name="l00050"></a>00050         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> val = this-&gt;insertWord(words[i]);
-<a name="l00051"></a>00051         <span class="comment">// nur zählen wenn auch ein SingleCount objekt übergeben wurde</span>
-<a name="l00052"></a>00052         <span class="keywordflow">if</span> (singlesObject != NULL)
-<a name="l00053"></a>00053                 singlesObject-&gt;<a class="code" href="classSingleCount.html#1f678b5a3bfb80f784102712f206f5d0">insert</a>(val);
-<a name="l00054"></a>00054         result[i] = val;
-<a name="l00055"></a>00055         }
-<a name="l00056"></a>00056         <span class="keywordflow">return</span> result;
-<a name="l00057"></a>00057 }
-<a name="l00058"></a>00058 
-<a name="l00059"></a><a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">00059</a> string <a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">Lexicon::getWord</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> value)
-<a name="l00060"></a>00060 {
-<a name="l00061"></a>00061         <span class="keywordflow">if</span> (value &gt;= <a class="code" href="classLexicon.html#b5fa5f8561be83c1ef65547b43826cad">int2strAssignment</a>.size())
-<a name="l00062"></a>00062                 <span class="keywordflow">return</span> <span class="stringliteral">"?"</span>;
-<a name="l00063"></a>00063         string re = <a class="code" href="classLexicon.html#b5fa5f8561be83c1ef65547b43826cad">int2strAssignment</a>[value];
-<a name="l00064"></a>00064         <span class="keywordflow">return</span> re;
-<a name="l00065"></a>00065 }
-<a name="l00066"></a>00066 
-<a name="l00067"></a><a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">00067</a> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">Lexicon::getNum</a>(string word)
-<a name="l00068"></a>00068 {
-<a name="l00069"></a>00069         <span class="keywordflow">return</span> (<a class="code" href="classLexicon.html#fd84e795d94910bdcb252c7e3f92db51">str2intAssignment</a>.find(word))-&gt;second;
+<a name="l00044"></a>00044         vector&lt;unsigned int&gt; result(words.size(), 0);
+<a name="l00045"></a>00045         <span class="comment">// put all words of the sentence in source language-lexicon and the value of the word into the lang-object</span>
+<a name="l00046"></a>00046         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#3c4983ae5e436f91c9686ade95b4cb79">i</a>;
+<a name="l00047"></a>00047         <span class="keywordflow">for</span> (i=0; i &lt; words.size(); i++)
+<a name="l00048"></a>00048         {
+<a name="l00049"></a>00049                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> val = this-&gt;insertWord(words[i]);
+<a name="l00050"></a>00050                 <span class="comment">// nur zählen wenn auch ein SingleCount objekt übergeben wurde</span>
+<a name="l00051"></a>00051                 <span class="keywordflow">if</span> (singlesObject != NULL)
+<a name="l00052"></a>00052                         singlesObject-&gt;<a class="code" href="classSingleCount.html#1f678b5a3bfb80f784102712f206f5d0">insert</a>(val);
+<a name="l00053"></a>00053                 result[i] = val;
+<a name="l00054"></a>00054         }
+<a name="l00055"></a>00055         <span class="keywordflow">return</span> result;
+<a name="l00056"></a>00056 }
+<a name="l00057"></a>00057 
+<a name="l00058"></a><a class="code" href="classLexicon.html#02c24b37a10b21c6385e4f1bc546fffd">00058</a> vector&lt;unsigned int&gt; <a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">Lexicon::insertSentence</a>(string line, <a class="code" href="classSingleCount.html">SingleCount</a>* singlesObject)
+<a name="l00059"></a>00059 {
+<a name="l00060"></a>00060         vector&lt;string&gt; words = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(line, <span class="stringliteral">" "</span>);
+<a name="l00061"></a>00061         <span class="keywordflow">return</span> this-&gt;<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(words, singlesObject);
+<a name="l00062"></a>00062 }
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">00064</a> string <a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">Lexicon::getWord</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> value)
+<a name="l00065"></a>00065 {
+<a name="l00066"></a>00066         <span class="keywordflow">if</span> (value &gt;= <a class="code" href="classLexicon.html#b5fa5f8561be83c1ef65547b43826cad">int2strAssignment</a>.size())
+<a name="l00067"></a>00067                 <span class="keywordflow">return</span> <span class="stringliteral">"?"</span>;
+<a name="l00068"></a>00068         string re = <a class="code" href="classLexicon.html#b5fa5f8561be83c1ef65547b43826cad">int2strAssignment</a>[value];
+<a name="l00069"></a>00069         <span class="keywordflow">return</span> re;
 <a name="l00070"></a>00070 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon May 25 16:18:58 2009 for Translator by&nbsp;
+<a name="l00071"></a>00071 
+<a name="l00072"></a><a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">00072</a> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">Lexicon::getNum</a>(string word)
+<a name="l00073"></a>00073 {
+<a name="l00074"></a>00074         <span class="keywordflow">return</span> (<a class="code" href="classLexicon.html#fd84e795d94910bdcb252c7e3f92db51">str2intAssignment</a>.find(word))-&gt;second;
+<a name="l00075"></a>00075 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon May 25 19:16:59 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

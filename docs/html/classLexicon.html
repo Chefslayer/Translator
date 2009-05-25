@@ -34,9 +34,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a> (string word)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">inserts a word in the lexicon  <a href="#94a8644ac8849e1a28dcd97cc8d52c9b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a> (vector&lt; string &gt; words, <a class="el" href="classSingleCount.html">SingleCount</a> *singlesObject=NULL)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets a line already splitted by " " and saved to a vector (words) and a singleCount* object and puts all words of the sentence in the lexicon and saves the word-values in the singlesObject  <a href="#3578770e8864624a95e60d7471c9cd5f"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexicon.html#02c24b37a10b21c6385e4f1bc546fffd">insertSentence</a> (string line, <a class="el" href="classSingleCount.html">SingleCount</a> *singlesObject=NULL)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets a line, lexicon and singleCount* object (if not defined set to NULL) puts all words of the sentence in the lexicon and saves the word-values in the singlesObject  <a href="#02c24b37a10b21c6385e4f1bc546fffd"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets a line and a singleCount* object and puts all words of the sentence in the lexicon and saves the word-values in the singlesObject  <a href="#02c24b37a10b21c6385e4f1bc546fffd"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">getWord</a> (unsigned int value)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get associated word for a given code.  <a href="#14f8048778981831f20f6aa2713b1ebd"></a><br></td></tr>
@@ -120,6 +123,50 @@ References <a class="el" href="Lexicon_8h-source.html#l00030">i</a>, <a class="e
 Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00011">Lexicon()</a>, and <a class="el" href="lexiconTest_8cpp-source.html#l00011">main()</a>.
 </div>
 </div><p>
+<a class="anchor" name="3578770e8864624a95e60d7471c9cd5f"></a><!-- doxytag: member="Lexicon::insertSentence" ref="3578770e8864624a95e60d7471c9cd5f" args="(vector&lt; string &gt; words, SingleCount *singlesObject=NULL)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; unsigned int &gt; Lexicon::insertSentence           </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt;&nbsp;</td>
+          <td class="paramname"> <em>words</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSingleCount.html">SingleCount</a> *&nbsp;</td>
+          <td class="paramname"> <em>singlesObject</em> = <code>NULL</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+gets a line already splitted by " " and saved to a vector (words) and a singleCount* object and puts all words of the sentence in the lexicon and saves the word-values in the singlesObject 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>line</em>&nbsp;</td><td>a vector with the words of the sentence </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>singlesObject</em>&nbsp;</td><td>the SingleCount* Object to count the singles (optional) </td></tr>
+  </table>
+</dl>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>a vector with the sentence in values </dd></dl>
+
+<p>
+Definition at line <a class="el" href="Lexicon_8cpp-source.html#l00042">42</a> of file <a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a>.
+<p>
+References <a class="el" href="Lexicon_8h-source.html#l00030">i</a>, and <a class="el" href="SingleCount_8h-source.html#l00039">SingleCount::insert()</a>.
+<p>
+Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00058">insertSentence()</a>, and <a class="el" href="rate__translation_8cpp-source.html#l00025">main()</a>.
+</div>
+</div><p>
 <a class="anchor" name="02c24b37a10b21c6385e4f1bc546fffd"></a><!-- doxytag: member="Lexicon::insertSentence" ref="02c24b37a10b21c6385e4f1bc546fffd" args="(string line, SingleCount *singlesObject=NULL)" -->
 <div class="memitem">
 <div class="memproto">
@@ -146,22 +193,20 @@ Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00011">Lexicon()</a>
 <div class="memdoc">
 
 <p>
-gets a line, lexicon and singleCount* object (if not defined set to NULL) puts all words of the sentence in the lexicon and saves the word-values in the singlesObject 
+gets a line and a singleCount* object and puts all words of the sentence in the lexicon and saves the word-values in the singlesObject 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>line</em>&nbsp;</td><td>a sentence </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>singlesObject</em>&nbsp;</td><td>the SingleCount* Object to count the singles </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>singlesObject</em>&nbsp;</td><td>the SingleCount* Object to count the singles (optional) </td></tr>
   </table>
 </dl>
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>a vector with the sentence in values </dd></dl>
 
 <p>
-Definition at line <a class="el" href="Lexicon_8cpp-source.html#l00042">42</a> of file <a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a>.
+Definition at line <a class="el" href="Lexicon_8cpp-source.html#l00058">58</a> of file <a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a>.
 <p>
-References <a class="el" href="Lexicon_8h-source.html#l00030">i</a>, <a class="el" href="SingleCount_8h-source.html#l00039">SingleCount::insert()</a>, and <a class="el" href="functions_8cpp-source.html#l00009">stringSplit()</a>.
-<p>
-Referenced by <a class="el" href="rate__translation_8cpp-source.html#l00025">main()</a>.
+References <a class="el" href="Lexicon_8cpp-source.html#l00042">insertSentence()</a>, and <a class="el" href="functions_8cpp-source.html#l00009">stringSplit()</a>.
 </div>
 </div><p>
 <a class="anchor" name="14f8048778981831f20f6aa2713b1ebd"></a><!-- doxytag: member="Lexicon::getWord" ref="14f8048778981831f20f6aa2713b1ebd" args="(unsigned int value)" -->
@@ -191,7 +236,7 @@ Get associated word for a given code.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>word for given code </dd></dl>
 
 <p>
-Definition at line <a class="el" href="Lexicon_8cpp-source.html#l00059">59</a> of file <a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a>.
+Definition at line <a class="el" href="Lexicon_8cpp-source.html#l00064">64</a> of file <a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a>.
 <p>
 References <a class="el" href="Lexicon_8h-source.html#l00032">int2strAssignment</a>.
 <p>
@@ -225,7 +270,7 @@ Get associated code for a given word.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>code </dd></dl>
 
 <p>
-Definition at line <a class="el" href="Lexicon_8cpp-source.html#l00067">67</a> of file <a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a>.
+Definition at line <a class="el" href="Lexicon_8cpp-source.html#l00072">72</a> of file <a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a>.
 <p>
 References <a class="el" href="Lexicon_8h-source.html#l00031">str2intAssignment</a>.
 <p>
@@ -270,7 +315,7 @@ Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00042">insertSentenc
 <p>
 Definition at line <a class="el" href="Lexicon_8h-source.html#l00031">31</a> of file <a class="el" href="Lexicon_8h-source.html">Lexicon.h</a>.
 <p>
-Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00067">getNum()</a>, and <a class="el" href="Lexicon_8cpp-source.html#l00018">insertWord()</a>.
+Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00072">getNum()</a>, and <a class="el" href="Lexicon_8cpp-source.html#l00018">insertWord()</a>.
 </div>
 </div><p>
 <a class="anchor" name="b5fa5f8561be83c1ef65547b43826cad"></a><!-- doxytag: member="Lexicon::int2strAssignment" ref="b5fa5f8561be83c1ef65547b43826cad" args="" -->
@@ -289,12 +334,12 @@ Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00067">getNum()</a>,
 <p>
 Definition at line <a class="el" href="Lexicon_8h-source.html#l00032">32</a> of file <a class="el" href="Lexicon_8h-source.html">Lexicon.h</a>.
 <p>
-Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00059">getWord()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00018">insertWord()</a>, and <a class="el" href="Lexicon_8cpp-source.html#l00011">Lexicon()</a>.
+Referenced by <a class="el" href="Lexicon_8cpp-source.html#l00064">getWord()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00018">insertWord()</a>, and <a class="el" href="Lexicon_8cpp-source.html#l00011">Lexicon()</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>classes/<a class="el" href="Lexicon_8h-source.html">Lexicon.h</a><li>classes/<a class="el" href="Lexicon_8cpp-source.html">Lexicon.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Mon May 25 16:19:00 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Mon May 25 19:17:01 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

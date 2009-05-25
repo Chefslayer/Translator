@@ -42,54 +42,88 @@
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033         <span class="comment">// open files</span>
 <a name="l00034"></a>00034         ifstream trans(argv[1]);
-<a name="l00035"></a>00035         ifstream reference(argv[2]);
+<a name="l00035"></a>00035         ifstream ref(argv[2]);
 <a name="l00036"></a>00036         <span class="keywordflow">if</span> (!trans.good())
 <a name="l00037"></a>00037         {
 <a name="l00038"></a>00038                 cerr &lt;&lt; <span class="stringliteral">"ERROR: Opening translation ("</span>&lt;&lt; argv[1] &lt;&lt;<span class="stringliteral">") failed."</span> &lt;&lt; endl;
 <a name="l00039"></a>00039                 <span class="keywordflow">return</span> 1; <span class="comment">// EXIT_FAILURE;</span>
 <a name="l00040"></a>00040         }
-<a name="l00041"></a>00041         <span class="keywordflow">if</span> (!reference.good())
+<a name="l00041"></a>00041         <span class="keywordflow">if</span> (!ref.good())
 <a name="l00042"></a>00042         {
 <a name="l00043"></a>00043                 cerr &lt;&lt; <span class="stringliteral">"ERROR: Opening reference ("</span>&lt;&lt; argv[2] &lt;&lt;<span class="stringliteral">") failed."</span> &lt;&lt; endl;
 <a name="l00044"></a>00044                 <span class="keywordflow">return</span> 1; <span class="comment">// EXIT_FAILURE;</span>
 <a name="l00045"></a>00045         }
 <a name="l00046"></a>00046 
-<a name="l00047"></a>00047         string trans_line,
-<a name="l00048"></a>00048                 reference_line = <span class="stringliteral">""</span>;
-<a name="l00049"></a>00049         <span class="keywordtype">double</span> average_levenshtein_dist,
+<a name="l00047"></a>00047         string  trans_line,
+<a name="l00048"></a>00048                 ref_line                                = <span class="stringliteral">""</span>;
+<a name="l00049"></a>00049         <span class="keywordtype">double</span>  average_levenshtein_dist,
 <a name="l00050"></a>00050                 average_posindependent_levenshtein_dist = 0;
 <a name="l00051"></a>00051 
-<a name="l00052"></a>00052         <span class="comment">// read trans and reference into trans_vec</span>
-<a name="l00053"></a>00053         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> sentenceCount = 0;
-<a name="l00054"></a>00054         <a class="code" href="classLevenshtein.html">Levenshtein</a> *sentence50_lev;
-<a name="l00055"></a>00055         string sentence50_trans, sentence50_ref;
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057         <span class="keywordflow">while</span> (getline(trans, trans_line) &amp;&amp; getline(reference, reference_line))
-<a name="l00058"></a>00058         {
-<a name="l00059"></a>00059                 vector&lt;unsigned int&gt; current_trans = <a class="code" href="rate__translation_8cpp.html#2d1a9bd4ba49847ee9b76c0fc90a2b01">l</a>.<a class="code" href="classLexicon.html#02c24b37a10b21c6385e4f1bc546fffd">insertSentence</a>(trans_line);
-<a name="l00060"></a>00060                 vector&lt;unsigned int&gt; current_ref = <a class="code" href="rate__translation_8cpp.html#2d1a9bd4ba49847ee9b76c0fc90a2b01">l</a>.<a class="code" href="classLexicon.html#02c24b37a10b21c6385e4f1bc546fffd">insertSentence</a>(reference_line);
-<a name="l00061"></a>00061 
-<a name="l00062"></a>00062                 <a class="code" href="classBleu.html">Bleu</a> *current_bleu       = <span class="keyword">new</span> <a class="code" href="classBleu.html">Bleu</a>(current_trans, current_ref);
-<a name="l00063"></a>00063                 <a class="code" href="classLevenshtein.html">Levenshtein</a> *current_lev = <span class="keyword">new</span> <a class="code" href="classLevenshtein.html">Levenshtein</a>(current_trans, current_ref);
-<a name="l00064"></a>00064 
-<a name="l00065"></a>00065                 cout &lt;&lt; <span class="stringliteral">"\n***\nBLEU-Score:\t"</span> &lt;&lt; current_bleu-&gt;<a class="code" href="classBleu.html#63f7caa3950e160b6683d413c60e5ef9">bleuScore</a>(<a class="code" href="constants_8h.html#d6dd33941d47d4730f38199bf8b3d5ba">MAX_N_GRAMS</a>) &lt;&lt; <span class="stringliteral">"\nLevenshtein:\t"</span> &lt;&lt; current_lev-&gt;<a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>() &lt;&lt; <span class="stringliteral">"\n\t t: "</span> &lt;&lt; trans_line &lt;&lt; <span class="stringliteral">"\n\t r: "</span> &lt;&lt; reference_line &lt;&lt; endl;
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067                 sentenceCount++;
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069                 <span class="keywordflow">if</span> (sentenceCount==50)
-<a name="l00070"></a>00070                 {
-<a name="l00071"></a>00071                         sentence50_lev = current_lev;
-<a name="l00072"></a>00072                         sentence50_trans = trans_line;
-<a name="l00073"></a>00073                         sentence50_ref = reference_line;
-<a name="l00074"></a>00074                 }
-<a name="l00075"></a>00075         }
-<a name="l00076"></a>00076 
-<a name="l00077"></a>00077         cout &lt;&lt; <span class="stringliteral">"\n***\n\n***\nSentence50:\nLevenshtein:\t\t"</span> &lt;&lt; sentence50_lev-&gt;<a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>()
-<a name="l00078"></a>00078                           &lt;&lt; <span class="stringliteral">"\nLevenshtein-Path:\t"</span> &lt;&lt; sentence50_lev-&gt;<a class="code" href="classLevenshtein.html#d898afb1a2986a2fb7303ad6837d1941">getPath</a>() &lt;&lt; <span class="stringliteral">"\n\t t: "</span> &lt;&lt; sentence50_trans &lt;&lt; <span class="stringliteral">"\n\t r: "</span> &lt;&lt; sentence50_ref &lt;&lt; endl;
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080         <span class="keywordflow">return</span> 0; <span class="comment">//EXIT_SUCCESS;</span>
-<a name="l00081"></a>00081 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon May 25 16:18:58 2009 for Translator by&nbsp;
+<a name="l00052"></a>00052         <span class="comment">// read trans and ref and calculate the ratings</span>
+<a name="l00053"></a>00053         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    sentenceCount           = 0;
+<a name="l00054"></a>00054         <a class="code" href="classLevenshtein.html">Levenshtein</a>*    sentence50_lev          = NULL;
+<a name="l00055"></a>00055         string          sentence50_trans,
+<a name="l00056"></a>00056                         sentence50_ref          = <span class="stringliteral">""</span>;
+<a name="l00057"></a>00057 
+<a name="l00058"></a>00058         <span class="keywordflow">while</span> (getline(trans, trans_line) &amp;&amp; getline(ref, ref_line))
+<a name="l00059"></a>00059         {
+<a name="l00060"></a>00060                 vector&lt;unsigned int&gt; current_trans = <a class="code" href="rate__translation_8cpp.html#2d1a9bd4ba49847ee9b76c0fc90a2b01">l</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(trans_line);
+<a name="l00061"></a>00061                 vector&lt;unsigned int&gt; current_ref   = <a class="code" href="rate__translation_8cpp.html#2d1a9bd4ba49847ee9b76c0fc90a2b01">l</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(ref_line);
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063                 <a class="code" href="classBleu.html">Bleu</a>        *current_bleu = <span class="keyword">new</span> <a class="code" href="classBleu.html">Bleu</a>       (current_trans, current_ref);
+<a name="l00064"></a>00064                 <a class="code" href="classLevenshtein.html">Levenshtein</a> *current_lev  = <span class="keyword">new</span> <a class="code" href="classLevenshtein.html">Levenshtein</a>(current_trans, current_ref);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066                 <span class="comment">// sort line to calculate the pos-independent Levinshtein-Distance</span>
+<a name="l00067"></a>00067                         vector&lt;string&gt; trans_line_vec = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(trans_line, <span class="stringliteral">" "</span>);
+<a name="l00068"></a>00068                         vector&lt;string&gt; ref_line_vec   = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(ref_line  , <span class="stringliteral">" "</span>);
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070                         sort( trans_line_vec.begin(), trans_line_vec.end() );
+<a name="l00071"></a>00071                         sort( ref_line_vec.begin()  , ref_line_vec.end()   );
+<a name="l00072"></a>00072 
+<a name="l00073"></a>00073                         vector&lt;unsigned int&gt; current_trans_sorted = <a class="code" href="rate__translation_8cpp.html#2d1a9bd4ba49847ee9b76c0fc90a2b01">l</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(trans_line_vec);
+<a name="l00074"></a>00074                         vector&lt;unsigned int&gt; current_ref_sorted   = <a class="code" href="rate__translation_8cpp.html#2d1a9bd4ba49847ee9b76c0fc90a2b01">l</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(ref_line_vec);
+<a name="l00075"></a>00075 
+<a name="l00076"></a>00076                 <a class="code" href="classLevenshtein.html">Levenshtein</a> *current_posindependent_lev = <span class="keyword">new</span> <a class="code" href="classLevenshtein.html">Levenshtein</a>(current_trans_sorted, current_ref_sorted);
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078                 <span class="comment">// sums for avg distances</span>
+<a name="l00079"></a>00079                 average_levenshtein_dist                += current_lev-&gt;<a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>();
+<a name="l00080"></a>00080                 average_posindependent_levenshtein_dist += current_posindependent_lev-&gt;<a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>();
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082                 <span class="comment">// output</span>
+<a name="l00083"></a>00083                 cout    &lt;&lt; <span class="stringliteral">"\n***\nBLEU-Score:\t\t"</span>     &lt;&lt; current_bleu-&gt;<a class="code" href="classBleu.html#63f7caa3950e160b6683d413c60e5ef9">bleuScore</a>(<a class="code" href="constants_8h.html#d6dd33941d47d4730f38199bf8b3d5ba">MAX_N_GRAMS</a>)
+<a name="l00084"></a>00084                         &lt;&lt; <span class="stringliteral">"\nLevenshtein:\t\t"</span>         &lt;&lt; current_lev-&gt;<a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>()
+<a name="l00085"></a>00085                         &lt;&lt; <span class="stringliteral">"\npos-ind. Levenshtein:\t"</span>  &lt;&lt; current_posindependent_lev-&gt;<a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>()
+<a name="l00086"></a>00086                         &lt;&lt; <span class="stringliteral">"\n\t t: "</span> &lt;&lt; trans_line
+<a name="l00087"></a>00087                         &lt;&lt; <span class="stringliteral">"\n\t r: "</span> &lt;&lt; ref_line
+<a name="l00088"></a>00088                         &lt;&lt; endl;
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090                 sentenceCount++;
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092                 <span class="keywordflow">if</span> (sentenceCount==50)
+<a name="l00093"></a>00093                 {
+<a name="l00094"></a>00094                         sentence50_lev   = current_lev;
+<a name="l00095"></a>00095                         sentence50_trans = trans_line;
+<a name="l00096"></a>00096                         sentence50_ref   = ref_line;
+<a name="l00097"></a>00097                 }
+<a name="l00098"></a>00098         }
+<a name="l00099"></a>00099 
+<a name="l00100"></a>00100         cout    &lt;&lt; <span class="stringliteral">"\n***\n\n***\nSentence50:\nLevenshtein:\t\t"</span> &lt;&lt; sentence50_lev-&gt;<a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>()
+<a name="l00101"></a>00101                 &lt;&lt; <span class="stringliteral">"\nLevenshtein-Path:\t"</span> &lt;&lt; sentence50_lev-&gt;<a class="code" href="classLevenshtein.html#d898afb1a2986a2fb7303ad6837d1941">getPath</a>()
+<a name="l00102"></a>00102                 &lt;&lt; <span class="stringliteral">"\n\t t: "</span> &lt;&lt; sentence50_trans
+<a name="l00103"></a>00103                 &lt;&lt; <span class="stringliteral">"\n\t r: "</span> &lt;&lt; sentence50_ref
+<a name="l00104"></a>00104                 &lt;&lt; endl;
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106         average_levenshtein_dist                /= (double)sentenceCount;
+<a name="l00107"></a>00107         average_posindependent_levenshtein_dist /= (double)sentenceCount;
+<a name="l00108"></a>00108 
+<a name="l00109"></a>00109         <span class="comment">// print the avarages</span>
+<a name="l00110"></a>00110         cout    &lt;&lt; <span class="stringliteral">"\n***\n\n***\naverage levenshtein distance: "</span>     &lt;&lt; average_levenshtein_dist
+<a name="l00111"></a>00111                 &lt;&lt; <span class="stringliteral">"\naverage pos.independent levenshtein distance: "</span> &lt;&lt; average_posindependent_levenshtein_dist
+<a name="l00112"></a>00112                 &lt;&lt; endl;
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         <span class="keywordflow">return</span> 0; <span class="comment">//EXIT_SUCCESS;</span>
+<a name="l00115"></a>00115 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Mon May 25 19:17:00 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>
