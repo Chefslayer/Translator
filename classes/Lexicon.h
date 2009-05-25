@@ -45,10 +45,19 @@ class Lexicon
 		unsigned int insertWord(string word);
 
 		/**
-		 * gets a line, lexicon and singleCount* object (if not defined set to NULL) puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
+		 * gets a line already splitted by " " and saved to a vector (words) and a singleCount* object and puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
+		 *
+		 * \param line a vector with the words of the sentence
+		 * \param singlesObject the SingleCount* Object to count the singles (optional)
+		 * \return a vector with the sentence in values
+		 */
+		vector<unsigned int> insertSentence(vector<string> words, SingleCount* singlesObject = NULL);
+
+		/**
+		 * gets a line and a singleCount* object and puts all words of the sentence in the lexicon and saves the word-values in the singlesObject
 		 *
 		 * \param line a sentence
-		 * \param singlesObject the SingleCount* Object to count the singles
+		 * \param singlesObject the SingleCount* Object to count the singles (optional)
 		 * \return a vector with the sentence in values
 		 */
 		vector<unsigned int> insertSentence(string line, SingleCount* singlesObject = NULL);

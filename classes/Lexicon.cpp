@@ -39,21 +39,26 @@ unsigned int Lexicon::insertWord(string word)
 	}
 }
 
-vector<unsigned int> Lexicon::insertSentence(string line, SingleCount* singlesObject)
+vector<unsigned int> Lexicon::insertSentence(vector<string> words, SingleCount* singlesObject)
 {
-	vector<string> words = stringSplit(line, " ");
 	vector<unsigned int> result(words.size(), 0);
 	// put all words of the sentence in source language-lexicon and the value of the word into the lang-object
 	unsigned int i;
 	for (i=0; i < words.size(); i++)
 	{
-	unsigned int val = this->insertWord(words[i]);
-	// nur zählen wenn auch ein SingleCount objekt übergeben wurde
-	if (singlesObject != NULL)
-		singlesObject->insert(val);
-	result[i] = val;
+		unsigned int val = this->insertWord(words[i]);
+		// nur zählen wenn auch ein SingleCount objekt übergeben wurde
+		if (singlesObject != NULL)
+			singlesObject->insert(val);
+		result[i] = val;
 	}
 	return result;
+}
+
+vector<unsigned int> Lexicon::insertSentence(string line, SingleCount* singlesObject)
+{
+	vector<string> words = stringSplit(line, " ");
+	return this->insertSentence(words, singlesObject);
 }
 
 string Lexicon::getWord(unsigned int value)
