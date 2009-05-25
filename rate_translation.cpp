@@ -45,9 +45,7 @@ int main(int argc, char* argv[])
 	}
 
 	string	trans_line,
-		ref_line,
-		trans_line_sorted,
-		ref_line_sorted				= "";
+		ref_line				= "";
 	double	average_levenshtein_dist,
 		average_posindependent_levenshtein_dist = 0;
 
