@@ -13,6 +13,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 #include "includes/constants.h"
 #include "classes/Lexicon.h"
 #include "classes/Bleu.h"
