@@ -96,6 +96,11 @@ int main(int argc, char* argv[])
 			sentence50_trans = trans_line;
 			sentence50_ref   = ref_line;
 		}
+		else
+		{
+		delete current_bleu;
+		delete current_lev;
+		}
 	}
 
 	// Output for sentence 50:

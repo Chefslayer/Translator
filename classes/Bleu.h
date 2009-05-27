@@ -36,7 +36,7 @@ class Bleu
 		 * \param translation
 		 * \param reference
 		 */
-		Bleu(vector<unsigned int> translation, vector<unsigned int> reference); // wenn ich Referenzen benutze compiliert es nicht mehr^^
+		Bleu(vector<unsigned int> translation, vector<unsigned int> reference);
 
 		/**
 		 * Counts all matching n-grams in the Hypothesis and it's reference.
