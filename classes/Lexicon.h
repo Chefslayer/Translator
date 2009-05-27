@@ -20,7 +20,7 @@ using namespace std;
 
 
 /**
- * The Lexicon class holds all words and them to int values.
+ * The Lexicon class holds all words and maps them to int values.
  * The Lexicon class holds all words for a specific language and maps them to int values.
  */
 class Lexicon
@@ -28,7 +28,11 @@ class Lexicon
 	private:
 		/// number of inserted words
 		unsigned int i;
+
+		/// maps the words to (unsigned) integer values
 		map<string,unsigned int> str2intAssignment;
+		
+		/// maps the word-codes to the real words
 		vector<string> int2strAssignment;
 	public:
 		/**

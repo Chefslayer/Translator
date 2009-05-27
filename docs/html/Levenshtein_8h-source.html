@@ -31,19 +31,21 @@
 <a name="l00017"></a>00017 
 <a name="l00022"></a><a class="code" href="classLevenshtein.html">00022</a> <span class="keyword">class </span><a class="code" href="classLevenshtein.html">Levenshtein</a>{
 <a name="l00023"></a>00023         <span class="keyword">private</span>:
-<a name="l00024"></a><a class="code" href="classLevenshtein.html#8ce0e20c91eb2339fd6be29672c6d5b8">00024</a>                 vector&lt;vector&lt;unsigned int&gt; &gt; <a class="code" href="classLevenshtein.html#8ce0e20c91eb2339fd6be29672c6d5b8">matrix</a>;
-<a name="l00025"></a><a class="code" href="classLevenshtein.html#a3eb4809466cf1aa7381b54fa50fee49">00025</a>                 vector&lt;unsigned int&gt; <a class="code" href="classLevenshtein.html#a3eb4809466cf1aa7381b54fa50fee49">trans_v</a>, <a class="code" href="classLevenshtein.html#05fe44197e4c4830acfff86fed7e9d55">ref_v</a>;
-<a name="l00026"></a>00026         <span class="keyword">public</span>:
-<a name="l00033"></a>00033                 <a class="code" href="classLevenshtein.html#b5a38e4cc972a28e88e91b8e25cf4485">Levenshtein</a>(vector&lt;unsigned int&gt; trans, vector&lt;unsigned int&gt; ref);
-<a name="l00034"></a>00034 
-<a name="l00040"></a>00040                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>();
-<a name="l00041"></a>00041 
-<a name="l00048"></a>00048                 string <a class="code" href="classLevenshtein.html#6a72ef70380ebfa1d4b7a017c1087e14">getPath</a>(<a class="code" href="classLexicon.html">Lexicon</a> &amp;lex);
-<a name="l00049"></a>00049 
-<a name="l00055"></a>00055                 string <a class="code" href="classLevenshtein.html#58d9f971a6fdc3a00abcdf07fd4be6d9">getPathOps</a>();
-<a name="l00056"></a>00056 };
-<a name="l00057"></a>00057 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:34 2009 for Translator by&nbsp;
+<a name="l00025"></a><a class="code" href="classLevenshtein.html#8ce0e20c91eb2339fd6be29672c6d5b8">00025</a>                 vector&lt;vector&lt;unsigned int&gt; &gt; <a class="code" href="classLevenshtein.html#8ce0e20c91eb2339fd6be29672c6d5b8">matrix</a>;
+<a name="l00026"></a>00026 
+<a name="l00028"></a><a class="code" href="classLevenshtein.html#a3eb4809466cf1aa7381b54fa50fee49">00028</a>                 vector&lt;unsigned int&gt;    <a class="code" href="classLevenshtein.html#a3eb4809466cf1aa7381b54fa50fee49">trans_v</a>,
+<a name="l00030"></a>00030                                         <a class="code" href="classLevenshtein.html#05fe44197e4c4830acfff86fed7e9d55">ref_v</a>;
+<a name="l00031"></a>00031         <span class="keyword">public</span>:
+<a name="l00038"></a>00038                 <a class="code" href="classLevenshtein.html#b5a38e4cc972a28e88e91b8e25cf4485">Levenshtein</a>(vector&lt;unsigned int&gt; trans, vector&lt;unsigned int&gt; ref);
+<a name="l00039"></a>00039 
+<a name="l00045"></a>00045                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classLevenshtein.html#3cf7cbcec4969fdf0d041b5bb81395a5">getDistance</a>();
+<a name="l00046"></a>00046 
+<a name="l00053"></a>00053                 string <a class="code" href="classLevenshtein.html#6a72ef70380ebfa1d4b7a017c1087e14">getPath</a>(<a class="code" href="classLexicon.html">Lexicon</a> &amp;lex);
+<a name="l00054"></a>00054 
+<a name="l00060"></a>00060                 string <a class="code" href="classLevenshtein.html#58d9f971a6fdc3a00abcdf07fd4be6d9">getPathOps</a>();
+<a name="l00061"></a>00061 };
+<a name="l00062"></a>00062 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:24 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

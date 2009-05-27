@@ -42,6 +42,7 @@
 <tr><td colspan="2"><br><h2>Classes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtrans__tab__struct.html">trans_tab_struct</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds information about a wordpair from a translation-table.  <a href="structtrans__tab__struct.html#_details">More...</a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structHypothesis.html">Hypothesis</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="translate_8cpp.html#6deb55c3c255bb7ed92a0614d3f1ca90">pruneStack</a> (stack&lt; <a class="el" href="structHypothesis.html">Hypothesis</a> * &gt; &amp;s)</td></tr>
 
@@ -95,9 +96,9 @@ Definition in file <a class="el" href="translate_8cpp-source.html">translate.cpp
 <p>
 
 <p>
-Definition at line <a class="el" href="translate_8cpp-source.html#l00119">119</a> of file <a class="el" href="translate_8cpp-source.html">translate.cpp</a>.
+Definition at line <a class="el" href="translate_8cpp-source.html#l00129">129</a> of file <a class="el" href="translate_8cpp-source.html">translate.cpp</a>.
 <p>
-References <a class="el" href="singleWordExtract_8cpp-source.html#l00031">e</a>, <a class="el" href="translate_8cpp-source.html#l00035">trans_tab_struct::e</a>, <a class="el" href="singleWordExtract_8cpp-source.html#l00030">f</a>, <a class="el" href="translate_8cpp-source.html#l00035">trans_tab_struct::f</a>, <a class="el" href="Lexicon_8cpp-source.html#l00072">Lexicon::getNum()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00064">Lexicon::getWord()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00018">Lexicon::insertWord()</a>, <a class="el" href="hypothesis_8h-source.html#l00027">Hypothesis::prevHyp</a>, <a class="el" href="translate_8cpp-source.html#l00034">trans_tab_struct::relFreqE</a>, <a class="el" href="translate_8cpp-source.html#l00034">trans_tab_struct::relFreqF</a>, <a class="el" href="translate_8cpp-source.html#l00072">searchTranslation()</a>, <a class="el" href="functions_8cpp-source.html#l00009">stringSplit()</a>, <a class="el" href="hypothesis_8h-source.html#l00029">Hypothesis::trans</a>, <a class="el" href="constants_8h-source.html#l00001">VECTOR_INIT_SIZE</a>, and <a class="el" href="constants_8h-source.html#l00002">VECTOR_RESIZE</a>.
+References <a class="el" href="singleWordExtract_8cpp-source.html#l00031">e</a>, <a class="el" href="translate_8cpp-source.html#l00044">trans_tab_struct::e</a>, <a class="el" href="singleWordExtract_8cpp-source.html#l00030">f</a>, <a class="el" href="translate_8cpp-source.html#l00044">trans_tab_struct::f</a>, <a class="el" href="Lexicon_8cpp-source.html#l00072">Lexicon::getNum()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00064">Lexicon::getWord()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00018">Lexicon::insertWord()</a>, <a class="el" href="hypothesis_8h-source.html#l00023">Hypothesis::prevHyp</a>, <a class="el" href="translate_8cpp-source.html#l00039">trans_tab_struct::relFreqE</a>, <a class="el" href="translate_8cpp-source.html#l00039">trans_tab_struct::relFreqF</a>, <a class="el" href="translate_8cpp-source.html#l00082">searchTranslation()</a>, <a class="el" href="functions_8cpp-source.html#l00009">stringSplit()</a>, <a class="el" href="hypothesis_8h-source.html#l00029">Hypothesis::trans</a>, <a class="el" href="constants_8h-source.html#l00001">VECTOR_INIT_SIZE</a>, and <a class="el" href="constants_8h-source.html#l00002">VECTOR_RESIZE</a>.
 </div>
 </div><p>
 <a class="anchor" name="6deb55c3c255bb7ed92a0614d3f1ca90"></a><!-- doxytag: member="translate.cpp::pruneStack" ref="6deb55c3c255bb7ed92a0614d3f1ca90" args="(stack&lt; Hypothesis * &gt; &amp;s)" -->
@@ -127,11 +128,11 @@ Prunes the Stack to KEEP_N_BEST_HYPOS elements.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>reference to best <a class="el" href="structHypothesis.html">Hypothesis</a> in s </dd></dl>
 
 <p>
-Definition at line <a class="el" href="translate_8cpp-source.html#l00044">44</a> of file <a class="el" href="translate_8cpp-source.html">translate.cpp</a>.
+Definition at line <a class="el" href="translate_8cpp-source.html#l00054">54</a> of file <a class="el" href="translate_8cpp-source.html">translate.cpp</a>.
 <p>
 References <a class="el" href="hypothesis_8cpp-source.html#l00022">cmp_Hyp()</a>, and <a class="el" href="constants_8h-source.html#l00003">KEEP_N_BEST_HYPOS</a>.
 <p>
-Referenced by <a class="el" href="translate_8cpp-source.html#l00072">searchTranslation()</a>.
+Referenced by <a class="el" href="translate_8cpp-source.html#l00082">searchTranslation()</a>.
 </div>
 </div><p>
 <a class="anchor" name="2afe039fa20aba5b2a4fa97fda46e66e"></a><!-- doxytag: member="translate.cpp::searchTranslation" ref="2afe039fa20aba5b2a4fa97fda46e66e" args="(vector&lt; unsigned int &gt; &amp;words, vector&lt; trans_tab_struct &gt; &amp;translationtab)" -->
@@ -171,11 +172,11 @@ searches a translation for a given line of text.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>best <a class="el" href="structHypothesis.html">Hypothesis</a> </dd></dl>
 
 <p>
-Definition at line <a class="el" href="translate_8cpp-source.html#l00072">72</a> of file <a class="el" href="translate_8cpp-source.html">translate.cpp</a>.
+Definition at line <a class="el" href="translate_8cpp-source.html#l00082">82</a> of file <a class="el" href="translate_8cpp-source.html">translate.cpp</a>.
 <p>
-References <a class="el" href="singleWordExtract_8cpp-source.html#l00031">e</a>, and <a class="el" href="translate_8cpp-source.html#l00044">pruneStack()</a>.
+References <a class="el" href="singleWordExtract_8cpp-source.html#l00031">e</a>, and <a class="el" href="translate_8cpp-source.html#l00054">pruneStack()</a>.
 <p>
-Referenced by <a class="el" href="translate_8cpp-source.html#l00119">main()</a>.
+Referenced by <a class="el" href="translate_8cpp-source.html#l00129">main()</a>.
 </div>
 </div><p>
 <hr><h2>Variable Documentation</h2>
@@ -213,7 +214,7 @@ Definition at line <a class="el" href="translate_8cpp-source.html#l00031">31</a>
 Definition at line <a class="el" href="translate_8cpp-source.html#l00030">30</a> of file <a class="el" href="translate_8cpp-source.html">translate.cpp</a>.
 </div>
 </div><p>
-<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:35 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:26 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

@@ -43,10 +43,13 @@
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; vector&lt; unsigned int &gt; &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevenshtein.html#8ce0e20c91eb2339fd6be29672c6d5b8">matrix</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds the path-matrix  <a href="#8ce0e20c91eb2339fd6be29672c6d5b8"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevenshtein.html#a3eb4809466cf1aa7381b54fa50fee49">trans_v</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds the words of the translation  <a href="#a3eb4809466cf1aa7381b54fa50fee49"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLevenshtein.html#05fe44197e4c4830acfff86fed7e9d55">ref_v</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds the words of the reference  <a href="#05fe44197e4c4830acfff86fed7e9d55"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The <a class="el" href="classLevenshtein.html">Levenshtein</a> class calculates the Levenshtein-Distance for a translation. 
@@ -94,7 +97,7 @@ Constructor inits and fills the distance-matrix.
 <p>
 Definition at line <a class="el" href="Levenshtein_8cpp-source.html#l00008">8</a> of file <a class="el" href="Levenshtein_8cpp-source.html">Levenshtein.cpp</a>.
 <p>
-References <a class="el" href="Levenshtein_8h-source.html#l00024">matrix</a>, <a class="el" href="Levenshtein_8h-source.html#l00025">ref_v</a>, and <a class="el" href="Levenshtein_8h-source.html#l00025">trans_v</a>.
+References <a class="el" href="Levenshtein_8h-source.html#l00025">matrix</a>, <a class="el" href="Levenshtein_8h-source.html#l00028">ref_v</a>, and <a class="el" href="Levenshtein_8h-source.html#l00028">trans_v</a>.
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -121,7 +124,7 @@ gets the last entry in the matrix.
 <p>
 Definition at line <a class="el" href="Levenshtein_8cpp-source.html#l00049">49</a> of file <a class="el" href="Levenshtein_8cpp-source.html">Levenshtein.cpp</a>.
 <p>
-References <a class="el" href="Levenshtein_8h-source.html#l00024">matrix</a>.
+References <a class="el" href="Levenshtein_8h-source.html#l00025">matrix</a>.
 <p>
 Referenced by <a class="el" href="rate__translation_8cpp-source.html#l00026">main()</a>.
 </div>
@@ -155,7 +158,7 @@ returns a string with the path operations and additionally the words that were d
 <p>
 Definition at line <a class="el" href="Levenshtein_8cpp-source.html#l00056">56</a> of file <a class="el" href="Levenshtein_8cpp-source.html">Levenshtein.cpp</a>.
 <p>
-References <a class="el" href="Levenshtein_8cpp-source.html#l00085">getPathOps()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00064">Lexicon::getWord()</a>, <a class="el" href="Levenshtein_8h-source.html#l00025">ref_v</a>, and <a class="el" href="Levenshtein_8h-source.html#l00025">trans_v</a>.
+References <a class="el" href="Levenshtein_8cpp-source.html#l00085">getPathOps()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00064">Lexicon::getWord()</a>, <a class="el" href="Levenshtein_8h-source.html#l00028">ref_v</a>, and <a class="el" href="Levenshtein_8h-source.html#l00028">trans_v</a>.
 <p>
 Referenced by <a class="el" href="rate__translation_8cpp-source.html#l00026">main()</a>.
 </div>
@@ -183,7 +186,7 @@ Gets all operations that have been done: d=delete, i=insert, m=maching.
 <p>
 Definition at line <a class="el" href="Levenshtein_8cpp-source.html#l00085">85</a> of file <a class="el" href="Levenshtein_8cpp-source.html">Levenshtein.cpp</a>.
 <p>
-References <a class="el" href="Levenshtein_8h-source.html#l00024">matrix</a>.
+References <a class="el" href="Levenshtein_8h-source.html#l00025">matrix</a>.
 <p>
 Referenced by <a class="el" href="Levenshtein_8cpp-source.html#l00056">getPath()</a>, and <a class="el" href="rate__translation_8cpp-source.html#l00026">main()</a>.
 </div>
@@ -201,9 +204,11 @@ Referenced by <a class="el" href="Levenshtein_8cpp-source.html#l00056">getPath()
 <div class="memdoc">
 
 <p>
+holds the path-matrix 
+<p>
 
 <p>
-Definition at line <a class="el" href="Levenshtein_8h-source.html#l00024">24</a> of file <a class="el" href="Levenshtein_8h-source.html">Levenshtein.h</a>.
+Definition at line <a class="el" href="Levenshtein_8h-source.html#l00025">25</a> of file <a class="el" href="Levenshtein_8h-source.html">Levenshtein.h</a>.
 <p>
 Referenced by <a class="el" href="Levenshtein_8cpp-source.html#l00049">getDistance()</a>, <a class="el" href="Levenshtein_8cpp-source.html#l00085">getPathOps()</a>, and <a class="el" href="Levenshtein_8cpp-source.html#l00008">Levenshtein()</a>.
 </div>
@@ -220,9 +225,11 @@ Referenced by <a class="el" href="Levenshtein_8cpp-source.html#l00049">getDistan
 <div class="memdoc">
 
 <p>
+holds the words of the translation 
+<p>
 
 <p>
-Definition at line <a class="el" href="Levenshtein_8h-source.html#l00025">25</a> of file <a class="el" href="Levenshtein_8h-source.html">Levenshtein.h</a>.
+Definition at line <a class="el" href="Levenshtein_8h-source.html#l00028">28</a> of file <a class="el" href="Levenshtein_8h-source.html">Levenshtein.h</a>.
 <p>
 Referenced by <a class="el" href="Levenshtein_8cpp-source.html#l00056">getPath()</a>, and <a class="el" href="Levenshtein_8cpp-source.html#l00008">Levenshtein()</a>.
 </div>
@@ -239,16 +246,18 @@ Referenced by <a class="el" href="Levenshtein_8cpp-source.html#l00056">getPath()
 <div class="memdoc">
 
 <p>
+holds the words of the reference 
+<p>
 
 <p>
-Definition at line <a class="el" href="Levenshtein_8h-source.html#l00025">25</a> of file <a class="el" href="Levenshtein_8h-source.html">Levenshtein.h</a>.
+Definition at line <a class="el" href="Levenshtein_8h-source.html#l00028">28</a> of file <a class="el" href="Levenshtein_8h-source.html">Levenshtein.h</a>.
 <p>
 Referenced by <a class="el" href="Levenshtein_8cpp-source.html#l00056">getPath()</a>, and <a class="el" href="Levenshtein_8cpp-source.html#l00008">Levenshtein()</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>classes/<a class="el" href="Levenshtein_8h-source.html">Levenshtein.h</a><li>classes/<a class="el" href="Levenshtein_8cpp-source.html">Levenshtein.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:36 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:27 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

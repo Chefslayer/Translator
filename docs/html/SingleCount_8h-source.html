@@ -31,34 +31,34 @@
 <a name="l00021"></a><a class="code" href="classSingleCount.html">00021</a> <span class="keyword">class </span><a class="code" href="classSingleCount.html">SingleCount</a>
 <a name="l00022"></a>00022 {
 <a name="l00023"></a>00023         <span class="keyword">private</span>:
-<a name="l00024"></a><a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">00024</a>                 vector&lt;unsigned int&gt; <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>;
-<a name="l00025"></a>00025         <span class="keyword">public</span>:
-<a name="l00029"></a><a class="code" href="classSingleCount.html#4951658f1fabdd4e9b5d1d3711cf47ff">00029</a>                 <span class="keyword">inline</span> <a class="code" href="classSingleCount.html#4951658f1fabdd4e9b5d1d3711cf47ff">SingleCount</a>()
-<a name="l00030"></a>00030                 {
-<a name="l00031"></a>00031                         vector&lt;unsigned int&gt; <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>(<a class="code" href="constants_8h.html#8b79525b4ba1283e37c999118c5d495c">VECTOR_INIT_SIZE</a>, 0);
-<a name="l00032"></a>00032                 }
-<a name="l00033"></a>00033 
-<a name="l00039"></a><a class="code" href="classSingleCount.html#1f678b5a3bfb80f784102712f206f5d0">00039</a>                 <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classSingleCount.html#1f678b5a3bfb80f784102712f206f5d0">insert</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> word)
-<a name="l00040"></a>00040                 {
-<a name="l00041"></a>00041                         <span class="keywordflow">if</span> (word &gt;= <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.size())
-<a name="l00042"></a>00042                         {
-<a name="l00043"></a>00043                                 <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.resize(<a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.size() + <a class="code" href="constants_8h.html#de315e78a921b53ec5e41be0fa8b73e2">VECTOR_RESIZE</a>);
-<a name="l00044"></a>00044                         }
-<a name="l00045"></a>00045                         <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>[word]++;
-<a name="l00046"></a>00046                 }
-<a name="l00047"></a>00047 
-<a name="l00054"></a><a class="code" href="classSingleCount.html#5afa88471e0470e2b424b4e477973514">00054</a>                 <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classSingleCount.html#5afa88471e0470e2b424b4e477973514">getFreq</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> word)
-<a name="l00055"></a>00055                 {
-<a name="l00056"></a>00056                         <span class="keywordflow">return</span> <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>[word];
-<a name="l00057"></a>00057                 }
-<a name="l00058"></a>00058 
-<a name="l00064"></a><a class="code" href="classSingleCount.html#6853b8714b65bf8c14044ddc29e67ffa">00064</a>                 <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classSingleCount.html#6853b8714b65bf8c14044ddc29e67ffa">getSize</a>()
-<a name="l00065"></a>00065                 {
-<a name="l00066"></a>00066                         <span class="keywordflow">return</span> <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.size();
-<a name="l00067"></a>00067                 }
-<a name="l00068"></a>00068 };
-<a name="l00069"></a>00069 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:34 2009 for Translator by&nbsp;
+<a name="l00025"></a><a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">00025</a>                 vector&lt;unsigned int&gt; <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>;
+<a name="l00026"></a>00026         <span class="keyword">public</span>:
+<a name="l00030"></a><a class="code" href="classSingleCount.html#4951658f1fabdd4e9b5d1d3711cf47ff">00030</a>                 <span class="keyword">inline</span> <a class="code" href="classSingleCount.html#4951658f1fabdd4e9b5d1d3711cf47ff">SingleCount</a>()
+<a name="l00031"></a>00031                 {
+<a name="l00032"></a>00032                         vector&lt;unsigned int&gt; <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>(<a class="code" href="constants_8h.html#8b79525b4ba1283e37c999118c5d495c">VECTOR_INIT_SIZE</a>, 0);
+<a name="l00033"></a>00033                 }
+<a name="l00034"></a>00034 
+<a name="l00040"></a><a class="code" href="classSingleCount.html#1f678b5a3bfb80f784102712f206f5d0">00040</a>                 <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classSingleCount.html#1f678b5a3bfb80f784102712f206f5d0">insert</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> word)
+<a name="l00041"></a>00041                 {
+<a name="l00042"></a>00042                         <span class="keywordflow">if</span> (word &gt;= <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.size())
+<a name="l00043"></a>00043                         {
+<a name="l00044"></a>00044                                 <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.resize(<a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.size() + <a class="code" href="constants_8h.html#de315e78a921b53ec5e41be0fa8b73e2">VECTOR_RESIZE</a>);
+<a name="l00045"></a>00045                         }
+<a name="l00046"></a>00046                         <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>[word]++;
+<a name="l00047"></a>00047                 }
+<a name="l00048"></a>00048 
+<a name="l00055"></a><a class="code" href="classSingleCount.html#5afa88471e0470e2b424b4e477973514">00055</a>                 <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classSingleCount.html#5afa88471e0470e2b424b4e477973514">getFreq</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> word)
+<a name="l00056"></a>00056                 {
+<a name="l00057"></a>00057                         <span class="keywordflow">return</span> <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>[word];
+<a name="l00058"></a>00058                 }
+<a name="l00059"></a>00059 
+<a name="l00065"></a><a class="code" href="classSingleCount.html#6853b8714b65bf8c14044ddc29e67ffa">00065</a>                 <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classSingleCount.html#6853b8714b65bf8c14044ddc29e67ffa">getSize</a>()
+<a name="l00066"></a>00066                 {
+<a name="l00067"></a>00067                         <span class="keywordflow">return</span> <a class="code" href="classSingleCount.html#611973b9373c85226b76af3839aa50e3">wordcounts</a>.size();
+<a name="l00068"></a>00068                 }
+<a name="l00069"></a>00069 };
+<a name="l00070"></a>00070 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:24 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

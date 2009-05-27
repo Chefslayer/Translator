@@ -39,163 +39,167 @@
 <a name="l00030"></a><a class="code" href="translate_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">00030</a> <span class="keyword">static</span> <a class="code" href="classLexicon.html">Lexicon</a> <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>;
 <a name="l00031"></a><a class="code" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">00031</a> <span class="keyword">static</span> <a class="code" href="classLexicon.html">Lexicon</a> <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>;
 <a name="l00032"></a>00032 
-<a name="l00033"></a><a class="code" href="structtrans__tab__struct.html">00033</a> <span class="keyword">struct </span><a class="code" href="structtrans__tab__struct.html">trans_tab_struct</a>{
-<a name="l00034"></a><a class="code" href="structtrans__tab__struct.html#ca697d9046914d9c54435d215b76a373">00034</a>         <span class="keywordtype">double</span> <a class="code" href="structtrans__tab__struct.html#ca697d9046914d9c54435d215b76a373">relFreqF</a>, <a class="code" href="structtrans__tab__struct.html#45debe621fdc2e484f50f6a0ef6ae6d5">relFreqE</a>;
-<a name="l00035"></a><a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">00035</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">f</a>,<a class="code" href="structtrans__tab__struct.html#7ebbbfb200adfdbb1dcb52bf2c4de267">e</a>;
-<a name="l00036"></a>00036 };
-<a name="l00037"></a>00037 
-<a name="l00044"></a><a class="code" href="translate_8cpp.html#6deb55c3c255bb7ed92a0614d3f1ca90">00044</a> <a class="code" href="structHypothesis.html">Hypothesis</a>* <a class="code" href="translate_8cpp.html#6deb55c3c255bb7ed92a0614d3f1ca90">pruneStack</a>(stack &lt; Hypothesis* &gt; &amp;s)
-<a name="l00045"></a>00045 {
-<a name="l00046"></a>00046         vector&lt;Hypothesis*&gt; v;
-<a name="l00047"></a>00047         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size = s.size();
-<a name="l00048"></a>00048         v.resize(size);
-<a name="l00049"></a>00049 
-<a name="l00050"></a>00050         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; !s.empty(); i++)
-<a name="l00051"></a>00051         {
-<a name="l00052"></a>00052                 v[i] = s.top();
-<a name="l00053"></a>00053                 s.pop();
-<a name="l00054"></a>00054         }
-<a name="l00055"></a>00055         sort(v.begin(), v.end(), <a class="code" href="hypothesis_8cpp.html#49f933e6b61bd4b837bf55186675ac90">cmp_Hyp</a>);
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;size &amp;&amp; i&lt;<a class="code" href="constants_8h.html#853c634fe946101e3e2fb382e2858f08">KEEP_N_BEST_HYPOS</a> ;i++)
-<a name="l00058"></a>00058         {
-<a name="l00059"></a>00059                 s.push(v[i]);
-<a name="l00060"></a>00060         }
-<a name="l00061"></a>00061         <span class="comment">//return best Hypo</span>
-<a name="l00062"></a>00062         <span class="keywordflow">return</span> v[0];
-<a name="l00063"></a>00063 }
-<a name="l00064"></a>00064 
-<a name="l00072"></a><a class="code" href="translate_8cpp.html#2afe039fa20aba5b2a4fa97fda46e66e">00072</a> <a class="code" href="structHypothesis.html">Hypothesis</a>* <a class="code" href="translate_8cpp.html#2afe039fa20aba5b2a4fa97fda46e66e">searchTranslation</a>(vector&lt;unsigned int&gt; &amp;words, vector&lt;trans_tab_struct&gt;  &amp;translationtab)
-<a name="l00073"></a>00073 {
-<a name="l00074"></a>00074         <a class="code" href="structHypothesis.html">Hypothesis</a>* minCostsHyp;
-<a name="l00075"></a>00075         vector&lt; stack &lt; Hypothesis* &gt; &gt; stacks;
-<a name="l00076"></a>00076         stacks.resize((words.size()+1));
-<a name="l00077"></a>00077         <a class="code" href="structHypothesis.html">Hypothesis</a>* h = <span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(NULL,0,0,0);
-<a name="l00078"></a>00078         stacks[0].push(h);
-<a name="l00079"></a>00079 
-<a name="l00080"></a>00080         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; words.size(); i++)
-<a name="l00081"></a>00081         {
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0;
-<a name="l00084"></a>00084                 <span class="comment">// find first occurance of word[i] in transtab</span>
-<a name="l00085"></a>00085                 <span class="keywordflow">while</span> (j &lt; translationtab.size() &amp;&amp; words[i] != (translationtab[j].f))
-<a name="l00086"></a>00086                 {
-<a name="l00087"></a>00087                         j++;
-<a name="l00088"></a>00088                 }
-<a name="l00089"></a>00089                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> first_occ = j;
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091                 <span class="keywordflow">while</span> (!stacks[i].empty())
-<a name="l00092"></a>00092                 {
-<a name="l00093"></a>00093                         <a class="code" href="structHypothesis.html">Hypothesis</a> *prev = stacks[i].top();
-<a name="l00094"></a>00094 
-<a name="l00095"></a>00095                         <span class="comment">// make hyps for all the possible translations</span>
-<a name="l00096"></a>00096                         j = first_occ;
-<a name="l00097"></a>00097                         <span class="keywordtype">bool</span> found_at_least_one_hypo = <span class="keyword">false</span>;
-<a name="l00098"></a>00098                         <span class="keywordflow">while</span> (j &lt; translationtab.size() &amp;&amp; words[i] == (translationtab[j].f))
-<a name="l00099"></a>00099                         {
-<a name="l00100"></a>00100                                 found_at_least_one_hypo = <span class="keyword">true</span>;
-<a name="l00101"></a>00101                                 <a class="code" href="structHypothesis.html">Hypothesis</a> *h = <span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(prev, translationtab[j].relFreqF, translationtab[j].relFreqE, translationtab[j].<a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>);
-<a name="l00102"></a>00102                                 stacks[i+1].push(h);
-<a name="l00103"></a>00103                                 j++;
-<a name="l00104"></a>00104                         }
-<a name="l00105"></a>00105                         <span class="keywordflow">if</span> (!found_at_least_one_hypo)
-<a name="l00106"></a>00106                         {
-<a name="l00107"></a>00107                                 <span class="comment">// insert '(?)'</span>
-<a name="l00108"></a>00108                                 stacks[i+1].push(<span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(prev,0, 0, 0));
-<a name="l00109"></a>00109                         }
-<a name="l00110"></a>00110                         stacks[i].pop();
-<a name="l00111"></a>00111                 }
-<a name="l00112"></a>00112                 minCostsHyp = <a class="code" href="translate_8cpp.html#6deb55c3c255bb7ed92a0614d3f1ca90">pruneStack</a>(stacks[i+1]);
-<a name="l00113"></a>00113 
-<a name="l00114"></a>00114         }
-<a name="l00115"></a>00115         <span class="comment">// return best Hypothesis of the last stack</span>
-<a name="l00116"></a>00116         <span class="keywordflow">return</span> minCostsHyp;
-<a name="l00117"></a>00117 }
-<a name="l00118"></a>00118 
-<a name="l00119"></a><a class="code" href="translate_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">00119</a> <span class="keywordtype">int</span> <a class="code" href="rate__translation_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])
-<a name="l00120"></a>00120 {
-<a name="l00121"></a>00121 
-<a name="l00122"></a>00122         <span class="keywordflow">if</span> (argc &lt; 3)
-<a name="l00123"></a>00123         {
-<a name="l00124"></a>00124                 cerr &lt;&lt; <span class="stringliteral">"ERROR: not enough parameters"</span> &lt;&lt; endl &lt;&lt; <span class="stringliteral">"Usage: "</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">" translation-table source-document"</span> &lt;&lt; endl;
-<a name="l00125"></a>00125                 <span class="keywordflow">return</span> 0; <span class="comment">// EXIT_FAILURE;</span>
-<a name="l00126"></a>00126         }
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128         <span class="comment">// open files</span>
-<a name="l00129"></a>00129         ifstream trans_tab(argv[1]);
-<a name="l00130"></a>00130         ifstream src_doc(argv[2]);
-<a name="l00131"></a>00131         <span class="keywordflow">if</span> (!trans_tab.good())
-<a name="l00132"></a>00132         {
-<a name="l00133"></a>00133                 cerr &lt;&lt; <span class="stringliteral">"ERROR: Opening translation table ("</span>&lt;&lt; argv[1] &lt;&lt;<span class="stringliteral">") failed."</span> &lt;&lt; endl;
-<a name="l00134"></a>00134                 <span class="keywordflow">return</span> 1; <span class="comment">// EXIT_FAILURE;</span>
-<a name="l00135"></a>00135         }
-<a name="l00136"></a>00136         <span class="keywordflow">if</span> (!src_doc.good())
-<a name="l00137"></a>00137         {
-<a name="l00138"></a>00138                 cerr &lt;&lt; <span class="stringliteral">"ERROR: Opening source document ("</span>&lt;&lt; argv[2] &lt;&lt;<span class="stringliteral">") failed."</span> &lt;&lt; endl;
-<a name="l00139"></a>00139                 <span class="keywordflow">return</span> 1; <span class="comment">// EXIT_FAILURE;</span>
-<a name="l00140"></a>00140         }
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;
-<a name="l00143"></a>00143         vector&lt;struct trans_tab_struct&gt; trans_tab_vec;
-<a name="l00144"></a>00144         trans_tab_vec.resize(<a class="code" href="constants_8h.html#8b79525b4ba1283e37c999118c5d495c">VECTOR_INIT_SIZE</a>);
-<a name="l00145"></a>00145         string line;
-<a name="l00146"></a>00146 
-<a name="l00147"></a>00147         <span class="comment">// read trans_tab into trans_tab_vec</span>
-<a name="l00148"></a>00148         <span class="keywordflow">while</span> (getline(trans_tab, line))
-<a name="l00149"></a>00149         {
-<a name="l00150"></a>00150                 <span class="keyword">struct </span><a class="code" href="structtrans__tab__struct.html">trans_tab_struct</a> current;
-<a name="l00151"></a>00151                 <span class="keywordtype">double</span> temp;
-<a name="l00152"></a>00152                 <span class="comment">// line is formatted like: &lt;double&gt; &lt;double&gt; # &lt;string&gt; # &lt;string&gt;</span>
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154                 vector&lt;string&gt; line_vec = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(line, <span class="stringliteral">" "</span>);
-<a name="l00155"></a>00155 
-<a name="l00156"></a>00156                 istringstream isstrF(line_vec[0]);
-<a name="l00157"></a>00157                 isstrF &gt;&gt; temp;
-<a name="l00158"></a>00158                 current.<a class="code" href="structtrans__tab__struct.html#ca697d9046914d9c54435d215b76a373">relFreqF</a> = temp;
-<a name="l00159"></a>00159 
-<a name="l00160"></a>00160                 istringstream isstrE(line_vec[1]);
-<a name="l00161"></a>00161                 isstrE &gt;&gt; temp;
-<a name="l00162"></a>00162                 current.<a class="code" href="structtrans__tab__struct.html#45debe621fdc2e484f50f6a0ef6ae6d5">relFreqE</a> = temp;
+<a name="l00036"></a><a class="code" href="structtrans__tab__struct.html">00036</a> <span class="keyword">struct </span><a class="code" href="structtrans__tab__struct.html">trans_tab_struct</a>
+<a name="l00037"></a>00037 {
+<a name="l00039"></a><a class="code" href="structtrans__tab__struct.html#ca697d9046914d9c54435d215b76a373">00039</a>         <span class="keywordtype">double</span>  <a class="code" href="structtrans__tab__struct.html#ca697d9046914d9c54435d215b76a373">relFreqF</a>,
+<a name="l00041"></a>00041                 <a class="code" href="structtrans__tab__struct.html#45debe621fdc2e484f50f6a0ef6ae6d5">relFreqE</a>;
+<a name="l00042"></a>00042 
+<a name="l00044"></a><a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">00044</a>         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    <a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">f</a>,
+<a name="l00046"></a>00046                         <a class="code" href="structtrans__tab__struct.html#7ebbbfb200adfdbb1dcb52bf2c4de267">e</a>;
+<a name="l00047"></a>00047 };
+<a name="l00048"></a>00048 
+<a name="l00054"></a><a class="code" href="translate_8cpp.html#6deb55c3c255bb7ed92a0614d3f1ca90">00054</a> <a class="code" href="structHypothesis.html">Hypothesis</a>* <a class="code" href="translate_8cpp.html#6deb55c3c255bb7ed92a0614d3f1ca90">pruneStack</a>(stack &lt; Hypothesis* &gt; &amp;s)
+<a name="l00055"></a>00055 {
+<a name="l00056"></a>00056         vector&lt;Hypothesis*&gt; v;
+<a name="l00057"></a>00057         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> size = s.size();
+<a name="l00058"></a>00058         v.resize(size);
+<a name="l00059"></a>00059 
+<a name="l00060"></a>00060         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; !s.empty(); i++)
+<a name="l00061"></a>00061         {
+<a name="l00062"></a>00062                 v[i] = s.top();
+<a name="l00063"></a>00063                 s.pop();
+<a name="l00064"></a>00064         }
+<a name="l00065"></a>00065         sort(v.begin(), v.end(), <a class="code" href="hypothesis_8cpp.html#49f933e6b61bd4b837bf55186675ac90">cmp_Hyp</a>);
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;size &amp;&amp; i&lt;<a class="code" href="constants_8h.html#853c634fe946101e3e2fb382e2858f08">KEEP_N_BEST_HYPOS</a> ;i++)
+<a name="l00068"></a>00068         {
+<a name="l00069"></a>00069                 s.push(v[i]);
+<a name="l00070"></a>00070         }
+<a name="l00071"></a>00071         <span class="comment">//return best Hypo</span>
+<a name="l00072"></a>00072         <span class="keywordflow">return</span> v[0];
+<a name="l00073"></a>00073 }
+<a name="l00074"></a>00074 
+<a name="l00082"></a><a class="code" href="translate_8cpp.html#2afe039fa20aba5b2a4fa97fda46e66e">00082</a> <a class="code" href="structHypothesis.html">Hypothesis</a>* <a class="code" href="translate_8cpp.html#2afe039fa20aba5b2a4fa97fda46e66e">searchTranslation</a>(vector&lt;unsigned int&gt; &amp;words, vector&lt;trans_tab_struct&gt;  &amp;translationtab)
+<a name="l00083"></a>00083 {
+<a name="l00084"></a>00084         <a class="code" href="structHypothesis.html">Hypothesis</a>* minCostsHyp;
+<a name="l00085"></a>00085         vector&lt; stack &lt; Hypothesis* &gt; &gt; stacks;
+<a name="l00086"></a>00086         stacks.resize((words.size()+1));
+<a name="l00087"></a>00087         <a class="code" href="structHypothesis.html">Hypothesis</a>* h = <span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(NULL,0,0,0);
+<a name="l00088"></a>00088         stacks[0].push(h);
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; words.size(); i++)
+<a name="l00091"></a>00091         {
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j = 0;
+<a name="l00094"></a>00094                 <span class="comment">// find first occurance of word[i] in transtab</span>
+<a name="l00095"></a>00095                 <span class="keywordflow">while</span> (j &lt; translationtab.size() &amp;&amp; words[i] != (translationtab[j].f))
+<a name="l00096"></a>00096                 {
+<a name="l00097"></a>00097                         j++;
+<a name="l00098"></a>00098                 }
+<a name="l00099"></a>00099                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> first_occ = j;
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101                 <span class="keywordflow">while</span> (!stacks[i].empty())
+<a name="l00102"></a>00102                 {
+<a name="l00103"></a>00103                         <a class="code" href="structHypothesis.html">Hypothesis</a> *prev = stacks[i].top();
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105                         <span class="comment">// make hyps for all the possible translations</span>
+<a name="l00106"></a>00106                         j = first_occ;
+<a name="l00107"></a>00107                         <span class="keywordtype">bool</span> found_at_least_one_hypo = <span class="keyword">false</span>;
+<a name="l00108"></a>00108                         <span class="keywordflow">while</span> (j &lt; translationtab.size() &amp;&amp; words[i] == (translationtab[j].f))
+<a name="l00109"></a>00109                         {
+<a name="l00110"></a>00110                                 found_at_least_one_hypo = <span class="keyword">true</span>;
+<a name="l00111"></a>00111                                 <a class="code" href="structHypothesis.html">Hypothesis</a> *h = <span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(prev, translationtab[j].relFreqF, translationtab[j].relFreqE, translationtab[j].<a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>);
+<a name="l00112"></a>00112                                 stacks[i+1].push(h);
+<a name="l00113"></a>00113                                 j++;
+<a name="l00114"></a>00114                         }
+<a name="l00115"></a>00115                         <span class="keywordflow">if</span> (!found_at_least_one_hypo)
+<a name="l00116"></a>00116                         {
+<a name="l00117"></a>00117                                 <span class="comment">// insert '(?)'</span>
+<a name="l00118"></a>00118                                 stacks[i+1].push(<span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(prev,0, 0, 0));
+<a name="l00119"></a>00119                         }
+<a name="l00120"></a>00120                         stacks[i].pop();
+<a name="l00121"></a>00121                 }
+<a name="l00122"></a>00122                 minCostsHyp = <a class="code" href="translate_8cpp.html#6deb55c3c255bb7ed92a0614d3f1ca90">pruneStack</a>(stacks[i+1]);
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124         }
+<a name="l00125"></a>00125         <span class="comment">// return best Hypothesis of the last stack</span>
+<a name="l00126"></a>00126         <span class="keywordflow">return</span> minCostsHyp;
+<a name="l00127"></a>00127 }
+<a name="l00128"></a>00128 
+<a name="l00129"></a><a class="code" href="translate_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">00129</a> <span class="keywordtype">int</span> <a class="code" href="rate__translation_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])
+<a name="l00130"></a>00130 {
+<a name="l00131"></a>00131 
+<a name="l00132"></a>00132         <span class="keywordflow">if</span> (argc &lt; 3)
+<a name="l00133"></a>00133         {
+<a name="l00134"></a>00134                 cerr &lt;&lt; <span class="stringliteral">"ERROR: not enough parameters"</span> &lt;&lt; endl &lt;&lt; <span class="stringliteral">"Usage: "</span> &lt;&lt; argv[0] &lt;&lt; <span class="stringliteral">" translation-table source-document"</span> &lt;&lt; endl;
+<a name="l00135"></a>00135                 <span class="keywordflow">return</span> 0; <span class="comment">// EXIT_FAILURE;</span>
+<a name="l00136"></a>00136         }
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138         <span class="comment">// open files</span>
+<a name="l00139"></a>00139         ifstream trans_tab(argv[1]);
+<a name="l00140"></a>00140         ifstream src_doc(argv[2]);
+<a name="l00141"></a>00141         <span class="keywordflow">if</span> (!trans_tab.good())
+<a name="l00142"></a>00142         {
+<a name="l00143"></a>00143                 cerr &lt;&lt; <span class="stringliteral">"ERROR: Opening translation table ("</span>&lt;&lt; argv[1] &lt;&lt;<span class="stringliteral">") failed."</span> &lt;&lt; endl;
+<a name="l00144"></a>00144                 <span class="keywordflow">return</span> 1; <span class="comment">// EXIT_FAILURE;</span>
+<a name="l00145"></a>00145         }
+<a name="l00146"></a>00146         <span class="keywordflow">if</span> (!src_doc.good())
+<a name="l00147"></a>00147         {
+<a name="l00148"></a>00148                 cerr &lt;&lt; <span class="stringliteral">"ERROR: Opening source document ("</span>&lt;&lt; argv[2] &lt;&lt;<span class="stringliteral">") failed."</span> &lt;&lt; endl;
+<a name="l00149"></a>00149                 <span class="keywordflow">return</span> 1; <span class="comment">// EXIT_FAILURE;</span>
+<a name="l00150"></a>00150         }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0;
+<a name="l00153"></a>00153         vector&lt;struct trans_tab_struct&gt; trans_tab_vec;
+<a name="l00154"></a>00154         trans_tab_vec.resize(<a class="code" href="constants_8h.html#8b79525b4ba1283e37c999118c5d495c">VECTOR_INIT_SIZE</a>);
+<a name="l00155"></a>00155         string line;
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157         <span class="comment">// read trans_tab into trans_tab_vec</span>
+<a name="l00158"></a>00158         <span class="keywordflow">while</span> (getline(trans_tab, line))
+<a name="l00159"></a>00159         {
+<a name="l00160"></a>00160                 <span class="keyword">struct </span><a class="code" href="structtrans__tab__struct.html">trans_tab_struct</a> current;
+<a name="l00161"></a>00161                 <span class="keywordtype">double</span> temp;
+<a name="l00162"></a>00162                 <span class="comment">// line is formatted like: &lt;double&gt; &lt;double&gt; # &lt;string&gt; # &lt;string&gt;</span>
 <a name="l00163"></a>00163 
-<a name="l00164"></a>00164                 current.<a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">f</a> = <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[3]);
+<a name="l00164"></a>00164                 vector&lt;string&gt; line_vec = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(line, <span class="stringliteral">" "</span>);
 <a name="l00165"></a>00165 
-<a name="l00166"></a>00166                 current.<a class="code" href="structtrans__tab__struct.html#7ebbbfb200adfdbb1dcb52bf2c4de267">e</a> = <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[5]);
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168                 <span class="keywordflow">if</span> (i &gt;= trans_tab_vec.size())
-<a name="l00169"></a>00169                 {
-<a name="l00170"></a>00170                         trans_tab_vec.resize(trans_tab_vec.size() + <a class="code" href="constants_8h.html#de315e78a921b53ec5e41be0fa8b73e2">VECTOR_RESIZE</a>);
-<a name="l00171"></a>00171                 }
-<a name="l00172"></a>00172                 trans_tab_vec[i] = current;
-<a name="l00173"></a>00173                 <span class="comment">// cout &lt;&lt; f.getWord(current.f) &lt;&lt; " " &lt;&lt; current.relFreqF &lt;&lt; endl;</span>
-<a name="l00174"></a>00174                 i++;
-<a name="l00175"></a>00175         }
-<a name="l00176"></a>00176         trans_tab_vec.resize(i);
+<a name="l00166"></a>00166                 istringstream isstrF(line_vec[0]);
+<a name="l00167"></a>00167                 isstrF &gt;&gt; temp;
+<a name="l00168"></a>00168                 current.<a class="code" href="structtrans__tab__struct.html#ca697d9046914d9c54435d215b76a373">relFreqF</a> = temp;
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170                 istringstream isstrE(line_vec[1]);
+<a name="l00171"></a>00171                 isstrE &gt;&gt; temp;
+<a name="l00172"></a>00172                 current.<a class="code" href="structtrans__tab__struct.html#45debe621fdc2e484f50f6a0ef6ae6d5">relFreqE</a> = temp;
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174                 current.<a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">f</a> = <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[3]);
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176                 current.<a class="code" href="structtrans__tab__struct.html#7ebbbfb200adfdbb1dcb52bf2c4de267">e</a> = <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[5]);
 <a name="l00177"></a>00177 
-<a name="l00178"></a>00178         <span class="comment">// translate src_doc</span>
-<a name="l00179"></a>00179         <span class="keywordflow">while</span> (getline(src_doc, line))
-<a name="l00180"></a>00180         {
-<a name="l00181"></a>00181                 vector&lt;string&gt; stringwords = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(line, <span class="stringliteral">" "</span>);
-<a name="l00182"></a>00182                 vector&lt;unsigned int&gt; words(stringwords.size(), 0);
-<a name="l00183"></a>00183 
-<a name="l00184"></a>00184                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; stringwords.size(); i++)
-<a name="l00185"></a>00185                 {
-<a name="l00186"></a>00186                         words[i] = <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">getNum</a>(stringwords[i]);
-<a name="l00187"></a>00187                 }
-<a name="l00188"></a>00188 
-<a name="l00189"></a>00189                 <a class="code" href="structHypothesis.html">Hypothesis</a>* transHyp = <a class="code" href="translate_8cpp.html#2afe039fa20aba5b2a4fa97fda46e66e">searchTranslation</a>(words, trans_tab_vec);
-<a name="l00190"></a>00190 
-<a name="l00191"></a>00191                 string translation = <span class="stringliteral">""</span>;
-<a name="l00192"></a>00192                 <span class="keywordflow">while</span> (transHyp-&gt;<a class="code" href="structHypothesis.html#828b4ad7598671f855f1732858cb3270">prevHyp</a> != NULL)
-<a name="l00193"></a>00193                 {
-<a name="l00194"></a>00194                         translation = <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">getWord</a>(transHyp-&gt;<a class="code" href="structHypothesis.html#871f882f20d352416f9a6dd2b38fc83f">trans</a>) + <span class="stringliteral">" "</span> + translation;
-<a name="l00195"></a>00195                         transHyp = transHyp-&gt;<a class="code" href="structHypothesis.html#828b4ad7598671f855f1732858cb3270">prevHyp</a>;
-<a name="l00196"></a>00196                 }
-<a name="l00197"></a>00197                 cout &lt;&lt; translation &lt;&lt; endl;
-<a name="l00198"></a>00198         }
-<a name="l00199"></a>00199 
-<a name="l00200"></a>00200         <span class="keywordflow">return</span> 0; <span class="comment">//EXIT_SUCCESS;</span>
-<a name="l00201"></a>00201 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:34 2009 for Translator by&nbsp;
+<a name="l00178"></a>00178                 <span class="keywordflow">if</span> (i &gt;= trans_tab_vec.size())
+<a name="l00179"></a>00179                 {
+<a name="l00180"></a>00180                         trans_tab_vec.resize(trans_tab_vec.size() + <a class="code" href="constants_8h.html#de315e78a921b53ec5e41be0fa8b73e2">VECTOR_RESIZE</a>);
+<a name="l00181"></a>00181                 }
+<a name="l00182"></a>00182                 trans_tab_vec[i] = current;
+<a name="l00183"></a>00183                 <span class="comment">// cout &lt;&lt; f.getWord(current.f) &lt;&lt; " " &lt;&lt; current.relFreqF &lt;&lt; endl;</span>
+<a name="l00184"></a>00184                 i++;
+<a name="l00185"></a>00185         }
+<a name="l00186"></a>00186         trans_tab_vec.resize(i);
+<a name="l00187"></a>00187 
+<a name="l00188"></a>00188         <span class="comment">// translate src_doc</span>
+<a name="l00189"></a>00189         <span class="keywordflow">while</span> (getline(src_doc, line))
+<a name="l00190"></a>00190         {
+<a name="l00191"></a>00191                 vector&lt;string&gt; stringwords = <a class="code" href="functions_8cpp.html#db745cc353cdbbf26fd3cc0f9e96ddf9">stringSplit</a>(line, <span class="stringliteral">" "</span>);
+<a name="l00192"></a>00192                 vector&lt;unsigned int&gt; words(stringwords.size(), 0);
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; stringwords.size(); i++)
+<a name="l00195"></a>00195                 {
+<a name="l00196"></a>00196                         words[i] = <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">getNum</a>(stringwords[i]);
+<a name="l00197"></a>00197                 }
+<a name="l00198"></a>00198 
+<a name="l00199"></a>00199                 <a class="code" href="structHypothesis.html">Hypothesis</a>* transHyp = <a class="code" href="translate_8cpp.html#2afe039fa20aba5b2a4fa97fda46e66e">searchTranslation</a>(words, trans_tab_vec);
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201                 string translation = <span class="stringliteral">""</span>;
+<a name="l00202"></a>00202                 <span class="keywordflow">while</span> (transHyp-&gt;<a class="code" href="structHypothesis.html#828b4ad7598671f855f1732858cb3270">prevHyp</a> != NULL)
+<a name="l00203"></a>00203                 {
+<a name="l00204"></a>00204                         translation = <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">getWord</a>(transHyp-&gt;<a class="code" href="structHypothesis.html#871f882f20d352416f9a6dd2b38fc83f">trans</a>) + <span class="stringliteral">" "</span> + translation;
+<a name="l00205"></a>00205                         transHyp = transHyp-&gt;<a class="code" href="structHypothesis.html#828b4ad7598671f855f1732858cb3270">prevHyp</a>;
+<a name="l00206"></a>00206                 }
+<a name="l00207"></a>00207                 cout &lt;&lt; translation &lt;&lt; endl;
+<a name="l00208"></a>00208         }
+<a name="l00209"></a>00209 
+<a name="l00210"></a>00210         <span class="keywordflow">return</span> 0; <span class="comment">//EXIT_SUCCESS;</span>
+<a name="l00211"></a>00211 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:25 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

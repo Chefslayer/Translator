@@ -34,21 +34,21 @@
 <a name="l00025"></a><a class="code" href="classBleu.html">00025</a> <span class="keyword">class </span><a class="code" href="classBleu.html">Bleu</a>
 <a name="l00026"></a>00026 {
 <a name="l00027"></a>00027         <span class="keyword">private</span>:
-<a name="l00028"></a><a class="code" href="classBleu.html#5c4d9939bf9c2600075a70acf34ecdf5">00028</a>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classBleu.html#5c4d9939bf9c2600075a70acf34ecdf5">transWord</a>, <a class="code" href="classBleu.html#f20490cd1f55e94ee12151af9825594d">refWord</a>;
-<a name="l00029"></a><a class="code" href="classBleu.html#ba5a7ddeb906b53f204e9f64515c7378">00029</a>                 vector&lt;unsigned int&gt; <a class="code" href="classBleu.html#ba5a7ddeb906b53f204e9f64515c7378">trans</a>, <a class="code" href="classBleu.html#4cb8a6aed3a9c6ee1129599c1f03d1a5">ref</a>;
-<a name="l00030"></a>00030         <span class="keyword">public</span>:
-<a name="l00037"></a>00037                 <a class="code" href="classBleu.html#92d87a5cf8c1df1cf33707e8544d6c74">Bleu</a>(vector&lt;unsigned int&gt; translation, vector&lt;unsigned int&gt; reference); <span class="comment">// wenn ich Referenzen benutze compiliert es nicht mehr^^</span>
-<a name="l00038"></a>00038 
-<a name="l00045"></a>00045                 <span class="keywordtype">int</span> <a class="code" href="classBleu.html#3bf5e7949229d1d8777a7719dbc04742">nGramsMatching</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n);
-<a name="l00046"></a>00046 
-<a name="l00053"></a>00053                 <span class="keywordtype">double</span> <a class="code" href="classBleu.html#290bb4e49ee0abc423f9b48dd65bb902">precision</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n);
-<a name="l00054"></a>00054 
-<a name="l00060"></a>00060                 <span class="keywordtype">double</span> <a class="code" href="classBleu.html#fce207d666414730c2429704016ce091">brevityPenalty</a>();
-<a name="l00061"></a>00061 
-<a name="l00068"></a>00068                 <span class="keywordtype">double</span> <a class="code" href="classBleu.html#63f7caa3950e160b6683d413c60e5ef9">bleuScore</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> N);
-<a name="l00069"></a>00069 };
-<a name="l00070"></a>00070 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:34 2009 for Translator by&nbsp;
+<a name="l00029"></a><a class="code" href="classBleu.html#ba5a7ddeb906b53f204e9f64515c7378">00029</a>                 vector&lt;unsigned int&gt;    <a class="code" href="classBleu.html#ba5a7ddeb906b53f204e9f64515c7378">trans</a>,
+<a name="l00031"></a>00031                                         <a class="code" href="classBleu.html#4cb8a6aed3a9c6ee1129599c1f03d1a5">ref</a>;
+<a name="l00032"></a>00032         <span class="keyword">public</span>:
+<a name="l00039"></a>00039                 <a class="code" href="classBleu.html#92d87a5cf8c1df1cf33707e8544d6c74">Bleu</a>(vector&lt;unsigned int&gt; translation, vector&lt;unsigned int&gt; reference); <span class="comment">// wenn ich Referenzen benutze compiliert es nicht mehr^^</span>
+<a name="l00040"></a>00040 
+<a name="l00047"></a>00047                 <span class="keywordtype">int</span> <a class="code" href="classBleu.html#3bf5e7949229d1d8777a7719dbc04742">nGramsMatching</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n);
+<a name="l00048"></a>00048 
+<a name="l00055"></a>00055                 <span class="keywordtype">double</span> <a class="code" href="classBleu.html#290bb4e49ee0abc423f9b48dd65bb902">precision</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> n);
+<a name="l00056"></a>00056 
+<a name="l00062"></a>00062                 <span class="keywordtype">double</span> <a class="code" href="classBleu.html#fce207d666414730c2429704016ce091">brevityPenalty</a>();
+<a name="l00063"></a>00063 
+<a name="l00070"></a>00070                 <span class="keywordtype">double</span> <a class="code" href="classBleu.html#63f7caa3950e160b6683d413c60e5ef9">bleuScore</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> N);
+<a name="l00071"></a>00071 };
+<a name="l00072"></a>00072 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:24 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

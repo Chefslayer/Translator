@@ -30,17 +30,27 @@ using namespace std;
 static Lexicon f;
 static Lexicon e;
 
-struct trans_tab_struct{
-	double relFreqF, relFreqE;
-	unsigned int f,e;
+/**
+ * holds information about a wordpair from a translation-table.
+ */
+struct trans_tab_struct
+{
+	/// relative Frequence of F
+	double	relFreqF,
+	/// relative Frequence of E
+		relFreqE;
+
+	/// word-code of the source-word
+	unsigned int	f,
+	/// word-code of the target-word
+			e;
 };
 
 /** Prunes the Stack to KEEP_N_BEST_HYPOS elements.
-*
-*   \param s reference to stack of hypthesis
-*   \return reference to best Hypothesis in s
-*/
-
+ *
+ *   \param s reference to stack of hypthesis
+ *   \return reference to best Hypothesis in s
+ */
 Hypothesis* pruneStack(stack < Hypothesis* > &s)
 {
 	vector<Hypothesis*> v;
@@ -63,12 +73,12 @@ Hypothesis* pruneStack(stack < Hypothesis* > &s)
 }
 
 /**
-* searches a translation for a given line of text.
-*
-* \param words a vector of words which will be translatet
-* \param translationtab table of translations
-* \return best Hypothesis
-*/
+ * searches a translation for a given line of text.
+ *
+ * \param words a vector of words which will be translatet
+ * \param translationtab table of translations
+ * \return best Hypothesis
+ */
 Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_struct>  &translationtab)
 {
 	Hypothesis* minCostsHyp;

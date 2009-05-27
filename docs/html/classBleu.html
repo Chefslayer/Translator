@@ -44,14 +44,12 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">calcs the BLEU-score for a hypothesis.  <a href="#63f7caa3950e160b6683d413c60e5ef9"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleu.html#5c4d9939bf9c2600075a70acf34ecdf5">transWord</a></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleu.html#f20490cd1f55e94ee12151af9825594d">refWord</a></td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleu.html#ba5a7ddeb906b53f204e9f64515c7378">trans</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds the words of the translation  <a href="#ba5a7ddeb906b53f204e9f64515c7378"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; unsigned int &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBleu.html#4cb8a6aed3a9c6ee1129599c1f03d1a5">ref</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds the words of the reference  <a href="#4cb8a6aed3a9c6ee1129599c1f03d1a5"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 The <a class="el" href="classBleu.html">Bleu</a> class calculates the BLEU-Score rating for a translation. 
@@ -234,40 +232,6 @@ Referenced by <a class="el" href="rate__translation_8cpp-source.html#l00026">mai
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="5c4d9939bf9c2600075a70acf34ecdf5"></a><!-- doxytag: member="Bleu::transWord" ref="5c4d9939bf9c2600075a70acf34ecdf5" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="classBleu.html#5c4d9939bf9c2600075a70acf34ecdf5">Bleu::transWord</a><code> [private]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>
-Definition at line <a class="el" href="Bleu_8h-source.html#l00028">28</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.
-</div>
-</div><p>
-<a class="anchor" name="f20490cd1f55e94ee12151af9825594d"></a><!-- doxytag: member="Bleu::refWord" ref="f20490cd1f55e94ee12151af9825594d" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int <a class="el" href="classBleu.html#f20490cd1f55e94ee12151af9825594d">Bleu::refWord</a><code> [private]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>
-Definition at line <a class="el" href="Bleu_8h-source.html#l00028">28</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.
-</div>
-</div><p>
 <a class="anchor" name="ba5a7ddeb906b53f204e9f64515c7378"></a><!-- doxytag: member="Bleu::trans" ref="ba5a7ddeb906b53f204e9f64515c7378" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -279,6 +243,8 @@ Definition at line <a class="el" href="Bleu_8h-source.html#l00028">28</a> of fil
 </div>
 <div class="memdoc">
 
+<p>
+holds the words of the translation 
 <p>
 
 <p>
@@ -299,6 +265,8 @@ Referenced by <a class="el" href="Bleu_8cpp-source.html#l00011">Bleu()</a>, <a c
 <div class="memdoc">
 
 <p>
+holds the words of the reference 
+<p>
 
 <p>
 Definition at line <a class="el" href="Bleu_8h-source.html#l00029">29</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.
@@ -308,7 +276,7 @@ Referenced by <a class="el" href="Bleu_8cpp-source.html#l00011">Bleu()</a>, <a c
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>classes/<a class="el" href="Bleu_8h-source.html">Bleu.h</a><li>classes/<a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:35 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:27 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

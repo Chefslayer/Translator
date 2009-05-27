@@ -20,7 +20,7 @@
     <li><a href="hierarchy.html"><span>Class&nbsp;Hierarchy</span></a></li>
     <li><a href="functions.html"><span>Class&nbsp;Members</span></a></li>
   </ul></div>
-<h1>Hypothesis Struct Reference</h1><!-- doxytag: class="Hypothesis" -->inits a new <a class="el" href="structHypothesis.html">Hypothesis</a> with given values.  
+<h1>Hypothesis Struct Reference</h1><!-- doxytag: class="Hypothesis" -->The <a class="el" href="structHypothesis.html">Hypothesis</a> struct holds costs for a specific hypothesis for a word and a pointer to another <a class="el" href="structHypothesis.html">Hypothesis</a>, so that we're able to build a tree of hypos and to calculate a best one.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;<a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>&gt;</code>
@@ -30,29 +30,24 @@
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHypothesis.html#e546c123c9f29765c469d567f53b0a1d">Hypothesis</a> (<a class="el" href="structHypothesis.html">Hypothesis</a> *p, double fCost, double eCost, unsigned int t)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">inits a new <a class="el" href="structHypothesis.html">Hypothesis</a> with given values.  <a href="#e546c123c9f29765c469d567f53b0a1d"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structHypothesis.html">Hypothesis</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHypothesis.html#828b4ad7598671f855f1732858cb3270">prevHyp</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">pointer to the previous <a class="el" href="structHypothesis.html">Hypothesis</a> (which is in the last stack).  <a href="#828b4ad7598671f855f1732858cb3270"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHypothesis.html#adf66ec9f77b99444a6fd03baf024982">costs</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds all costs to get to this hypothesis, costs[0] accumulates the fCosts and costs[1] the eCosts.  <a href="#adf66ec9f77b99444a6fd03baf024982"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structHypothesis.html#871f882f20d352416f9a6dd2b38fc83f">trans</a></td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">holds the code for the word that this hypothesis is for.  <a href="#871f882f20d352416f9a6dd2b38fc83f"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-inits a new <a class="el" href="structHypothesis.html">Hypothesis</a> with given values. 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>reference to the previous <a class="el" href="structHypothesis.html">Hypothesis</a> in a translation-process </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>c</em>&nbsp;</td><td>costs for this <a class="el" href="structHypothesis.html">Hypothesis</a> </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>word in the target lang / translation </td></tr>
-  </table>
-</dl>
-
+The <a class="el" href="structHypothesis.html">Hypothesis</a> struct holds costs for a specific hypothesis for a word and a pointer to another <a class="el" href="structHypothesis.html">Hypothesis</a>, so that we're able to build a tree of hypos and to calculate a best one. 
 <p>
 
 <p>
-Definition at line <a class="el" href="hypothesis_8h-source.html#l00025">25</a> of file <a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>.<hr><h2>Constructor &amp; Destructor Documentation</h2>
+Definition at line <a class="el" href="hypothesis_8h-source.html#l00020">20</a> of file <a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>.<hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="e546c123c9f29765c469d567f53b0a1d"></a><!-- doxytag: member="Hypothesis::Hypothesis" ref="e546c123c9f29765c469d567f53b0a1d" args="(Hypothesis *p, double fCost, double eCost, unsigned int t)" -->
 <div class="memitem">
 <div class="memproto">
@@ -91,11 +86,20 @@ Definition at line <a class="el" href="hypothesis_8h-source.html#l00025">25</a> 
 <div class="memdoc">
 
 <p>
+inits a new <a class="el" href="structHypothesis.html">Hypothesis</a> with given values. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>p</em>&nbsp;</td><td>reference to the previous <a class="el" href="structHypothesis.html">Hypothesis</a> in a translation-process </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>c</em>&nbsp;</td><td>costs for this <a class="el" href="structHypothesis.html">Hypothesis</a> </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>word in the target lang / translation </td></tr>
+  </table>
+</dl>
 
 <p>
 Definition at line <a class="el" href="hypothesis_8cpp-source.html#l00006">6</a> of file <a class="el" href="hypothesis_8cpp-source.html">hypothesis.cpp</a>.
 <p>
-References <a class="el" href="hypothesis_8h-source.html#l00028">costs</a>, <a class="el" href="hypothesis_8h-source.html#l00027">prevHyp</a>, and <a class="el" href="hypothesis_8h-source.html#l00029">trans</a>.
+References <a class="el" href="hypothesis_8h-source.html#l00026">costs</a>, <a class="el" href="hypothesis_8h-source.html#l00023">prevHyp</a>, and <a class="el" href="hypothesis_8h-source.html#l00029">trans</a>.
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -111,9 +115,11 @@ References <a class="el" href="hypothesis_8h-source.html#l00028">costs</a>, <a c
 <div class="memdoc">
 
 <p>
+pointer to the previous <a class="el" href="structHypothesis.html">Hypothesis</a> (which is in the last stack). 
+<p>
 
 <p>
-Definition at line <a class="el" href="hypothesis_8h-source.html#l00027">27</a> of file <a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>.
+Definition at line <a class="el" href="hypothesis_8h-source.html#l00023">23</a> of file <a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>.
 <p>
 Referenced by <a class="el" href="hypothesis_8cpp-source.html#l00006">Hypothesis()</a>, and <a class="el" href="hypTest_8cpp-source.html#l00007">main()</a>.
 </div>
@@ -130,9 +136,11 @@ Referenced by <a class="el" href="hypothesis_8cpp-source.html#l00006">Hypothesis
 <div class="memdoc">
 
 <p>
+holds all costs to get to this hypothesis, costs[0] accumulates the fCosts and costs[1] the eCosts. 
+<p>
 
 <p>
-Definition at line <a class="el" href="hypothesis_8h-source.html#l00028">28</a> of file <a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>.
+Definition at line <a class="el" href="hypothesis_8h-source.html#l00026">26</a> of file <a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>.
 <p>
 Referenced by <a class="el" href="hypothesis_8cpp-source.html#l00022">cmp_Hyp()</a>, and <a class="el" href="hypothesis_8cpp-source.html#l00006">Hypothesis()</a>.
 </div>
@@ -149,6 +157,8 @@ Referenced by <a class="el" href="hypothesis_8cpp-source.html#l00022">cmp_Hyp()<
 <div class="memdoc">
 
 <p>
+holds the code for the word that this hypothesis is for. 
+<p>
 
 <p>
 Definition at line <a class="el" href="hypothesis_8h-source.html#l00029">29</a> of file <a class="el" href="hypothesis_8h-source.html">hypothesis.h</a>.
@@ -158,7 +168,7 @@ Referenced by <a class="el" href="hypothesis_8cpp-source.html#l00006">Hypothesis
 </div><p>
 <hr>The documentation for this struct was generated from the following files:<ul>
 <li>includes/<a class="el" href="hypothesis_8h-source.html">hypothesis.h</a><li>includes/<a class="el" href="hypothesis_8cpp-source.html">hypothesis.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:15:35 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:50:27 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

@@ -25,8 +25,10 @@ using namespace std;
 class Bleu
 {
 	private:
-		unsigned int transWord, refWord;
-		vector<unsigned int> trans, ref;
+		/// holds the words of the translation
+		vector<unsigned int>	trans,
+		/// holds the words of the reference
+					ref;
 	public:
 		/**
 		 * Constructor sets up the initial values.

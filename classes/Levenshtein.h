@@ -21,8 +21,13 @@ using namespace std;
  */
 class Levenshtein{
 	private:
+		/// holds the path-matrix
 		vector<vector<unsigned int> > matrix;
-		vector<unsigned int> trans_v, ref_v;
+
+		/// holds the words of the translation
+		vector<unsigned int>	trans_v,
+		/// holds the words of the reference
+					ref_v;
 	public:
 		/**
 		 * Constructor inits and fills the distance-matrix.

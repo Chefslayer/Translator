@@ -21,6 +21,7 @@ using namespace std;
 class SingleCount
 {
 	private:
+		/// counts and holds the occurrences of a word(-code)
 		vector<unsigned int> wordcounts;
 	public:
 		/**

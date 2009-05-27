@@ -22,7 +22,10 @@ using namespace std;
 class PairCount
 {
 	private:
+		/// holds and counts the occurrences of the wordpairs
 		map<pair<unsigned int, unsigned int>, unsigned int> pairCounts;
+
+		/// map-iterator used to walk through the map in the functions begin(), next(), isEnd()
 		map<pair<unsigned int, unsigned int>, unsigned int>::iterator it;
 	public:
 		/**

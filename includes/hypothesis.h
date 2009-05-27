@@ -14,19 +14,27 @@
 #include <vector>
 
 using namespace std;
-
 /**
-* inits a new Hypothesis with given values.
-*
-* \param p reference to the previous Hypothesis in a translation-process
-* \param c costs for this Hypothesis
-* \param t word in the target lang / translation
-*/
+ * The Hypothesis struct holds costs for a specific hypothesis for a word and a pointer to another Hypothesis, so that we're able to build a tree of hypos and to calculate a best one.
+ */
 struct Hypothesis
 {
+	/// pointer to the previous Hypothesis (which is in the last stack).
 	Hypothesis *prevHyp;
+
+	/// holds all costs to get to this hypothesis, costs[0] accumulates the fCosts and costs[1] the eCosts.
 	vector<double> costs;
+
+	/// holds the code for the word that this hypothesis is for.
 	unsigned int trans;
+	
+	/**
+	* inits a new Hypothesis with given values.
+	*
+	* \param p reference to the previous Hypothesis in a translation-process
+	* \param c costs for this Hypothesis
+	* \param t word in the target lang / translation
+	*/
 	Hypothesis(Hypothesis *p,double fCost, double eCost, unsigned int t);
 };
 
