@@ -45,15 +45,15 @@ int main(int argc, char* argv[])
 		return 1; // EXIT_FAILURE;
 	}
 
-	string	trans_line,
+	string	trans_line				= "",
 		ref_line				= "";
-	double	average_levenshtein_dist,
+	double	average_levenshtein_dist		= 0,
 		average_posindependent_levenshtein_dist = 0;
 
 	// read trans and ref and calculate the ratings
 	unsigned int	sentenceCount		= 0;
 	Levenshtein*	sentence50_lev		= NULL;
-	string		sentence50_trans,
+	string		sentence50_trans	= "",
 			sentence50_ref		= "";
 
 	while (getline(trans, trans_line) && getline(ref, ref_line))
@@ -98,16 +98,19 @@ int main(int argc, char* argv[])
 		}
 	}
 
+	// Output for sentence 50:
+
 	cout	<< "\n***\n\n***\nSentence50:\nLevenshtein:\t\t" << sentence50_lev->getDistance()
-		<< "\nLevenshtein-Path:\t" << sentence50_lev->getPath()
+		<< "\nLevenshtein-Path:\t" << sentence50_lev->getPathOps()
+		<< "\n" << sentence50_lev->getPath(l)
 		<< "\n\t t: " << sentence50_trans
 		<< "\n\t r: " << sentence50_ref
 		<< endl;
 
+	// Output the avarages
 	average_levenshtein_dist		/= (double)sentenceCount;
 	average_posindependent_levenshtein_dist /= (double)sentenceCount;
 
-	// print the avarages
 	cout	<< "\n***\n\n***\naverage levenshtein distance: "     << average_levenshtein_dist
 		<< "\naverage pos.independent levenshtein distance: " << average_posindependent_levenshtein_dist
 		<< endl;

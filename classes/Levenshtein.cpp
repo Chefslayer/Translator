@@ -1,12 +1,16 @@
 #include "Levenshtein.h"
 #include <vector>
 #include <string>
-#include <iostream>
+#include "Lexicon.h"
 
 using namespace std;
 
 Levenshtein::Levenshtein(vector<unsigned int> trans, vector<unsigned int> ref)
 {
+	// init vectors
+	trans_v = trans;
+	ref_v = ref;
+
 	// init Matrix
 	matrix.resize(trans.size()+1);
 
@@ -49,7 +53,36 @@ unsigned int Levenshtein::getDistance()
 	return matrix[i][j];
 }
 
-string Levenshtein::getPath()
+string Levenshtein::getPath(Lexicon &lex)
+{
+	string path_ops = this->getPathOps();
+
+	string path = "";
+	unsigned int trans_counter = 0, ref_counter = 0;
+
+	for (unsigned int i=0; i<path_ops.size(); i++)
+	{
+		switch (path_ops[i])
+		{
+			case 'm':
+				path += "(m:"+lex.getWord(trans_v[trans_counter])+")";
+				trans_counter++;
+				ref_counter++;
+				break;
+			case 'i':
+				path += "(i:"+lex.getWord(ref_v[ref_counter])+")";
+				ref_counter++;
+				break;
+			case 'd':
+				path += "(d:"+lex.getWord(trans_v[trans_counter])+")";
+				trans_counter++;
+				break;
+		}
+	}
+	return path;
+}
+
+string Levenshtein::getPathOps()
 {
 	unsigned int i=matrix.size()-1;
 	unsigned int j=matrix[0].size()-1;
