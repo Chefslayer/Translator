@@ -93,7 +93,9 @@ double Bleu::bleuScore(unsigned int N)
 	
 	for (unsigned int i=1; i<=maxN; i++)
 	{
-		akku *= precision(i);
+		double p = precision(i);
+		if (p>0)
+			akku *= p;
 	}
 	if (akku<=0)
 		return 0;
