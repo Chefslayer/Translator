@@ -51,13 +51,6 @@ int Bleu::nGramsMatching(unsigned int n)
 double Bleu::precision(unsigned int n)
 {
 	int nGrams = trans.size() + 1 - n;
-	// we dont expect nGrams<=0 here, since we're not going to calc the precisions if there are no ngrams for this n
-	/*if ( nGrams <= 0)
-	{
-		// was wenn nGrams < 0 ?
-		cerr << "Bleu::precision: Division durch 0." << endl;
-		return 1;
-	}*/
 	return (double)nGramsMatching(n)/(double)nGrams;
 }
 
