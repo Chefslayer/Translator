@@ -98,8 +98,9 @@ int main(int argc, char* argv[])
 		}
 		else
 		{
-		delete current_bleu;
-		delete current_lev;
+			delete current_posindependent_lev;
+			delete current_bleu;
+			delete current_lev;
 		}
 	}
 

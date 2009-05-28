@@ -11,9 +11,10 @@
 #ifndef __BLEU_H__
 #define __BLEU_H__
 
-#include <string>
+#include <iostream>
 #include <vector>
 #include <math.h>
+#include <algorithm>
 #include "../includes/functions.h"
 
 using namespace std;

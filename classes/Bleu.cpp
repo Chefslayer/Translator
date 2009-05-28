@@ -1,9 +1,8 @@
+#include "Bleu.h"
 #include <iostream>
-#include <string>
 #include <vector>
 #include <math.h>
 #include <algorithm>
-#include "Bleu.h"
 #include "../includes/functions.h"
 
 using namespace std;
