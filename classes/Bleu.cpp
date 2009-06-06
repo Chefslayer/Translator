@@ -82,7 +82,7 @@ double Bleu::bleuScore(unsigned int N)
 	double akku = 1.0;
 
 	// maybe there are less words in the trans or ref than we would try to get n-grams for.. so we search for the maximum N we can use here.
-	unsigned int maxN = min(min(N, trans.size()-1), ref.size()-1);
+	unsigned int maxN = min((unsigned int)min(N, (unsigned int)trans.size()-1), (unsigned int)ref.size()-1);
 	
 	for (unsigned int i=1; i<=maxN; i++)
 	{
