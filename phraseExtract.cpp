@@ -21,8 +21,9 @@
 #include "includes/constants.h"
 #include "lib/gzstream.h"
 #include "classes/Lexicon.h"
-#include "classes/SingleCount.h"
-#include "classes/PairCount.h"
+#include "classes/Tree.h"
+#include "includes/PhrasePair.h"
+#include "classes/Alignment.h"
 #include "includes/output.h"
 
 using namespace std;
@@ -30,7 +31,7 @@ using namespace std;
 static Lexicon f;
 static Lexicon e;
 
-int main(int argc, char* argv[])
+int main(int argc, char** argv)
 {
 	if (argc < 4)
 	{
@@ -38,19 +39,9 @@ int main(int argc, char* argv[])
 		return 0; // EXIT_FAILURE;
 	}
 
-	vector<unsigned int> srcWords;
-	vector<unsigned int> destWords;
-	string srcLine, destLine word;
-	
-	// variables hold all data
-	Tree phrasesF;
-	Tree phrasesE;
-	Tree phrasepairs;
-	
 	// open files
 	ifstream src(argv[1]);
 	ifstream dest(argv[2]);
-	igzstream alig(argv[3]);
 
 	if (!src.good())
 	{
@@ -64,44 +55,70 @@ int main(int argc, char* argv[])
 		return 0; // EXIT_FAILURE;
 	}
 
-	if (!alig.good())
+	// variables holding all data
+
+	/// holds the Alignment and finds all valid phrases etc..
+	Alignment* aligObj;
+	try
+	{
+		aligObj = new Alignment(argv[3]);
+	}
+	catch (bool openFileFail)
 	{
 		cerr << "ERROR: Opening alignment ("<< argv[3] <<") failed."  << endl;
 		return 0; // EXIT_FAILURE;
 	}
 
-	Alignment* aligObj = new Alignment(alig, f, e);
+	/// src-lang phrase count (prefixtree of words) - initialized with the 0-word as root
+	Tree<unsigned int> *phrasesF = new Tree<unsigned int>(0);
+
+	/// target-lang phrase count (prefixtree of words) - initialized with the 0-word as root
+	Tree<unsigned int> *phrasesE = new Tree<unsigned int>(0);
+
+	/// phrasepair count (prefixtree of prefixtrees) - initialized with a Tree as root which is initialized with the 0-word as root
+	Tree<unsigned int>* rootTree = new Tree<unsigned int>(0);	
+	rootTree->isRootOfAnOtherTree(1);
+	Tree<Tree<unsigned int>* >* phrasePairs = new Tree<Tree<unsigned int>* >(rootTree);
+
+	vector<unsigned int> srcWords;
+	vector<unsigned int> destWords;
+	string srcLine, destLine;
 
 	// get src and dest lines
 	while (getline(src,srcLine) && getline(dest,destLine))
 	{
 		//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
-		srcWords = f.insertSentence(srcLine, &singlesF);
-		destWords = e.insertSentence(destLine, &singlesE);
+		srcWords = f.insertSentence(srcLine);
+		destWords = e.insertSentence(destLine);
 
 		// init the alignment for these sentences
 		aligObj->nextSentence(srcLine.size(), destLine.size());
 
 		// get phrases
-		unsigned int i1=i2=0;
-		for (unsigned int j1 = 0; j1<src.length(); j1++)
+		unsigned int i1=0,i2=0;
+		for (unsigned int j1 = 0; j1<srcLine.size(); j1++)
 		{
-			for (unsigned int j2 = i1; j2<src.length(); j2++)
+			for (unsigned int j2 = i1; j2<srcLine.size(); j2++)
 			{
 				i1 = aligObj->getMinTargetAlig(j1, j2);
 				i2 = aligObj->getMaxTargetAlig(j1, j2);
 				if (aligObj->getMinSrcAlig(i1, i2) == j1 && aligObj->getMaxSrcAlig(i1, i2) == j2)
 				{
-					/* TODO: output in alle 3 trees einfügen.
-					 * 1. tree = phrasesF - src-lang phrasen count (präfixbaum)
-					 * 2. tree = phrasesE - target-lang phrasen count (präfixbaum)
-					 * 3. tree = phrasepairs - phrasenpaare count (präfixbaum von präfixbäumen)
-					 */
-					aligObj->outputPhrase(j1, j2, i1, i2)
+					PhrasePair* p = aligObj->outputPhrase(j1, j2, i1, i2);
+
+					// put phrase in source-lang-obj
+					phrasesF->insert(p->src);
+
+					// put phrase in target-lang-obj
+					phrasesE->insert(p->target);
+
+					// count phrasePair
+					phrasePairs->insert(p);
 				}
 			}
 		}
 	}
-	// TODO output
+	// TODO showFreqPhrases.. siehe includes/output.h/cpp
+	showFreqPhrases();
 	return 0; //EXIT_SUCCESS;
 }

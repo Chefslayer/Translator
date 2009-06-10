@@ -18,3 +18,8 @@ void showFreq( PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, L
 	cout << relFreq_f << " " << relFreq_e << " # " << f.getWord(wordpair.first) << " # " << e.getWord(wordpair.second) << endl;
  	}
 }
+
+void showFreqPhrases()
+{
+	// TODO
+}

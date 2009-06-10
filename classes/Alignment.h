@@ -12,6 +12,9 @@
 #define __ALIGNMENT_H__
 
 #include <vector>
+#include <string>
+#include "../lib/gzstream.h"
+#include "../includes/PhrasePair.h"
 
 using namespace std;
 
@@ -25,33 +28,34 @@ class Alignment
 		vector<vector<bool> > matrix;
 
 		/// current sentence
-		unsigned int sentenceNum = 0;
-
-		/// Lexicon for the words of the source language
-		Lexicon*	f,
-		/// Lexicon for the words of the target language
-				e;
+		unsigned int sentenceNum;
 	public:
-
 		/// the file with the alignment
-		igzstream file;
+		char* fileName;
 
-		/// Constructor inits the class
-		Alignment(igzstream file);
+		/// the file-stream with the alignment
+		igzstream* file;
+
+		/** Constructor inits the class
+		 *
+		 * \param fileName the alignment file
+		 * \throws bool openFileFail if the file cannot be opened
+		 */
+		Alignment(char* fileName);
 
 		/** sets up the class for for the next sentence
 		 *
 		 * \param srcLength length of the source-sentence
 		 * \param targetLength length of the target-sentence
 		 */
-		nextSentence(unsigned int srcLength, unsigned int targetLength);
+		void nextSentence(unsigned int srcLength, unsigned int targetLength);
 
 		/** inits the matrix
 		 *
 		 * \param srcLength length of the source-sentence
 		 * \param targetLength length of the target-sentence
 		 */
-		initMatrix(unsigned int srcLength, unsigned int targetLength);
+		void initMatrix(unsigned int srcLength, unsigned int targetLength);
 
 		/** first aligned word in target lang.
 		 *
@@ -91,12 +95,8 @@ class Alignment
 		 * \param j2 second pointer in source sentence
 		 * \param i1 first pointer in target sentence
 		 * \param i2 second pointer in target sentence
-		 * \return a vector of words. seperator element is 0.
-		 *	example:
-		 *	v[0]=871, v[1]=831,
-		 *	v[2]=0,
-		 *	v[3]=11, v[4]=134
+		 * \return a PhrasePair which contains the words of the phrase in src and target lang
 		 */
-		vector<unsigned int> outputPhrase(unsigned int j1, unsigned int j2, unsigned int i1, unsigned int i2);
+		PhrasePair* outputPhrase(unsigned int j1, unsigned int j2, unsigned int i1, unsigned int i2);
 };
 #endif
