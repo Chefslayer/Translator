@@ -23,12 +23,12 @@ template <class T> class Node
 {
 	public:
 		/// all child Nodes
-		vector<Node<T>*> childNodes;
+		vector<Node<T>* > childNodes;
 
 		/// the count for this word
 		unsigned int count;
 
-		/// the word of a phrase or a prefix-tree
+		/// the word of a phrase (unsigned int) or a prefix-tree (NodeOfTrees)
 		T value;
 
 		/// Constructor to create a new Node
@@ -63,37 +63,38 @@ template <class T> class Tree
 		/// for trees of trees you can define if this tree is the root tree, initialized with 0
 		bool rootNode;
 	public:
-		/** inits a new Tree and creates the root node with the given value
+		/** inits a new Tree and creates the root node with the given value.
 		 *
 		 * \param value the root-value
 		 */
 		Tree(T value);
 
-		/** sets the rootNode attribute to the given value
+		/** sets the rootNode attribute to the given value.
 		 *
 		 * \param val the value which the rootNode attribute is setted to
 		 */
 		void isRootOfAnOtherTree(bool val);
 
-		/** gets the value of the rootNode attribute
+		/** gets the value of the rootNode attribute.
 		 *
 		 * \param return the value of the rootNode attribute
 		 */
 		bool isRootOfAnOtherTree();
 
-		/** gets the root Node
+		/** gets the root Node.
 		 *
 		 * \param return the root Node
 		 */
 		Node<T>* getRoot();
 
-		/** inserts a vector of words in the tree
+		/** inserts a vector of T-values in the tree.
 		 *
-		 * \param words a vector of words that are inserted
+		 * \param values a vector of T-values which are inserted
+		 * \return reference to the node with the last value
 		 */
-		void insert(vector<unsigned int> &words);
+		Node<T>* insert(vector<T> &values);
 
-		/** inserts a phrasePair in the tree of prefixtrees and counts the occurrences of it
+		/** inserts a phrasePair in the tree of prefixtrees and counts the occurrences of it.
 		 *
 		 * \param p src-target-phrase pair
 		 */

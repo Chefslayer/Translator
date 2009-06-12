@@ -1,5 +1,8 @@
 #include "Tree.h"
+c#include <string>
 #include <vector>
+#include "../includes/PhrasePair.h"
+#include "../includes/NodeOfTrees.h"
 
 using namespace std;
 
@@ -11,11 +14,24 @@ template <class T> Node<T>::Node(T value)
 
 template <class T> unsigned int Node<T>::hasChildNode(T value)
 {
-	for (unsigned int i=0; i<childNodes.size(); i++)
+	// check T, caus for T = NodeOfTrees* we don't want to compare the pointers, but the objects
+	if ( (string)typeid(value).name() == "P11NodeOfTrees")
 	{
-		if (childNodes[i]->value == value)
-			return i;
+		for (unsigned int i=0; i<childNodes.size(); i++)
+		{
+			if (*(NodeOfTrees*)childNodes[i]->value == *(NodeOfTrees*)value)
+				return i;
+		}
 	}
+	else
+	{
+		for (unsigned int i=0; i<childNodes.size(); i++)
+		{
+			 if (childNodes[i]->value == value)
+				return i;
+		}
+	}
+
 	// we did not found a node with the given value -> throw nodeDoesNotOccur exception
 	throw (bool)1;
 }
@@ -59,16 +75,29 @@ template <class T> Node<T>* Tree<T>::getRoot()
 	return root;
 }
 
-template <class T> void Tree<T>::insert(vector<unsigned int> &words)
+template <class T> Node<T>* Tree<T>::insert(vector<T> &values)
 {
-	Node<unsigned int>* n = root;
-	for (unsigned int i=0; i<words.size(); i++)
+	Node<T>* n = root;
+	for (unsigned int i=0; i<values.size(); i++)
 	{
-		n = n->insertChildNode(words[i]);
+		n = n->insertChildNode(values[i]);
 	}
+	return n;
 }
 
 template <class T> void Tree<T>::insert(PhrasePair* p)
 {
-	// TODO
+	// transform src-words into src-NodeOfTrees
+	vector<NodeOfTrees*> src;
+	src.resize(p->src.size());
+	for (unsigned int i=0; i<p->src.size(); i++)
+	{
+		src[i] = new NodeOfTrees(p->src[i], new Tree<unsigned int>(0));
+	}
+
+	// insert/increment src-path
+	Node<T>* lastNode = this->insert(src);
+
+	// concat target-path to the src-paths-last-node
+	lastNode->value->tree->insert(p->target);
 }

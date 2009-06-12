@@ -21,9 +21,10 @@
 #include "includes/constants.h"
 #include "lib/gzstream.h"
 #include "classes/Lexicon.h"
-#include "classes/Tree.h"
-#include "includes/PhrasePair.h"
+#include "classes/Tree.cpp"
 #include "classes/Alignment.h"
+#include "includes/PhrasePair.h"
+#include "includes/NodeOfTrees.h"
 #include "includes/output.h"
 
 using namespace std;
@@ -76,9 +77,11 @@ int main(int argc, char** argv)
 	Tree<unsigned int> *phrasesE = new Tree<unsigned int>(0);
 
 	/// phrasepair count (prefixtree of prefixtrees) - initialized with a Tree as root which is initialized with the 0-word as root
-	Tree<unsigned int>* rootTree = new Tree<unsigned int>(0);	
+/*	Tree<unsigned int>* rootTree = new Tree<unsigned int>(0);	
 	rootTree->isRootOfAnOtherTree(1);
 	Tree<Tree<unsigned int>* >* phrasePairs = new Tree<Tree<unsigned int>* >(rootTree);
+*/
+	Tree<NodeOfTrees*>* phrasePairs = new Tree<NodeOfTrees*>(new NodeOfTrees(0, NULL));
 
 	vector<unsigned int> srcWords;
 	vector<unsigned int> destWords;

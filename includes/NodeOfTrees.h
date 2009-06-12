@@ -12,6 +12,7 @@
 #define NODEOFTREES_H
 
 #include <vector>
+#include "../classes/Tree.h"
 
 using namespace std;
 
@@ -20,8 +21,27 @@ using namespace std;
  */
 struct NodeOfTrees
 {
+	// a word of a phrase
 	unsigned int word;
-	Tree<unsigned int> tree;
-	NodeOfTrees(unsigned int word, Tree<unsigned int> tree);
+
+	/// sub-tree
+	Tree<unsigned int>* tree;
+
+	/**
+	 * inits a new node with given values.
+	 *
+	 * \param word the word of a phrase
+	 * \param tree a sub-tree
+	 */
+	NodeOfTrees(unsigned int word, Tree<unsigned int>* tree);
+
+	/**
+	 * Operator to compare two NodeOfTrees (comparing by word).
+	 *
+	 * \param n the NodeOfTrees to compare the current one with
+	 * \return 1 if the words are equal, 0 otherwise
+	 */
+	bool operator==(NodeOfTrees n) const;
 };
+
 #endif
