@@ -3,7 +3,7 @@ I = includes/
 L = lib/
 T = test/
 
-SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Alignment.cpp $(C)Tree.cpp $(I)PhrasePair.cpp
+SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(I)NodeOfTrees.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Alignment.cpp $(C)Tree.cpp $(I)PhrasePair.cpp
 OBJ = $(SRC:%cpp=%o)
 
 CFLAGS = -g
