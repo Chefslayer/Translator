@@ -36,8 +36,8 @@
 <a name="l00027"></a>00027 
 <a name="l00028"></a>00028 <span class="keyword">using namespace </span>std;
 <a name="l00029"></a>00029 
-<a name="l00030"></a><a class="code" href="translate_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">00030</a> <span class="keyword">static</span> <a class="code" href="classLexicon.html">Lexicon</a> <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>;
-<a name="l00031"></a><a class="code" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">00031</a> <span class="keyword">static</span> <a class="code" href="classLexicon.html">Lexicon</a> <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>;
+<a name="l00030"></a><a class="code" href="translate_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">00030</a> <span class="keyword">static</span> <a class="code" href="classLexicon.html">Lexicon</a> <a class="code" href="phraseExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>;
+<a name="l00031"></a><a class="code" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">00031</a> <span class="keyword">static</span> <a class="code" href="classLexicon.html">Lexicon</a> <a class="code" href="phraseExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>;
 <a name="l00032"></a>00032 
 <a name="l00036"></a><a class="code" href="structtrans__tab__struct.html">00036</a> <span class="keyword">struct </span><a class="code" href="structtrans__tab__struct.html">trans_tab_struct</a>
 <a name="l00037"></a>00037 {
@@ -98,7 +98,7 @@
 <a name="l00108"></a>00108                         <span class="keywordflow">while</span> (j &lt; translationtab.size() &amp;&amp; words[i] == (translationtab[j].f))
 <a name="l00109"></a>00109                         {
 <a name="l00110"></a>00110                                 found_at_least_one_hypo = <span class="keyword">true</span>;
-<a name="l00111"></a>00111                                 <a class="code" href="structHypothesis.html">Hypothesis</a> *h = <span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(prev, translationtab[j].relFreqF, translationtab[j].relFreqE, translationtab[j].<a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>);
+<a name="l00111"></a>00111                                 <a class="code" href="structHypothesis.html">Hypothesis</a> *h = <span class="keyword">new</span> <a class="code" href="structHypothesis.html">Hypothesis</a>(prev, translationtab[j].relFreqF, translationtab[j].relFreqE, translationtab[j].<a class="code" href="phraseExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>);
 <a name="l00112"></a>00112                                 stacks[i+1].push(h);
 <a name="l00113"></a>00113                                 j++;
 <a name="l00114"></a>00114                         }
@@ -116,7 +116,7 @@
 <a name="l00126"></a>00126         <span class="keywordflow">return</span> minCostsHyp;
 <a name="l00127"></a>00127 }
 <a name="l00128"></a>00128 
-<a name="l00129"></a><a class="code" href="translate_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">00129</a> <span class="keywordtype">int</span> <a class="code" href="rate__translation_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])
+<a name="l00129"></a><a class="code" href="translate_8cpp.html#0ddf1224851353fc92bfbff6f499fa97">00129</a> <span class="keywordtype">int</span> <a class="code" href="phraseExtract_8cpp.html#3c04138a5bfe5d72780bb7e82a18e627">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])
 <a name="l00130"></a>00130 {
 <a name="l00131"></a>00131 
 <a name="l00132"></a>00132         <span class="keywordflow">if</span> (argc &lt; 3)
@@ -161,9 +161,9 @@
 <a name="l00171"></a>00171                 isstrE &gt;&gt; temp;
 <a name="l00172"></a>00172                 current.<a class="code" href="structtrans__tab__struct.html#45debe621fdc2e484f50f6a0ef6ae6d5">relFreqE</a> = temp;
 <a name="l00173"></a>00173 
-<a name="l00174"></a>00174                 current.<a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">f</a> = <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[3]);
+<a name="l00174"></a>00174                 current.<a class="code" href="structtrans__tab__struct.html#24d9636f7b36eda8e603164f393bf991">f</a> = <a class="code" href="phraseExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[3]);
 <a name="l00175"></a>00175 
-<a name="l00176"></a>00176                 current.<a class="code" href="structtrans__tab__struct.html#7ebbbfb200adfdbb1dcb52bf2c4de267">e</a> = <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[5]);
+<a name="l00176"></a>00176                 current.<a class="code" href="structtrans__tab__struct.html#7ebbbfb200adfdbb1dcb52bf2c4de267">e</a> = <a class="code" href="phraseExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#94a8644ac8849e1a28dcd97cc8d52c9b">insertWord</a>(line_vec[5]);
 <a name="l00177"></a>00177 
 <a name="l00178"></a>00178                 <span class="keywordflow">if</span> (i &gt;= trans_tab_vec.size())
 <a name="l00179"></a>00179                 {
@@ -183,7 +183,7 @@
 <a name="l00193"></a>00193 
 <a name="l00194"></a>00194                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0; i &lt; stringwords.size(); i++)
 <a name="l00195"></a>00195                 {
-<a name="l00196"></a>00196                         words[i] = <a class="code" href="singleWordExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">getNum</a>(stringwords[i]);
+<a name="l00196"></a>00196                         words[i] = <a class="code" href="phraseExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#883c465be0da29da675f4688d96f6c15">getNum</a>(stringwords[i]);
 <a name="l00197"></a>00197                 }
 <a name="l00198"></a>00198 
 <a name="l00199"></a>00199                 <a class="code" href="structHypothesis.html">Hypothesis</a>* transHyp = <a class="code" href="translate_8cpp.html#2afe039fa20aba5b2a4fa97fda46e66e">searchTranslation</a>(words, trans_tab_vec);
@@ -191,7 +191,7 @@
 <a name="l00201"></a>00201                 string translation = <span class="stringliteral">""</span>;
 <a name="l00202"></a>00202                 <span class="keywordflow">while</span> (transHyp-&gt;<a class="code" href="structHypothesis.html#828b4ad7598671f855f1732858cb3270">prevHyp</a> != NULL)
 <a name="l00203"></a>00203                 {
-<a name="l00204"></a>00204                         translation = <a class="code" href="singleWordExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">getWord</a>(transHyp-&gt;<a class="code" href="structHypothesis.html#871f882f20d352416f9a6dd2b38fc83f">trans</a>) + <span class="stringliteral">" "</span> + translation;
+<a name="l00204"></a>00204                         translation = <a class="code" href="phraseExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#14f8048778981831f20f6aa2713b1ebd">getWord</a>(transHyp-&gt;<a class="code" href="structHypothesis.html#871f882f20d352416f9a6dd2b38fc83f">trans</a>) + <span class="stringliteral">" "</span> + translation;
 <a name="l00205"></a>00205                         transHyp = transHyp-&gt;<a class="code" href="structHypothesis.html#828b4ad7598671f855f1732858cb3270">prevHyp</a>;
 <a name="l00206"></a>00206                 }
 <a name="l00207"></a>00207                 cout &lt;&lt; translation &lt;&lt; endl;
@@ -199,7 +199,7 @@
 <a name="l00209"></a>00209 
 <a name="l00210"></a>00210         <span class="keywordflow">return</span> 0; <span class="comment">//EXIT_SUCCESS;</span>
 <a name="l00211"></a>00211 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:55:25 2009 for Translator by&nbsp;
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Fri Jun 12 12:26:14 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

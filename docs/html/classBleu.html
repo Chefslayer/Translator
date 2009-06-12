@@ -58,7 +58,7 @@ The <a class="el" href="classBleu.html">Bleu</a> class calculates the bleuScore 
 <p>
 
 <p>
-Definition at line <a class="el" href="Bleu_8h-source.html#l00025">25</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.<hr><h2>Constructor &amp; Destructor Documentation</h2>
+Definition at line <a class="el" href="Bleu_8h-source.html#l00026">26</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.<hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="92d87a5cf8c1df1cf33707e8544d6c74"></a><!-- doxytag: member="Bleu::Bleu" ref="92d87a5cf8c1df1cf33707e8544d6c74" args="(vector&lt; unsigned int &gt; translation, vector&lt; unsigned int &gt; reference)" -->
 <div class="memitem">
 <div class="memproto">
@@ -95,9 +95,9 @@ Constructor sets up the initial values.
 </dl>
 
 <p>
-Definition at line <a class="el" href="Bleu_8cpp-source.html#l00011">11</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
+Definition at line <a class="el" href="Bleu_8cpp-source.html#l00010">10</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
 <p>
-References <a class="el" href="Bleu_8h-source.html#l00029">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00029">trans</a>.
+References <a class="el" href="Bleu_8h-source.html#l00030">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00030">trans</a>.
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
@@ -128,11 +128,11 @@ Counts all matching n-grams in the <a class="el" href="structHypothesis.html">Hy
 <dl class="return" compact><dt><b>Returns:</b></dt><dd></dd></dl>
 
 <p>
-Definition at line <a class="el" href="Bleu_8cpp-source.html#l00017">17</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
+Definition at line <a class="el" href="Bleu_8cpp-source.html#l00016">16</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
 <p>
-References <a class="el" href="Bleu_8h-source.html#l00029">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00029">trans</a>.
+References <a class="el" href="Bleu_8h-source.html#l00030">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00030">trans</a>.
 <p>
-Referenced by <a class="el" href="Bleu_8cpp-source.html#l00052">precision()</a>.
+Referenced by <a class="el" href="Bleu_8cpp-source.html#l00051">precision()</a>.
 </div>
 </div><p>
 <a class="anchor" name="290bb4e49ee0abc423f9b48dd65bb902"></a><!-- doxytag: member="Bleu::precision" ref="290bb4e49ee0abc423f9b48dd65bb902" args="(unsigned int n)" -->
@@ -162,11 +162,11 @@ calcs the precision of a <a class="el" href="structHypothesis.html">Hypothesis</
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>precision p_n </dd></dl>
 
 <p>
-Definition at line <a class="el" href="Bleu_8cpp-source.html#l00052">52</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
+Definition at line <a class="el" href="Bleu_8cpp-source.html#l00051">51</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
 <p>
-References <a class="el" href="Bleu_8cpp-source.html#l00017">nGramsMatching()</a>, and <a class="el" href="Bleu_8h-source.html#l00029">trans</a>.
+References <a class="el" href="Bleu_8cpp-source.html#l00016">nGramsMatching()</a>, and <a class="el" href="Bleu_8h-source.html#l00030">trans</a>.
 <p>
-Referenced by <a class="el" href="Bleu_8cpp-source.html#l00079">bleuScore()</a>.
+Referenced by <a class="el" href="Bleu_8cpp-source.html#l00071">bleuScore()</a>.
 </div>
 </div><p>
 <a class="anchor" name="fce207d666414730c2429704016ce091"></a><!-- doxytag: member="Bleu::brevityPenalty" ref="fce207d666414730c2429704016ce091" args="()" -->
@@ -190,11 +190,11 @@ calcs the Brevity Penalty.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>Brevity Penalty </dd></dl>
 
 <p>
-Definition at line <a class="el" href="Bleu_8cpp-source.html#l00065">65</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
+Definition at line <a class="el" href="Bleu_8cpp-source.html#l00057">57</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
 <p>
-References <a class="el" href="Bleu_8h-source.html#l00029">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00029">trans</a>.
+References <a class="el" href="Bleu_8h-source.html#l00030">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00030">trans</a>.
 <p>
-Referenced by <a class="el" href="Bleu_8cpp-source.html#l00079">bleuScore()</a>.
+Referenced by <a class="el" href="Bleu_8cpp-source.html#l00071">bleuScore()</a>.
 </div>
 </div><p>
 <a class="anchor" name="63f7caa3950e160b6683d413c60e5ef9"></a><!-- doxytag: member="Bleu::bleuScore" ref="63f7caa3950e160b6683d413c60e5ef9" args="(unsigned int N)" -->
@@ -224,9 +224,9 @@ calcs the BLEU-score for a hypothesis.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>BLEU_score </dd></dl>
 
 <p>
-Definition at line <a class="el" href="Bleu_8cpp-source.html#l00079">79</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
+Definition at line <a class="el" href="Bleu_8cpp-source.html#l00071">71</a> of file <a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a>.
 <p>
-References <a class="el" href="Bleu_8cpp-source.html#l00065">brevityPenalty()</a>, <a class="el" href="Bleu_8cpp-source.html#l00052">precision()</a>, <a class="el" href="Bleu_8h-source.html#l00029">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00029">trans</a>.
+References <a class="el" href="Bleu_8cpp-source.html#l00057">brevityPenalty()</a>, <a class="el" href="Bleu_8cpp-source.html#l00051">precision()</a>, <a class="el" href="Bleu_8h-source.html#l00030">ref</a>, and <a class="el" href="Bleu_8h-source.html#l00030">trans</a>.
 <p>
 Referenced by <a class="el" href="rate__translation_8cpp-source.html#l00026">main()</a>.
 </div>
@@ -248,9 +248,9 @@ holds the words of the translation
 <p>
 
 <p>
-Definition at line <a class="el" href="Bleu_8h-source.html#l00029">29</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.
+Definition at line <a class="el" href="Bleu_8h-source.html#l00030">30</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.
 <p>
-Referenced by <a class="el" href="Bleu_8cpp-source.html#l00011">Bleu()</a>, <a class="el" href="Bleu_8cpp-source.html#l00079">bleuScore()</a>, <a class="el" href="Bleu_8cpp-source.html#l00065">brevityPenalty()</a>, <a class="el" href="Bleu_8cpp-source.html#l00017">nGramsMatching()</a>, and <a class="el" href="Bleu_8cpp-source.html#l00052">precision()</a>.
+Referenced by <a class="el" href="Bleu_8cpp-source.html#l00010">Bleu()</a>, <a class="el" href="Bleu_8cpp-source.html#l00071">bleuScore()</a>, <a class="el" href="Bleu_8cpp-source.html#l00057">brevityPenalty()</a>, <a class="el" href="Bleu_8cpp-source.html#l00016">nGramsMatching()</a>, and <a class="el" href="Bleu_8cpp-source.html#l00051">precision()</a>.
 </div>
 </div><p>
 <a class="anchor" name="4cb8a6aed3a9c6ee1129599c1f03d1a5"></a><!-- doxytag: member="Bleu::ref" ref="4cb8a6aed3a9c6ee1129599c1f03d1a5" args="" -->
@@ -269,14 +269,14 @@ holds the words of the reference
 <p>
 
 <p>
-Definition at line <a class="el" href="Bleu_8h-source.html#l00029">29</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.
+Definition at line <a class="el" href="Bleu_8h-source.html#l00030">30</a> of file <a class="el" href="Bleu_8h-source.html">Bleu.h</a>.
 <p>
-Referenced by <a class="el" href="Bleu_8cpp-source.html#l00011">Bleu()</a>, <a class="el" href="Bleu_8cpp-source.html#l00079">bleuScore()</a>, <a class="el" href="Bleu_8cpp-source.html#l00065">brevityPenalty()</a>, and <a class="el" href="Bleu_8cpp-source.html#l00017">nGramsMatching()</a>.
+Referenced by <a class="el" href="Bleu_8cpp-source.html#l00010">Bleu()</a>, <a class="el" href="Bleu_8cpp-source.html#l00071">bleuScore()</a>, <a class="el" href="Bleu_8cpp-source.html#l00057">brevityPenalty()</a>, and <a class="el" href="Bleu_8cpp-source.html#l00016">nGramsMatching()</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>classes/<a class="el" href="Bleu_8h-source.html">Bleu.h</a><li>classes/<a class="el" href="Bleu_8cpp-source.html">Bleu.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Wed May 27 14:55:26 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Fri Jun 12 12:26:15 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>
