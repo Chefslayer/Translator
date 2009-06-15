@@ -1,8 +1,9 @@
 #include "Tree.h"
-c#include <string>
+#include <string>
 #include <vector>
 #include "../includes/PhrasePair.h"
 #include "../includes/NodeOfTrees.h"
+#include <typeinfo> 
 
 using namespace std;
 
