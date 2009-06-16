@@ -21,109 +21,100 @@
 <div class="nav">
 <a class="el" href="dir_2d19748cc2c901bc152a4a1ad8756531.html">classes</a></div>
 <h1>Tree.cpp</h1><a href="Tree_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include "<a class="code" href="Tree_8h.html">Tree.h</a>"</span>
-<a name="l00002"></a>00002 c#include &lt;string&gt;
+<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;string&gt;</span>
 <a name="l00003"></a>00003 <span class="preprocessor">#include &lt;vector&gt;</span>
 <a name="l00004"></a>00004 <span class="preprocessor">#include "../includes/PhrasePair.h"</span>
 <a name="l00005"></a>00005 <span class="preprocessor">#include "../includes/NodeOfTrees.h"</span>
-<a name="l00006"></a>00006 
-<a name="l00007"></a>00007 <span class="keyword">using namespace </span>std;
-<a name="l00008"></a>00008 
-<a name="l00009"></a><a class="code" href="classNode.html#a72a44d0679a17d33d7a6f2b41790125">00009</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html#a72a44d0679a17d33d7a6f2b41790125">Node&lt;T&gt;::Node</a>(T value)
-<a name="l00010"></a>00010 {
-<a name="l00011"></a>00011         this-&gt;value = value;
-<a name="l00012"></a>00012         this-&gt;<a class="code" href="classNode.html#4f3c6eb93ec07cc016796579c37d16ba">count</a> = 1;
-<a name="l00013"></a>00013 }
-<a name="l00014"></a>00014 
-<a name="l00015"></a><a class="code" href="classNode.html#e1ff2e90c68ed77d87445538ff8693df">00015</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classNode.html#e1ff2e90c68ed77d87445538ff8693df">Node&lt;T&gt;::hasChildNode</a>(T value)
-<a name="l00016"></a>00016 {
-<a name="l00017"></a>00017         <span class="comment">// check T, caus for T = NodeOfTrees* we don't want to compare the pointers, but the objects</span>
-<a name="l00018"></a>00018         <span class="keywordflow">if</span> ( (string)<span class="keyword">typeid</span>(value).name() == <span class="stringliteral">"P11NodeOfTrees"</span>)
-<a name="l00019"></a>00019         {
-<a name="l00020"></a>00020                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.size(); i++)
-<a name="l00021"></a>00021                 {
-<a name="l00022"></a>00022                         <span class="keywordflow">if</span> (*(<a class="code" href="structNodeOfTrees.html">NodeOfTrees</a>*)<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[i]-&gt;value == *(NodeOfTrees*)value)
-<a name="l00023"></a>00023                                 <span class="keywordflow">return</span> i;
-<a name="l00024"></a>00024                 }
-<a name="l00025"></a>00025         }
-<a name="l00026"></a>00026         <span class="keywordflow">else</span>
-<a name="l00027"></a>00027         {
-<a name="l00028"></a>00028                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.size(); i++)
-<a name="l00029"></a>00029                 {
-<a name="l00030"></a>00030                          <span class="keywordflow">if</span> (<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[i]-&gt;value == value)
-<a name="l00031"></a>00031                                 <span class="keywordflow">return</span> i;
-<a name="l00032"></a>00032                 }
-<a name="l00033"></a>00033         }
-<a name="l00034"></a>00034 
-<a name="l00035"></a>00035         <span class="comment">// we did not found a node with the given value -&gt; throw nodeDoesNotOccur exception</span>
-<a name="l00036"></a>00036         <span class="keywordflow">throw</span> (<span class="keywordtype">bool</span>)1;
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 
-<a name="l00039"></a><a class="code" href="classNode.html#fefe871f2b86fa88f5e1ef1382055c63">00039</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html">Node&lt;T&gt;</a>* <a class="code" href="classNode.html#fefe871f2b86fa88f5e1ef1382055c63">Node&lt;T&gt;::insertChildNode</a>(T value)
-<a name="l00040"></a>00040 {
-<a name="l00041"></a>00041         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pos;
-<a name="l00042"></a>00042         <span class="comment">// search if a Node with the word already exists in childNodes (if there is one -&gt; get its position)</span>
-<a name="l00043"></a>00043         <span class="keywordflow">try</span> 
-<a name="l00044"></a>00044         {
-<a name="l00045"></a>00045                 pos = this-&gt;<a class="code" href="classNode.html#e1ff2e90c68ed77d87445538ff8693df">hasChildNode</a>(value);
-<a name="l00046"></a>00046         }
-<a name="l00047"></a>00047         <span class="keywordflow">catch</span> (<span class="keywordtype">bool</span> nodeDoesNotOccur)
-<a name="l00048"></a>00048         {
-<a name="l00049"></a>00049                 <span class="comment">// node does not exist yet -&gt; create it and return the new node</span>
-<a name="l00050"></a>00050                 <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.push_back(<span class="keyword">new</span> <a class="code" href="classNode.html">Node&lt;T&gt;</a>(value));
-<a name="l00051"></a>00051                 <span class="keywordflow">return</span> <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.size()-1];
-<a name="l00052"></a>00052         }
-<a name="l00053"></a>00053         <span class="comment">// node with the given value already exists -&gt; increment count and return the node</span>
-<a name="l00054"></a>00054         <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[pos]-&gt;count++;
-<a name="l00055"></a>00055         <span class="keywordflow">return</span> <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[pos];
-<a name="l00056"></a>00056 }
-<a name="l00057"></a>00057 
-<a name="l00058"></a><a class="code" href="classTree.html#b6051019e045de033228920f6f5406b3">00058</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classTree.html#b6051019e045de033228920f6f5406b3">Tree&lt;T&gt;::Tree</a>(T value)
-<a name="l00059"></a>00059 {
-<a name="l00060"></a>00060         <a class="code" href="classTree.html#1e075fff9e3421c0ad8012efadfc2ffa">root</a> = <span class="keyword">new</span> <a class="code" href="classNode.html">Node&lt;T&gt;</a>(value);
-<a name="l00061"></a>00061 }
-<a name="l00062"></a>00062 
-<a name="l00063"></a><a class="code" href="classTree.html#3e20c9e3f80b5b913f6edffb8a0b0180">00063</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="classTree.html#39e90f90c1eeaa8b0ba1dbf86034bb48">Tree&lt;T&gt;::isRootOfAnOtherTree</a>(<span class="keywordtype">bool</span> val)
-<a name="l00064"></a>00064 {
-<a name="l00065"></a>00065         <a class="code" href="classTree.html#27c905e27e762c2a5b0a8d7ee8d879eb">rootNode</a> = val;
-<a name="l00066"></a>00066 }
-<a name="l00067"></a>00067 
-<a name="l00068"></a><a class="code" href="classTree.html#39e90f90c1eeaa8b0ba1dbf86034bb48">00068</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keywordtype">bool</span> <a class="code" href="classTree.html#39e90f90c1eeaa8b0ba1dbf86034bb48">Tree&lt;T&gt;::isRootOfAnOtherTree</a>()
-<a name="l00069"></a>00069 {
-<a name="l00070"></a>00070         <span class="keywordflow">return</span> <a class="code" href="classTree.html#27c905e27e762c2a5b0a8d7ee8d879eb">rootNode</a>;
-<a name="l00071"></a>00071 }
-<a name="l00072"></a>00072 
-<a name="l00073"></a><a class="code" href="classTree.html#1a488ab2e813184aad2ea2aed202891d">00073</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html">Node&lt;T&gt;</a>* <a class="code" href="classTree.html#1a488ab2e813184aad2ea2aed202891d">Tree&lt;T&gt;::getRoot</a>()
-<a name="l00074"></a>00074 {
-<a name="l00075"></a>00075         <span class="keywordflow">return</span> <a class="code" href="classTree.html#1e075fff9e3421c0ad8012efadfc2ffa">root</a>;
-<a name="l00076"></a>00076 }
-<a name="l00077"></a>00077 
-<a name="l00078"></a><a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">00078</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html">Node&lt;T&gt;</a>* <a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">Tree&lt;T&gt;::insert</a>(vector&lt;T&gt; &amp;values)
-<a name="l00079"></a>00079 {
-<a name="l00080"></a>00080         <a class="code" href="classNode.html">Node&lt;T&gt;</a>* n = <a class="code" href="classTree.html#1e075fff9e3421c0ad8012efadfc2ffa">root</a>;
-<a name="l00081"></a>00081         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;values.size(); i++)
-<a name="l00082"></a>00082         {
-<a name="l00083"></a>00083                 n = n-&gt;<a class="code" href="classNode.html#fefe871f2b86fa88f5e1ef1382055c63">insertChildNode</a>(values[i]);
-<a name="l00084"></a>00084         }
-<a name="l00085"></a>00085         <span class="keywordflow">return</span> n;
-<a name="l00086"></a>00086 }
-<a name="l00087"></a>00087 
-<a name="l00088"></a><a class="code" href="classTree.html#ba061cc1f66e174ae510805a30b003ea">00088</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">Tree&lt;T&gt;::insert</a>(<a class="code" href="structPhrasePair.html">PhrasePair</a>* p)
-<a name="l00089"></a>00089 {
-<a name="l00090"></a>00090         <span class="comment">// transform src-words into src-NodeOfTrees</span>
-<a name="l00091"></a>00091         vector&lt;NodeOfTrees*&gt; src;
-<a name="l00092"></a>00092         src.resize(p-&gt;<a class="code" href="structPhrasePair.html#d9a525367ba04892d4f757e8169857f7">src</a>.size());
-<a name="l00093"></a>00093         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;p-&gt;<a class="code" href="structPhrasePair.html#d9a525367ba04892d4f757e8169857f7">src</a>.size(); i++)
-<a name="l00094"></a>00094         {
-<a name="l00095"></a>00095                 src[i] = <span class="keyword">new</span> <a class="code" href="structNodeOfTrees.html">NodeOfTrees</a>(p-&gt;<a class="code" href="structPhrasePair.html#d9a525367ba04892d4f757e8169857f7">src</a>[i], <span class="keyword">new</span> <a class="code" href="classTree.html">Tree&lt;unsigned int&gt;</a>(0));
-<a name="l00096"></a>00096         }
-<a name="l00097"></a>00097 
-<a name="l00098"></a>00098         <span class="comment">// insert/increment src-path</span>
-<a name="l00099"></a>00099         <a class="code" href="classNode.html">Node&lt;T&gt;</a>* lastNode = this-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(src);
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101         <span class="comment">// concat target-path to the src-paths-last-node</span>
-<a name="l00102"></a>00102         lastNode-&gt;<a class="code" href="classNode.html#01b9071c0de774c720b64583262d1559">value</a>-&gt;tree-&gt;insert(p-&gt;<a class="code" href="structPhrasePair.html#56f510c2560cebb05678d53376194283">target</a>);
-<a name="l00103"></a>00103 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Fri Jun 12 12:26:14 2009 for Translator by&nbsp;
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;typeinfo&gt;</span> 
+<a name="l00007"></a>00007 
+<a name="l00008"></a>00008 <span class="keyword">using namespace </span>std;
+<a name="l00009"></a>00009 
+<a name="l00010"></a><a class="code" href="classNode.html#a72a44d0679a17d33d7a6f2b41790125">00010</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html#a72a44d0679a17d33d7a6f2b41790125">Node&lt;T&gt;::Node</a>(T value)
+<a name="l00011"></a>00011 {
+<a name="l00012"></a>00012         this-&gt;value = value;
+<a name="l00013"></a>00013         this-&gt;<a class="code" href="classNode.html#4f3c6eb93ec07cc016796579c37d16ba">count</a> = 1;
+<a name="l00014"></a>00014 }
+<a name="l00015"></a>00015 
+<a name="l00016"></a><a class="code" href="classNode.html#e1ff2e90c68ed77d87445538ff8693df">00016</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classNode.html#e1ff2e90c68ed77d87445538ff8693df">Node&lt;T&gt;::hasChildNode</a>(T value)
+<a name="l00017"></a>00017 {
+<a name="l00018"></a>00018         <span class="comment">// check T, caus for T = NodeOfTrees* we don't want to compare the pointers, but the objects</span>
+<a name="l00019"></a>00019         <span class="keywordflow">if</span> ( (string)<span class="keyword">typeid</span>(value).name() == <span class="stringliteral">"P11NodeOfTrees"</span>)
+<a name="l00020"></a>00020         {
+<a name="l00021"></a>00021                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.size(); i++)
+<a name="l00022"></a>00022                 {
+<a name="l00023"></a>00023                         <span class="keywordflow">if</span> (*(<a class="code" href="structNodeOfTrees.html">NodeOfTrees</a>*)<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[i]-&gt;value == *(NodeOfTrees*)value)
+<a name="l00024"></a>00024                                 <span class="keywordflow">return</span> i;
+<a name="l00025"></a>00025                 }
+<a name="l00026"></a>00026         }
+<a name="l00027"></a>00027         <span class="keywordflow">else</span>
+<a name="l00028"></a>00028         {
+<a name="l00029"></a>00029                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.size(); i++)
+<a name="l00030"></a>00030                 {
+<a name="l00031"></a>00031                          <span class="keywordflow">if</span> (<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[i]-&gt;value == value)
+<a name="l00032"></a>00032                                 <span class="keywordflow">return</span> i;
+<a name="l00033"></a>00033                 }
+<a name="l00034"></a>00034         }
+<a name="l00035"></a>00035 
+<a name="l00036"></a>00036         <span class="comment">// we did not found a node with the given value -&gt; throw nodeDoesNotOccur exception</span>
+<a name="l00037"></a>00037         <span class="keywordflow">throw</span> (<span class="keywordtype">bool</span>)1;
+<a name="l00038"></a>00038 }
+<a name="l00039"></a>00039 
+<a name="l00040"></a><a class="code" href="classNode.html#fefe871f2b86fa88f5e1ef1382055c63">00040</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html">Node&lt;T&gt;</a>* <a class="code" href="classNode.html#fefe871f2b86fa88f5e1ef1382055c63">Node&lt;T&gt;::insertChildNode</a>(T value)
+<a name="l00041"></a>00041 {
+<a name="l00042"></a>00042         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> pos;
+<a name="l00043"></a>00043         <span class="comment">// search if a Node with the word already exists in childNodes (if there is one -&gt; get its position)</span>
+<a name="l00044"></a>00044         <span class="keywordflow">try</span> 
+<a name="l00045"></a>00045         {
+<a name="l00046"></a>00046                 pos = this-&gt;<a class="code" href="classNode.html#e1ff2e90c68ed77d87445538ff8693df">hasChildNode</a>(value);
+<a name="l00047"></a>00047         }
+<a name="l00048"></a>00048         <span class="keywordflow">catch</span> (<span class="keywordtype">bool</span> nodeDoesNotOccur)
+<a name="l00049"></a>00049         {
+<a name="l00050"></a>00050                 <span class="comment">// node does not exist yet -&gt; create it and return the new node</span>
+<a name="l00051"></a>00051                 <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.push_back(<span class="keyword">new</span> <a class="code" href="classNode.html">Node&lt;T&gt;</a>(value));
+<a name="l00052"></a>00052                 <span class="keywordflow">return</span> <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[<a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>.size()-1];
+<a name="l00053"></a>00053         }
+<a name="l00054"></a>00054         <span class="comment">// node with the given value already exists -&gt; increment count and return the node</span>
+<a name="l00055"></a>00055         <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[pos]-&gt;count++;
+<a name="l00056"></a>00056         <span class="keywordflow">return</span> <a class="code" href="classNode.html#abfe85a36f0a4b427eb9490f222dda39">childNodes</a>[pos];
+<a name="l00057"></a>00057 }
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="classTree.html#b6051019e045de033228920f6f5406b3">00059</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classTree.html#b6051019e045de033228920f6f5406b3">Tree&lt;T&gt;::Tree</a>(T value)
+<a name="l00060"></a>00060 {
+<a name="l00061"></a>00061         <a class="code" href="classTree.html#1e075fff9e3421c0ad8012efadfc2ffa">root</a> = <span class="keyword">new</span> <a class="code" href="classNode.html">Node&lt;T&gt;</a>(value);
+<a name="l00062"></a>00062 }
+<a name="l00063"></a>00063 
+<a name="l00064"></a><a class="code" href="classTree.html#1a488ab2e813184aad2ea2aed202891d">00064</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html">Node&lt;T&gt;</a>* <a class="code" href="classTree.html#1a488ab2e813184aad2ea2aed202891d">Tree&lt;T&gt;::getRoot</a>()
+<a name="l00065"></a>00065 {
+<a name="l00066"></a>00066         <span class="keywordflow">return</span> <a class="code" href="classTree.html#1e075fff9e3421c0ad8012efadfc2ffa">root</a>;
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 
+<a name="l00069"></a><a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">00069</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <a class="code" href="classNode.html">Node&lt;T&gt;</a>* <a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">Tree&lt;T&gt;::insert</a>(vector&lt;T&gt; &amp;values)
+<a name="l00070"></a>00070 {
+<a name="l00071"></a>00071         <a class="code" href="classNode.html">Node&lt;T&gt;</a>* n = <a class="code" href="classTree.html#1e075fff9e3421c0ad8012efadfc2ffa">root</a>;
+<a name="l00072"></a>00072         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;values.size(); i++)
+<a name="l00073"></a>00073         {
+<a name="l00074"></a>00074                 n = n-&gt;<a class="code" href="classNode.html#fefe871f2b86fa88f5e1ef1382055c63">insertChildNode</a>(values[i]);
+<a name="l00075"></a>00075         }
+<a name="l00076"></a>00076         <span class="keywordflow">return</span> n;
+<a name="l00077"></a>00077 }
+<a name="l00078"></a>00078 
+<a name="l00079"></a><a class="code" href="classTree.html#ba061cc1f66e174ae510805a30b003ea">00079</a> <span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keywordtype">void</span> <a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">Tree&lt;T&gt;::insert</a>(<a class="code" href="structPhrasePair.html">PhrasePair</a>* p)
+<a name="l00080"></a>00080 {
+<a name="l00081"></a>00081         <span class="comment">// transform src-words into src-NodeOfTrees</span>
+<a name="l00082"></a>00082         vector&lt;NodeOfTrees*&gt; src;
+<a name="l00083"></a>00083         src.resize(p-&gt;<a class="code" href="structPhrasePair.html#d9a525367ba04892d4f757e8169857f7">src</a>.size());
+<a name="l00084"></a>00084         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;p-&gt;<a class="code" href="structPhrasePair.html#d9a525367ba04892d4f757e8169857f7">src</a>.size(); i++)
+<a name="l00085"></a>00085         {
+<a name="l00086"></a>00086                 src[i] = <span class="keyword">new</span> <a class="code" href="structNodeOfTrees.html">NodeOfTrees</a>(p-&gt;<a class="code" href="structPhrasePair.html#d9a525367ba04892d4f757e8169857f7">src</a>[i], <span class="keyword">new</span> <a class="code" href="classTree.html">Tree&lt;unsigned int&gt;</a>(0));
+<a name="l00087"></a>00087         }
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089         <span class="comment">// insert/increment src-path</span>
+<a name="l00090"></a>00090         <a class="code" href="classNode.html">Node&lt;T&gt;</a>* lastNode = this-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(src);
+<a name="l00091"></a>00091 
+<a name="l00092"></a>00092         <span class="comment">// concat target-path to the src-paths-last-node</span>
+<a name="l00093"></a>00093         lastNode-&gt;<a class="code" href="classNode.html#01b9071c0de774c720b64583262d1559">value</a>-&gt;tree-&gt;insert(p-&gt;<a class="code" href="structPhrasePair.html#56f510c2560cebb05678d53376194283">target</a>);
+<a name="l00094"></a>00094 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Tue Jun 16 15:51:31 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

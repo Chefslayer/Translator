@@ -34,32 +34,36 @@
 <a name="l00024"></a><a class="code" href="classAlignment.html">00024</a> <span class="keyword">class </span><a class="code" href="classAlignment.html">Alignment</a>
 <a name="l00025"></a>00025 {
 <a name="l00026"></a>00026         <span class="keyword">private</span>:
-<a name="l00028"></a><a class="code" href="classAlignment.html#787916f44ec67bb653ff2362646f59fc">00028</a>                 vector&lt;vector&lt;bool&gt; &gt; <a class="code" href="classAlignment.html#787916f44ec67bb653ff2362646f59fc">matrix</a>;
+<a name="l00028"></a><a class="code" href="classAlignment.html#50cd4c5a5a3d3f74db40d74353c7eca7">00028</a>                 vector&lt;unsigned int&gt; <a class="code" href="classAlignment.html#50cd4c5a5a3d3f74db40d74353c7eca7">srcVec</a>;
 <a name="l00029"></a>00029 
-<a name="l00031"></a><a class="code" href="classAlignment.html#dc765ac3fde0cf7d88a92297ab138e38">00031</a>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#dc765ac3fde0cf7d88a92297ab138e38">sentenceNum</a>;
-<a name="l00032"></a>00032         <span class="keyword">public</span>:
-<a name="l00034"></a><a class="code" href="classAlignment.html#3555aa5b4eae2835a4f96646a7d59b5f">00034</a>                 <span class="keywordtype">char</span>* <a class="code" href="classAlignment.html#3555aa5b4eae2835a4f96646a7d59b5f">fileName</a>;
+<a name="l00031"></a><a class="code" href="classAlignment.html#1951dd08fd39e0c2b9298f07294570f9">00031</a>                 vector&lt;unsigned int&gt; <a class="code" href="classAlignment.html#1951dd08fd39e0c2b9298f07294570f9">targetVec</a>;
+<a name="l00032"></a>00032 
+<a name="l00034"></a><a class="code" href="classAlignment.html#dc765ac3fde0cf7d88a92297ab138e38">00034</a>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#dc765ac3fde0cf7d88a92297ab138e38">sentenceNum</a>;
 <a name="l00035"></a>00035 
-<a name="l00037"></a><a class="code" href="classAlignment.html#60188df7fe0fea0a130e24df9f669f82">00037</a>                 <a class="code" href="classigzstream.html">igzstream</a>* <a class="code" href="classAlignment.html#60188df7fe0fea0a130e24df9f669f82">file</a>;
+<a name="l00037"></a><a class="code" href="classAlignment.html#195b7c64f4e2d1c3431afbaa5b699f22">00037</a>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#195b7c64f4e2d1c3431afbaa5b699f22">srcLength</a>;
 <a name="l00038"></a>00038 
-<a name="l00044"></a>00044                 <a class="code" href="classAlignment.html#336255ce5383442b6baa3c50690cf4b7">Alignment</a>(<span class="keywordtype">char</span>* <a class="code" href="classAlignment.html#3555aa5b4eae2835a4f96646a7d59b5f">fileName</a>);
-<a name="l00045"></a>00045 
-<a name="l00051"></a>00051                 <span class="keywordtype">void</span> <a class="code" href="classAlignment.html#29c2b4054bc55267cc443b01a8c01574">nextSentence</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> srcLength, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> targetLength);
-<a name="l00052"></a>00052 
-<a name="l00058"></a>00058                 <span class="keywordtype">void</span> <a class="code" href="classAlignment.html#82f836f11c98a24fcf976c7171fb35f1">initMatrix</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> srcLength, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> targetLength);
-<a name="l00059"></a>00059 
-<a name="l00066"></a>00066                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#33fe7ce73510756f8f531f5e1965e564">getMinTargetAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2);
-<a name="l00067"></a>00067 
-<a name="l00074"></a>00074                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#40da2c53037d7a30502f882b74c0dcf5">getMaxTargetAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2);
-<a name="l00075"></a>00075 
-<a name="l00082"></a>00082                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#42d6789e659443ee1087390ae7ab4bb2">getMinSrcAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i2);
-<a name="l00083"></a>00083 
-<a name="l00090"></a>00090                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#97654806a08694f60ebc684cca6a35ad">getMaxSrcAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i2);
-<a name="l00091"></a>00091 
-<a name="l00100"></a>00100                 <a class="code" href="structPhrasePair.html">PhrasePair</a>* <a class="code" href="classAlignment.html#e29598b78ce5c581a2e3aa4b107cf92f">outputPhrase</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i2);
-<a name="l00101"></a>00101 };
-<a name="l00102"></a>00102 <span class="preprocessor">#endif</span>
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Fri Jun 12 12:26:13 2009 for Translator by&nbsp;
+<a name="l00040"></a><a class="code" href="classAlignment.html#759200c251a49dbf5304adab13171387">00040</a>                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#759200c251a49dbf5304adab13171387">targetLength</a>;
+<a name="l00041"></a>00041         <span class="keyword">public</span>:
+<a name="l00043"></a><a class="code" href="classAlignment.html#3555aa5b4eae2835a4f96646a7d59b5f">00043</a>                 <span class="keywordtype">char</span>* <a class="code" href="classAlignment.html#3555aa5b4eae2835a4f96646a7d59b5f">fileName</a>;
+<a name="l00044"></a>00044 
+<a name="l00046"></a><a class="code" href="classAlignment.html#60188df7fe0fea0a130e24df9f669f82">00046</a>                 <a class="code" href="classigzstream.html">igzstream</a>* <a class="code" href="classAlignment.html#60188df7fe0fea0a130e24df9f669f82">file</a>;
+<a name="l00047"></a>00047 
+<a name="l00053"></a>00053                 <a class="code" href="classAlignment.html#336255ce5383442b6baa3c50690cf4b7">Alignment</a>(<span class="keywordtype">char</span>* <a class="code" href="classAlignment.html#3555aa5b4eae2835a4f96646a7d59b5f">fileName</a>);
+<a name="l00054"></a>00054 
+<a name="l00060"></a>00060                 <span class="keywordtype">void</span> <a class="code" href="classAlignment.html#29c2b4054bc55267cc443b01a8c01574">nextSentence</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#195b7c64f4e2d1c3431afbaa5b699f22">srcLength</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#759200c251a49dbf5304adab13171387">targetLength</a>);
+<a name="l00061"></a>00061 
+<a name="l00068"></a>00068                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#33fe7ce73510756f8f531f5e1965e564">getMinTargetAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2);
+<a name="l00069"></a>00069 
+<a name="l00076"></a>00076                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#40da2c53037d7a30502f882b74c0dcf5">getMaxTargetAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2);
+<a name="l00077"></a>00077 
+<a name="l00084"></a>00084                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#42d6789e659443ee1087390ae7ab4bb2">getMinSrcAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i2);
+<a name="l00085"></a>00085 
+<a name="l00092"></a>00092                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classAlignment.html#97654806a08694f60ebc684cca6a35ad">getMaxSrcAlig</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i2);
+<a name="l00093"></a>00093 
+<a name="l00104"></a>00104                 <a class="code" href="structPhrasePair.html">PhrasePair</a>* <a class="code" href="classAlignment.html#b7ed20bc270d79a2bbdaf55d2e68d7d0">outputPhrase</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i2, vector&lt;unsigned int&gt; &amp;srcWords, vector&lt;unsigned int&gt; &amp;targetWords);
+<a name="l00105"></a>00105 };
+<a name="l00106"></a>00106 <span class="preprocessor">#endif</span>
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Tue Jun 16 15:51:30 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

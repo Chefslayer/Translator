@@ -81,55 +81,56 @@
 <a name="l00075"></a>00075 
 <a name="l00077"></a>00077         <a class="code" href="classTree.html">Tree&lt;unsigned int&gt;</a> *phrasesE = <span class="keyword">new</span> <a class="code" href="classTree.html">Tree&lt;unsigned int&gt;</a>(0);
 <a name="l00078"></a>00078 
-<a name="l00080"></a>00080 <span class="comment">/*      Tree&lt;unsigned int&gt;* rootTree = new Tree&lt;unsigned int&gt;(0);       </span>
-<a name="l00081"></a>00081 <span class="comment">        rootTree-&gt;isRootOfAnOtherTree(1);</span>
-<a name="l00082"></a>00082 <span class="comment">        Tree&lt;Tree&lt;unsigned int&gt;* &gt;* phrasePairs = new Tree&lt;Tree&lt;unsigned int&gt;* &gt;(rootTree);</span>
-<a name="l00083"></a>00083 <span class="comment">*/</span>
-<a name="l00084"></a>00084         <a class="code" href="classTree.html">Tree&lt;NodeOfTrees*&gt;</a>* phrasePairs = <span class="keyword">new</span> <a class="code" href="classTree.html">Tree&lt;NodeOfTrees*&gt;</a>(<span class="keyword">new</span> <a class="code" href="structNodeOfTrees.html">NodeOfTrees</a>(0, NULL));
+<a name="l00080"></a>00080         <a class="code" href="classTree.html">Tree&lt;NodeOfTrees*&gt;</a>* phrasePairs = <span class="keyword">new</span> <a class="code" href="classTree.html">Tree&lt;NodeOfTrees*&gt;</a>(<span class="keyword">new</span> <a class="code" href="structNodeOfTrees.html">NodeOfTrees</a>(0, NULL));
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082         vector&lt;unsigned int&gt; srcWords;
+<a name="l00083"></a>00083         vector&lt;unsigned int&gt; destWords;
+<a name="l00084"></a>00084         string srcLine, destLine;
 <a name="l00085"></a>00085 
-<a name="l00086"></a>00086         vector&lt;unsigned int&gt; srcWords;
-<a name="l00087"></a>00087         vector&lt;unsigned int&gt; destWords;
-<a name="l00088"></a>00088         string srcLine, destLine;
-<a name="l00089"></a>00089 
-<a name="l00090"></a>00090         <span class="comment">// get src and dest lines</span>
-<a name="l00091"></a>00091         <span class="keywordflow">while</span> (getline(src,srcLine) &amp;&amp; getline(dest,destLine))
-<a name="l00092"></a>00092         {
-<a name="l00093"></a>00093                 <span class="comment">//put all words of the sentence in source language-lexicon and the value of the word into the lang-object</span>
-<a name="l00094"></a>00094                 srcWords = <a class="code" href="phraseExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(srcLine);
-<a name="l00095"></a>00095                 destWords = <a class="code" href="phraseExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(destLine);
-<a name="l00096"></a>00096 
-<a name="l00097"></a>00097                 <span class="comment">// init the alignment for these sentences</span>
-<a name="l00098"></a>00098                 aligObj-&gt;<a class="code" href="classAlignment.html#29c2b4054bc55267cc443b01a8c01574">nextSentence</a>(srcLine.size(), destLine.size());
-<a name="l00099"></a>00099 
-<a name="l00100"></a>00100                 <span class="comment">// get phrases</span>
-<a name="l00101"></a>00101                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1=0,i2=0;
-<a name="l00102"></a>00102                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1 = 0; j1&lt;srcLine.size(); j1++)
-<a name="l00103"></a>00103                 {
-<a name="l00104"></a>00104                         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2 = i1; j2&lt;srcLine.size(); j2++)
-<a name="l00105"></a>00105                         {
-<a name="l00106"></a>00106                                 i1 = aligObj-&gt;<a class="code" href="classAlignment.html#33fe7ce73510756f8f531f5e1965e564">getMinTargetAlig</a>(j1, j2);
-<a name="l00107"></a>00107                                 i2 = aligObj-&gt;<a class="code" href="classAlignment.html#40da2c53037d7a30502f882b74c0dcf5">getMaxTargetAlig</a>(j1, j2);
-<a name="l00108"></a>00108                                 <span class="keywordflow">if</span> (aligObj-&gt;<a class="code" href="classAlignment.html#42d6789e659443ee1087390ae7ab4bb2">getMinSrcAlig</a>(i1, i2) == j1 &amp;&amp; aligObj-&gt;<a class="code" href="classAlignment.html#97654806a08694f60ebc684cca6a35ad">getMaxSrcAlig</a>(i1, i2) == j2)
-<a name="l00109"></a>00109                                 {
-<a name="l00110"></a>00110                                         <a class="code" href="structPhrasePair.html">PhrasePair</a>* p = aligObj-&gt;<a class="code" href="classAlignment.html#e29598b78ce5c581a2e3aa4b107cf92f">outputPhrase</a>(j1, j2, i1, i2);
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112                                         <span class="comment">// put phrase in source-lang-obj</span>
-<a name="l00113"></a>00113                                         phrasesF-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(p-&gt;src);
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115                                         <span class="comment">// put phrase in target-lang-obj</span>
-<a name="l00116"></a>00116                                         phrasesE-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(p-&gt;target);
-<a name="l00117"></a>00117 
-<a name="l00118"></a>00118                                         <span class="comment">// count phrasePair</span>
-<a name="l00119"></a>00119                                         phrasePairs-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(p);
-<a name="l00120"></a>00120                                 }
-<a name="l00121"></a>00121                         }
-<a name="l00122"></a>00122                 }
-<a name="l00123"></a>00123         }
-<a name="l00124"></a>00124         <span class="comment">// TODO showFreqPhrases.. siehe includes/output.h/cpp</span>
-<a name="l00125"></a>00125         <a class="code" href="output_8cpp.html#5e839b67b67dec6713f6d05be20a3ab9">showFreqPhrases</a>();
-<a name="l00126"></a>00126         <span class="keywordflow">return</span> 0; <span class="comment">//EXIT_SUCCESS;</span>
-<a name="l00127"></a>00127 }
-</pre></div><hr size="1"><address style="align: right;"><small>Generated on Fri Jun 12 12:26:14 2009 for Translator by&nbsp;
+<a name="l00086"></a>00086         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> lineNr = 1;
+<a name="l00087"></a>00087         <span class="comment">// get src and dest lines</span>
+<a name="l00088"></a>00088         <span class="keywordflow">while</span> (getline(src,srcLine) &amp;&amp; getline(dest,destLine))
+<a name="l00089"></a>00089         {
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                 <span class="comment">//put all words of the sentence in source language-lexicon and the value of the word into the lang-object</span>
+<a name="l00092"></a>00092                 srcWords = <a class="code" href="phraseExtract_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(srcLine);
+<a name="l00093"></a>00093                 destWords = <a class="code" href="phraseExtract_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>.<a class="code" href="classLexicon.html#3578770e8864624a95e60d7471c9cd5f">insertSentence</a>(destLine);
+<a name="l00094"></a>00094 
+<a name="l00095"></a>00095                 <span class="comment">// init the alignment for these sentences</span>
+<a name="l00096"></a>00096                 aligObj-&gt;<a class="code" href="classAlignment.html#29c2b4054bc55267cc443b01a8c01574">nextSentence</a>(srcLine.size(), destLine.size());
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098                 <span class="comment">// get phrases</span>
+<a name="l00099"></a>00099                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i1=0,i2=0;
+<a name="l00100"></a>00100                 <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j1 = 0; j1&lt;srcLine.size(); j1++)
+<a name="l00101"></a>00101                 {
+<a name="l00102"></a>00102                         <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j2 = i1; j2&lt;srcLine.size(); j2++)
+<a name="l00103"></a>00103                         {
+<a name="l00104"></a>00104                                 i1 = aligObj-&gt;<a class="code" href="classAlignment.html#33fe7ce73510756f8f531f5e1965e564">getMinTargetAlig</a>(j1, j2);
+<a name="l00105"></a>00105                                 i2 = aligObj-&gt;<a class="code" href="classAlignment.html#40da2c53037d7a30502f882b74c0dcf5">getMaxTargetAlig</a>(j1, j2);
+<a name="l00106"></a>00106                                 <span class="keywordflow">if</span> (aligObj-&gt;<a class="code" href="classAlignment.html#42d6789e659443ee1087390ae7ab4bb2">getMinSrcAlig</a>(i1, i2) == j1 &amp;&amp; aligObj-&gt;<a class="code" href="classAlignment.html#97654806a08694f60ebc684cca6a35ad">getMaxSrcAlig</a>(i1, i2) == j2)
+<a name="l00107"></a>00107                                 {
+<a name="l00108"></a>00108                                         <a class="code" href="structPhrasePair.html">PhrasePair</a>* p = aligObj-&gt;<a class="code" href="classAlignment.html#b7ed20bc270d79a2bbdaf55d2e68d7d0">outputPhrase</a>(j1, j2, i1, i2, srcWords, destWords);
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110                                         <span class="comment">// put phrase in source-lang-obj</span>
+<a name="l00111"></a>00111                                         phrasesF-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(p-&gt;src);
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113                                         <span class="comment">// put phrase in target-lang-obj</span>
+<a name="l00114"></a>00114                                         phrasesE-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(p-&gt;target);
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116                                         <span class="comment">// count phrasePair</span>
+<a name="l00117"></a>00117                                         phrasePairs-&gt;<a class="code" href="classTree.html#6979eab67b4448ce9135a5466a0afc10">insert</a>(p);
+<a name="l00118"></a>00118                                 }
+<a name="l00119"></a>00119                         }
+<a name="l00120"></a>00120                 }
+<a name="l00121"></a>00121                 cout&lt;&lt; <span class="stringliteral">"line"</span> &lt;&lt; lineNr &lt;&lt;endl;
+<a name="l00122"></a>00122                 lineNr++;
+<a name="l00123"></a>00123                 <span class="keywordflow">if</span> (lineNr&gt;2000) <span class="keywordflow">break</span>;
+<a name="l00124"></a>00124         }
+<a name="l00125"></a>00125         <span class="comment">// TODO showFreqPhrases.. siehe includes/output.h/cpp</span>
+<a name="l00126"></a>00126         <a class="code" href="output_8cpp.html#5e839b67b67dec6713f6d05be20a3ab9">showFreqPhrases</a>();
+<a name="l00127"></a>00127         <span class="keywordflow">return</span> 0; <span class="comment">//EXIT_SUCCESS;</span>
+<a name="l00128"></a>00128 }
+</pre></div><hr size="1"><address style="align: right;"><small>Generated on Tue Jun 16 15:51:31 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>
