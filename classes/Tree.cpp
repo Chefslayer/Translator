@@ -61,16 +61,6 @@ template <class T> Tree<T>::Tree(T value)
 	root = new Node<T>(value);
 }
 
-template <class T> void Tree<T>::isRootOfAnOtherTree(bool val)
-{
-	rootNode = val;
-}
-
-template <class T> bool Tree<T>::isRootOfAnOtherTree()
-{
-	return rootNode;
-}
-
 template <class T> Node<T>* Tree<T>::getRoot()
 {
 	return root;

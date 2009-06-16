@@ -9,8 +9,8 @@ using namespace std;
 Alignment::Alignment(char* fileName)
 {
 	this->fileName = fileName;
-	igzstream file(fileName);
-	if (!file.good())
+	file = new igzstream(fileName);
+	if (!file->good())
 	{
 		// exception openFileFail
 		throw 1;
@@ -18,10 +18,10 @@ Alignment::Alignment(char* fileName)
 	else
 	{
 		// read the first "SENT: x" from the alignment
-		this->file = &file;
+//		this->file = &file;
 		string word;
-		file >> word; // SENT:
-		file >> sentenceNum;
+		*file >> word; // SENT:
+		*file >> sentenceNum;
 	}
 }
 
@@ -34,7 +34,7 @@ void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 	{
 		if (word == "SENT:")
 		{
-			sentenceNum++;
+			*file >> sentenceNum;
 			break;
 		}
 		else
@@ -80,7 +80,7 @@ unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
 	for (unsigned int j=j1; j<=j2; j++)
 	{
 		// i = entry in the j-column
-		unsigned int i=matrix[i].size()-1; // maximum length of a column
+		unsigned int i=matrix[0].size()-1; // maximum length of a column
 		while (i>0 && matrix[j][i]==0)
 			i--;
 		if (matrix[j][i]==1 && i>max)
@@ -129,11 +129,23 @@ unsigned int Alignment::getMaxSrcAlig(unsigned int i1, unsigned int i2)
 	return max;
 }
 
-PhrasePair* Alignment::outputPhrase(unsigned int j1, unsigned int j2, unsigned int i1, unsigned int i2)
+PhrasePair* Alignment::outputPhrase(unsigned int j1, unsigned int j2, unsigned int i1, unsigned int i2, vector<unsigned int> &srcWords, vector<unsigned int> &targetWords)
 {
 	vector<unsigned int> src, target;
+	src.resize(j2-j1+1);
+	target.resize(i2-i1+1);
 
-	// ...TODO...
+	// j = column
+	for (unsigned int j=j1; j<=j2; j++)
+	{
+		src[j-j1] = srcWords[j];
+	}
+
+	// i = row
+	for (unsigned int i=i1; i<=i2; i++)
+	{
+		target[i-i1] = targetWords[i];
+	}
 
 	return new PhrasePair(src, target);
 }

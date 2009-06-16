@@ -60,26 +60,12 @@ template <class T> class Tree
 		/// the root-node of the tree
 		Node<T>* root;
 
-		/// for trees of trees you can define if this tree is the root tree, initialized with 0
-		bool rootNode;
 	public:
 		/** inits a new Tree and creates the root node with the given value.
 		 *
 		 * \param value the root-value
 		 */
 		Tree(T value);
-
-		/** sets the rootNode attribute to the given value.
-		 *
-		 * \param val the value which the rootNode attribute is setted to
-		 */
-		void isRootOfAnOtherTree(bool val);
-
-		/** gets the value of the rootNode attribute.
-		 *
-		 * \param return the value of the rootNode attribute
-		 */
-		bool isRootOfAnOtherTree();
 
 		/** gets the root Node.
 		 *

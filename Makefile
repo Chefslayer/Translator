@@ -15,7 +15,7 @@ clean:
 rebuild: clean translate rate_translation
 
 phraseExtract: phraseExtract.cpp ${L}gzstream.C $(OBJ)
-	$(CXX) $^ -o $@ $(LDFLAGS)
+	$(CXX) $^ -o $@ $(LDFLAGS) -pg
 
 translate: translate.cpp $(OBJ)
 	$(CXX) $^ -o $@

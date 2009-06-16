@@ -95,8 +95,10 @@ class Alignment
 		 * \param j2 second pointer in source sentence
 		 * \param i1 first pointer in target sentence
 		 * \param i2 second pointer in target sentence
+		 * \param srcWords words of the source line
+		 * \param targetWords words of the target line
 		 * \return a PhrasePair which contains the words of the phrase in src and target lang
 		 */
-		PhrasePair* outputPhrase(unsigned int j1, unsigned int j2, unsigned int i1, unsigned int i2);
+		PhrasePair* outputPhrase(unsigned int j1, unsigned int j2, unsigned int i1, unsigned int i2, vector<unsigned int> &srcWords, vector<unsigned int> &targetWords);
 };
 #endif

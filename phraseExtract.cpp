@@ -77,19 +77,17 @@ int main(int argc, char** argv)
 	Tree<unsigned int> *phrasesE = new Tree<unsigned int>(0);
 
 	/// phrasepair count (prefixtree of prefixtrees) - initialized with a Tree as root which is initialized with the 0-word as root
-/*	Tree<unsigned int>* rootTree = new Tree<unsigned int>(0);	
-	rootTree->isRootOfAnOtherTree(1);
-	Tree<Tree<unsigned int>* >* phrasePairs = new Tree<Tree<unsigned int>* >(rootTree);
-*/
 	Tree<NodeOfTrees*>* phrasePairs = new Tree<NodeOfTrees*>(new NodeOfTrees(0, NULL));
 
 	vector<unsigned int> srcWords;
 	vector<unsigned int> destWords;
 	string srcLine, destLine;
 
+	unsigned int lineNr = 1;
 	// get src and dest lines
 	while (getline(src,srcLine) && getline(dest,destLine))
 	{
+
 		//put all words of the sentence in source language-lexicon and the value of the word into the lang-object
 		srcWords = f.insertSentence(srcLine);
 		destWords = e.insertSentence(destLine);
@@ -107,7 +105,7 @@ int main(int argc, char** argv)
 				i2 = aligObj->getMaxTargetAlig(j1, j2);
 				if (aligObj->getMinSrcAlig(i1, i2) == j1 && aligObj->getMaxSrcAlig(i1, i2) == j2)
 				{
-					PhrasePair* p = aligObj->outputPhrase(j1, j2, i1, i2);
+					PhrasePair* p = aligObj->outputPhrase(j1, j2, i1, i2, srcWords, destWords);
 
 					// put phrase in source-lang-obj
 					phrasesF->insert(p->src);
@@ -120,6 +118,9 @@ int main(int argc, char** argv)
 				}
 			}
 		}
+		cout<< "line" << lineNr <<endl;
+		lineNr++;
+		if (lineNr>20) break;
 	}
 	// TODO showFreqPhrases.. siehe includes/output.h/cpp
 	showFreqPhrases();
