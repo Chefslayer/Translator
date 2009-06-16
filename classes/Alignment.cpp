@@ -18,16 +18,21 @@ Alignment::Alignment(char* fileName)
 	else
 	{
 		// read the first "SENT: x" from the alignment
-//		this->file = &file;
 		string word;
 		*file >> word; // SENT:
-		*file >> sentenceNum;
+		*file >> sentenceNum; // x
 	}
 }
 
 void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 {
-	initMatrix(srcLength, targetLength);
+	this->srcLength = srcLength;
+	this->targetLength = targetLength;
+
+	srcVec.clear();
+	targetVec.clear();
+
+	// read the alignment for the current sentence
 	unsigned int srcWordNum, destWordNum;
 	string word;
 	while (*file >> word)
@@ -41,90 +46,64 @@ void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 		{
 			*file >> srcWordNum;
 			*file >> destWordNum;
-			matrix[srcWordNum][destWordNum] = 1;
+			srcVec.push_back(srcWordNum);
+			targetVec.push_back(destWordNum);
 		}
 	}
 }
 
-void Alignment::initMatrix(unsigned int srcLength, unsigned int targetLength)
-{
-	matrix.resize(srcLength);
-	for (unsigned int i=0; i<matrix.size(); i++)
-		matrix[i].resize(targetLength, 0);
-}
-
 unsigned int Alignment::getMinTargetAlig(unsigned int j1, unsigned int j2)
 {
-	unsigned int min=matrix[0].size()-1; // maximum length of a column
+	unsigned int min=this->targetLength;
 
-	// j = column
-	for (unsigned int j=j1; j<=j2; j++)
+	for (unsigned int k=0; k<srcVec.size(); k++)
 	{
-		// i = entry in the j-column
-		unsigned int i=0;
-		while (i<matrix[j].size()-1 && matrix[j][i]==0)
-			i++;
-		if (matrix[j][i]==1 && i<min)
-		{
-			min = i;
-		}
+		if (srcVec[k]>=j1 && srcVec[k]<=j2 && // j1 <= src <= j2
+			targetVec[k]<min
+		)
+			min = targetVec[k];
 	}
 	return min;
 }
 
 unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
 {
-	unsigned int max=0; // minimum of a column
+	unsigned int max=0;
 
-	// j = column
-	for (unsigned int j=j1; j<=j2; j++)
+	for (unsigned int k=0; k<srcVec.size(); k++)
 	{
-		// i = entry in the j-column
-		unsigned int i=matrix[0].size()-1; // maximum length of a column
-		while (i>0 && matrix[j][i]==0)
-			i--;
-		if (matrix[j][i]==1 && i>max)
-		{
-			max = i;
-		}
+		if (srcVec[k]>=j1 && srcVec[k]<=j2 && // j1 <= src <= j2
+			targetVec[k]>max
+		)
+			max = targetVec[k];
 	}
 	return max;
 }
 
 unsigned int Alignment::getMinSrcAlig(unsigned int i1, unsigned int i2)
 {
-	unsigned int min=matrix.size()-1; // maximum length of a row
+	unsigned int min=this->srcLength;
 
-	// i = row
-	for (unsigned int i=i1; i<=i2; i++)
+	for (unsigned int k=0; k<targetVec.size(); k++)
 	{
-		// j = entry in the i-row
-		unsigned int j=0;
-		while (j<matrix.size()-1 && matrix[j][i]==0)
-			j++;
-		if (matrix[j][i]==1 && j<min)
-		{
-			min = j;
-		}
+		if (targetVec[k]>=i1 && targetVec[k]<=i2 && // i1 <= target <= i2
+			srcVec[k]<min
+		)
+			min = srcVec[k];
 	}
 	return min;
 }
 
 unsigned int Alignment::getMaxSrcAlig(unsigned int i1, unsigned int i2)
 {
-	unsigned int max=0; // minimum of a row
+	unsigned int max=0;
 
-	// i = row
-	for (unsigned int i=i1; i<=i2; i++)
+	for (unsigned int k=0; k<targetVec.size(); k++)
 	{
-		// j = entry in the i-row
-		unsigned int j=matrix.size()-1; // maximum length of a row
-		while (j>0 && matrix[j][i]==0)
-			j--;
-		if (matrix[j][i]==1 && j>max)
-		{
-			max = j;
-		}
+		if (targetVec[k]>=i1 && targetVec[k]<=i2 && // i1 <= target <= i2
+			srcVec[k]>max
+		)
+			max = srcVec[k];
 	}
 	return max;
 }

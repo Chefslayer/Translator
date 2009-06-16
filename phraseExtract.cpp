@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 		}
 		cout<< "line" << lineNr <<endl;
 		lineNr++;
-		if (lineNr>20) break;
+		if (lineNr>2000) break;
 	}
 	// TODO showFreqPhrases.. siehe includes/output.h/cpp
 	showFreqPhrases();

@@ -24,11 +24,20 @@ using namespace std;
 class Alignment
 {
 	private:
-		/// holds the alignment-matrix
-		vector<vector<bool> > matrix;
+		/// holds the alignment for the source lang
+		vector<unsigned int> srcVec;
+
+		/// holds the alignment for the target lang
+		vector<unsigned int> targetVec;
 
 		/// current sentence
 		unsigned int sentenceNum;
+
+		/// length of the current source-line
+		unsigned int srcLength;
+
+		/// length of the current target-ine
+		unsigned int targetLength;
 	public:
 		/// the file with the alignment
 		char* fileName;
@@ -49,13 +58,6 @@ class Alignment
 		 * \param targetLength length of the target-sentence
 		 */
 		void nextSentence(unsigned int srcLength, unsigned int targetLength);
-
-		/** inits the matrix
-		 *
-		 * \param srcLength length of the source-sentence
-		 * \param targetLength length of the target-sentence
-		 */
-		void initMatrix(unsigned int srcLength, unsigned int targetLength);
 
 		/** first aligned word in target lang.
 		 *
