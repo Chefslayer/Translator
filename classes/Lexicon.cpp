@@ -5,7 +5,6 @@
 #include "Lexicon.h"
 #include "SingleCount.h"
 #include "../includes/constants.h"
-#include <iostream>
 
 using namespace std;
 
