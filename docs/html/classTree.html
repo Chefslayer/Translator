@@ -40,6 +40,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTree.html#ba061cc1f66e174ae510805a30b003ea">insert</a> (<a class="el" href="structPhrasePair.html">PhrasePair</a> *p)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">inserts a phrasePair in the tree of prefixtrees and counts the occurrences of it.  <a href="#ba061cc1f66e174ae510805a30b003ea"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">unsigned int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTree.html#fc306a48f4664d9481a0fd799d961d55">getCount</a> (vector&lt; T &gt; &amp;phrase)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">gets the count for a phrase of words (unsigned ints)  <a href="#fc306a48f4664d9481a0fd799d961d55"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classNode.html">Node</a>&lt; T &gt; *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTree.html#1e075fff9e3421c0ad8012efadfc2ffa">root</a></td></tr>
 
@@ -82,7 +85,7 @@ inits a new <a class="el" href="classTree.html">Tree</a> and creates the root no
 </dl>
 
 <p>
-Definition at line <a class="el" href="Tree_8cpp-source.html#l00059">59</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
+Definition at line <a class="el" href="Tree_8cpp-source.html#l00062">62</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
 <p>
 References <a class="el" href="Tree_8h-source.html#l00061">Tree&lt; T &gt;::root</a>.
 </div>
@@ -115,11 +118,11 @@ gets the root <a class="el" href="classNode.html">Node</a>.
 </dl>
 
 <p>
-Definition at line <a class="el" href="Tree_8cpp-source.html#l00064">64</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
+Definition at line <a class="el" href="Tree_8cpp-source.html#l00067">67</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
 <p>
 References <a class="el" href="Tree_8h-source.html#l00061">Tree&lt; T &gt;::root</a>.
 <p>
-Referenced by <a class="el" href="treeTest_8cpp-source.html#l00021">main()</a>.
+Referenced by <a class="el" href="treeTest_8cpp-source.html#l00021">main()</a>, <a class="el" href="output_8cpp-source.html#l00069">showFreqPhrases()</a>, and <a class="el" href="output_8cpp-source.html#l00043">showFreqPhrases_subTrees()</a>.
 </div>
 </div><p>
 <a class="anchor" name="6979eab67b4448ce9135a5466a0afc10"></a><!-- doxytag: member="Tree::insert" ref="6979eab67b4448ce9135a5466a0afc10" args="(vector&lt; T &gt; &amp;values)" -->
@@ -151,11 +154,11 @@ inserts a vector of T-values in the tree.
 <dl class="return" compact><dt><b>Returns:</b></dt><dd>reference to the node with the last value </dd></dl>
 
 <p>
-Definition at line <a class="el" href="Tree_8cpp-source.html#l00069">69</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
+Definition at line <a class="el" href="Tree_8cpp-source.html#l00072">72</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
 <p>
-References <a class="el" href="Tree_8cpp-source.html#l00040">Node&lt; T &gt;::insertChildNode()</a>, and <a class="el" href="Tree_8h-source.html#l00061">Tree&lt; T &gt;::root</a>.
+References <a class="el" href="Tree_8cpp-source.html#l00043">Node&lt; T &gt;::insertChildNode()</a>, and <a class="el" href="Tree_8h-source.html#l00061">Tree&lt; T &gt;::root</a>.
 <p>
-Referenced by <a class="el" href="Tree_8cpp-source.html#l00079">Tree&lt; T &gt;::insert()</a>, and <a class="el" href="phraseExtract_8cpp-source.html#l00035">main()</a>.
+Referenced by <a class="el" href="Tree_8cpp-source.html#l00082">Tree&lt; T &gt;::insert()</a>, and <a class="el" href="phraseExtract_8cpp-source.html#l00035">main()</a>.
 </div>
 </div><p>
 <a class="anchor" name="ba061cc1f66e174ae510805a30b003ea"></a><!-- doxytag: member="Tree::insert" ref="ba061cc1f66e174ae510805a30b003ea" args="(PhrasePair *p)" -->
@@ -186,9 +189,44 @@ inserts a phrasePair in the tree of prefixtrees and counts the occurrences of it
 </dl>
 
 <p>
-Definition at line <a class="el" href="Tree_8cpp-source.html#l00079">79</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
+Definition at line <a class="el" href="Tree_8cpp-source.html#l00082">82</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
 <p>
-References <a class="el" href="Tree_8cpp-source.html#l00069">Tree&lt; T &gt;::insert()</a>, <a class="el" href="PhrasePair_8h-source.html#l00024">PhrasePair::src</a>, <a class="el" href="PhrasePair_8h-source.html#l00027">PhrasePair::target</a>, and <a class="el" href="Tree_8h-source.html#l00032">Node&lt; T &gt;::value</a>.
+References <a class="el" href="Tree_8cpp-source.html#l00072">Tree&lt; T &gt;::insert()</a>, <a class="el" href="PhrasePair_8h-source.html#l00024">PhrasePair::src</a>, <a class="el" href="PhrasePair_8h-source.html#l00027">PhrasePair::target</a>, and <a class="el" href="Tree_8h-source.html#l00032">Node&lt; T &gt;::value</a>.
+</div>
+</div><p>
+<a class="anchor" name="fc306a48f4664d9481a0fd799d961d55"></a><!-- doxytag: member="Tree::getCount" ref="fc306a48f4664d9481a0fd799d961d55" args="(vector&lt; T &gt; &amp;phrase)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int <a class="el" href="classTree.html">Tree</a>&lt; T &gt;::getCount           </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; T &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>phrase</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+gets the count for a phrase of words (unsigned ints) 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>phrase</em>&nbsp;</td><td>vector with the word-cods of the phrase </td></tr>
+  </table>
+</dl>
+
+<p>
+Definition at line <a class="el" href="Tree_8cpp-source.html#l00099">99</a> of file <a class="el" href="Tree_8cpp-source.html">Tree.cpp</a>.
+<p>
+References <a class="el" href="Tree_8h-source.html#l00026">Node&lt; T &gt;::childNodes</a>, <a class="el" href="Tree_8h-source.html#l00029">Node&lt; T &gt;::count</a>, and <a class="el" href="Tree_8h-source.html#l00061">Tree&lt; T &gt;::root</a>.
+<p>
+Referenced by <a class="el" href="output_8cpp-source.html#l00024">showFreqPhrases_subTrees_rek()</a>.
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
@@ -212,12 +250,12 @@ the root-node of the tree
 <p>
 Definition at line <a class="el" href="Tree_8h-source.html#l00061">61</a> of file <a class="el" href="Tree_8h-source.html">Tree.h</a>.
 <p>
-Referenced by <a class="el" href="Tree_8cpp-source.html#l00064">Tree&lt; T &gt;::getRoot()</a>, <a class="el" href="Tree_8cpp-source.html#l00069">Tree&lt; T &gt;::insert()</a>, and <a class="el" href="Tree_8cpp-source.html#l00059">Tree&lt; T &gt;::Tree()</a>.
+Referenced by <a class="el" href="Tree_8cpp-source.html#l00099">Tree&lt; T &gt;::getCount()</a>, <a class="el" href="Tree_8cpp-source.html#l00067">Tree&lt; T &gt;::getRoot()</a>, <a class="el" href="Tree_8cpp-source.html#l00072">Tree&lt; T &gt;::insert()</a>, and <a class="el" href="Tree_8cpp-source.html#l00062">Tree&lt; T &gt;::Tree()</a>.
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
 <li>classes/<a class="el" href="Tree_8h-source.html">Tree.h</a><li>classes/<a class="el" href="Tree_8cpp-source.html">Tree.cpp</a></ul>
-<hr size="1"><address style="align: right;"><small>Generated on Tue Jun 16 15:51:34 2009 for Translator by&nbsp;
+<hr size="1"><address style="align: right;"><small>Generated on Wed Jun 17 17:18:25 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>

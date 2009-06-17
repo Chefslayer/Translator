@@ -27,6 +27,7 @@
 <code>#include &quot;<a class="el" href="SingleCount_8h-source.html">../classes/SingleCount.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="PairCount_8h-source.html">../classes/PairCount.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="Lexicon_8h-source.html">../classes/Lexicon.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="Tree_8cpp-source.html">../classes/Tree.cpp</a>&quot;</code><br>
 
 <p>
 <a href="output_8cpp-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -34,10 +35,17 @@
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="output_8cpp.html#2f10edab51f9310a34981094fc4f1c02">showFreq</a> (<a class="el" href="classPairCount.html">PairCount</a> &amp;pairs, <a class="el" href="classSingleCount.html">SingleCount</a> &amp;singlesF, <a class="el" href="classSingleCount.html">SingleCount</a> &amp;singlesE, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">displays the Freqs on the cout  <a href="#2f10edab51f9310a34981094fc4f1c02"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="output_8cpp.html#5e839b67b67dec6713f6d05be20a3ab9">showFreqPhrases</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="output_8cpp.html#2f856df41ac89792d881b0cb072586c9">showFreqPhrases_subTrees_rek</a> (<a class="el" href="classNode.html">Node</a>&lt; unsigned int &gt; *current, const string &amp;s_f, string s_e, vector&lt; unsigned int &gt; v_f, vector&lt; unsigned int &gt; v_e, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesF, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesE, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">displays the Freqs for pairs on the cout  <a href="#5e839b67b67dec6713f6d05be20a3ab9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="output_8cpp.html#cfa8abfb679d7464180b274764997f06">showFreqPhrases_subTrees</a> (string s_f, vector&lt; unsigned int &gt; v_f, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *t, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesF, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesE, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">starts the recursive calculation of possible translations for a phrase and its frequency.  <a href="#cfa8abfb679d7464180b274764997f06"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="output_8cpp.html#b6b8be19a0b1f8168d5c0182df04dff1">showFreqPhrases_rek</a> (<a class="el" href="classNode.html">Node</a>&lt; <a class="el" href="structNodeOfTrees.html">NodeOfTrees</a> * &gt; *current, string s_f, vector&lt; unsigned int &gt; v_f, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesF, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesE, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">concatinates the phrases of the src lang, and calls a function to display all possible translations for this phrase.  <a href="#b6b8be19a0b1f8168d5c0182df04dff1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="output_8cpp.html#14a21019d45f1455c4e57742d9caf111">showFreqPhrases</a> (<a class="el" href="classTree.html">Tree</a>&lt; <a class="el" href="structNodeOfTrees.html">NodeOfTrees</a> * &gt; *phrasePairs, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesF, <a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *phrasesE, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#9a3c38c3427c111e6882aa62d1f0e71f">f</a>, <a class="el" href="classLexicon.html">Lexicon</a> &amp;<a class="el" href="translate_8cpp.html#0514e12ca01e9c37a9bf092c96037ee8">e</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">starts the recursiv concatination of phrases in the src lang.  <a href="#14a21019d45f1455c4e57742d9caf111"></a><br></td></tr>
 </table>
 <hr><h2>Function Documentation</h2>
 <a class="anchor" name="2f10edab51f9310a34981094fc4f1c02"></a><!-- doxytag: member="output.cpp::showFreq" ref="2f10edab51f9310a34981094fc4f1c02" args="(PairCount &amp;pairs, SingleCount &amp;singlesF, SingleCount &amp;singlesE, Lexicon &amp;f, Lexicon &amp;e)" -->
@@ -84,52 +92,300 @@
 <div class="memdoc">
 
 <p>
-displays the Freqs on the cout 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>pairs</em>&nbsp;</td><td>the pairs-object </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>singlesF</em>&nbsp;</td><td>singles-object for source lang </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>singlesE</em>&nbsp;</td><td>singles-object for target lang </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>f</em>&nbsp;</td><td>lexicon to look up the words of the source lang </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td>lexicon to look up the words of the target lang </td></tr>
-  </table>
-</dl>
 
 <p>
-Definition at line <a class="el" href="output_8cpp-source.html#l00011">11</a> of file <a class="el" href="output_8cpp-source.html">output.cpp</a>.
+Definition at line <a class="el" href="output_8cpp-source.html#l00012">12</a> of file <a class="el" href="output_8cpp-source.html">output.cpp</a>.
 <p>
-References <a class="el" href="PairCount_8h-source.html#l00065">PairCount::begin()</a>, <a class="el" href="PairCount_8h-source.html#l00093">PairCount::current()</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00033">e</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00032">f</a>, <a class="el" href="PairCount_8h-source.html#l00047">PairCount::getFreq()</a>, <a class="el" href="SingleCount_8h-source.html#l00055">SingleCount::getFreq()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00064">Lexicon::getWord()</a>, <a class="el" href="PairCount_8h-source.html#l00083">PairCount::isEnd()</a>, and <a class="el" href="PairCount_8h-source.html#l00073">PairCount::next()</a>.
+References <a class="el" href="PairCount_8h-source.html#l00065">PairCount::begin()</a>, <a class="el" href="PairCount_8h-source.html#l00093">PairCount::current()</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00033">e</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00032">f</a>, <a class="el" href="SingleCount_8h-source.html#l00055">SingleCount::getFreq()</a>, <a class="el" href="PairCount_8h-source.html#l00047">PairCount::getFreq()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00065">Lexicon::getWord()</a>, <a class="el" href="PairCount_8h-source.html#l00083">PairCount::isEnd()</a>, and <a class="el" href="PairCount_8h-source.html#l00073">PairCount::next()</a>.
 <p>
 Referenced by <a class="el" href="singleWordExtract_8cpp-source.html#l00033">main()</a>.
 </div>
 </div><p>
-<a class="anchor" name="5e839b67b67dec6713f6d05be20a3ab9"></a><!-- doxytag: member="output.cpp::showFreqPhrases" ref="5e839b67b67dec6713f6d05be20a3ab9" args="()" -->
+<a class="anchor" name="14a21019d45f1455c4e57742d9caf111"></a><!-- doxytag: member="output.cpp::showFreqPhrases" ref="14a21019d45f1455c4e57742d9caf111" args="(Tree&lt; NodeOfTrees * &gt; *phrasePairs, Tree&lt; unsigned int &gt; *phrasesF, Tree&lt; unsigned int &gt; *phrasesE, Lexicon &amp;f, Lexicon &amp;e)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void showFreqPhrases           </td>
           <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td width="100%"></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; <a class="el" href="structNodeOfTrees.html">NodeOfTrees</a> * &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasePairs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesF</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesE</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-displays the Freqs for pairs on the cout 
+starts the recursiv concatination of phrases in the src lang. 
 <p>
-... 
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>phrasePairs</em>&nbsp;</td><td>main tree-of-trees with all possible translations of phrases </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>phrasesF</em>&nbsp;</td><td>tree of the src-lang phrases </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>phrasesE</em>&nbsp;</td><td>tree of the target-lang phrases </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>f</em>&nbsp;</td><td><a class="el" href="classLexicon.html">Lexicon</a> for the source lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td><a class="el" href="classLexicon.html">Lexicon</a> for the target lang </td></tr>
+  </table>
+</dl>
+
 <p>
-Definition at line <a class="el" href="output_8cpp-source.html#l00022">22</a> of file <a class="el" href="output_8cpp-source.html">output.cpp</a>.
+Definition at line <a class="el" href="output_8cpp-source.html#l00069">69</a> of file <a class="el" href="output_8cpp-source.html">output.cpp</a>.
+<p>
+References <a class="el" href="phraseExtract_8cpp-source.html#l00033">e</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00032">f</a>, <a class="el" href="Tree_8cpp-source.html#l00067">Tree&lt; T &gt;::getRoot()</a>, and <a class="el" href="output_8cpp-source.html#l00053">showFreqPhrases_rek()</a>.
 <p>
 Referenced by <a class="el" href="phraseExtract_8cpp-source.html#l00035">main()</a>.
 </div>
 </div><p>
-<hr size="1"><address style="align: right;"><small>Generated on Tue Jun 16 15:51:32 2009 for Translator by&nbsp;
+<a class="anchor" name="b6b8be19a0b1f8168d5c0182df04dff1"></a><!-- doxytag: member="output.cpp::showFreqPhrases_rek" ref="b6b8be19a0b1f8168d5c0182df04dff1" args="(Node&lt; NodeOfTrees * &gt; *current, string s_f, vector&lt; unsigned int &gt; v_f, Tree&lt; unsigned int &gt; *phrasesF, Tree&lt; unsigned int &gt; *phrasesE, Lexicon &amp;f, Lexicon &amp;e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void showFreqPhrases_rek           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a>&lt; <a class="el" href="structNodeOfTrees.html">NodeOfTrees</a> * &gt; *&nbsp;</td>
+          <td class="paramname"> <em>current</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>s_f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; unsigned int &gt;&nbsp;</td>
+          <td class="paramname"> <em>v_f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesF</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesE</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+concatinates the phrases of the src lang, and calls a function to display all possible translations for this phrase. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>current</em>&nbsp;</td><td>current phrase in src-lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>s_f</em>&nbsp;</td><td>string with the words of the current phrase in source lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v_f</em>&nbsp;</td><td>vector with the words of the current phrase in source lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>phrasesF</em>&nbsp;</td><td>tree of the src-lang phrases </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>phrasesE</em>&nbsp;</td><td>tree of the target-lang phrases </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>f</em>&nbsp;</td><td><a class="el" href="classLexicon.html">Lexicon</a> for the source lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td><a class="el" href="classLexicon.html">Lexicon</a> for the target lang </td></tr>
+  </table>
+</dl>
+
+<p>
+Definition at line <a class="el" href="output_8cpp-source.html#l00053">53</a> of file <a class="el" href="output_8cpp-source.html">output.cpp</a>.
+<p>
+References <a class="el" href="Tree_8h-source.html#l00026">Node&lt; T &gt;::childNodes</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00033">e</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00032">f</a>, <a class="el" href="Lexicon_8cpp-source.html#l00065">Lexicon::getWord()</a>, <a class="el" href="output_8cpp-source.html#l00053">showFreqPhrases_rek()</a>, <a class="el" href="output_8cpp-source.html#l00043">showFreqPhrases_subTrees()</a>, <a class="el" href="NodeOfTrees_8h-source.html#l00028">NodeOfTrees::tree</a>, <a class="el" href="Tree_8h-source.html#l00032">Node&lt; T &gt;::value</a>, and <a class="el" href="NodeOfTrees_8h-source.html#l00025">NodeOfTrees::word</a>.
+<p>
+Referenced by <a class="el" href="output_8cpp-source.html#l00069">showFreqPhrases()</a>, and <a class="el" href="output_8cpp-source.html#l00053">showFreqPhrases_rek()</a>.
+</div>
+</div><p>
+<a class="anchor" name="cfa8abfb679d7464180b274764997f06"></a><!-- doxytag: member="output.cpp::showFreqPhrases_subTrees" ref="cfa8abfb679d7464180b274764997f06" args="(string s_f, vector&lt; unsigned int &gt; v_f, Tree&lt; unsigned int &gt; *t, Tree&lt; unsigned int &gt; *phrasesF, Tree&lt; unsigned int &gt; *phrasesE, Lexicon &amp;e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void showFreqPhrases_subTrees           </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>s_f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; unsigned int &gt;&nbsp;</td>
+          <td class="paramname"> <em>v_f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesF</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesE</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+starts the recursive calculation of possible translations for a phrase and its frequency. 
+<p>
+<dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>s_f</em>&nbsp;</td><td>string with the words of the current phrase in source lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v_f</em>&nbsp;</td><td>vector with the words of the current phrase in source lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>t</em>&nbsp;</td><td>sub-tree holding all possible translations for a phrase in src-lang </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>phrasesF</em>&nbsp;</td><td>tree of the src-lang phrases </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>phrasesE</em>&nbsp;</td><td>tree of the target-lang phrases </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td><a class="el" href="classLexicon.html">Lexicon</a> for the target lang </td></tr>
+  </table>
+</dl>
+
+<p>
+Definition at line <a class="el" href="output_8cpp-source.html#l00043">43</a> of file <a class="el" href="output_8cpp-source.html">output.cpp</a>.
+<p>
+References <a class="el" href="phraseExtract_8cpp-source.html#l00033">e</a>, <a class="el" href="Tree_8cpp-source.html#l00067">Tree&lt; T &gt;::getRoot()</a>, and <a class="el" href="output_8cpp-source.html#l00024">showFreqPhrases_subTrees_rek()</a>.
+<p>
+Referenced by <a class="el" href="output_8cpp-source.html#l00053">showFreqPhrases_rek()</a>.
+</div>
+</div><p>
+<a class="anchor" name="2f856df41ac89792d881b0cb072586c9"></a><!-- doxytag: member="output.cpp::showFreqPhrases_subTrees_rek" ref="2f856df41ac89792d881b0cb072586c9" args="(Node&lt; unsigned int &gt; *current, const string &amp;s_f, string s_e, vector&lt; unsigned int &gt; v_f, vector&lt; unsigned int &gt; v_e, Tree&lt; unsigned int &gt; *phrasesF, Tree&lt; unsigned int &gt; *phrasesE, Lexicon &amp;e)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void showFreqPhrases_subTrees_rek           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classNode.html">Node</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>current</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>s_f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>s_e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; unsigned int &gt;&nbsp;</td>
+          <td class="paramname"> <em>v_f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; unsigned int &gt;&nbsp;</td>
+          <td class="paramname"> <em>v_e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesF</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classTree.html">Tree</a>&lt; unsigned int &gt; *&nbsp;</td>
+          <td class="paramname"> <em>phrasesE</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classLexicon.html">Lexicon</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>e</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td width="100%"></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>
+Definition at line <a class="el" href="output_8cpp-source.html#l00024">24</a> of file <a class="el" href="output_8cpp-source.html">output.cpp</a>.
+<p>
+References <a class="el" href="Tree_8h-source.html#l00026">Node&lt; T &gt;::childNodes</a>, <a class="el" href="Tree_8h-source.html#l00029">Node&lt; T &gt;::count</a>, <a class="el" href="phraseExtract_8cpp-source.html#l00033">e</a>, <a class="el" href="Tree_8cpp-source.html#l00099">Tree&lt; T &gt;::getCount()</a>, <a class="el" href="Lexicon_8cpp-source.html#l00065">Lexicon::getWord()</a>, and <a class="el" href="Tree_8h-source.html#l00032">Node&lt; T &gt;::value</a>.
+<p>
+Referenced by <a class="el" href="output_8cpp-source.html#l00043">showFreqPhrases_subTrees()</a>.
+</div>
+</div><p>
+<hr size="1"><address style="align: right;"><small>Generated on Wed Jun 17 17:18:23 2009 for Translator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.1 </small></address>
 </body>
