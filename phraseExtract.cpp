@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 		}
 		cout<< "line" << lineNr <<endl;
 		lineNr++;
-		if (lineNr>5000) break;
+		if (lineNr>TRAINING_LINES) break;
 	}
 
 	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);
