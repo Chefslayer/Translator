@@ -1,3 +1,6 @@
+#ifndef __TREE_CPP__
+#define __TREE_CPP__
+
 #include "Tree.h"
 #include <string>
 #include <vector>
@@ -92,3 +95,22 @@ template <class T> void Tree<T>::insert(PhrasePair* p)
 	// concat target-path to the src-paths-last-node
 	lastNode->value->tree->insert(p->target);
 }
+
+template <class T> unsigned int Tree<T>::getCount(vector<T> &phrase)
+{
+	Node<T>* n = root;
+	for (unsigned int i=0; i<phrase.size(); i++)
+	{
+		for (unsigned int j=0; j<n->childNodes.size(); j++)
+		{
+			if (n->childNodes[j]->value == phrase[i])
+			{
+				n = n->childNodes[j];
+				break;
+			}
+		}
+	}
+
+	return n->count;
+}
+#endif
