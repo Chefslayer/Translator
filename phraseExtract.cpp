@@ -21,10 +21,10 @@
 #include "includes/constants.h"
 #include "lib/gzstream.h"
 #include "classes/Lexicon.h"
-#include "classes/Tree.cpp"
+#include "classes/Tree.h"
+#include "classes/TreeOfTrees.h"
 #include "classes/Alignment.h"
 #include "includes/PhrasePair.h"
-#include "includes/NodeOfTrees.h"
 #include "includes/output.h"
 
 using namespace std;
@@ -71,13 +71,13 @@ int main(int argc, char** argv)
 	}
 
 	/// src-lang phrase count (prefixtree of words) - initialized with the 0-word as root
-	Tree<unsigned int> *phrasesF = new Tree<unsigned int>(0);
+	Tree *phrasesF = new Tree(new Node(0));
 
 	/// target-lang phrase count (prefixtree of words) - initialized with the 0-word as root
-	Tree<unsigned int> *phrasesE = new Tree<unsigned int>(0);
+	Tree *phrasesE = new Tree(new Node(0));
 
 	/// phrasepair count (prefixtree of prefixtrees) - initialized with a Tree as root which is initialized with the 0-word as root
-	Tree<NodeOfTrees*>* phrasePairs = new Tree<NodeOfTrees*>(new NodeOfTrees(0, NULL));
+	TreeOfTrees* phrasePairs = new TreeOfTrees(new NodeOfTrees(0, NULL));
 
 	vector<unsigned int> srcWords;
 	vector<unsigned int> destWords;
@@ -114,14 +114,15 @@ int main(int argc, char** argv)
 					phrasesE->insert(p->target);
 
 					// count phrasePair
-//					phrasePairs->insert(p);
+					phrasePairs->insert(p);
 				}
 			}
 		}
 
-		cout<< "line" << lineNr <<endl;
-		lineNr++;
+		if (lineNr/100==(double)lineNr/(double)100)
+			cout<< "line" << lineNr <<endl;
 		if (lineNr>TRAINING_LINES) break;
+		lineNr++;
 	}
 
 //	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);

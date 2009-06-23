@@ -5,7 +5,8 @@
 #include "../classes/SingleCount.h"
 #include "../classes/PairCount.h"
 #include "../classes/Lexicon.h"
-#include "../classes/Tree.cpp"
+#include "../classes/Tree.h"
+#include "../classes/TreeOfTrees.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ void showFreq( PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, L
  	}
 }
 
-
+/*
 void showFreqPhrases_subTrees_rek(Node<unsigned int> *current, const string &s_f, string s_e, vector<unsigned int> v_f, vector<unsigned int> v_e, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &e)
 {
 	//double rel = ...;
@@ -73,3 +74,4 @@ void showFreqPhrases(Tree<NodeOfTrees*> *phrasePairs, Tree<unsigned int> *phrase
 	string s_f = "";
 	showFreqPhrases_rek(phrasePairs->getRoot(), s_f, v_f, phrasesF, phrasesE, f, e);
 }
+*/

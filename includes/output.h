@@ -17,7 +17,8 @@
 #include "../classes/PairCount.h"
 #include "../classes/SingleCount.h"
 #include "../classes/Lexicon.h"
-#include "../classes/Tree.cpp"
+#include "../classes/Tree.h"
+#include "../classes/TreeOfTrees.h"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ using namespace std;
  * \param f lexicon to look up the words of the source lang
  * \param e lexicon to look up the words of the target lang
  */
-
+void showFreq(PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, Lexicon& f, Lexicon& e);
 /**
  * this function cacls the frequency for a possible translation.
  *
@@ -44,7 +45,7 @@ using namespace std;
  * \param phrasesE tree of the target-lang phrases
  * \param e Lexicon for the target lang
  */
-void showFreqPhrases_subTrees_rek(Node<unsigned int> *current, vector<unsigned int> v_f, vector<unsigned int> v_e, const string &s_f, string s_e, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &e);
+//void showFreqPhrases_subTrees_rek(Node<unsigned int> *current, vector<unsigned int> v_f, vector<unsigned int> v_e, const string &s_f, string s_e, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &e);
 
 /**
  * starts the recursive calculation of possible translations for a phrase and its frequency.
@@ -56,7 +57,7 @@ void showFreqPhrases_subTrees_rek(Node<unsigned int> *current, vector<unsigned i
  * \param phrasesE tree of the target-lang phrases
  * \param e Lexicon for the target lang
  */
-void showFreqPhrases_subTrees(string s_f, vector<unsigned int> v_f, Tree<unsigned int> *t, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &e);
+//void showFreqPhrases_subTrees(string s_f, vector<unsigned int> v_f, Tree<unsigned int> *t, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &e);
 
 /**
  * concatinates the phrases of the src lang, and calls a function to display all possible translations for this phrase.
@@ -69,7 +70,7 @@ void showFreqPhrases_subTrees(string s_f, vector<unsigned int> v_f, Tree<unsigne
  * \param f Lexicon for the source lang
  * \param e Lexicon for the target lang
  */
-void showFreqPhrases_rek(Node<NodeOfTrees*>* current, string s_f, vector<unsigned int> v_f, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &f, Lexicon &e);
+//void showFreqPhrases_rek(Node<NodeOfTrees*>* current, string s_f, vector<unsigned int> v_f, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &f, Lexicon &e);
 
 /**
  * starts the recursiv concatination of phrases in the src lang.
@@ -80,6 +81,6 @@ void showFreqPhrases_rek(Node<NodeOfTrees*>* current, string s_f, vector<unsigne
  * \param f Lexicon for the source lang
  * \param e Lexicon for the target lang
  */
-void showFreqPhrases(Tree<NodeOfTrees*> *phrasePairs, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &f, Lexicon &e);
+//void showFreqPhrases(Tree<NodeOfTrees*> *phrasePairs, Tree<unsigned int> *phrasesF, Tree<unsigned int> *phrasesE, Lexicon &f, Lexicon &e);
 
 #endif

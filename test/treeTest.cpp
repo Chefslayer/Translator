@@ -11,9 +11,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
-//#include "../classes/Tree.h"
-#include "../classes/Tree.cpp"
-#include "../includes/NodeOfTrees.h"
+#include "../classes/Tree.h"
+#include "../classes/TreeOfTrees.h"
 #include "../includes/PhrasePair.h"
 
 using namespace std;
@@ -23,7 +22,7 @@ int main(int argc, char** argv)
 	// create some test data
 	vector<unsigned int> v;
 	v.push_back(1);
-	v.push_back(1);
+	v.push_back(3);
 
 	vector<unsigned int> w;
 	w.push_back(1);
@@ -33,48 +32,72 @@ int main(int argc, char** argv)
 	PhrasePair* p2 = new PhrasePair(v,v);
 
 	// create the trees
-	Tree<unsigned int> *t = new Tree<unsigned int>(0);
-	Tree<NodeOfTrees*>* phrasePairs = new Tree<NodeOfTrees*>(new NodeOfTrees(0, NULL));
+	Tree *t				= new Tree(new Node(100));
+	TreeOfTrees* phrasePairs	= new TreeOfTrees(new NodeOfTrees(200, NULL));
+
+	// check output	for the normal phrase-tree
+	cout << "checking phrase-tree..." << endl;
 
 	// insert data for normal phrase-tree
 	t->insert(p->src);
 	t->insert(p->src);
 	t->insert(p->target);
 
-	// insert data for tree-of-trees
-	phrasePairs->insert(p); // 11->10
-	phrasePairs->insert(p2); // 11->11
-
-
-	// check output	for the normal phrase-tree
-	cout << "checking phrase-tree..." << endl;
 	cout << "output: ";
-									// output should be:
-	cout << t->getRoot()->count;					// 1
-	cout << t->getRoot()->childNodes[0]->count;			// 3
-	cout << t->getRoot()->childNodes[0]->childNodes[0]->count;	// 2
-	cout << t->getRoot()->childNodes[0]->childNodes[1]->count;	// 1
-	cout << endl << endl;
+														// output should be:
+	cout << t->root->count <<",";										// 0
+	cout << t->root->word <<endl;										// 100
+
+	cout << (*t->root->childNodes.begin())->count<<",";							// 0
+	cout << (*t->root->childNodes.begin())->word<<endl;							// 1
+
+	cout << (*(*t->root->childNodes.begin())->childNodes.begin())->count<<",";				// 1
+	cout << (*(*t->root->childNodes.begin())->childNodes.begin())->word<<endl;				// 0
+
+	set<Node*>::iterator it = (*t->root->childNodes.begin())->childNodes.begin();
+	it++;
+	cout << (*it)->word << ",";										// 3
+	cout << (*it)->count << endl;										// 2
 
 	// check output for the tree-of-trees
 	cout << "checking tree-of-trees..." << endl;
+
+	// insert data for tree-of-trees
+	phrasePairs->insert(p); // 13->10
+	phrasePairs->insert(p2); // 13->13
+
 	cout << "output: ";
 											// output should be:
-	cout << phrasePairs->getRoot()->count;						// 1
-	cout << phrasePairs->getRoot()->childNodes[0]->count;				// 2
-	cout << phrasePairs->getRoot()->childNodes[0]->childNodes[0]->count;		// 2
+	cout << phrasePairs->root->count << ",";					// 0
+	cout << phrasePairs->root->word << endl;					// 200
 
-	cout << phrasePairs->getRoot()->childNodes[0]->childNodes[0]->value->tree
-			->getRoot()->count;						// 1
+	set<NodeOfTrees*>::iterator it2;
 
-	cout << phrasePairs->getRoot()->childNodes[0]->childNodes[0]->value->tree
-			->getRoot()->childNodes[0]->count;				// 2
+	it2 = phrasePairs->root->childNodes.begin();
+	cout << (*it2)->count<<",";							// 0
+	cout << (*it2)->word<<endl;							// 1
 
-	cout << phrasePairs->getRoot()->childNodes[0]->childNodes[0]->value->tree
-			->getRoot()->childNodes[0]->childNodes[0]->count;		// 1
+	it2 = (*it2)->childNodes.begin();
+	cout << (*it2)->count<<",";							// 2
+	cout << (*it2)->word<<endl;							// 3
 
-	cout << phrasePairs->getRoot()->childNodes[0]->childNodes[0]->value->tree
-			->getRoot()->childNodes[0]->childNodes[1]->count;		// 1
+	cout << (*it2)->tree->root->count << ",";					// 0
+	cout << (*it2)->tree->root->word << endl;					// 0
+
+
+	it = (*it2)->tree->root->childNodes.begin();
+	cout << (*it)->count<<",";							// 0
+	cout << (*it)->word<<endl;							// 1
+
+	cout << "y"<<(*it)->childNodes.size() << endl;					// 2
+
+	it = (*it)->childNodes.begin();
+	cout << (*it)->count<<",";							// 1
+	cout << (*it)->word<<endl;							// 0
+
+	it++;
+	cout << (*it)->count<<",";							// 1
+	cout << (*it)->word<<endl;							// 3
 
 	cout << endl;
 

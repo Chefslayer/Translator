@@ -3,7 +3,7 @@ I = includes/
 L = lib/
 T = test/
 
-SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(I)NodeOfTrees.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Tree.cpp $(C)Alignment.cpp $(I)PhrasePair.cpp
+SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(I)Node.cpp $(I)NodeOfTrees.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Tree.cpp $(C)TreeOfTrees.cpp $(C)Alignment.cpp $(I)PhrasePair.cpp
 OBJ = $(SRC:%cpp=%o)
 
 CFLAGS = -g
@@ -35,7 +35,7 @@ lexiconTest: $(T)lexiconTest.cpp $(I)functions.o $(C)Lexicon.o
 bleuTest: $(T)bleuTest.cpp $(C)Bleu.o
 	$(CXX) $^ -o bleuTest.o
 
-treeTest: $(T)treeTest.cpp $(C)Tree.o $(I)PhrasePair.o $(I)NodeOfTrees.o
+treeTest: $(T)treeTest.cpp $(C)Tree.o $(C)TreeOfTrees.o $(I)PhrasePair.o $(I)Node.o $(I)NodeOfTrees.o
 	$(CXX) $^ -o treeTest.o
 
 nodeOfTreesTest: $(T)nodeOfTreesTest.cpp $(I)NodeOfTrees.o $(C)Tree.o
