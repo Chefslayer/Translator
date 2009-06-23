@@ -29,8 +29,7 @@ void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 	this->srcLength = srcLength;
 	this->targetLength = targetLength;
 
-	srcVec.clear();
-	targetVec.clear();
+	aligVec.clear();
 
 	// read the alignment for the current sentence
 	unsigned int srcWordNum, destWordNum;
@@ -46,8 +45,7 @@ void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 		{
 			*file >> srcWordNum;
 			*file >> destWordNum;
-			srcVec.push_back(srcWordNum);
-			targetVec.push_back(destWordNum);
+			aligVec.push_back(pair<unsigned int, unsigned int> (srcWordNum, destWordNum));
 		}
 	}
 }
@@ -56,12 +54,12 @@ unsigned int Alignment::getMinTargetAlig(unsigned int j1, unsigned int j2)
 {
 	unsigned int min=this->targetLength;
 
-	for (unsigned int k=0; k<srcVec.size(); k++)
+	for (vector<pair<unsigned int, unsigned int> >::iterator it=aligVec.begin(); it!=aligVec.end(); it++)
 	{
-		if (srcVec[k]>=j1 && srcVec[k]<=j2 && // j1 <= src <= j2
-			targetVec[k]<min
+		if (it->first>=j1 && it->first<=j2 && // j1 <= src <= j2
+			it->second<min
 		)
-			min = targetVec[k];
+			min = it->second;
 	}
 	return min;
 }
@@ -70,12 +68,12 @@ unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
 {
 	unsigned int max=0;
 
-	for (unsigned int k=0; k<srcVec.size(); k++)
+	for (vector<pair<unsigned int, unsigned int> >::iterator it=aligVec.begin(); it!=aligVec.end(); it++)
 	{
-		if (srcVec[k]>=j1 && srcVec[k]<=j2 && // j1 <= src <= j2
-			targetVec[k]>max
+		if (it->first=j1 && it->first<=j2 && // j1 <= src <= j2
+			it->second>max
 		)
-			max = targetVec[k];
+			max = it->second;
 	}
 	return max;
 }
@@ -84,12 +82,12 @@ unsigned int Alignment::getMinSrcAlig(unsigned int i1, unsigned int i2)
 {
 	unsigned int min=this->srcLength;
 
-	for (unsigned int k=0; k<targetVec.size(); k++)
+	for (vector<pair<unsigned int, unsigned int> >::iterator it=aligVec.begin(); it!=aligVec.end(); it++)
 	{
-		if (targetVec[k]>=i1 && targetVec[k]<=i2 && // i1 <= target <= i2
-			srcVec[k]<min
+		if (it->second>=i1 && it->second<=i2 && // i1 <= target <= i2
+			it->first<min
 		)
-			min = srcVec[k];
+			min = it->first;
 	}
 	return min;
 }
@@ -98,12 +96,12 @@ unsigned int Alignment::getMaxSrcAlig(unsigned int i1, unsigned int i2)
 {
 	unsigned int max=0;
 
-	for (unsigned int k=0; k<targetVec.size(); k++)
+	for (vector<pair<unsigned int, unsigned int> >::iterator it=aligVec.begin(); it!=aligVec.end(); it++)
 	{
-		if (targetVec[k]>=i1 && targetVec[k]<=i2 && // i1 <= target <= i2
-			srcVec[k]>max
+		if (it->second>=i1 && it->second<=i2 && // i1 <= target <= i2
+			it->first>max
 		)
-			max = srcVec[k];
+			max = it->first;
 	}
 	return max;
 }

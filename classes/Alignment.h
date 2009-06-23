@@ -24,11 +24,11 @@ using namespace std;
 class Alignment
 {
 	private:
-		/// holds the alignment for the source lang
-		vector<unsigned int> srcVec;
+		/// holds the alignment for a sentence first: src, second: target
+		vector<pair<unsigned int, unsigned int> > aligVec;
 
 		/// holds the alignment for the target lang
-		vector<unsigned int> targetVec;
+//		vector<unsigned int> targetVec;
 
 		/// current sentence
 		unsigned int sentenceNum;
