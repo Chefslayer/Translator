@@ -114,16 +114,17 @@ int main(int argc, char** argv)
 					phrasesE->insert(p->target);
 
 					// count phrasePair
-					phrasePairs->insert(p);
+//					phrasePairs->insert(p);
 				}
 			}
 		}
+
 		cout<< "line" << lineNr <<endl;
 		lineNr++;
 		if (lineNr>TRAINING_LINES) break;
 	}
 
-	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);
+//	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);
 
 	return 0; //EXIT_SUCCESS;
 }

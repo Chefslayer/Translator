@@ -41,7 +41,15 @@ struct NodeOfTrees
 	 * \param n the NodeOfTrees to compare the current one with
 	 * \return 1 if the words are equal, 0 otherwise
 	 */
-	bool operator==(NodeOfTrees n) const;
+	bool operator==(NodeOfTrees& n) const;
+
+	/**
+	 * Operator to compare two NodeOfTrees (comparing by word).
+	 *
+	 * \param n the NodeOfTrees to compare the current one with
+	 * \return 1 if the word of the current is smaller than the n-word
+	 */
+	bool operator<(NodeOfTrees& n) const;
 };
 
 #endif

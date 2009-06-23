@@ -2,4 +2,4 @@
 #define VECTOR_RESIZE		200
 #define KEEP_N_BEST_HYPOS	100
 #define MAX_N_GRAMS		4
-#define TRAINING_LINES		200
+#define TRAINING_LINES		250

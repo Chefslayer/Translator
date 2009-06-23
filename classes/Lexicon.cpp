@@ -20,7 +20,7 @@ unsigned int Lexicon::insertWord(string word)
 	// insert word in str2intAssignment
 	pair<map<string,unsigned int>::iterator, bool> temp = str2intAssignment.insert(pair<string,unsigned int> (word,i)); //returns an iterator and a bool which is false if the same word has alredy been inserted
 	
-	if(temp.second) // is the word new to the assignment
+	if (temp.second) // is the word new to the assignment
 	{
 		// word is new
 		if (i >= int2strAssignment.size()) // resize vector if necessary
