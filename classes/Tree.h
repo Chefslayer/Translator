@@ -43,6 +43,6 @@ class Tree
 		 *
 		 * \param phrase vector with the word-cods of the phrase
 		 */
-//		unsigned int getCount(vector<unsigned int> &phrase);
+		unsigned int getCount(vector<unsigned int> &phrase);
 };
 #endif

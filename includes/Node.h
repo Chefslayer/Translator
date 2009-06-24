@@ -50,6 +50,7 @@ struct Node
 		 * \return 1 if the word of the current is smaller than the param-node-word
 		 */
 		bool operator<(const Node& node) const;
+		
 };
 
 #endif

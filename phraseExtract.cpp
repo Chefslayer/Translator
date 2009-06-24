@@ -119,13 +119,13 @@ int main(int argc, char** argv)
 			}
 		}
 
-		if (lineNr/100==(double)lineNr/(double)100)
-			cout<< "line" << lineNr <<endl;
+		if (lineNr/100==(double)lineNr/(double)100) 
+		cout<< "line" << lineNr <<endl;
 		if (lineNr>TRAINING_LINES) break;
 		lineNr++;
-	}
+	}	 
 
-//	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);
+	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);
 
 	return 0; //EXIT_SUCCESS;
 }
