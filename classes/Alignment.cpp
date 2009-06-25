@@ -72,9 +72,9 @@ void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 /**
  * finds the minimum in the targetsentence between j1 and j2
  *
- * \param j1
- * \param j2
- * \return min the minimum in the targetsentence
+ * \param j1 first pointer in source sentence
+ * \param j2 second pointer in source sentence
+ * \return first aligned word in the targetsentence
  */
 unsigned int Alignment::getMinTargetAlig(unsigned int j1, unsigned int j2)
 {
@@ -93,7 +93,7 @@ unsigned int Alignment::getMinTargetAlig(unsigned int j1, unsigned int j2)
  *
  * \param j1
  * \param j2
- * \return max the maximum in the targetsentence
+ * \return last aligned word in the targetsentence
  */
 unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
 {
@@ -114,7 +114,7 @@ unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
  *
  * \param i1
  * \param i2
- * \return min the minimum in the sourcesentence
+ * \return first aligned word in the sourcesentence
  */
 unsigned int Alignment::getMinSrcAlig(unsigned int i1, unsigned int i2)
 {
@@ -135,7 +135,7 @@ unsigned int Alignment::getMinSrcAlig(unsigned int i1, unsigned int i2)
  *
  * \param i1
  * \param i2
- * \return max the maximum in the sourcesentence
+ * \return last aligned word in the sourcesentence
  */
 unsigned int Alignment::getMaxSrcAlig(unsigned int i1, unsigned int i2)
 {

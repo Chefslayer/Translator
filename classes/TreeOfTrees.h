@@ -46,11 +46,5 @@ class TreeOfTrees
 		 * \param p src-target-phrase pair
 		 */
 		void insert(PhrasePair* p);
-
-		/** gets the count for a phrase of words (unsigned ints)
-		 *
-		 * \param phrase vector with the word-cods of the phrase
-		 */
-//		unsigned int getCount(vector<unsigned int> &phrase);
 };
 #endif
