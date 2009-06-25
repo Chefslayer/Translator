@@ -35,7 +35,7 @@ lexiconTest: $(T)lexiconTest.cpp $(I)functions.o $(C)Lexicon.o
 bleuTest: $(T)bleuTest.cpp $(C)Bleu.o
 	$(CXX) $^ -o bleuTest.o
 
-treeTest: $(T)treeTest.cpp $(C)Tree.o $(C)TreeOfTrees.o $(I)PhrasePair.o $(I)Node.o $(I)NodeOfTrees.o
+treeTest: $(T)treeTest.cpp $(I)functions.o $(C)Lexicon.o $(I)output.o $(C)Tree.o $(C)TreeOfTrees.o $(I)PhrasePair.o $(I)Node.o $(I)NodeOfTrees.o
 	$(CXX) $^ -o treeTest.o
 
 nodeOfTreesTest: $(T)nodeOfTreesTest.cpp $(I)NodeOfTrees.o $(C)Tree.o

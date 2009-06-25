@@ -106,6 +106,7 @@ int main(int argc, char** argv)
 				if (aligObj->getMinSrcAlig(i1, i2) == j1 && aligObj->getMaxSrcAlig(i1, i2) == j2)
 				{
 					PhrasePair* p = aligObj->outputPhrase(j1, j2, i1, i2, srcWords, destWords);
+//					cout << "i/j:"<<i1<<","<<i2<<","<<j1<<","<<j2<<"; s:"<<srcWords.size() << "; ps:"<<p->src.size()<< endl;
 
 					// put phrase in source-lang-obj
 					phrasesF->insert(p->src);

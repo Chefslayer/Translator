@@ -7,6 +7,7 @@ NodeOfTrees::NodeOfTrees(unsigned int word, Tree* tree)
 {
 	this->word = word;
 	this->tree = tree;
+	this->count = 0;
 };
 
 bool NodeOfTrees::operator==(const NodeOfTrees& n) const

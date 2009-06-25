@@ -70,7 +70,7 @@ unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
 
 	for (vector<pair<unsigned int, unsigned int> >::iterator it=aligVec.begin(); it!=aligVec.end(); it++)
 	{
-		if (it->first=j1 && it->first<=j2 && // j1 <= src <= j2
+		if (it->first>=j1 && it->first<=j2 && // j1 <= src <= j2
 			it->second>max
 		)
 			max = it->second;
@@ -117,7 +117,6 @@ PhrasePair* Alignment::outputPhrase(unsigned int j1, unsigned int j2, unsigned i
 	{
 		src[j-j1] = srcWords[j];
 	}
-
 	// i = row
 	for (unsigned int i=i1; i<=i2; i++)
 	{

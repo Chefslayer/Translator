@@ -45,7 +45,7 @@ void showFreqPhrases_subTrees_rek(Node *current, const string &s_f, string s_e, 
 		cout << relFreq_f << " " << relFreq_e << " # " << s_f << " # " << s_e << endl;
 	}
 	set<Node*, ptr_comp<Node> >::iterator it;
-	for( it = current->childNodes.begin(); it != current->childNodes.end(); it++ )
+	for ( it = current->childNodes.begin(); it != current->childNodes.end(); it++ )
 	{
 		showFreqPhrases_subTrees_rek(*it, s_f, s_e, v_f, v_e, phrasesF, phrasesE, e);
 	}
@@ -53,9 +53,7 @@ void showFreqPhrases_subTrees_rek(Node *current, const string &s_f, string s_e, 
 
 void showFreqPhrases_subTrees(string s_f, vector<unsigned int> v_f, Tree *t, Tree *phrasesF, Tree *phrasesE, Lexicon &e)
 {
-	
-	
-	if ( t!=NULL)
+	if (t != NULL)
 	{
 		cout << "pp" << endl;
 		
@@ -67,7 +65,6 @@ void showFreqPhrases_subTrees(string s_f, vector<unsigned int> v_f, Tree *t, Tre
 
 void showFreqPhrases_rek(NodeOfTrees* current, string s_f, vector<unsigned int> v_f, Tree *phrasesF, Tree *phrasesE, Lexicon &f, Lexicon &e)
 {
-	
 	if (current->word != 0)
 	{
 		s_f += (s_f==""?"":" ") + f.getWord(current->word);
@@ -80,7 +77,4 @@ void showFreqPhrases_rek(NodeOfTrees* current, string s_f, vector<unsigned int> 
 	{		
 		showFreqPhrases_rek(*it, s_f, v_f, phrasesF, phrasesE, f, e);
 	}
-		
-
 }
-

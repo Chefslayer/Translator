@@ -11,11 +11,15 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "../classes/Lexicon.h"
 #include "../classes/Tree.h"
 #include "../classes/TreeOfTrees.h"
 #include "../includes/PhrasePair.h"
+#include "../includes/output.h"
 
 using namespace std;
+static Lexicon f;
+static Lexicon e;
 
 int main(int argc, char** argv)
 {
@@ -33,6 +37,10 @@ int main(int argc, char** argv)
 
 	// create the trees
 	Tree *t				= new Tree(new Node(100));
+
+	Tree *phrasesF = new Tree(new Node(101));
+	Tree *phrasesE = new Tree(new Node(102));
+
 	TreeOfTrees* phrasePairs	= new TreeOfTrees(new NodeOfTrees(200, NULL));
 
 	// check output	for the normal phrase-tree
@@ -66,6 +74,10 @@ int main(int argc, char** argv)
 	phrasePairs->insert(p); // 13->10
 	phrasePairs->insert(p2); // 13->13
 
+	cout << "output: ";
+	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);
+
+/*
 	cout << "output: ";
 											// output should be:
 	cout << phrasePairs->root->count << ",";					// 0
@@ -101,5 +113,5 @@ int main(int argc, char** argv)
 
 	cout << endl;
 
-	return 0; //EXIT_SUCCESS;
+	return 0; //EXIT_SUCCESS;*/
 }
