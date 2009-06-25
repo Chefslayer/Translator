@@ -1,3 +1,13 @@
+/**
+ * @file
+ * @author Gruppe 2
+ * @version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ *This file implements the Tree and the Nodes Classen for a prefix-tree.
+ */
+
 #ifndef __TREE_CPP__
 #define __TREE_CPP__
 
@@ -13,6 +23,12 @@ Tree::Tree(Node* root)
 {
 	this->root = root;
 }
+
+/**
+ * inserts a sentence(vector of words) into the Tree
+ * \param values a vector of unsigned int-values (sentence) to insert
+ * \return a pointer to the node with the last value
+ */
 
 Node* Tree::insert(vector<unsigned int> &values)
 {
@@ -30,6 +46,11 @@ Node* Tree::insert(vector<unsigned int> &values)
 	return node;
 }
 
+/**
+ * finds the number of appearance of a given phrase (unsigned int vector)
+ * \param phrase vector to search for
+ * \return count the number of appearance of the given phrase
+ */
 unsigned int Tree::getCount(vector<unsigned int> &phrase)
 {
 	Node *node = root;
@@ -39,14 +60,9 @@ unsigned int Tree::getCount(vector<unsigned int> &phrase)
 	{
 		if ((tmp = (node->childNodes.find(new Node(*it)))) == (node->childNodes.end()))
 			return 0;
-
 		node = *node->childNodes.find(new Node(*it));
 	}
 	return (node->count);
-	
-	
 }
-
-
 
 #endif
