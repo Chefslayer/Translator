@@ -1,3 +1,13 @@
+/**
+ *@file
+ *@author Gruppe 2
+ *@version 1.0
+ *
+ * @section DESCRIPTION
+ *
+ * The Alignment class extracts phrasepairs out of an given alignment
+ */
+
 #include "Alignment.h"
 #include <vector>
 #include <string>
@@ -5,6 +15,7 @@
 #include "../includes/PhrasePair.h"
 
 using namespace std;
+
 
 Alignment::Alignment(char* fileName)
 {
@@ -23,6 +34,14 @@ Alignment::Alignment(char* fileName)
 		*file >> sentenceNum; // x
 	}
 }
+
+
+/**
+ * reads the needed information of the alignment for the current sentence
+ *
+ * \param srcLength the length of the sentence is sourcelanguage
+ * \param targetLength the length of the sentence in sourcelanguage
+ */
 
 void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 {
@@ -50,6 +69,13 @@ void Alignment::nextSentence(unsigned int srcLength, unsigned int targetLength)
 	}
 }
 
+/**
+ * finds the minimum in the targetsentence between j1 and j2
+ *
+ * \param j1
+ * \param j2
+ * \return min the minimum in the targetsentence
+ */
 unsigned int Alignment::getMinTargetAlig(unsigned int j1, unsigned int j2)
 {
 	unsigned int min=this->targetLength;
@@ -57,13 +83,18 @@ unsigned int Alignment::getMinTargetAlig(unsigned int j1, unsigned int j2)
 	for (vector<pair<unsigned int, unsigned int> >::iterator it=aligVec.begin(); it!=aligVec.end(); it++)
 	{
 		if (it->first>=j1 && it->first<=j2 && // j1 <= src <= j2
-			it->second<min
-		)
+			it->second<min)
 			min = it->second;
 	}
 	return min;
 }
-
+/**
+ * finds the minimum in the targetsentence between j1 and j2
+ *
+ * \param j1
+ * \param j2
+ * \return max the maximum in the targetsentence
+ */
 unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
 {
 	unsigned int max=0;
@@ -78,6 +109,13 @@ unsigned int Alignment::getMaxTargetAlig(unsigned int j1, unsigned int j2)
 	return max;
 }
 
+/**
+ * finds the minimum in the sourcesentence between i1 and i2
+ *
+ * \param i1
+ * \param i2
+ * \return min the minimum in the sourcesentence
+ */
 unsigned int Alignment::getMinSrcAlig(unsigned int i1, unsigned int i2)
 {
 	unsigned int min=this->srcLength;
@@ -92,6 +130,13 @@ unsigned int Alignment::getMinSrcAlig(unsigned int i1, unsigned int i2)
 	return min;
 }
 
+/**
+ * finds the maximum in the sourcesentence between i1 and i2
+ *
+ * \param i1
+ * \param i2
+ * \return max the maximum in the sourcesentence
+ */
 unsigned int Alignment::getMaxSrcAlig(unsigned int i1, unsigned int i2)
 {
 	unsigned int max=0;
@@ -105,6 +150,18 @@ unsigned int Alignment::getMaxSrcAlig(unsigned int i1, unsigned int i2)
 	}
 	return max;
 }
+
+/**
+ *
+ * creates a Phrasepair containing the source and the target phrase and returns it
+ * \param j1
+ * \param j2
+ * \param i1
+ * \param i2
+ * \param srcWords the sourcesentence
+ * \param targetWords the targetsentence
+ * \return phrasePair a pair containing the source and the target phrase
+ */
 
 PhrasePair* Alignment::outputPhrase(unsigned int j1, unsigned int j2, unsigned int i1, unsigned int i2, vector<unsigned int> &srcWords, vector<unsigned int> &targetWords)
 {
