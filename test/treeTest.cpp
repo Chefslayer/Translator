@@ -35,8 +35,26 @@ int main(int argc, char** argv)
 	PhrasePair* p = new PhrasePair(v,w);
 	PhrasePair* p2 = new PhrasePair(v,v);
 
+	Tree* testT = new Tree(new Node(0));
+
+	testT->insert(p->src);
+	testT->insert(p->src);
+	testT->insert(p->target);
+	p->src.push_back(2);
+	testT->insert(p->src);
+	p->src.pop_back();
+
+	cout << "c:" << testT->getCount(p->src)<<endl;
+
+	cout << (*testT->root->childNodes.begin())->word<<endl;							// 1
+
+/*
+
+
+	.find(new Node(100));
 	// create the trees
 	Tree *t				= new Tree(new Node(100));
+	t->root->childNodes.begin()
 
 	Tree *phrasesF = new Tree(new Node(101));
 	Tree *phrasesE = new Tree(new Node(102));
@@ -112,6 +130,6 @@ int main(int argc, char** argv)
 	cout << (*it)->word<<endl;							// 3
 
 	cout << endl;
-
-	return 0; //EXIT_SUCCESS;*/
+*/
+	return 0; //EXIT_SUCCESS;
 }

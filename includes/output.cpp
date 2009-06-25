@@ -31,18 +31,21 @@ void showFreqPhrases(TreeOfTrees *phrasePairs, Tree *phrasesF, Tree *phrasesE, L
 }
 
 
-void showFreqPhrases_subTrees_rek(Node *current, const string &s_f, string s_e, vector<unsigned int> v_f, vector<unsigned int> v_e, Tree *phrasesF, Tree *phrasesE, Lexicon &e)
+void showFreqPhrases_subTrees_rek(Node *current, const string &s_f, string s_e, vector<unsigned int> &v_f, vector<unsigned int> v_e, Tree *phrasesF, Tree *phrasesE, Lexicon &e)
 {
-	//double rel = ...;
-	
-	if (current->word != 0)
+	if (current->word != 0) // not a root node
 	{
-		double relFreq_f = -log(((double)current->count)/((double)phrasesF->getCount(v_f)));
-		double relFreq_e = -log(((double)current->count)/((double)phrasesE->getCount(v_e)));
 		s_e += (s_e==""?"":" ") + e.getWord(current->word);
 		v_e.push_back(current->word);
 
-		cout << relFreq_f << " " << relFreq_e << " # " << s_f << " # " << s_e << endl;
+		// check if we saw the v_e-Phrase at least once
+		if (current->count>0)
+		{
+			double relFreq_f = -log(((double)current->count)/((double)phrasesF->getCount(v_f)));
+			double relFreq_e = -log(((double)current->count)/((double)phrasesE->getCount(v_e)));
+			// relFreq_e==0 means that we saw the v_e-phrase only if we translated it with the v_f and no other v_f
+			cout << relFreq_f << " " << relFreq_e << " # " << s_f << " # " << s_e << endl;
+		}
 	}
 	set<Node*, ptr_comp<Node> >::iterator it;
 	for ( it = current->childNodes.begin(); it != current->childNodes.end(); it++ )
@@ -51,12 +54,10 @@ void showFreqPhrases_subTrees_rek(Node *current, const string &s_f, string s_e, 
 	}
 }
 
-void showFreqPhrases_subTrees(string s_f, vector<unsigned int> v_f, Tree *t, Tree *phrasesF, Tree *phrasesE, Lexicon &e)
+void showFreqPhrases_subTrees(string &s_f, vector<unsigned int> &v_f, Tree *t, Tree *phrasesF, Tree *phrasesE, Lexicon &e)
 {
 	if (t != NULL)
 	{
-		cout << "pp" << endl;
-		
 		string s_e = "";
 		vector<unsigned int> v_e;
 		showFreqPhrases_subTrees_rek(t->root, s_f, s_e, v_f, v_e, phrasesF, phrasesE, e);
@@ -70,8 +71,10 @@ void showFreqPhrases_rek(NodeOfTrees* current, string s_f, vector<unsigned int> 
 		s_f += (s_f==""?"":" ") + f.getWord(current->word);
 		v_f.push_back(current->word);
 	}
-	cout << current->childNodes.size() << endl;
-	showFreqPhrases_subTrees(s_f, v_f, current->tree, phrasesF, phrasesE, e);
+
+	if (phrasesF->getCount(v_f)>0) // check if we saw v_f-Phrase at least once - otherwise there won't be a translation for it.
+		showFreqPhrases_subTrees(s_f, v_f, current->tree, phrasesF, phrasesE, e);
+
 	set<NodeOfTrees*, ptr_ptr_comp<NodeOfTrees> >::iterator it;
 	for( it = current->childNodes.begin(); it != current->childNodes.end(); ++it )
 	{		

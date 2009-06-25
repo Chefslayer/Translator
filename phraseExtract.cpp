@@ -99,14 +99,14 @@ int main(int argc, char** argv)
 		unsigned int i1=0,i2=0;
 		for (unsigned int j1 = 0; j1<srcLine.size(); j1++)
 		{
-			for (unsigned int j2 = i1; j2<srcLine.size(); j2++)
+			//for (unsigned int j2 = i1; j2<srcLine.size(); j2++)
+			for (unsigned int j2 = i1; j2<srcLine.size() && j2-j1<=MAX_PHRASE_LENGTH; j2++)
 			{
 				i1 = aligObj->getMinTargetAlig(j1, j2);
 				i2 = aligObj->getMaxTargetAlig(j1, j2);
 				if (aligObj->getMinSrcAlig(i1, i2) == j1 && aligObj->getMaxSrcAlig(i1, i2) == j2)
 				{
 					PhrasePair* p = aligObj->outputPhrase(j1, j2, i1, i2, srcWords, destWords);
-//					cout << "i/j:"<<i1<<","<<i2<<","<<j1<<","<<j2<<"; s:"<<srcWords.size() << "; ps:"<<p->src.size()<< endl;
 
 					// put phrase in source-lang-obj
 					phrasesF->insert(p->src);
@@ -121,8 +121,8 @@ int main(int argc, char** argv)
 		}
 
 		if (lineNr/100==(double)lineNr/(double)100) 
-		cout<< "line" << lineNr <<endl;
-		if (lineNr>TRAINING_LINES) break;
+			cout << "line" << lineNr << endl;
+//		if (lineNr>TRAINING_LINES) break;
 		lineNr++;
 	}	 
 

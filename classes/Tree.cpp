@@ -37,8 +37,10 @@ unsigned int Tree::getCount(vector<unsigned int> &phrase)
 	
 	for (vector<unsigned int>::iterator it=phrase.begin(); it != phrase.end(); it++)
 	{
-		if ((tmp = (node->childNodes.find(new Node(*it)))) == (node->childNodes.end())) return 0;
-		node = *tmp;
+		if ((tmp = (node->childNodes.find(new Node(*it)))) == (node->childNodes.end()))
+			return 0;
+
+		node = *node->childNodes.find(new Node(*it));
 	}
 	return (node->count);
 	
