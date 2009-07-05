@@ -120,10 +120,10 @@ int main(int argc, char** argv)
 			}
 		}
 
-		if (lineNr/100==(double)lineNr/(double)100) 
-			cout << "line" << lineNr << endl;
+//		if (lineNr/100==(double)lineNr/(double)100) 
+//			cout << "line" << lineNr << endl;
 //		if (lineNr>TRAINING_LINES) break;
-		lineNr++;
+//		lineNr++;
 	}	 
 
 	showFreqPhrases(phrasePairs, phrasesF, phrasesE, f, e);
