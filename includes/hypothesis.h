@@ -37,8 +37,15 @@ struct Hypothesis
 	 * \param t word in the target lang / translation
 	 */
 	Hypothesis(Hypothesis *p,double fCost, double eCost, unsigned int t);
-	Hypothesis(Hypothesis *p,double fCost, double eCost, vector<unsigned int> t);
-	
+
+	/**
+	 * inits a new Hypothesis with given values.
+	 *
+	 * \param p reference to the previous Hypothesis in a translation-process
+	 * \param c costs for this Hypothesis
+	 * \param t vector of words in the target lang / translation
+	 */
+	Hypothesis(Hypothesis *p,double fCost, double eCost, vector<unsigned int> &t);	
 };
 
 /**

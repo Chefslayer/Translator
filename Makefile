@@ -9,13 +9,16 @@ OBJ = $(SRC:%cpp=%o)
 CFLAGS = -g
 LDFLAGS = -lz
 
-all: phraseExtract
+all: phraseTranslate
 clean:
 	-rm $(OBJ) phraseExtract translate rate_translation singleWordExtract hypTest.o lexiconTest.o treeTest.o
 rebuild: clean translate rate_translation
 
+phraseTranslate: phraseTranslate.cpp $(OBJ)
+	$(CXX) $^ -o $@ -I/home/robhei/srilm/include/ -loolm -ldstruct -lflm -lmisc -L/home/robhei/srilm/lib/i686/
+
 phraseExtract: phraseExtract.cpp ${L}gzstream.C $(OBJ)
-	$(CXX) $^ -o $@ $(LDFLAGS) -pg
+	$(CXX) $^ -o $@ $(LDFLAGS)
 
 translate: translate.cpp $(OBJ)
 	$(CXX) $^ -o $@
