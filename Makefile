@@ -13,7 +13,7 @@ LDFLAGS = -lz
 
 all: phraseTranslate
 clean:
-	-rm $(OBJ) phraseExtract translate rate_translation singleWordExtract hypTest.o lexiconTest.o treeTest.o
+	-rm $(OBJ) phraseTranslate phraseExtract translate rate_translation singleWordExtract hypTest.o lexiconTest.o treeTest.o
 rebuild: clean translate rate_translation
 
 phraseTranslate: phraseTranslate.cpp ${L}gzstream.C $(OBJ)
