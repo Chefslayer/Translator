@@ -92,47 +92,56 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 	stacks[0].push(h);
 
 
-	for (unsigned int i = 0; i < words.size()-2; i++)
+	for (unsigned int i = 0; i < words.size(); i++)
 	{
-		for (unsigned int j = 0; j < 3; j++){
+		for (unsigned int j = 0; j < 3 && i+j<words.size(); j++)
+		{
 			vector<unsigned int> phraseF;
-			for (unsigned int k = 0; k < j+1; ++k){
+			for (unsigned int k = 0; k < j; ++k)
+			{
 				phraseF.push_back(words[i+k]);
 			}
-		unsigned int pos = 0;
-		// find first occurance of word[i] in transtab
-		while (j < translationtab.size() && phraseF != (translationtab[j].f))
-		{
-			j++;
-		}
-		unsigned int first_occ = pos;
 
-		while (!stacks[i].empty())
-		{
-			Hypothesis *prev = stacks[i+j].top();
+			// unsigned int pos = 0; ???
 
-			// make hyps for all the possible translations
-			j = first_occ;
-			bool found_at_least_one_hypo = false;
-			while (j < translationtab.size() && phraseF == (translationtab[pos].f))
+			// find first occurance of word[i] in transtab
+			while (j < translationtab.size() && phraseF != (translationtab[j].f))
 			{
-				found_at_least_one_hypo = true;
-				Hypothesis *h = new Hypothesis(prev, translationtab[pos].relFreqF, translationtab[pos].relFreqE, translationtab[pos].e);
-				stacks[i+j+1].push(h);
-				pos++;
+				j++;
 			}
-			if (!found_at_least_one_hypo)
+			// unsigned int first_occ = pos; ???
+			unsigned int first_occ = j;
+
+			while (!stacks[i].empty())
 			{
-				// insert '(?)'
-				vector<unsigned int> tmp;
-				tmp.push_back(0);
+				// TODO: stacks[i+j] may be empty
+				Hypothesis *prev = stacks[i+j].top();
+
+				// make hyps for all the possible translations
+				j = first_occ;
+				bool found_at_least_one_hypo = false;
+				while (j < translationtab.size() && phraseF == (translationtab[j].f))
+				{
+					found_at_least_one_hypo = true;
+					Hypothesis *h = new Hypothesis(prev, translationtab[j].relFreqF, translationtab[j].relFreqE, translationtab[j].e);
+					stacks[i+j+1].push(h);
+					j++;
+				}
+				if (!found_at_least_one_hypo)
+				{
+					// insert '(?)'
+					vector<unsigned int> tmp;
+					tmp.push_back(0);
 				
-				stacks[i+1].push(new Hypothesis(prev,0, 0, tmp));
+					stacks[i+1].push(new Hypothesis(prev,0, 0, tmp));
+				}
+				stacks[i].pop();
+				// TODO: hier müssten wir stacks[i+j].pop(); machen.. halt das Element, was behandelt wurde
+				// dementsprechend müsste dann die while-bedingung auch geändert werden?
+				// evtl müssen wir diese gesamte Schleife hier nur anders aufbauen.. also nicht anhand des i-ten-stacks sondern bzgl irgendwas anderem...??
 			}
-			stacks[i].pop();
+			minCostsHyp = pruneStack(stacks[i+1]);
 		}
-		minCostsHyp = pruneStack(stacks[i+1]);
-	}
 	}
 	// return best Hypothesis of the last stack
 	return minCostsHyp;
@@ -170,9 +179,29 @@ int main(int argc, char* argv[])
 	while (getline(trans_tab, line))
 	{
 		struct trans_phrase_tab_struct current;
+		double temp;
        		// line is formatted like: <double> <double> # <string> ... <string> # <string> ... <string>
 
-		//TODO get data from line and store in current
+		vector<string> line_vec = stringSplit(line, "#");
+		// line_vec[0] == <double> <double>
+		// line_vec[1] == <string> ... <string>
+		// line_vec[2] == <string> ... <string>
+
+		vector<string> freqs_vec = stringSplit(line_vec[0], " ");
+
+		istringstream isstrF(freqs_vec[0]);
+		isstrF >> temp;
+		current.relFreqF = temp;
+
+		istringstream isstrE(freqs_vec[1]);
+		isstrE >> temp;
+		current.relFreqE = temp;
+
+		// insert src phrase
+		current.f = f.insertPhrase(stringSplit(line_vec[1], " "));
+
+		// insert target phrase
+		current.e = e.insertPhrase(stringSplit(line_vec[2], " "));
 
 		if (i >= trans_phrase_tab_vec.size())
 		{
