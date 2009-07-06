@@ -89,7 +89,6 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_stru
 
 	for (unsigned int i = 0; i < words.size(); i++)
 	{
-
 		unsigned int j = 0;
 		// find first occurance of word[i] in transtab
 		while (j < translationtab.size() && words[i] != (translationtab[j].f))
@@ -101,10 +100,10 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_stru
 		while (!stacks[i].empty())
 		{
 			Hypothesis *prev = stacks[i].top();
-
 			// make hyps for all the possible translations
 			j = first_occ;
 			bool found_at_least_one_hypo = false;
+
 			while (j < translationtab.size() && words[i] == (translationtab[j].f))
 			{
 				found_at_least_one_hypo = true;
@@ -120,7 +119,6 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_tab_stru
 			stacks[i].pop();
 		}
 		minCostsHyp = pruneStack(stacks[i+1]);
-
 	}
 	// return best Hypothesis of the last stack
 	return minCostsHyp;

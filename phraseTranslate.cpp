@@ -24,8 +24,8 @@
 #include "includes/hypothesis.h"
 #include "includes/functions.h"
 #include "includes/output.h"
-#include <Vocab.h>
-#include <Ngram.h>
+//#include <Vocab.h>
+//#include <Ngram.h>
 
 using namespace std;
 
@@ -38,14 +38,14 @@ static Lexicon e;
 struct trans_phrase_tab_struct
 {
 	/// relative Frequence of F
-	double	relFreqF,
+	double relFreqF;
 	/// relative Frequence of E
-		relFreqE;
+	double relFreqE;
 
 	/// word-codes of the source-phrase
-	vector<unsigned int>	f,
+	vector<unsigned int> f;
 	/// word-codes of the target-phrase
-			e;
+	vector<unsigned int> e;
 };
 
 /** Prunes the Stack to KEEP_N_BEST_HYPOS elements.
@@ -91,7 +91,6 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 	Hypothesis* h = new Hypothesis(NULL,0,0,tmp);
 	stacks[0].push(h);
 
-
 	for (unsigned int i = 0; i < words.size(); i++)
 	{
 		for (unsigned int j = 0; j < 3 && i+j<words.size(); j++)
@@ -100,11 +99,10 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 			for (unsigned int k = 0; k < j; ++k)
 			{
 				phraseF.push_back(words[i+k]);
-			}
-
 			// unsigned int pos = 0; ???
+			//}
 
-			// find first occurance of word[i] in transtab
+			// find first occurance of phrase in transtab
 			while (j < translationtab.size() && phraseF != (translationtab[j].f))
 			{
 				j++;
@@ -115,11 +113,17 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 			while (!stacks[i].empty())
 			{
 				// TODO: stacks[i+j] may be empty
-				Hypothesis *prev = stacks[i+j].top();
+				// also ich glaube hier müsste es auch mit stacks[i] funktionieren, weil ja vectoren der Länge j gespeichert werden macht stachs[i+j] glaub ich weniger sinn
+				Hypothesis *prev = stacks[i].top();
 
 				// make hyps for all the possible translations
 				j = first_occ;
 				bool found_at_least_one_hypo = false;
+				cout << phraseF[0] << endl;
+				if (translationtab[j].f.empty())
+					cout << "translationtab is empty" << endl;
+				else
+					cout << translationtab[j].f[0] << endl;
 				while (j < translationtab.size() && phraseF == (translationtab[j].f))
 				{
 					found_at_least_one_hypo = true;
@@ -132,15 +136,17 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 					// insert '(?)'
 					vector<unsigned int> tmp;
 					tmp.push_back(0);
-				
 					stacks[i+1].push(new Hypothesis(prev,0, 0, tmp));
 				}
 				stacks[i].pop();
 				// TODO: hier müssten wir stacks[i+j].pop(); machen.. halt das Element, was behandelt wurde
 				// dementsprechend müsste dann die while-bedingung auch geändert werden?
 				// evtl müssen wir diese gesamte Schleife hier nur anders aufbauen.. also nicht anhand des i-ten-stacks sondern bzgl irgendwas anderem...??
+				// wenn das oben mit prev stimmt dann ist auch hier das pop richtig, glaub ich zumindest…
 			}
 			minCostsHyp = pruneStack(stacks[i+1]);
+			//ka wo die for-schleife enden sollte, aber wenn sie schon nach dem push steht dann werden nur phrasen mit der Länge 4 beachtet, statt alle phrasen bis länge 4
+			}
 		}
 	}
 	// return best Hypothesis of the last stack
@@ -149,7 +155,6 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 
 int main(int argc, char* argv[])
 {
-
 	if (argc < 3)
 	{
 		cerr << "ERROR: not enough parameters" << endl << "Usage: " << argv[0] << " translation-table source-document" << endl;
@@ -198,10 +203,10 @@ int main(int argc, char* argv[])
 		current.relFreqE = temp;
 
 		// insert src phrase
-		current.f = f.insertPhrase(stringSplit(line_vec[1], " "));
+		current.f = f.insertSentence(stringSplit(line_vec[1], " "));
 
 		// insert target phrase
-		current.e = e.insertPhrase(stringSplit(line_vec[2], " "));
+		current.e = e.insertSentence(stringSplit(line_vec[2], " "));
 
 		if (i >= trans_phrase_tab_vec.size())
 		{
