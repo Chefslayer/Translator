@@ -27,6 +27,7 @@ struct Hypothesis
 
 	/// holds the code for the word that this hypothesis is for.
 	unsigned int trans;
+	vector<unsigned int> phraseTrans;
 	
 	/**
 	 * inits a new Hypothesis with given values.
@@ -36,6 +37,8 @@ struct Hypothesis
 	 * \param t word in the target lang / translation
 	 */
 	Hypothesis(Hypothesis *p,double fCost, double eCost, unsigned int t);
+	Hypothesis(Hypothesis *p,double fCost, double eCost, vector<unsigned int> t);
+	
 };
 
 /**
