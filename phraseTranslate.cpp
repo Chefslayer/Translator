@@ -114,7 +114,8 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 
 			while (!stacks[i].empty())
 			{
-				Hypothesis *prev = stacks[i+j].top(); // TODO: stacks[i+j] may be empty
+				// TODO: stacks[i+j] may be empty
+				Hypothesis *prev = stacks[i+j].top();
 
 				// make hyps for all the possible translations
 				j = first_occ;
@@ -137,6 +138,7 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 				stacks[i].pop();
 				// TODO: hier müssten wir stacks[i+j].pop(); machen.. halt das Element, was behandelt wurde
 				// dementsprechend müsste dann die while-bedingung auch geändert werden?
+				// evtl müssen wir diese gesamte Schleife hier nur anders aufbauen.. also nicht anhand des i-ten-stacks sondern bzgl irgendwas anderem...??
 			}
 			minCostsHyp = pruneStack(stacks[i+1]);
 		}
