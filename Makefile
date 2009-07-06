@@ -2,7 +2,7 @@ C = classes/
 I = includes/
 L = lib/
 T = test/
-# SRILM = 
+# SRILM = srilm/
 SRILM = /home/robhei/srilm
 
 SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(I)Node.cpp $(I)NodeOfTrees.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Tree.cpp $(C)TreeOfTrees.cpp $(C)Alignment.cpp $(I)PhrasePair.cpp
@@ -16,8 +16,8 @@ clean:
 	-rm $(OBJ) phraseExtract translate rate_translation singleWordExtract hypTest.o lexiconTest.o treeTest.o
 rebuild: clean translate rate_translation
 
-phraseTranslate: phraseTranslate.cpp $(OBJ)
-	$(CXX) $^ -o $@ -I${SRILM}/include/ -loolm -ldstruct -lflm -lmisc -L${SRILM}/lib/i686/
+phraseTranslate: phraseTranslate.cpp ${L}gzstream.C $(OBJ)
+	$(CXX) $^ -o $@ -I${SRILM}/include/ -loolm -ldstruct -lflm -lmisc -L${SRILM}/lib/i686/ $(LDFLAGS)
 
 phraseExtract: phraseExtract.cpp ${L}gzstream.C $(OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)
