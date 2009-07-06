@@ -24,6 +24,8 @@
 #include "includes/hypothesis.h"
 #include "includes/functions.h"
 #include "includes/output.h"
+#include <Vocab.h>
+#include <Ngram.h>
 
 using namespace std;
 
@@ -31,7 +33,7 @@ static Lexicon f;
 static Lexicon e;
 
 /**
- * holds information about a wordpair from a translation-table.
+ * holds information about a phrasepair from a translation-table.
  */
 struct trans_phrase_tab_struct
 {
@@ -40,9 +42,9 @@ struct trans_phrase_tab_struct
 	/// relative Frequence of E
 		relFreqE;
 
-	/// word-codes of the source-word
+	/// word-codes of the source-phrase
 	vector<unsigned int>	f,
-	/// word-codes of the target-word
+	/// word-codes of the target-phrase
 			e;
 };
 
@@ -168,7 +170,8 @@ int main(int argc, char* argv[])
 	while (getline(trans_tab, line))
 	{
 		struct trans_phrase_tab_struct current;
-       
+       		// line is formatted like: <double> <double> # <string> ... <string> # <string> ... <string>
+
 		//TODO get data from line and store in current
 
 		if (i >= trans_phrase_tab_vec.size())
