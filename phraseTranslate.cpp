@@ -106,8 +106,9 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 	Hypothesis* h = new Hypothesis(NULL,0,0,tmp);
 	stacks[0].push(h);
 
-	for (unsigned int stackNr = 0; stackNr < words.size(); stackNr++)
+	for (unsigned int stackNr = 0; stackNr < stacks.size()-1; stackNr++)
 	{
+//		cout << stackNr << endl;
 		vector<phrase_translation_struct> phrases;
 		phrases.clear();
 
@@ -123,12 +124,13 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 			}
 			// search for all possible translations and save it for later to create the hypos
 
-			// find first occurance of phrase in transtab
+			// search for first occurance of phraseF in transtab
 			unsigned int transTabPos = 0;
 			while (transTabPos < translationtab.size() && phraseF != translationtab[transTabPos].f)
 			{
 				transTabPos++;
 			}
+			// search for all following occurances of phraseF in transtab
 			while (transTabPos < translationtab.size() && phraseF == translationtab[transTabPos].f)
 			{
 				found_at_least_one_hypo = true;
@@ -145,7 +147,7 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 		}
 		if (!found_at_least_one_hypo)
 		{
-			// insert '(?)'
+			// insert '?'
 			phrase_translation_struct currentTranslation;
 
 			currentTranslation.relFreqF	= 20;
@@ -226,11 +228,20 @@ int main(int argc, char* argv[])
 		isstrE >> temp;
 		current.relFreqE = temp;
 
+		vector<string> tempV;
+
 		// insert src phrase
-		current.f = f.insertSentence(stringSplit(line_vec[1], " "));
+		tempV.clear();
+		tempV = stringSplit(line_vec[1], " ");
+		tempV.erase(tempV.begin());
+		tempV.pop_back();
+		current.f = f.insertSentence(tempV);
 
 		// insert target phrase
-		current.e = e.insertSentence(stringSplit(line_vec[2], " "));
+		tempV.clear();
+		tempV = stringSplit(line_vec[2], " ");
+		tempV.erase(tempV.begin());
+		current.e = e.insertSentence(tempV);
 
 		if (i >= trans_phrase_tab_vec.size())
 		{
@@ -239,12 +250,18 @@ int main(int argc, char* argv[])
 		trans_phrase_tab_vec[i] = current;
 		// cout << f.getWord(current.f) << " " << current.relFreqF << endl;
 		i++;
+		if (i/100==(double)i/(double)100)
+			cout<< "line" << i <<endl;
+//		if (i>TRAINING_LINES) break;
 	}
 	trans_phrase_tab_vec.resize(i);
 
 	// translate src_doc
+	int c = 0;
 	while (getline(src_doc, line))
 	{
+		c++;
+		if (c > 10) break;
 		vector<string> stringwords = stringSplit(line, " ");
 		vector<unsigned int> words(stringwords.size(), 0);
 
