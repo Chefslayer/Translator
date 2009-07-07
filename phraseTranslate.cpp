@@ -275,9 +275,12 @@ int main(int argc, char* argv[])
 		string translation = "";
 		while (transHyp->prevHyp != NULL)
 		{
+			string tmp="";
 			for (unsigned int i = 0; i < transHyp->phraseTrans.size(); ++i ){
-				translation = e.getWord(transHyp->phraseTrans[i]) + " " + translation;
+				tmp += (tmp== ""?"":" ") + e.getWord(transHyp->phraseTrans[i]);
 			}
+			translation = tmp+" "+translation;
+
 			transHyp = transHyp->prevHyp;
 		}
 		cout << translation << endl;
