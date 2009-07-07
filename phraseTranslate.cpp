@@ -48,6 +48,21 @@ struct trans_phrase_tab_struct
 	vector<unsigned int> e;
 };
 
+/**
+ * holds information about a translation of a phrase
+ */
+struct phrase_translation_struct
+{
+	/// relative Frequence of F
+	double relFreqF;
+	/// relative Frequence of E
+	double relFreqE;
+	/// the length of the phrase in f
+	unsigned int phraseLength;
+	/// word-codes of the target-phrase
+	vector<unsigned int> e;
+};
+
 /** Prunes the Stack to KEEP_N_BEST_HYPOS elements.
  *
  *   \param s reference to stack of hypthesis
@@ -91,64 +106,72 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 	Hypothesis* h = new Hypothesis(NULL,0,0,tmp);
 	stacks[0].push(h);
 
-	for (unsigned int i = 0; i < words.size(); i++)
+	for (unsigned int stackNr = 0; stackNr < words.size(); stackNr++)
 	{
-		for (unsigned int j = 0; j < 3 && i+j<words.size(); j++)
+		vector<phrase_translation_struct> phrases;
+		phrases.clear();
+
+		bool found_at_least_one_hypo = false;
+
+		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength<words.size(); phraseLength++)
 		{
 			vector<unsigned int> phraseF;
-			for (unsigned int k = 0; k < j; ++k)
+			phraseF.clear();
+			for (unsigned int k = 0; k < phraseLength; k++)
 			{
-				phraseF.push_back(words[i+k]);
-			// unsigned int pos = 0; ???
-			//}
+				phraseF.push_back(words[stackNr+k]);
+			}
+			// search for all possible translations and save it for later to create the hypos
 
 			// find first occurance of phrase in transtab
-			while (j < translationtab.size() && phraseF != (translationtab[j].f))
+			unsigned int transTabPos = 0;
+			while (transTabPos < translationtab.size() && phraseF != translationtab[transTabPos].f)
 			{
-				j++;
+				transTabPos++;
 			}
-			// unsigned int first_occ = pos; ???
-			unsigned int first_occ = j;
-
-			while (!stacks[i].empty())
+			while (transTabPos < translationtab.size() && phraseF == translationtab[transTabPos].f)
 			{
-				// TODO: stacks[i+j] may be empty
-				// also ich glaube hier müsste es auch mit stacks[i] funktionieren, weil ja vectoren der Länge j gespeichert werden macht stachs[i+j] glaub ich weniger sinn
-				Hypothesis *prev = stacks[i].top();
+				found_at_least_one_hypo = true;
+				phrase_translation_struct currentTranslation;
 
-				// make hyps for all the possible translations
-				j = first_occ;
-				bool found_at_least_one_hypo = false;
-				cout << phraseF[0] << endl;
-				if (translationtab[j].f.empty())
-					cout << "translationtab is empty" << endl;
-				else
-					cout << translationtab[j].f[0] << endl;
-				while (j < translationtab.size() && phraseF == (translationtab[j].f))
-				{
-					found_at_least_one_hypo = true;
-					Hypothesis *h = new Hypothesis(prev, translationtab[j].relFreqF, translationtab[j].relFreqE, translationtab[j].e);
-					stacks[i+j+1].push(h);
-					j++;
-				}
-				if (!found_at_least_one_hypo)
-				{
-					// insert '(?)'
-					vector<unsigned int> tmp;
-					tmp.push_back(0);
-					stacks[i+1].push(new Hypothesis(prev,0, 0, tmp));
-				}
-				stacks[i].pop();
-				// TODO: hier müssten wir stacks[i+j].pop(); machen.. halt das Element, was behandelt wurde
-				// dementsprechend müsste dann die while-bedingung auch geändert werden?
-				// evtl müssen wir diese gesamte Schleife hier nur anders aufbauen.. also nicht anhand des i-ten-stacks sondern bzgl irgendwas anderem...??
-				// wenn das oben mit prev stimmt dann ist auch hier das pop richtig, glaub ich zumindest…
-			}
-			minCostsHyp = pruneStack(stacks[i+1]);
-			//ka wo die for-schleife enden sollte, aber wenn sie schon nach dem push steht dann werden nur phrasen mit der Länge 4 beachtet, statt alle phrasen bis länge 4
+				currentTranslation.relFreqF	= translationtab[transTabPos].relFreqF; 
+				currentTranslation.relFreqE	= translationtab[transTabPos].relFreqE;
+				currentTranslation.phraseLength = phraseLength;
+				currentTranslation.e		= translationtab[transTabPos].e;
+
+				phrases.push_back(currentTranslation);
+				transTabPos++;
 			}
 		}
+		if (!found_at_least_one_hypo)
+		{
+			// insert '(?)'
+			phrase_translation_struct currentTranslation;
+
+			currentTranslation.relFreqF	= 20;
+			currentTranslation.relFreqE	= 20;
+			currentTranslation.phraseLength = 1;
+			vector<unsigned int> tmp(0);
+			currentTranslation.e		= tmp;
+
+			phrases.push_back(currentTranslation);
+		}
+
+		// create for each hypo in the current stack the new hypos of the current phrases
+		while (!stacks[stackNr].empty())
+		{
+			Hypothesis *prev = stacks[stackNr].top();
+
+			for (vector<phrase_translation_struct>::iterator it = phrases.begin(); it != phrases.end(); it++)
+			{
+				Hypothesis *h = new Hypothesis(prev, it->relFreqF, it->relFreqE, it->e);
+				stacks[ stackNr + it->phraseLength ].push(h);
+			}
+			stacks[stackNr].pop();
+		}
+		minCostsHyp = pruneStack(stacks[stackNr+1]);
 	}
+
 	// return best Hypothesis of the last stack
 	return minCostsHyp;
 }
@@ -188,9 +211,10 @@ int main(int argc, char* argv[])
        		// line is formatted like: <double> <double> # <string> ... <string> # <string> ... <string>
 
 		vector<string> line_vec = stringSplit(line, "#");
-		// line_vec[0] == <double> <double>
-		// line_vec[1] == <string> ... <string>
-		// line_vec[2] == <string> ... <string>
+		// watch out for spaces!
+		// line_vec[0] == "<double> <double> "
+		// line_vec[1] == " <string> ... <string> "
+		// line_vec[2] == " <string> ... <string>"
 
 		vector<string> freqs_vec = stringSplit(line_vec[0], " ");
 
