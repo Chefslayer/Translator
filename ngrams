@@ -1,0 +1,1458 @@
+it 's just down the hall . I 'll bring you some now . if there is anything else you need , just let me know .
+	p( it | <s> ) 	= [2gram] 0.0345339 [ -1.46175 ]
+	p( 's | it ...) 	= [2gram] 0.23757 [ -0.624208 ]
+	p( just | 's ...) 	= [2gram] 0.00731853 [ -2.13558 ]
+	p( down | just ...) 	= [1gram] 0.000530935 [ -3.27496 ]
+	p( the | down ...) 	= [2gram] 0.147136 [ -0.832281 ]
+	p( hall | the ...) 	= [2gram] 0.000250764 [ -3.60073 ]
+	p( . | hall ...) 	= [2gram] 0.192064 [ -0.716554 ]
+	p( I | . ...) 	= [2gram] 0.0363328 [ -1.4397 ]
+	p( 'll | I ...) 	= [2gram] 0.067362 [ -1.17158 ]
+	p( bring | 'll ...) 	= [2gram] 0.011432 [ -1.94188 ]
+	p( you | bring ...) 	= [2gram] 0.0351166 [ -1.45449 ]
+	p( some | you ...) 	= [2gram] 0.000731496 [ -3.13579 ]
+	p( now | some ...) 	= [1gram] 0.00130288 [ -2.8851 ]
+	p( . | now ...) 	= [2gram] 0.403903 [ -0.393723 ]
+	p( if | . ...) 	= [2gram] 0.00161301 [ -2.79236 ]
+	p( there | if ...) 	= [2gram] 0.121761 [ -0.914491 ]
+	p( is | there ...) 	= [2gram] 0.0855565 [ -1.06775 ]
+	p( anything | is ...) 	= [2gram] 0.000734871 [ -3.13379 ]
+	p( else | anything ...) 	= [2gram] 0.0621083 [ -1.20685 ]
+	p( you | else ...) 	= [2gram] 0.00925039 [ -2.03384 ]
+	p( need | you ...) 	= [2gram] 0.0058797 [ -2.23064 ]
+	p( , | need ...) 	= [1gram] 0.00620646 [ -2.20716 ]
+	p( just | , ...) 	= [2gram] 0.00322835 [ -2.49102 ]
+	p( let | just ...) 	= [1gram] 0.000125462 [ -3.90149 ]
+	p( me | let ...) 	= [2gram] 0.505864 [ -0.295966 ]
+	p( know | me ...) 	= [2gram] 0.0119735 [ -1.92178 ]
+	p( . | know ...) 	= [2gram] 0.0834002 [ -1.07883 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 27 words, 0 OOVs
+0 zeroprobs, logprob= -50.4524 ppl= 63.3683 ppl1= 73.8938
+
+no worry about that . I 'll take it and you need not wrap it up .
+	p( no | <s> ) 	= [2gram] 0.010818 [ -1.96585 ]
+	p( worry | no ...) 	= [1gram] 1.00008e-05 [ -4.99996 ]
+	p( about | worry ...) 	= [2gram] 0.304041 [ -0.517068 ]
+	p( that | about ...) 	= [2gram] 0.0104897 [ -1.97924 ]
+	p( . | that ...) 	= [2gram] 0.056537 [ -1.24767 ]
+	p( I | . ...) 	= [2gram] 0.0363328 [ -1.4397 ]
+	p( 'll | I ...) 	= [2gram] 0.067362 [ -1.17158 ]
+	p( take | 'll ...) 	= [2gram] 0.102341 [ -0.98995 ]
+	p( it | take ...) 	= [2gram] 0.049336 [ -1.30684 ]
+	p( and | it ...) 	= [2gram] 0.000789922 [ -3.10242 ]
+	p( you | and ...) 	= [2gram] 0.0240491 [ -1.6189 ]
+	p( need | you ...) 	= [2gram] 0.0058797 [ -2.23064 ]
+	p( not | need ...) 	= [1gram] 0.000172512 [ -3.76318 ]
+	p( wrap | not ...) 	= [1gram] 4.401e-05 [ -4.35645 ]
+	p( it | wrap ...) 	= [2gram] 0.387556 [ -0.411666 ]
+	p( up | it ...) 	= [2gram] 0.00989685 [ -2.0045 ]
+	p( . | up ...) 	= [2gram] 0.180086 [ -0.744521 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 17 words, 0 OOVs
+0 zeroprobs, logprob= -33.9583 ppl= 77.0142 ppl1= 99.4364
+
+do you do alterations ?
+	p( do | <s> ) 	= [2gram] 0.0393819 [ -1.4047 ]
+	p( you | do ...) 	= [2gram] 0.671867 [ -0.172717 ]
+	p( do | you ...) 	= [2gram] 0.0057237 [ -2.24232 ]
+	p( alterations | do ...) 	= [1gram] 4.59093e-06 [ -5.3381 ]
+	p( ? | alterations ...) 	= [2gram] 0.281482 [ -0.550549 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -9.72513 ppl= 41.7691 ppl1= 88.1102
+
+the light was red .
+	p( the | <s> ) 	= [2gram] 0.0207761 [ -1.68244 ]
+	p( light | the ...) 	= [2gram] 0.00114163 [ -2.94247 ]
+	p( was | light ...) 	= [2gram] 0.00522199 [ -2.28216 ]
+	p( red | was ...) 	= [1gram] 0.000188476 [ -3.72474 ]
+	p( . | red ...) 	= [2gram] 0.00647527 [ -2.18874 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -12.9287 ppl= 142.817 ppl1= 385.245
+
+we want to have a table near the window .
+	p( we | <s> ) 	= [2gram] 0.0185486 [ -1.73169 ]
+	p( want | we ...) 	= [2gram] 0.0130523 [ -1.88431 ]
+	p( to | want ...) 	= [2gram] 0.650692 [ -0.186624 ]
+	p( have | to ...) 	= [2gram] 0.0378879 [ -1.4215 ]
+	p( a | have ...) 	= [2gram] 0.267447 [ -0.572762 ]
+	p( table | a ...) 	= [2gram] 0.0149937 [ -1.82409 ]
+	p( near | table ...) 	= [2gram] 0.0395062 [ -1.40333 ]
+	p( the | near ...) 	= [2gram] 0.270845 [ -0.567279 ]
+	p( window | the ...) 	= [2gram] 0.0088625 [ -2.05244 ]
+	p( . | window ...) 	= [2gram] 0.259883 [ -0.585222 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -12.3374 ppl= 13.2306 ppl1= 17.1293
+
+it 's over there , just in front of the tourist information .
+	p( it | <s> ) 	= [2gram] 0.0345339 [ -1.46175 ]
+	p( 's | it ...) 	= [2gram] 0.23757 [ -0.624208 ]
+	p( over | 's ...) 	= [2gram] 0.00111249 [ -2.9537 ]
+	p( there | over ...) 	= [2gram] 0.436156 [ -0.360358 ]
+	p( , | there ...) 	= [2gram] 0.0286198 [ -1.54333 ]
+	p( just | , ...) 	= [2gram] 0.00322835 [ -2.49102 ]
+	p( in | just ...) 	= [2gram] 0.0144274 [ -1.84081 ]
+	p( front | in ...) 	= [2gram] 0.0140973 [ -1.85086 ]
+	p( of | front ...) 	= [2gram] 0.426235 [ -0.370351 ]
+	p( the | of ...) 	= [2gram] 0.171534 [ -0.765649 ]
+	p( tourist | the ...) 	= [2gram] 0.000121718 [ -3.91464 ]
+	p( information | tourist ...) 	= [2gram] 0.0683144 [ -1.16549 ]
+	p( . | information ...) 	= [2gram] 0.0625517 [ -1.20376 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -20.6541 ppl= 29.8738 ppl1= 38.7949
+
+I twisted it playing tennis . it felt Okay after the game but then it started turning black-and-blue . is it serious ?
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( twisted | I ...) 	= [1gram] 1.69474e-06 [ -5.7709 ]
+	p( it | twisted ...) 	= [1gram] 0.00395984 [ -2.40232 ]
+	p( playing | it ...) 	= [1gram] 5.69652e-05 [ -4.24439 ]
+	p( tennis | playing ...) 	= [2gram] 0.0315297 [ -1.50128 ]
+	p( . | tennis ...) 	= [2gram] 0.108497 [ -0.964583 ]
+	p( it | . ...) 	= [2gram] 0.0101182 [ -1.9949 ]
+	p( felt | it ...) 	= [1gram] 6.09505e-06 [ -5.21502 ]
+	p( Okay | felt ...) 	= [1gram] 8.98881e-05 [ -4.0463 ]
+	p( after | Okay ...) 	= [1gram] 0.000337838 [ -3.47129 ]
+	p( the | after ...) 	= [2gram] 0.0944061 [ -1.025 ]
+	p( game | the ...) 	= [2gram] 0.000993155 [ -3.00298 ]
+	p( but | game ...) 	= [1gram] 0.000267655 [ -3.57242 ]
+	p( then | but ...) 	= [1gram] 9.78618e-05 [ -4.00939 ]
+	p( it | then ...) 	= [2gram] 0.0236468 [ -1.62623 ]
+	p( started | it ...) 	= [1gram] 2.77402e-05 [ -4.55689 ]
+	p( turning | started ...) 	= [1gram] 1.97886e-05 [ -4.70358 ]
+	p( <unk> | turning ...) 	= [OOV] 0 [ -inf ]
+	p( . | <unk> ...) 	= [1gram] 0.0670829 [ -1.17339 ]
+	p( is | . ...) 	= [2gram] 0.00534131 [ -2.27235 ]
+	p( it | is ...) 	= [2gram] 0.0936565 [ -1.02846 ]
+	p( serious | it ...) 	= [1gram] 2.4493e-05 [ -4.61096 ]
+	p( ? | serious ...) 	= [1gram] 0.0246449 [ -1.60827 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 23 words, 1 OOVs
+0 zeroprobs, logprob= -63.4614 ppl= 574.371 ppl1= 766.673
+
+please input your pin number .
+	p( please | <s> ) 	= [2gram] 0.0323065 [ -1.49071 ]
+	p( input | please ...) 	= [2gram] 0.000103406 [ -3.98546 ]
+	p( your | input ...) 	= [2gram] 0.323763 [ -0.489772 ]
+	p( pin | your ...) 	= [1gram] 1.93458e-05 [ -4.71341 ]
+	p( number | pin ...) 	= [1gram] 0.000901936 [ -3.04482 ]
+	p( . | number ...) 	= [2gram] 0.112369 [ -0.949354 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -14.7817 ppl= 129.32 ppl1= 290.81
+
+this is my first time diving .
+	p( this | <s> ) 	= [2gram] 0.0169763 [ -1.77016 ]
+	p( is | this ...) 	= [2gram] 0.138762 [ -0.85773 ]
+	p( my | is ...) 	= [2gram] 0.0206857 [ -1.68433 ]
+	p( first | my ...) 	= [2gram] 0.00416968 [ -2.3799 ]
+	p( time | first ...) 	= [2gram] 0.056536 [ -1.24767 ]
+	p( diving | time ...) 	= [1gram] 3.82459e-05 [ -4.41742 ]
+	p( . | diving ...) 	= [2gram] 0.195371 [ -0.709141 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -13.1745 ppl= 44.3413 ppl1= 76.2197
+
+I 've never heard of this address around here .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 've | I ...) 	= [2gram] 0.0268605 [ -1.57089 ]
+	p( never | 've ...) 	= [2gram] 0.0425121 [ -1.37149 ]
+	p( heard | never ...) 	= [1gram] 5.4577e-05 [ -4.26299 ]
+	p( of | heard ...) 	= [2gram] 0.0409886 [ -1.38734 ]
+	p( this | of ...) 	= [2gram] 0.0409411 [ -1.38784 ]
+	p( address | this ...) 	= [2gram] 0.00681736 [ -2.16638 ]
+	p( around | address ...) 	= [1gram] 0.000553617 [ -3.25679 ]
+	p( here | around ...) 	= [2gram] 0.421075 [ -0.375641 ]
+	p( . | here ...) 	= [2gram] 0.209246 [ -0.679343 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -17.2106 ppl= 36.6945 ppl1= 52.6091
+
+I have a sore pain here .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( have | I ...) 	= [2gram] 0.0898628 [ -1.04642 ]
+	p( a | have ...) 	= [2gram] 0.267447 [ -0.572762 ]
+	p( sore | a ...) 	= [2gram] 0.000143442 [ -3.84332 ]
+	p( pain | sore ...) 	= [1gram] 0.000123277 [ -3.90912 ]
+	p( here | pain ...) 	= [2gram] 0.014382 [ -1.84218 ]
+	p( . | here ...) 	= [2gram] 0.209246 [ -0.679343 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -12.6451 ppl= 38.0743 ppl1= 64.0378
+
+go straight until you see a drugstore .
+	p( go | <s> ) 	= [2gram] 0.00238858 [ -2.62186 ]
+	p( straight | go ...) 	= [2gram] 0.0721466 [ -1.14178 ]
+	p( until | straight ...) 	= [2gram] 0.011078 [ -1.95554 ]
+	p( you | until ...) 	= [2gram] 0.0729345 [ -1.13707 ]
+	p( see | you ...) 	= [2gram] 0.00431964 [ -2.36455 ]
+	p( a | see ...) 	= [2gram] 0.104513 [ -0.980829 ]
+	p( drugstore | a ...) 	= [2gram] 0.000143442 [ -3.84332 ]
+	p( . | drugstore ...) 	= [2gram] 0.268889 [ -0.570426 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -14.7235 ppl= 43.2459 ppl1= 69.2529
+
+what 's the newest color in this season ?
+	p( what | <s> ) 	= [2gram] 0.0403428 [ -1.39423 ]
+	p( 's | what ...) 	= [2gram] 0.206742 [ -0.68457 ]
+	p( the | 's ...) 	= [2gram] 0.169089 [ -0.771884 ]
+	p( newest | the ...) 	= [2gram] 4.80718e-05 [ -4.31811 ]
+	p( color | newest ...) 	= [1gram] 0.000376344 [ -3.42441 ]
+	p( in | color ...) 	= [2gram] 0.00490551 [ -2.30932 ]
+	p( this | in ...) 	= [2gram] 0.0544582 [ -1.26394 ]
+	p( season | this ...) 	= [2gram] 0.0015069 [ -2.82191 ]
+	p( ? | season ...) 	= [2gram] 0.134445 [ -0.871456 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -17.8766 ppl= 61.3278 ppl1= 96.8917
+
+of course . it was ninety-nine dollars , wasn 't it ?
+	p( of | <s> ) 	= [2gram] 0.000816251 [ -3.08818 ]
+	p( course | of ...) 	= [2gram] 0.0159672 [ -1.79677 ]
+	p( . | course ...) 	= [2gram] 0.269176 [ -0.569964 ]
+	p( it | . ...) 	= [2gram] 0.0101182 [ -1.9949 ]
+	p( was | it ...) 	= [2gram] 0.0234104 [ -1.63059 ]
+	p( ninety-nine | was ...) 	= [1gram] 0.00026979 [ -3.56897 ]
+	p( dollars | ninety-nine ...) 	= [2gram] 0.333838 [ -0.476464 ]
+	p( , | dollars ...) 	= [2gram] 0.0710261 [ -1.14858 ]
+	p( wasn | , ...) 	= [2gram] 0.000982707 [ -3.00758 ]
+	p( 't | wasn ...) 	= [2gram] 0.934445 [ -0.0294464 ]
+	p( it | 't ...) 	= [2gram] 0.0518173 [ -1.28552 ]
+	p( ? | it ...) 	= [2gram] 0.0786395 [ -1.10436 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -19.7181 ppl= 32.8681 ppl1= 43.9716
+
+in my case , it is usually on business , seldom for pleasure .
+	p( in | <s> ) 	= [2gram] 0.00273799 [ -2.56257 ]
+	p( my | in ...) 	= [2gram] 0.0539834 [ -1.26774 ]
+	p( case | my ...) 	= [2gram] 0.000175577 [ -3.75553 ]
+	p( , | case ...) 	= [2gram] 0.244815 [ -0.611162 ]
+	p( it | , ...) 	= [2gram] 0.0251665 [ -1.59918 ]
+	p( is | it ...) 	= [2gram] 0.0463246 [ -1.33419 ]
+	p( usually | is ...) 	= [2gram] 8.84841e-05 [ -4.05313 ]
+	p( on | usually ...) 	= [1gram] 0.00526746 [ -2.2784 ]
+	p( business | on ...) 	= [2gram] 0.00215975 [ -2.6656 ]
+	p( , | business ...) 	= [1gram] 0.0181301 [ -1.7416 ]
+	p( seldom | , ...) 	= [1gram] 8.25779e-06 [ -5.08314 ]
+	p( for | seldom ...) 	= [1gram] 0.00826565 [ -2.08272 ]
+	p( pleasure | for ...) 	= [1gram] 4.08309e-05 [ -4.38901 ]
+	p( . | pleasure ...) 	= [2gram] 0.216994 [ -0.663553 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -34.1956 ppl= 190.419 ppl1= 277.042
+
+I 'll be staying two days .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'll | I ...) 	= [2gram] 0.067362 [ -1.17158 ]
+	p( be | 'll ...) 	= [2gram] 0.166512 [ -0.778554 ]
+	p( staying | be ...) 	= [2gram] 0.0150262 [ -1.82315 ]
+	p( two | staying ...) 	= [1gram] 0.000617095 [ -3.20965 ]
+	p( days | two ...) 	= [2gram] 0.0247978 [ -1.60559 ]
+	p( . | days ...) 	= [2gram] 0.549917 [ -0.259703 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -9.60013 ppl= 15.8495 ppl1= 23.5206
+
+I want to have a tight permanent .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( want | I ...) 	= [2gram] 0.0430397 [ -1.36613 ]
+	p( to | want ...) 	= [2gram] 0.650692 [ -0.186624 ]
+	p( have | to ...) 	= [2gram] 0.0378879 [ -1.4215 ]
+	p( a | have ...) 	= [2gram] 0.267447 [ -0.572762 ]
+	p( tight | a ...) 	= [2gram] 0.000470497 [ -3.32744 ]
+	p( permanent | tight ...) 	= [2gram] 0.0527779 [ -1.27755 ]
+	p( . | permanent ...) 	= [2gram] 0.0745248 [ -1.1277 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -10.0316 ppl= 13.0204 ppl1= 17.9453
+
+I 'd like to reserve two twin rooms .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'd | I ...) 	= [2gram] 0.172366 [ -0.763549 ]
+	p( like | 'd ...) 	= [2gram] 0.939923 [ -0.0269077 ]
+	p( to | like ...) 	= [2gram] 0.4459 [ -0.350762 ]
+	p( reserve | to ...) 	= [2gram] 0.0120736 [ -1.91816 ]
+	p( two | reserve ...) 	= [2gram] 0.0668889 [ -1.17465 ]
+	p( twin | two ...) 	= [1gram] 3.82892e-05 [ -4.41692 ]
+	p( rooms | twin ...) 	= [2gram] 0.0111643 [ -1.95217 ]
+	p( . | rooms ...) 	= [2gram] 0.102469 [ -0.989406 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -12.3444 ppl= 17.1571 ppl1= 23.529
+
+I don 't want it extracted .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( don | I ...) 	= [2gram] 0.0297534 [ -1.52646 ]
+	p( 't | don ...) 	= [2gram] 0.99765 [ -0.00102164 ]
+	p( want | 't ...) 	= [2gram] 0.0207373 [ -1.68325 ]
+	p( it | want ...) 	= [2gram] 0.0225781 [ -1.64631 ]
+	p( <unk> | it ...) 	= [OOV] 0 [ -inf ]
+	p( . | <unk> ...) 	= [1gram] 0.0670829 [ -1.17339 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 7 words, 1 OOVs
+0 zeroprobs, logprob= -6.78234 ppl= 9.30906 ppl1= 13.5018
+
+does this bus stop at Stoner Avenue ?
+	p( does | <s> ) 	= [2gram] 0.00514015 [ -2.28902 ]
+	p( this | does ...) 	= [2gram] 0.198186 [ -0.702927 ]
+	p( bus | this ...) 	= [2gram] 0.00967683 [ -2.01427 ]
+	p( stop | bus ...) 	= [2gram] 0.124813 [ -0.903742 ]
+	p( at | stop ...) 	= [2gram] 0.133464 [ -0.874636 ]
+	p( <unk> | at ...) 	= [OOV] 0 [ -inf ]
+	p( Avenue | <unk> ...) 	= [1gram] 0.000192729 [ -3.71505 ]
+	p( ? | Avenue ...) 	= [2gram] 0.107556 [ -0.968366 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 8 words, 1 OOVs
+0 zeroprobs, logprob= -11.4848 ppl= 27.2643 ppl1= 43.7199
+
+are there any baseball games today ?
+	p( are | <s> ) 	= [2gram] 0.0102065 [ -1.99112 ]
+	p( there | are ...) 	= [2gram] 0.108338 [ -0.965218 ]
+	p( any | there ...) 	= [2gram] 0.114426 [ -0.941476 ]
+	p( baseball | any ...) 	= [1gram] 8.34446e-05 [ -4.0786 ]
+	p( games | baseball ...) 	= [1gram] 2.55546e-05 [ -4.59253 ]
+	p( today | games ...) 	= [1gram] 0.00118546 [ -2.92611 ]
+	p( ? | today ...) 	= [2gram] 0.344631 [ -0.462646 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -15.9744 ppl= 99.2672 ppl1= 191.454
+
+pickpocket .
+	p( pickpocket | <s> ) 	= [2gram] 1.41406e-05 [ -4.84953 ]
+	p( . | pickpocket ...) 	= [2gram] 0.562965 [ -0.249519 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 2 words, 0 OOVs
+0 zeroprobs, logprob= -5.20718 ppl= 54.4159 ppl1= 401.41
+
+pass the bread , please .
+	p( pass | <s> ) 	= [2gram] 3.58042e-05 [ -4.44607 ]
+	p( the | pass ...) 	= [2gram] 0.0752835 [ -1.1233 ]
+	p( bread | the ...) 	= [2gram] 4.80718e-05 [ -4.31811 ]
+	p( , | bread ...) 	= [2gram] 0.295727 [ -0.529109 ]
+	p( please | , ...) 	= [2gram] 0.349748 [ -0.456245 ]
+	p( . | please ...) 	= [2gram] 0.492714 [ -0.307405 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -11.2884 ppl= 40.9848 ppl1= 76.1016
+
+let me look at the receipt , then .
+	p( let | <s> ) 	= [2gram] 0.00623205 [ -2.20537 ]
+	p( me | let ...) 	= [2gram] 0.505864 [ -0.295966 ]
+	p( look | me ...) 	= [2gram] 0.000367776 [ -3.43442 ]
+	p( at | look ...) 	= [2gram] 0.340059 [ -0.468446 ]
+	p( the | at ...) 	= [2gram] 0.328419 [ -0.483571 ]
+	p( receipt | the ...) 	= [2gram] 0.00143859 [ -2.84206 ]
+	p( , | receipt ...) 	= [2gram] 0.038384 [ -1.41585 ]
+	p( then | , ...) 	= [2gram] 0.00633769 [ -2.19807 ]
+	p( . | then ...) 	= [2gram] 0.0941597 [ -1.02613 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -14.478 ppl= 28.0415 ppl1= 40.6133
+
+please open your mouth wide .
+	p( please | <s> ) 	= [2gram] 0.0323065 [ -1.49071 ]
+	p( open | please ...) 	= [2gram] 0.000858798 [ -3.06611 ]
+	p( your | open ...) 	= [2gram] 0.0707219 [ -1.15045 ]
+	p( mouth | your ...) 	= [2gram] 0.0035436 [ -2.45056 ]
+	p( wide | mouth ...) 	= [1gram] 9.86819e-05 [ -4.00576 ]
+	p( . | wide ...) 	= [2gram] 0.268889 [ -0.570426 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -12.8421 ppl= 68.3267 ppl1= 138.151
+
+where 's the nearest perfumery ?
+	p( where | <s> ) 	= [2gram] 0.0311709 [ -1.50625 ]
+	p( 's | where ...) 	= [2gram] 0.18047 [ -0.743595 ]
+	p( the | 's ...) 	= [2gram] 0.169089 [ -0.771884 ]
+	p( nearest | the ...) 	= [2gram] 0.0115351 [ -1.93798 ]
+	p( <unk> | nearest ...) 	= [OOV] 0 [ -inf ]
+	p( ? | <unk> ...) 	= [1gram] 0.0417163 [ -1.37969 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 6 words, 1 OOVs
+0 zeroprobs, logprob= -6.35614 ppl= 11.4646 ppl1= 18.6736
+
+how much is the breakfast ?
+	p( how | <s> ) 	= [2gram] 0.0367177 [ -1.43512 ]
+	p( much | how ...) 	= [2gram] 0.294252 [ -0.53128 ]
+	p( is | much ...) 	= [2gram] 0.285396 [ -0.544553 ]
+	p( the | is ...) 	= [2gram] 0.157882 [ -0.801668 ]
+	p( breakfast | the ...) 	= [2gram] 0.000399242 [ -3.39876 ]
+	p( ? | breakfast ...) 	= [2gram] 0.14906 [ -0.826639 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -7.55477 ppl= 12.002 ppl1= 18.1605
+
+how can I help you ?
+	p( how | <s> ) 	= [2gram] 0.0367177 [ -1.43512 ]
+	p( can | how ...) 	= [2gram] 0.0486826 [ -1.31263 ]
+	p( I | can ...) 	= [2gram] 0.403963 [ -0.393658 ]
+	p( help | I ...) 	= [2gram] 0.00360966 [ -2.44253 ]
+	p( you | help ...) 	= [2gram] 0.27136 [ -0.566455 ]
+	p( ? | you ...) 	= [2gram] 0.0236644 [ -1.6259 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -7.79304 ppl= 12.9805 ppl1= 19.8994
+
+can you sew on this button ?
+	p( can | <s> ) 	= [2gram] 0.0371108 [ -1.4305 ]
+	p( you | can ...) 	= [2gram] 0.219427 [ -0.658709 ]
+	p( sew | you ...) 	= [1gram] 4.17198e-06 [ -5.37966 ]
+	p( on | sew ...) 	= [1gram] 0.00625803 [ -2.20356 ]
+	p( this | on ...) 	= [2gram] 0.0800713 [ -1.09652 ]
+	p( button | this ...) 	= [2gram] 0.000132256 [ -3.87858 ]
+	p( ? | button ...) 	= [2gram] 0.0462518 [ -1.33487 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -15.9991 ppl= 99.9755 ppl1= 193.016
+
+let 's get a bite to eat .
+	p( let | <s> ) 	= [2gram] 0.00623205 [ -2.20537 ]
+	p( 's | let ...) 	= [2gram] 0.398225 [ -0.399871 ]
+	p( get | 's ...) 	= [2gram] 0.00318117 [ -2.49741 ]
+	p( a | get ...) 	= [2gram] 0.151166 [ -0.820546 ]
+	p( bite | a ...) 	= [2gram] 5.66514e-05 [ -4.24679 ]
+	p( to | bite ...) 	= [1gram] 0.00941261 [ -2.02629 ]
+	p( eat | to ...) 	= [2gram] 0.00462385 [ -2.335 ]
+	p( . | eat ...) 	= [2gram] 0.0455419 [ -1.34159 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -15.981 ppl= 59.6575 ppl1= 99.4543
+
+go left at the third corner .
+	p( go | <s> ) 	= [2gram] 0.00238858 [ -2.62186 ]
+	p( left | go ...) 	= [2gram] 0.0012402 [ -2.90651 ]
+	p( at | left ...) 	= [2gram] 0.134912 [ -0.86995 ]
+	p( the | at ...) 	= [2gram] 0.328419 [ -0.483571 ]
+	p( third | the ...) 	= [2gram] 0.00455663 [ -2.34136 ]
+	p( corner | third ...) 	= [2gram] 0.0351853 [ -1.45364 ]
+	p( . | corner ...) 	= [2gram] 0.450682 [ -0.346129 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -11.1311 ppl= 24.6259 ppl1= 38.9191
+
+would you clean these clothes ?
+	p( would | <s> ) 	= [2gram] 0.0164085 [ -1.78493 ]
+	p( you | would ...) 	= [2gram] 0.520315 [ -0.283733 ]
+	p( clean | you ...) 	= [2gram] 0.000263478 [ -3.57926 ]
+	p( these | clean ...) 	= [2gram] 0.0190449 [ -1.72022 ]
+	p( clothes | these ...) 	= [2gram] 0.0464735 [ -1.3328 ]
+	p( ? | clothes ...) 	= [2gram] 0.0640212 [ -1.19368 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -9.91135 ppl= 26.056 ppl1= 44.8634
+
+which wine would go well with grilled salmon ?
+	p( which | <s> ) 	= [2gram] 0.00837215 [ -2.07716 ]
+	p( wine | which ...) 	= [1gram] 0.000217053 [ -3.66343 ]
+	p( would | wine ...) 	= [2gram] 0.00308346 [ -2.51096 ]
+	p( go | would ...) 	= [2gram] 0.000785976 [ -3.10459 ]
+	p( well | go ...) 	= [2gram] 0.0012402 [ -2.90651 ]
+	p( with | well ...) 	= [2gram] 0.00627841 [ -2.20215 ]
+	p( grilled | with ...) 	= [1gram] 1.87586e-05 [ -4.7268 ]
+	p( salmon | grilled ...) 	= [2gram] 0.0809407 [ -1.09183 ]
+	p( ? | salmon ...) 	= [1gram] 0.0285596 [ -1.54425 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -23.8444 ppl= 242.35 ppl1= 446.048
+
+I requested a no-smoking seat , but this is a smoking seat .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( requested | I ...) 	= [2gram] 0.000395253 [ -3.40313 ]
+	p( a | requested ...) 	= [2gram] 0.384128 [ -0.415524 ]
+	p( no-smoking | a ...) 	= [2gram] 0.000143442 [ -3.84332 ]
+	p( seat | no-smoking ...) 	= [2gram] 0.102472 [ -0.989397 ]
+	p( , | seat ...) 	= [2gram] 0.122576 [ -0.911596 ]
+	p( but | , ...) 	= [2gram] 0.0540143 [ -1.26749 ]
+	p( this | but ...) 	= [2gram] 0.0276446 [ -1.55839 ]
+	p( is | this ...) 	= [2gram] 0.138762 [ -0.85773 ]
+	p( a | is ...) 	= [2gram] 0.0485622 [ -1.3137 ]
+	p( smoking | a ...) 	= [2gram] 0.000995433 [ -3.00199 ]
+	p( seat | smoking ...) 	= [2gram] 0.118997 [ -0.924465 ]
+	p( . | seat ...) 	= [2gram] 0.179113 [ -0.746874 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -19.9855 ppl= 26.7631 ppl1= 34.4625
+
+what kind of sport facilities do you have ?
+	p( what | <s> ) 	= [2gram] 0.0403428 [ -1.39423 ]
+	p( kind | what ...) 	= [2gram] 0.0613419 [ -1.21224 ]
+	p( of | kind ...) 	= [2gram] 0.86682 [ -0.0620711 ]
+	p( sport | of ...) 	= [1gram] 1.95545e-05 [ -4.70875 ]
+	p( facilities | sport ...) 	= [1gram] 7.68531e-05 [ -4.11434 ]
+	p( do | facilities ...) 	= [1gram] 0.00205474 [ -2.68724 ]
+	p( you | do ...) 	= [2gram] 0.671867 [ -0.172717 ]
+	p( have | you ...) 	= [2gram] 0.124756 [ -0.903937 ]
+	p( ? | have ...) 	= [2gram] 0.0163262 [ -1.78711 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -17.0594 ppl= 50.8088 ppl1= 78.6119
+
+I 'm at the airport right now . how can I get to your place ?
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'm | I ...) 	= [2gram] 0.110756 [ -0.955631 ]
+	p( at | 'm ...) 	= [2gram] 0.00453033 [ -2.34387 ]
+	p( the | at ...) 	= [2gram] 0.328419 [ -0.483571 ]
+	p( airport | the ...) 	= [2gram] 0.0094564 [ -2.02427 ]
+	p( right | airport ...) 	= [1gram] 0.000612399 [ -3.21297 ]
+	p( now | right ...) 	= [2gram] 0.0767595 [ -1.11487 ]
+	p( . | now ...) 	= [2gram] 0.403903 [ -0.393723 ]
+	p( how | . ...) 	= [2gram] 0.00644815 [ -2.19057 ]
+	p( can | how ...) 	= [2gram] 0.0486826 [ -1.31263 ]
+	p( I | can ...) 	= [2gram] 0.403963 [ -0.393658 ]
+	p( get | I ...) 	= [2gram] 0.0275034 [ -1.56061 ]
+	p( to | get ...) 	= [2gram] 0.153411 [ -0.814144 ]
+	p( your | to ...) 	= [2gram] 0.00999462 [ -2.00023 ]
+	p( place | your ...) 	= [2gram] 0.000787486 [ -3.10376 ]
+	p( ? | place ...) 	= [2gram] 0.130065 [ -0.885838 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 16 words, 0 OOVs
+0 zeroprobs, logprob= -23.4509 ppl= 23.9587 ppl1= 29.2199
+
+we have a nice table by the window for you . come this way , please .
+	p( we | <s> ) 	= [2gram] 0.0185486 [ -1.73169 ]
+	p( have | we ...) 	= [2gram] 0.171122 [ -0.766694 ]
+	p( a | have ...) 	= [2gram] 0.267447 [ -0.572762 ]
+	p( nice | a ...) 	= [2gram] 0.00834451 [ -2.0786 ]
+	p( table | nice ...) 	= [2gram] 0.00655817 [ -2.18322 ]
+	p( by | table ...) 	= [2gram] 0.0811729 [ -1.09059 ]
+	p( the | by ...) 	= [2gram] 0.16886 [ -0.772473 ]
+	p( window | the ...) 	= [2gram] 0.0088625 [ -2.05244 ]
+	p( for | window ...) 	= [2gram] 0.0177778 [ -1.75012 ]
+	p( you | for ...) 	= [2gram] 0.0550614 [ -1.25915 ]
+	p( . | you ...) 	= [2gram] 0.0568937 [ -1.24494 ]
+	p( come | . ...) 	= [2gram] 0.000797442 [ -3.0983 ]
+	p( this | come ...) 	= [2gram] 0.0218591 [ -1.66037 ]
+	p( way | this ...) 	= [2gram] 0.0137618 [ -1.86133 ]
+	p( , | way ...) 	= [2gram] 0.183151 [ -0.73719 ]
+	p( please | , ...) 	= [2gram] 0.349748 [ -0.456245 ]
+	p( . | please ...) 	= [2gram] 0.492714 [ -0.307405 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 17 words, 0 OOVs
+0 zeroprobs, logprob= -23.7316 ppl= 20.8173 ppl1= 24.8873
+
+I give you his telephone number and address .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( give | I ...) 	= [2gram] 0.000395253 [ -3.40313 ]
+	p( you | give ...) 	= [2gram] 0.105868 [ -0.975237 ]
+	p( his | you ...) 	= [1gram] 0.000115779 [ -3.93637 ]
+	p( telephone | his ...) 	= [1gram] 0.000200435 [ -3.69803 ]
+	p( number | telephone ...) 	= [2gram] 0.198264 [ -0.702756 ]
+	p( and | number ...) 	= [2gram] 0.0234202 [ -1.63041 ]
+	p( address | and ...) 	= [2gram] 0.010572 [ -1.97584 ]
+	p( . | address ...) 	= [2gram] 0.246111 [ -0.608869 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -17.6825 ppl= 58.6481 ppl1= 92.1992
+
+I 've paid for meals and hotel charges in advance .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 've | I ...) 	= [2gram] 0.0268605 [ -1.57089 ]
+	p( paid | 've ...) 	= [2gram] 0.00254588 [ -2.59416 ]
+	p( for | paid ...) 	= [2gram] 0.0482219 [ -1.31676 ]
+	p( meals | for ...) 	= [2gram] 0.000337633 [ -3.47155 ]
+	p( and | meals ...) 	= [1gram] 0.00473762 [ -2.32444 ]
+	p( hotel | and ...) 	= [1gram] 0.000373372 [ -3.42786 ]
+	p( charges | hotel ...) 	= [1gram] 5.7514e-05 [ -4.24023 ]
+	p( in | charges ...) 	= [1gram] 0.00696182 [ -2.15728 ]
+	p( advance | in ...) 	= [2gram] 0.00412578 [ -2.38449 ]
+	p( . | advance ...) 	= [2gram] 0.206838 [ -0.68437 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 11 words, 0 OOVs
+0 zeroprobs, logprob= -24.9239 ppl= 119.397 ppl1= 184.422
+
+I 'm Manou . I 've made reservations for eight .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'm | I ...) 	= [2gram] 0.110756 [ -0.955631 ]
+	p( Manou | 'm ...) 	= [1gram] 5.84693e-06 [ -5.23307 ]
+	p( . | Manou ...) 	= [2gram] 0.323763 [ -0.489772 ]
+	p( I | . ...) 	= [2gram] 0.0363328 [ -1.4397 ]
+	p( 've | I ...) 	= [2gram] 0.0268605 [ -1.57089 ]
+	p( made | 've ...) 	= [2gram] 0.0176674 [ -1.75283 ]
+	p( reservations | made ...) 	= [2gram] 0.00247147 [ -2.60704 ]
+	p( for | reservations ...) 	= [2gram] 0.275817 [ -0.559379 ]
+	p( eight | for ...) 	= [2gram] 0.00193118 [ -2.71418 ]
+	p( . | eight ...) 	= [2gram] 0.119589 [ -0.922309 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 11 words, 0 OOVs
+0 zeroprobs, logprob= -18.9967 ppl= 38.2877 ppl1= 53.3302
+
+I 'm looking for a nice , quiet grill-type restaurant . would you point them out on this map ?
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'm | I ...) 	= [2gram] 0.110756 [ -0.955631 ]
+	p( looking | 'm ...) 	= [2gram] 0.0740955 [ -1.13021 ]
+	p( for | looking ...) 	= [2gram] 0.804289 [ -0.0945881 ]
+	p( a | for ...) 	= [2gram] 0.129608 [ -0.887367 ]
+	p( nice | a ...) 	= [2gram] 0.00834451 [ -2.0786 ]
+	p( , | nice ...) 	= [2gram] 0.0135111 [ -1.86931 ]
+	p( quiet | , ...) 	= [1gram] 2.44955e-05 [ -4.61091 ]
+	p( <unk> | quiet ...) 	= [OOV] 0 [ -inf ]
+	p( restaurant | <unk> ...) 	= [1gram] 0.000758225 [ -3.1202 ]
+	p( . | restaurant ...) 	= [2gram] 0.124482 [ -0.904893 ]
+	p( would | . ...) 	= [2gram] 0.00429273 [ -2.36727 ]
+	p( you | would ...) 	= [2gram] 0.520315 [ -0.283733 ]
+	p( point | you ...) 	= [2gram] 0.00135552 [ -2.86789 ]
+	p( them | point ...) 	= [2gram] 0.0227715 [ -1.64261 ]
+	p( out | them ...) 	= [2gram] 0.0179259 [ -1.74652 ]
+	p( on | out ...) 	= [2gram] 0.0205585 [ -1.68701 ]
+	p( this | on ...) 	= [2gram] 0.0800713 [ -1.09652 ]
+	p( map | this ...) 	= [2gram] 0.00804285 [ -2.09459 ]
+	p( ? | map ...) 	= [2gram] 0.288639 [ -0.539645 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 20 words, 1 OOVs
+0 zeroprobs, logprob= -30.638 ppl= 34.0331 ppl1= 40.9758
+
+the Japanese islands run northeast to southwest in the northwestern part of the Pacific Ocean .
+	p( the | <s> ) 	= [2gram] 0.0207761 [ -1.68244 ]
+	p( Japanese | the ...) 	= [2gram] 0.00411119 [ -2.38603 ]
+	p( islands | Japanese ...) 	= [1gram] 1.68354e-05 [ -4.77378 ]
+	p( run | islands ...) 	= [1gram] 0.000253515 [ -3.596 ]
+	p( <unk> | run ...) 	= [OOV] 0 [ -inf ]
+	p( to | <unk> ...) 	= [1gram] 0.014108 [ -1.85054 ]
+	p( <unk> | to ...) 	= [OOV] 0 [ -inf ]
+	p( in | <unk> ...) 	= [1gram] 0.0142695 [ -1.84559 ]
+	p( the | in ...) 	= [2gram] 0.245341 [ -0.610229 ]
+	p( <unk> | the ...) 	= [OOV] 0 [ -inf ]
+	p( part | <unk> ...) 	= [1gram] 0.000334103 [ -3.47612 ]
+	p( of | part ...) 	= [2gram] 0.540996 [ -0.266806 ]
+	p( the | of ...) 	= [2gram] 0.171534 [ -0.765649 ]
+	p( Pacific | the ...) 	= [2gram] 4.80718e-05 [ -4.31811 ]
+	p( Ocean | Pacific ...) 	= [2gram] 0.323763 [ -0.489772 ]
+	p( . | Ocean ...) 	= [2gram] 0.161882 [ -0.790802 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 16 words, 3 OOVs
+0 zeroprobs, logprob= -26.96 ppl= 84.2778 ppl1= 118.534
+
+you break it , you bought it .
+	p( you | <s> ) 	= [2gram] 0.0160154 [ -1.79546 ]
+	p( break | you ...) 	= [2gram] 0.000887503 [ -3.05183 ]
+	p( it | break ...) 	= [1gram] 0.00195421 [ -2.70903 ]
+	p( , | it ...) 	= [2gram] 0.0166536 [ -1.77849 ]
+	p( you | , ...) 	= [2gram] 0.0218844 [ -1.65987 ]
+	p( bought | you ...) 	= [1gram] 1.09257e-05 [ -4.96155 ]
+	p( it | bought ...) 	= [2gram] 0.0814817 [ -1.08894 ]
+	p( . | it ...) 	= [2gram] 0.0833399 [ -1.07915 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -18.2324 ppl= 106.127 ppl1= 190.132
+
+could you keep this baggage ?
+	p( could | <s> ) 	= [2gram] 0.0360626 [ -1.44294 ]
+	p( you | could ...) 	= [2gram] 0.77203 [ -0.112366 ]
+	p( keep | you ...) 	= [2gram] 0.00400762 [ -2.39711 ]
+	p( this | keep ...) 	= [2gram] 0.153816 [ -0.812997 ]
+	p( baggage | this ...) 	= [2gram] 0.0109023 [ -1.96248 ]
+	p( ? | baggage ...) 	= [2gram] 0.121699 [ -0.914712 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -7.65935 ppl= 12.422 ppl1= 18.9042
+
+do you speak Japanese ?
+	p( do | <s> ) 	= [2gram] 0.0393819 [ -1.4047 ]
+	p( you | do ...) 	= [2gram] 0.671867 [ -0.172717 ]
+	p( speak | you ...) 	= [2gram] 0.00229156 [ -2.63987 ]
+	p( Japanese | speak ...) 	= [2gram] 0.249429 [ -0.603053 ]
+	p( ? | Japanese ...) 	= [2gram] 0.172284 [ -0.763756 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -5.60084 ppl= 8.57972 ppl1= 13.1877
+
+I 'd like some crayfish .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'd | I ...) 	= [2gram] 0.172366 [ -0.763549 ]
+	p( like | 'd ...) 	= [2gram] 0.939923 [ -0.0269077 ]
+	p( some | like ...) 	= [2gram] 0.0721079 [ -1.14202 ]
+	p( <unk> | some ...) 	= [OOV] 0 [ -inf ]
+	p( . | <unk> ...) 	= [1gram] 0.0670829 [ -1.17339 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 6 words, 1 OOVs
+0 zeroprobs, logprob= -3.85777 ppl= 4.39503 ppl1= 5.90954
+
+I 'll tell her to call you as soon as she returns .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'll | I ...) 	= [2gram] 0.067362 [ -1.17158 ]
+	p( tell | 'll ...) 	= [2gram] 0.00608437 [ -2.21578 ]
+	p( her | tell ...) 	= [2gram] 0.0111766 [ -1.95169 ]
+	p( to | her ...) 	= [2gram] 0.128633 [ -0.890649 ]
+	p( call | to ...) 	= [2gram] 0.0124201 [ -1.90587 ]
+	p( you | call ...) 	= [2gram] 0.0702637 [ -1.15327 ]
+	p( as | you ...) 	= [2gram] 0.000263478 [ -3.57926 ]
+	p( soon | as ...) 	= [2gram] 0.127917 [ -0.893071 ]
+	p( as | soon ...) 	= [2gram] 0.463492 [ -0.333958 ]
+	p( she | as ...) 	= [1gram] 7.33345e-05 [ -4.13469 ]
+	p( <unk> | she ...) 	= [OOV] 0 [ -inf ]
+	p( . | <unk> ...) 	= [1gram] 0.0670829 [ -1.17339 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 13 words, 1 OOVs
+0 zeroprobs, logprob= -20.1551 ppl= 35.5135 ppl1= 47.8182
+
+it 's too heavy .
+	p( it | <s> ) 	= [2gram] 0.0345339 [ -1.46175 ]
+	p( 's | it ...) 	= [2gram] 0.23757 [ -0.624208 ]
+	p( too | 's ...) 	= [2gram] 0.0280053 [ -1.55276 ]
+	p( heavy | too ...) 	= [2gram] 0.0120159 [ -1.92024 ]
+	p( . | heavy ...) 	= [2gram] 0.334445 [ -0.475676 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -6.14276 ppl= 10.5632 ppl1= 16.9259
+
+into French francs please .
+	p( into | <s> ) 	= [2gram] 3.58042e-05 [ -4.44607 ]
+	p( French | into ...) 	= [2gram] 0.00247147 [ -2.60704 ]
+	p( francs | French ...) 	= [2gram] 0.0264443 [ -1.57767 ]
+	p( please | francs ...) 	= [1gram] 0.000935598 [ -3.02891 ]
+	p( . | please ...) 	= [2gram] 0.492714 [ -0.307405 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -12.0752 ppl= 102.929 ppl1= 260.042
+
+please give us a seat up front .
+	p( please | <s> ) 	= [2gram] 0.0323065 [ -1.49071 ]
+	p( give | please ...) 	= [2gram] 0.0254516 [ -1.59429 ]
+	p( us | give ...) 	= [2gram] 0.024407 [ -1.61249 ]
+	p( a | us ...) 	= [2gram] 0.101303 [ -0.994379 ]
+	p( seat | a ...) 	= [2gram] 0.012369 [ -1.90767 ]
+	p( up | seat ...) 	= [2gram] 0.00114404 [ -2.94156 ]
+	p( front | up ...) 	= [2gram] 0.00243256 [ -2.61394 ]
+	p( . | front ...) 	= [2gram] 0.0790123 [ -1.10231 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -14.3655 ppl= 39.4604 ppl1= 62.4715
+
+would you like cream and sugar in your coffee ?
+	p( would | <s> ) 	= [2gram] 0.0164085 [ -1.78493 ]
+	p( you | would ...) 	= [2gram] 0.520315 [ -0.283733 ]
+	p( like | you ...) 	= [2gram] 0.0364569 [ -1.43822 ]
+	p( cream | like ...) 	= [1gram] 3.82162e-05 [ -4.41775 ]
+	p( and | cream ...) 	= [2gram] 0.0884698 [ -1.05321 ]
+	p( sugar | and ...) 	= [2gram] 0.0065289 [ -2.18516 ]
+	p( in | sugar ...) 	= [2gram] 0.0372624 [ -1.42873 ]
+	p( your | in ...) 	= [2gram] 0.0174211 [ -1.75892 ]
+	p( coffee | your ...) 	= [2gram] 0.00642546 [ -2.1921 ]
+	p( ? | coffee ...) 	= [2gram] 0.171886 [ -0.764761 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -17.3243 ppl= 37.5779 ppl1= 54.0039
+
+she 's seriously injured .
+	p( she | <s> ) 	= [2gram] 0.0023449 [ -2.62987 ]
+	p( 's | she ...) 	= [2gram] 0.159662 [ -0.796799 ]
+	p( seriously | 's ...) 	= [2gram] 0.000133953 [ -3.87305 ]
+	p( injured | seriously ...) 	= [2gram] 0.409886 [ -0.387337 ]
+	p( . | injured ...) 	= [2gram] 0.568889 [ -0.244972 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -8.04016 ppl= 21.8789 ppl1= 40.5538
+
+I 'd like a lighter .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'd | I ...) 	= [2gram] 0.172366 [ -0.763549 ]
+	p( like | 'd ...) 	= [2gram] 0.939923 [ -0.0269077 ]
+	p( a | like ...) 	= [2gram] 0.173326 [ -0.761137 ]
+	p( lighter | a ...) 	= [2gram] 0.000470497 [ -3.32744 ]
+	p( . | lighter ...) 	= [2gram] 0.140741 [ -0.851579 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -6.48252 ppl= 8.4348 ppl1= 12.0343
+
+does this hotel have conference facilities ?
+	p( does | <s> ) 	= [2gram] 0.00514015 [ -2.28902 ]
+	p( this | does ...) 	= [2gram] 0.198186 [ -0.702927 ]
+	p( hotel | this ...) 	= [2gram] 0.0100853 [ -1.99631 ]
+	p( have | hotel ...) 	= [2gram] 0.00340154 [ -2.46832 ]
+	p( conference | have ...) 	= [1gram] 9.65267e-06 [ -5.01535 ]
+	p( facilities | conference ...) 	= [1gram] 7.00748e-05 [ -4.15444 ]
+	p( ? | facilities ...) 	= [2gram] 0.0404705 [ -1.39286 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -18.036 ppl= 179.679 ppl1= 377.197
+
+the pleasure is all mine , Mr. Green . I 've heard a lot about you from Mr. Smith .
+	p( the | <s> ) 	= [2gram] 0.0207761 [ -1.68244 ]
+	p( pleasure | the ...) 	= [2gram] 0.000250764 [ -3.60073 ]
+	p( is | pleasure ...) 	= [1gram] 0.00401765 [ -2.39603 ]
+	p( all | is ...) 	= [2gram] 0.00346786 [ -2.45994 ]
+	p( mine | all ...) 	= [2gram] 0.0019565 [ -2.70852 ]
+	p( , | mine ...) 	= [2gram] 0.0179868 [ -1.74504 ]
+	p( Mr. | , ...) 	= [2gram] 0.00581946 [ -2.23512 ]
+	p( Green | Mr. ...) 	= [1gram] 0.000103848 [ -3.9836 ]
+	p( . | Green ...) 	= [2gram] 0.0215842 [ -1.66586 ]
+	p( I | . ...) 	= [2gram] 0.0363328 [ -1.4397 ]
+	p( 've | I ...) 	= [2gram] 0.0268605 [ -1.57089 ]
+	p( heard | 've ...) 	= [2gram] 0.0083506 [ -2.07828 ]
+	p( a | heard ...) 	= [1gram] 0.00398209 [ -2.39989 ]
+	p( lot | a ...) 	= [2gram] 0.0113191 [ -1.94619 ]
+	p( about | lot ...) 	= [1gram] 0.000613295 [ -3.21233 ]
+	p( you | about ...) 	= [2gram] 0.0283868 [ -1.54688 ]
+	p( from | you ...) 	= [2gram] 0.00229156 [ -2.63987 ]
+	p( Mr. | from ...) 	= [2gram] 0.00159489 [ -2.79727 ]
+	p( Smith | Mr. ...) 	= [2gram] 0.0511112 [ -1.29148 ]
+	p( . | Smith ...) 	= [2gram] 0.105556 [ -0.976518 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 20 words, 0 OOVs
+0 zeroprobs, logprob= -44.4847 ppl= 131.317 ppl1= 167.585
+
+Mary is not so old as Henry .
+	p( Mary | <s> ) 	= [2gram] 1.41406e-05 [ -4.84953 ]
+	p( is | Mary ...) 	= [1gram] 0.00815326 [ -2.08867 ]
+	p( not | is ...) 	= [2gram] 0.00948043 [ -2.02317 ]
+	p( so | not ...) 	= [2gram] 0.0274473 [ -1.5615 ]
+	p( old | so ...) 	= [1gram] 0.000101291 [ -3.99443 ]
+	p( as | old ...) 	= [1gram] 0.00186134 [ -2.73017 ]
+	p( Henry | as ...) 	= [1gram] 6.38288e-06 [ -5.19498 ]
+	p( . | Henry ...) 	= [2gram] 0.323763 [ -0.489772 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -23.0404 ppl= 363.112 ppl1= 758.656
+
+is it okay if we just have a light meal ?
+	p( is | <s> ) 	= [2gram] 0.0344029 [ -1.46341 ]
+	p( it | is ...) 	= [2gram] 0.0936565 [ -1.02846 ]
+	p( okay | it ...) 	= [2gram] 0.00842799 [ -2.07428 ]
+	p( if | okay ...) 	= [2gram] 0.0280241 [ -1.55247 ]
+	p( we | if ...) 	= [2gram] 0.0346243 [ -1.46062 ]
+	p( just | we ...) 	= [2gram] 0.00306896 [ -2.51301 ]
+	p( have | just ...) 	= [2gram] 0.00827351 [ -2.08231 ]
+	p( a | have ...) 	= [2gram] 0.267447 [ -0.572762 ]
+	p( light | a ...) 	= [2gram] 0.00187033 [ -2.72808 ]
+	p( meal | light ...) 	= [2gram] 0.0272402 [ -1.56479 ]
+	p( ? | meal ...) 	= [2gram] 0.177778 [ -0.750122 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 11 words, 0 OOVs
+0 zeroprobs, logprob= -17.807 ppl= 30.4734 ppl1= 41.574
+
+I 'm calling from the airport . I 'll be there around four .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'm | I ...) 	= [2gram] 0.110756 [ -0.955631 ]
+	p( calling | 'm ...) 	= [2gram] 0.0064627 [ -2.18959 ]
+	p( from | calling ...) 	= [2gram] 0.111785 [ -0.951618 ]
+	p( the | from ...) 	= [2gram] 0.153091 [ -0.81505 ]
+	p( airport | the ...) 	= [2gram] 0.0094564 [ -2.02427 ]
+	p( . | airport ...) 	= [2gram] 0.203752 [ -0.690898 ]
+	p( I | . ...) 	= [2gram] 0.0363328 [ -1.4397 ]
+	p( 'll | I ...) 	= [2gram] 0.067362 [ -1.17158 ]
+	p( be | 'll ...) 	= [2gram] 0.166512 [ -0.778554 ]
+	p( there | be ...) 	= [2gram] 0.0205147 [ -1.68793 ]
+	p( around | there ...) 	= [2gram] 0.000657396 [ -3.18217 ]
+	p( four | around ...) 	= [2gram] 0.0173188 [ -1.76148 ]
+	p( . | four ...) 	= [2gram] 0.0735961 [ -1.13314 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -19.5335 ppl= 20.0556 ppl1= 24.8458
+
+this car goes to Chicago , doesn 't it ?
+	p( this | <s> ) 	= [2gram] 0.0169763 [ -1.77016 ]
+	p( car | this ...) 	= [2gram] 0.00518337 [ -2.28539 ]
+	p( goes | car ...) 	= [2gram] 0.00138954 [ -2.85713 ]
+	p( to | goes ...) 	= [2gram] 0.631679 [ -0.199504 ]
+	p( Chicago | to ...) 	= [2gram] 0.00410411 [ -2.38678 ]
+	p( , | Chicago ...) 	= [2gram] 0.167094 [ -0.777039 ]
+	p( doesn | , ...) 	= [2gram] 0.00132819 [ -2.87674 ]
+	p( 't | doesn ...) 	= [2gram] 0.983404 [ -0.00726815 ]
+	p( it | 't ...) 	= [2gram] 0.0518173 [ -1.28552 ]
+	p( ? | it ...) 	= [2gram] 0.0786395 [ -1.10436 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -15.5666 ppl= 26.0105 ppl1= 36.0299
+
+how long is it ?
+	p( how | <s> ) 	= [2gram] 0.0367177 [ -1.43512 ]
+	p( long | how ...) 	= [2gram] 0.120413 [ -0.919328 ]
+	p( is | long ...) 	= [2gram] 0.0387898 [ -1.41128 ]
+	p( it | is ...) 	= [2gram] 0.0936565 [ -1.02846 ]
+	p( ? | it ...) 	= [2gram] 0.0786395 [ -1.10436 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -5.9153 ppl= 9.68017 ppl1= 15.2426
+
+excuse me , I 'd like to go to C pier . is it this way ?
+	p( excuse | <s> ) 	= [2gram] 0.00924568 [ -2.03406 ]
+	p( me | excuse ...) 	= [2gram] 0.994173 [ -0.0025381 ]
+	p( , | me ...) 	= [2gram] 0.0756791 [ -1.12102 ]
+	p( I | , ...) 	= [2gram] 0.0790619 [ -1.10203 ]
+	p( 'd | I ...) 	= [2gram] 0.172366 [ -0.763549 ]
+	p( like | 'd ...) 	= [2gram] 0.939923 [ -0.0269077 ]
+	p( to | like ...) 	= [2gram] 0.4459 [ -0.350762 ]
+	p( go | to ...) 	= [2gram] 0.0418726 [ -1.37807 ]
+	p( to | go ...) 	= [2gram] 0.339923 [ -0.46862 ]
+	p( C | to ...) 	= [2gram] 5.6092e-05 [ -4.2511 ]
+	p( pier | C ...) 	= [1gram] 1.95846e-05 [ -4.70809 ]
+	p( . | pier ...) 	= [1gram] 0.0468461 [ -1.32933 ]
+	p( is | . ...) 	= [2gram] 0.00534131 [ -2.27235 ]
+	p( it | is ...) 	= [2gram] 0.0936565 [ -1.02846 ]
+	p( this | it ...) 	= [2gram] 0.00049615 [ -3.30439 ]
+	p( way | this ...) 	= [2gram] 0.0137618 [ -1.86133 ]
+	p( ? | way ...) 	= [2gram] 0.0724955 [ -1.13969 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 17 words, 0 OOVs
+0 zeroprobs, logprob= -27.159 ppl= 32.2727 ppl1= 39.5904
+
+from two hours before the departure . and please come to the counter at least thirty minutes before flight time .
+	p( from | <s> ) 	= [2gram] 0.000990955 [ -3.00395 ]
+	p( two | from ...) 	= [2gram] 0.00159489 [ -2.79727 ]
+	p( hours | two ...) 	= [2gram] 0.0129107 [ -1.88905 ]
+	p( before | hours ...) 	= [2gram] 0.00469221 [ -2.32862 ]
+	p( the | before ...) 	= [2gram] 0.0913581 [ -1.03925 ]
+	p( departure | the ...) 	= [2gram] 0.00218098 [ -2.66135 ]
+	p( . | departure ...) 	= [2gram] 0.0469137 [ -1.3287 ]
+	p( and | . ...) 	= [2gram] 0.00324414 [ -2.4889 ]
+	p( please | and ...) 	= [2gram] 0.00113807 [ -2.94383 ]
+	p( come | please ...) 	= [2gram] 0.0107598 [ -1.9682 ]
+	p( to | come ...) 	= [2gram] 0.175454 [ -0.755837 ]
+	p( the | to ...) 	= [2gram] 0.0957533 [ -1.01885 ]
+	p( counter | the ...) 	= [2gram] 0.000844676 [ -3.07331 ]
+	p( at | counter ...) 	= [1gram] 0.00186221 [ -2.72997 ]
+	p( least | at ...) 	= [2gram] 0.0115389 [ -1.93784 ]
+	p( thirty | least ...) 	= [2gram] 0.0170402 [ -1.76853 ]
+	p( minutes | thirty ...) 	= [2gram] 0.167952 [ -0.774816 ]
+	p( before | minutes ...) 	= [2gram] 0.0124184 [ -1.90594 ]
+	p( flight | before ...) 	= [1gram] 0.000530414 [ -3.27538 ]
+	p( time | flight ...) 	= [2gram] 0.000978138 [ -3.0096 ]
+	p( . | time ...) 	= [2gram] 0.169963 [ -0.769647 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 21 words, 0 OOVs
+0 zeroprobs, logprob= -43.577 ppl= 95.6689 ppl1= 118.876
+
+where do I transfer for Chicago ?
+	p( where | <s> ) 	= [2gram] 0.0311709 [ -1.50625 ]
+	p( do | where ...) 	= [2gram] 0.0400855 [ -1.39701 ]
+	p( I | do ...) 	= [2gram] 0.113365 [ -0.94552 ]
+	p( transfer | I ...) 	= [2gram] 0.000716693 [ -3.14467 ]
+	p( for | transfer ...) 	= [1gram] 0.00591426 [ -2.2281 ]
+	p( Chicago | for ...) 	= [2gram] 0.00316676 [ -2.49939 ]
+	p( ? | Chicago ...) 	= [2gram] 0.397863 [ -0.400266 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -12.1379 ppl= 32.9035 ppl1= 54.199
+
+how much is it to send a registered letter to France ?
+	p( how | <s> ) 	= [2gram] 0.0367177 [ -1.43512 ]
+	p( much | how ...) 	= [2gram] 0.294252 [ -0.53128 ]
+	p( is | much ...) 	= [2gram] 0.285396 [ -0.544553 ]
+	p( it | is ...) 	= [2gram] 0.0936565 [ -1.02846 ]
+	p( to | it ...) 	= [2gram] 0.032811 [ -1.48398 ]
+	p( send | to ...) 	= [2gram] 0.0125934 [ -1.89986 ]
+	p( a | send ...) 	= [2gram] 0.114832 [ -0.939937 ]
+	p( registered | a ...) 	= [2gram] 5.66514e-05 [ -4.24679 ]
+	p( letter | registered ...) 	= [1gram] 8.45841e-05 [ -4.07271 ]
+	p( to | letter ...) 	= [2gram] 0.142088 [ -0.847444 ]
+	p( France | to ...) 	= [1gram] 1.04497e-05 [ -4.9809 ]
+	p( ? | France ...) 	= [2gram] 0.0647526 [ -1.18874 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 12 words, 0 OOVs
+0 zeroprobs, logprob= -23.2165 ppl= 61.0782 ppl1= 86.0418
+
+could you cash my two hundred dollar check ?
+	p( could | <s> ) 	= [2gram] 0.0360626 [ -1.44294 ]
+	p( you | could ...) 	= [2gram] 0.77203 [ -0.112366 ]
+	p( cash | you ...) 	= [2gram] 0.000887503 [ -3.05183 ]
+	p( my | cash ...) 	= [2gram] 0.00355784 [ -2.44881 ]
+	p( two | my ...) 	= [1gram] 0.000570287 [ -3.24391 ]
+	p( hundred | two ...) 	= [2gram] 0.0411425 [ -1.38571 ]
+	p( dollar | hundred ...) 	= [2gram] 0.0352047 [ -1.4534 ]
+	p( check | dollar ...) 	= [2gram] 0.00578148 [ -2.23796 ]
+	p( ? | check ...) 	= [2gram] 0.0851342 [ -1.0699 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -16.4636 ppl= 44.2952 ppl1= 67.4971
+
+help me , please . call an ambulance , please .
+	p( help | <s> ) 	= [2gram] 0.000292143 [ -3.5344 ]
+	p( me | help ...) 	= [2gram] 0.37695 [ -0.423717 ]
+	p( , | me ...) 	= [2gram] 0.0756791 [ -1.12102 ]
+	p( please | , ...) 	= [2gram] 0.349748 [ -0.456245 ]
+	p( . | please ...) 	= [2gram] 0.492714 [ -0.307405 ]
+	p( call | . ...) 	= [2gram] 9.83859e-05 [ -4.00707 ]
+	p( an | call ...) 	= [2gram] 0.0103967 [ -1.98311 ]
+	p( ambulance | an ...) 	= [2gram] 0.0187406 [ -1.72722 ]
+	p( , | ambulance ...) 	= [2gram] 0.0745248 [ -1.1277 ]
+	p( please | , ...) 	= [2gram] 0.349748 [ -0.456245 ]
+	p( . | please ...) 	= [2gram] 0.492714 [ -0.307405 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 11 words, 0 OOVs
+0 zeroprobs, logprob= -15.5597 ppl= 19.7988 ppl1= 25.9725
+
+which one is cheaper ?
+	p( which | <s> ) 	= [2gram] 0.00837215 [ -2.07716 ]
+	p( one | which ...) 	= [2gram] 0.0353937 [ -1.45107 ]
+	p( is | one ...) 	= [2gram] 0.0151276 [ -1.82023 ]
+	p( cheaper | is ...) 	= [2gram] 0.00182807 [ -2.73801 ]
+	p( ? | cheaper ...) 	= [2gram] 0.234979 [ -0.62897 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -8.73219 ppl= 28.5341 ppl1= 55.7747
+
+what kind of bread would you like , white , rye or whole wheat ?
+	p( what | <s> ) 	= [2gram] 0.0403428 [ -1.39423 ]
+	p( kind | what ...) 	= [2gram] 0.0613419 [ -1.21224 ]
+	p( of | kind ...) 	= [2gram] 0.86682 [ -0.0620711 ]
+	p( bread | of ...) 	= [2gram] 0.000878717 [ -3.05615 ]
+	p( would | bread ...) 	= [1gram] 0.000613904 [ -3.2119 ]
+	p( you | would ...) 	= [2gram] 0.520315 [ -0.283733 ]
+	p( like | you ...) 	= [2gram] 0.0364569 [ -1.43822 ]
+	p( , | like ...) 	= [2gram] 0.0019693 [ -2.70569 ]
+	p( white | , ...) 	= [1gram] 4.39808e-05 [ -4.35674 ]
+	p( , | white ...) 	= [2gram] 0.0195184 [ -1.70956 ]
+	p( rye | , ...) 	= [1gram] 6.09567e-06 [ -5.21498 ]
+	p( or | rye ...) 	= [1gram] 0.00295023 [ -2.53014 ]
+	p( whole | or ...) 	= [1gram] 2.86445e-05 [ -4.54296 ]
+	p( wheat | whole ...) 	= [2gram] 0.11711 [ -0.931405 ]
+	p( ? | wheat ...) 	= [1gram] 0.0263953 [ -1.57847 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 15 words, 0 OOVs
+0 zeroprobs, logprob= -34.2452 ppl= 138.142 ppl1= 191.874
+
+it 's really different driving on the right side of the street .
+	p( it | <s> ) 	= [2gram] 0.0345339 [ -1.46175 ]
+	p( 's | it ...) 	= [2gram] 0.23757 [ -0.624208 ]
+	p( really | 's ...) 	= [2gram] 0.00359491 [ -2.44431 ]
+	p( different | really ...) 	= [1gram] 0.000221276 [ -3.65507 ]
+	p( driving | different ...) 	= [1gram] 0.000112233 [ -3.94988 ]
+	p( on | driving ...) 	= [1gram] 0.00630863 [ -2.20006 ]
+	p( the | on ...) 	= [2gram] 0.292923 [ -0.533247 ]
+	p( right | the ...) 	= [2gram] 0.0112382 [ -1.94931 ]
+	p( side | right ...) 	= [2gram] 0.00751303 [ -2.12419 ]
+	p( of | side ...) 	= [2gram] 0.248254 [ -0.605104 ]
+	p( the | of ...) 	= [2gram] 0.171534 [ -0.765649 ]
+	p( street | the ...) 	= [2gram] 0.00440815 [ -2.35574 ]
+	p( . | street ...) 	= [2gram] 0.392186 [ -0.406508 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -23.1832 ppl= 45.2834 ppl1= 60.7183
+
+the actor is really marvelous .
+	p( the | <s> ) 	= [2gram] 0.0207761 [ -1.68244 ]
+	p( actor | the ...) 	= [2gram] 0.000399242 [ -3.39876 ]
+	p( is | actor ...) 	= [2gram] 0.204943 [ -0.688367 ]
+	p( really | is ...) 	= [2gram] 0.00319456 [ -2.49559 ]
+	p( <unk> | really ...) 	= [OOV] 0 [ -inf ]
+	p( . | <unk> ...) 	= [1gram] 0.0670829 [ -1.17339 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 6 words, 1 OOVs
+0 zeroprobs, logprob= -9.54667 ppl= 39.0042 ppl1= 81.1585
+
+I 'll pass this time .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'll | I ...) 	= [2gram] 0.067362 [ -1.17158 ]
+	p( pass | 'll ...) 	= [2gram] 0.000876763 [ -3.05712 ]
+	p( this | pass ...) 	= [2gram] 0.00660741 [ -2.17997 ]
+	p( time | this ...) 	= [2gram] 0.00600037 [ -2.22182 ]
+	p( . | time ...) 	= [2gram] 0.169963 [ -0.769647 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -10.152 ppl= 28.2028 ppl1= 49.2049
+
+these sorts of problems aren 't new . we 've already solved them .
+	p( these | <s> ) 	= [2gram] 0.00138403 [ -2.85885 ]
+	p( <unk> | these ...) 	= [OOV] 0 [ -inf ]
+	p( of | <unk> ...) 	= [1gram] 0.0101293 [ -1.99442 ]
+	p( problems | of ...) 	= [1gram] 2.72447e-05 [ -4.56472 ]
+	p( aren | problems ...) 	= [1gram] 7.55994e-05 [ -4.12148 ]
+	p( 't | aren ...) 	= [2gram] 0.940404 [ -0.0266854 ]
+	p( new | 't ...) 	= [1gram] 9.40235e-05 [ -4.02676 ]
+	p( . | new ...) 	= [1gram] 0.0323157 [ -1.49059 ]
+	p( we | . ...) 	= [2gram] 0.00609863 [ -2.21477 ]
+	p( 've | we ...) 	= [2gram] 0.018044 [ -1.74367 ]
+	p( already | 've ...) 	= [2gram] 0.0083506 [ -2.07828 ]
+	p( solved | already ...) 	= [1gram] 1.48728e-05 [ -4.82761 ]
+	p( them | solved ...) 	= [1gram] 0.000889277 [ -3.05096 ]
+	p( . | them ...) 	= [2gram] 0.164593 [ -0.78359 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 14 words, 1 OOVs
+0 zeroprobs, logprob= -33.8905 ppl= 263.482 ppl1= 404.541
+
+where 's your non-fiction section ?
+	p( where | <s> ) 	= [2gram] 0.0311709 [ -1.50625 ]
+	p( 's | where ...) 	= [2gram] 0.18047 [ -0.743595 ]
+	p( your | 's ...) 	= [2gram] 0.0251092 [ -1.60017 ]
+	p( <unk> | your ...) 	= [OOV] 0 [ -inf ]
+	p( section | <unk> ...) 	= [1gram] 0.000394692 [ -3.40374 ]
+	p( ? | section ...) 	= [2gram] 0.36254 [ -0.440644 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 6 words, 1 OOVs
+0 zeroprobs, logprob= -7.71114 ppl= 19.2837 ppl1= 34.852
+
+every three day , but not always .
+	p( every | <s> ) 	= [2gram] 0.000117439 [ -3.93019 ]
+	p( three | every ...) 	= [2gram] 0.017442 [ -1.7584 ]
+	p( day | three ...) 	= [2gram] 0.0018589 [ -2.73075 ]
+	p( , | day ...) 	= [2gram] 0.0581537 [ -1.23542 ]
+	p( but | , ...) 	= [2gram] 0.0540143 [ -1.26749 ]
+	p( not | but ...) 	= [2gram] 0.0123941 [ -1.90679 ]
+	p( always | not ...) 	= [1gram] 0.000140889 [ -3.85112 ]
+	p( . | always ...) 	= [1gram] 0.044971 [ -1.34707 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -18.1353 ppl= 103.523 ppl1= 184.892
+
+if it should turn up , please call me .
+	p( if | <s> ) 	= [2gram] 0.00457237 [ -2.33986 ]
+	p( it | if ...) 	= [2gram] 0.0553712 [ -1.25672 ]
+	p( should | it ...) 	= [2gram] 0.00225878 [ -2.64613 ]
+	p( turn | should ...) 	= [2gram] 0.00123574 [ -2.90807 ]
+	p( up | turn ...) 	= [2gram] 0.00712845 [ -2.14701 ]
+	p( , | up ...) 	= [2gram] 0.0613913 [ -1.21189 ]
+	p( please | , ...) 	= [2gram] 0.349748 [ -0.456245 ]
+	p( call | please ...) 	= [2gram] 0.011718 [ -1.93115 ]
+	p( me | call ...) 	= [2gram] 0.0946538 [ -1.02386 ]
+	p( . | me ...) 	= [2gram] 0.142077 [ -0.847477 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -16.8765 ppl= 34.2161 ppl1= 48.7139
+
+I want to eat a mixed burger .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( want | I ...) 	= [2gram] 0.0430397 [ -1.36613 ]
+	p( to | want ...) 	= [2gram] 0.650692 [ -0.186624 ]
+	p( eat | to ...) 	= [2gram] 0.00462385 [ -2.335 ]
+	p( a | eat ...) 	= [2gram] 0.0208505 [ -1.68088 ]
+	p( mixed | a ...) 	= [1gram] 9.12354e-06 [ -5.03984 ]
+	p( burger | mixed ...) 	= [1gram] 2.56396e-05 [ -4.59109 ]
+	p( . | burger ...) 	= [2gram] 0.161882 [ -0.790802 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -16.7423 ppl= 72.4857 ppl1= 123.818
+
+please write down your address here .
+	p( please | <s> ) 	= [2gram] 0.0323065 [ -1.49071 ]
+	p( write | please ...) 	= [2gram] 0.00692714 [ -2.15945 ]
+	p( down | write ...) 	= [2gram] 0.253257 [ -0.596439 ]
+	p( your | down ...) 	= [2gram] 0.0539683 [ -1.26786 ]
+	p( address | your ...) 	= [2gram] 0.00738606 [ -2.13159 ]
+	p( here | address ...) 	= [2gram] 0.0961112 [ -1.01723 ]
+	p( . | here ...) 	= [2gram] 0.209246 [ -0.679343 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -9.45074 ppl= 15.1825 ppl1= 22.3926
+
+is this silver-plated ?
+	p( is | <s> ) 	= [2gram] 0.0344029 [ -1.46341 ]
+	p( this | is ...) 	= [2gram] 0.0709727 [ -1.14891 ]
+	p( <unk> | this ...) 	= [OOV] 0 [ -inf ]
+	p( ? | <unk> ...) 	= [1gram] 0.0417163 [ -1.37969 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 4 words, 1 OOVs
+0 zeroprobs, logprob= -4.00875 ppl= 10.0505 ppl1= 21.6895
+
+could you please change my seat ?
+	p( could | <s> ) 	= [2gram] 0.0360626 [ -1.44294 ]
+	p( you | could ...) 	= [2gram] 0.77203 [ -0.112366 ]
+	p( please | you ...) 	= [2gram] 0.014616 [ -1.83517 ]
+	p( change | please ...) 	= [2gram] 0.00852409 [ -2.06935 ]
+	p( my | change ...) 	= [2gram] 0.154794 [ -0.810246 ]
+	p( seat | my ...) 	= [2gram] 0.0231502 [ -1.63545 ]
+	p( ? | seat ...) 	= [2gram] 0.129643 [ -0.887252 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -8.80951 ppl= 12.6238 ppl1= 18.1344
+
+is there a warranty ?
+	p( is | <s> ) 	= [2gram] 0.0344029 [ -1.46341 ]
+	p( there | is ...) 	= [2gram] 0.0963894 [ -1.01597 ]
+	p( a | there ...) 	= [2gram] 0.187401 [ -0.727228 ]
+	p( warranty | a ...) 	= [1gram] 9.12354e-06 [ -5.03984 ]
+	p( ? | warranty ...) 	= [1gram] 0.0306205 [ -1.51399 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -9.77717 ppl= 42.6116 ppl1= 90.2472
+
+all right . turn to your right at the third corner . you 'll see it right in front of you .
+	p( all | <s> ) 	= [2gram] 0.00417929 [ -2.3789 ]
+	p( right | all ...) 	= [2gram] 0.34532 [ -0.461779 ]
+	p( . | right ...) 	= [2gram] 0.282462 [ -0.54904 ]
+	p( turn | . ...) 	= [2gram] 0.000389659 [ -3.40932 ]
+	p( to | turn ...) 	= [2gram] 0.153816 [ -0.812997 ]
+	p( your | to ...) 	= [2gram] 0.00999462 [ -2.00023 ]
+	p( right | your ...) 	= [2gram] 0.0141104 [ -1.85046 ]
+	p( at | right ...) 	= [2gram] 0.0156596 [ -1.80522 ]
+	p( the | at ...) 	= [2gram] 0.328419 [ -0.483571 ]
+	p( third | the ...) 	= [2gram] 0.00455663 [ -2.34136 ]
+	p( corner | third ...) 	= [2gram] 0.0351853 [ -1.45364 ]
+	p( . | corner ...) 	= [2gram] 0.450682 [ -0.346129 ]
+	p( you | . ...) 	= [2gram] 0.0084288 [ -2.07423 ]
+	p( 'll | you ...) 	= [2gram] 0.0177362 [ -1.75114 ]
+	p( see | 'll ...) 	= [2gram] 0.0306833 [ -1.5131 ]
+	p( it | see ...) 	= [2gram] 0.0405957 [ -1.39152 ]
+	p( right | it ...) 	= [2gram] 0.00431519 [ -2.365 ]
+	p( in | right ...) 	= [2gram] 0.013623 [ -1.86573 ]
+	p( front | in ...) 	= [2gram] 0.0140973 [ -1.85086 ]
+	p( of | front ...) 	= [2gram] 0.426235 [ -0.370351 ]
+	p( you | of ...) 	= [2gram] 0.0248121 [ -1.60534 ]
+	p( . | you ...) 	= [2gram] 0.0568937 [ -1.24494 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 22 words, 0 OOVs
+0 zeroprobs, logprob= -34.033 ppl= 30.1783 ppl1= 35.2333
+
+is there a Japanese restaurant around here ?
+	p( is | <s> ) 	= [2gram] 0.0344029 [ -1.46341 ]
+	p( there | is ...) 	= [2gram] 0.0963894 [ -1.01597 ]
+	p( a | there ...) 	= [2gram] 0.187401 [ -0.727228 ]
+	p( Japanese | a ...) 	= [2gram] 0.00781957 [ -2.10682 ]
+	p( restaurant | Japanese ...) 	= [1gram] 0.000336731 [ -3.47272 ]
+	p( around | restaurant ...) 	= [2gram] 0.0651601 [ -1.18602 ]
+	p( here | around ...) 	= [2gram] 0.421075 [ -0.375641 ]
+	p( ? | here ...) 	= [2gram] 0.308941 [ -0.510125 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -10.8747 ppl= 16.1546 ppl1= 22.8735
+
+a bag of cookies and a lemon bar .
+	p( a | <s> ) 	= [2gram] 0.00815378 [ -2.08864 ]
+	p( bag | a ...) 	= [2gram] 0.00222028 [ -2.65359 ]
+	p( of | bag ...) 	= [2gram] 0.0128923 [ -1.88967 ]
+	p( cookies | of ...) 	= [1gram] 1.44346e-05 [ -4.8406 ]
+	p( and | cookies ...) 	= [1gram] 0.0078764 [ -2.10367 ]
+	p( a | and ...) 	= [2gram] 0.0577419 [ -1.23851 ]
+	p( lemon | a ...) 	= [2gram] 5.66514e-05 [ -4.24679 ]
+	p( bar | lemon ...) 	= [1gram] 0.000123921 [ -3.90685 ]
+	p( . | bar ...) 	= [2gram] 0.158025 [ -0.801275 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -23.8777 ppl= 244.215 ppl1= 449.863
+
+sorry , I 'll take care of the dog .
+	p( sorry | <s> ) 	= [2gram] 0.00265064 [ -2.57665 ]
+	p( , | sorry ...) 	= [2gram] 0.465079 [ -0.332473 ]
+	p( I | , ...) 	= [2gram] 0.0790619 [ -1.10203 ]
+	p( 'll | I ...) 	= [2gram] 0.067362 [ -1.17158 ]
+	p( take | 'll ...) 	= [2gram] 0.102341 [ -0.98995 ]
+	p( care | take ...) 	= [2gram] 0.0304011 [ -1.51711 ]
+	p( of | care ...) 	= [2gram] 0.503314 [ -0.298161 ]
+	p( the | of ...) 	= [2gram] 0.171534 [ -0.765649 ]
+	p( dog | the ...) 	= [1gram] 1.78853e-05 [ -4.7475 ]
+	p( . | dog ...) 	= [2gram] 0.0323764 [ -1.48977 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 10 words, 0 OOVs
+0 zeroprobs, logprob= -15.099 ppl= 23.5851 ppl1= 32.352
+
+I would like two tickets for " Cats " , for this Thursday .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( would | I ...) 	= [2gram] 0.0322178 [ -1.4919 ]
+	p( like | would ...) 	= [2gram] 0.293086 [ -0.533005 ]
+	p( two | like ...) 	= [2gram] 0.00658921 [ -2.18117 ]
+	p( tickets | two ...) 	= [2gram] 0.0411425 [ -1.38571 ]
+	p( for | tickets ...) 	= [2gram] 0.347768 [ -0.45871 ]
+	p( " | for ...) 	= [2gram] 0.00440234 [ -2.35632 ]
+	p( Cats | " ...) 	= [2gram] 0.00210236 [ -2.67729 ]
+	p( " | Cats ...) 	= [2gram] 0.323763 [ -0.489772 ]
+	p( , | " ...) 	= [2gram] 0.0304474 [ -1.51645 ]
+	p( for | , ...) 	= [2gram] 0.0021919 [ -2.65918 ]
+	p( this | for ...) 	= [2gram] 0.0278785 [ -1.55473 ]
+	p( Thursday | this ...) 	= [2gram] 0.000132256 [ -3.87858 ]
+	p( . | Thursday ...) 	= [2gram] 0.211112 [ -0.675488 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 14 words, 0 OOVs
+0 zeroprobs, logprob= -22.6102 ppl= 32.1624 ppl1= 41.2112
+
+to the Fairmont Hotel , please .
+	p( to | <s> ) 	= [2gram] 0.00190815 [ -2.71939 ]
+	p( the | to ...) 	= [2gram] 0.0957533 [ -1.01885 ]
+	p( Fairmont | the ...) 	= [2gram] 4.80718e-05 [ -4.31811 ]
+	p( Hotel | Fairmont ...) 	= [2gram] 0.323763 [ -0.489772 ]
+	p( , | Hotel ...) 	= [2gram] 0.12966 [ -0.887193 ]
+	p( please | , ...) 	= [2gram] 0.349748 [ -0.456245 ]
+	p( . | please ...) 	= [2gram] 0.492714 [ -0.307405 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -10.3051 ppl= 19.4149 ppl1= 29.6589
+
+where is the coffee shop ?
+	p( where | <s> ) 	= [2gram] 0.0311709 [ -1.50625 ]
+	p( is | where ...) 	= [2gram] 0.218932 [ -0.659692 ]
+	p( the | is ...) 	= [2gram] 0.157882 [ -0.801668 ]
+	p( coffee | the ...) 	= [2gram] 0.00114163 [ -2.94247 ]
+	p( shop | coffee ...) 	= [2gram] 0.118855 [ -0.924982 ]
+	p( ? | shop ...) 	= [2gram] 0.292744 [ -0.533512 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 6 words, 0 OOVs
+0 zeroprobs, logprob= -7.38532 ppl= 11.3513 ppl1= 17.0171
+
+I 'd like a children 's sweater .
+	p( I | <s> ) 	= [2gram] 0.2271 [ -0.643782 ]
+	p( 'd | I ...) 	= [2gram] 0.172366 [ -0.763549 ]
+	p( like | 'd ...) 	= [2gram] 0.939923 [ -0.0269077 ]
+	p( a | like ...) 	= [2gram] 0.173326 [ -0.761137 ]
+	p( children | a ...) 	= [2gram] 0.000645476 [ -3.19012 ]
+	p( 's | children ...) 	= [2gram] 0.185803 [ -0.730948 ]
+	p( sweater | 's ...) 	= [2gram] 0.000133953 [ -3.87305 ]
+	p( . | sweater ...) 	= [2gram] 0.204939 [ -0.688376 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -10.786 ppl= 15.7922 ppl1= 22.2971
+
+my suitcase is damaged . I need a claim form , please .
+	p( my | <s> ) 	= [2gram] 0.0140063 [ -1.85368 ]
+	p( suitcase | my ...) 	= [2gram] 0.0128465 [ -1.89122 ]
+	p( is | suitcase ...) 	= [2gram] 0.101932 [ -0.991687 ]
+	p( damaged | is ...) 	= [2gram] 0.000224043 [ -3.64967 ]
+	p( . | damaged ...) 	= [2gram] 0.669842 [ -0.174028 ]
+	p( I | . ...) 	= [2gram] 0.0363328 [ -1.4397 ]
+	p( need | I ...) 	= [2gram] 0.0147529 [ -1.83112 ]
+	p( a | need ...) 	= [2gram] 0.21537 [ -0.666814 ]
+	p( claim | a ...) 	= [2gram] 0.000143442 [ -3.84332 ]
+	p( form | claim ...) 	= [1gram] 0.000148802 [ -3.82739 ]
+	p( , | form ...) 	= [2gram] 0.186601 [ -0.729085 ]
+	p( please | , ...) 	= [2gram] 0.349748 [ -0.456245 ]
+	p( . | please ...) 	= [2gram] 0.492714 [ -0.307405 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 13 words, 0 OOVs
+0 zeroprobs, logprob= -21.7695 ppl= 35.8892 ppl1= 47.269
+
+your name again ?
+	p( your | <s> ) 	= [2gram] 0.00265064 [ -2.57665 ]
+	p( name | your ...) 	= [2gram] 0.0611805 [ -1.21339 ]
+	p( again | name ...) 	= [2gram] 0.00667547 [ -2.17552 ]
+	p( ? | again ...) 	= [2gram] 0.162512 [ -0.789114 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 4 words, 0 OOVs
+0 zeroprobs, logprob= -6.77141 ppl= 22.609 ppl1= 49.3006
+
+is Mr. Brown there ?
+	p( is | <s> ) 	= [2gram] 0.0344029 [ -1.46341 ]
+	p( Mr. | is ...) 	= [2gram] 0.00456105 [ -2.34093 ]
+	p( Brown | Mr. ...) 	= [2gram] 0.0275817 [ -1.55938 ]
+	p( there | Brown ...) 	= [1gram] 0.00139635 [ -2.85501 ]
+	p( ? | there ...) 	= [2gram] 0.0671121 [ -1.1732 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 5 words, 0 OOVs
+0 zeroprobs, logprob= -9.40867 ppl= 36.9923 ppl1= 76.1611
+
+okay . it costs eighty-five cents for regular mail and three dollars and zero cents extra for special delivery .
+	p( okay | <s> ) 	= [2gram] 0.00479074 [ -2.3196 ]
+	p( . | okay ...) 	= [2gram] 0.422113 [ -0.374572 ]
+	p( it | . ...) 	= [2gram] 0.0101182 [ -1.9949 ]
+	p( costs | it ...) 	= [2gram] 0.00049615 [ -3.30439 ]
+	p( eighty-five | costs ...) 	= [1gram] 3.80686e-05 [ -4.41943 ]
+	p( cents | eighty-five ...) 	= [2gram] 0.204943 [ -0.688367 ]
+	p( for | cents ...) 	= [2gram] 0.0471736 [ -1.3263 ]
+	p( regular | for ...) 	= [2gram] 0.000133346 [ -3.87502 ]
+	p( mail | regular ...) 	= [1gram] 0.000193381 [ -3.71359 ]
+	p( and | mail ...) 	= [1gram] 0.00342408 [ -2.46546 ]
+	p( three | and ...) 	= [2gram] 0.000552408 [ -3.25774 ]
+	p( dollars | three ...) 	= [2gram] 0.0197027 [ -1.70547 ]
+	p( and | dollars ...) 	= [2gram] 0.0877724 [ -1.05664 ]
+	p( zero | and ...) 	= [2gram] 0.00315963 [ -2.50036 ]
+	p( cents | zero ...) 	= [2gram] 0.0232006 [ -1.6345 ]
+	p( extra | cents ...) 	= [1gram] 0.000111522 [ -3.95264 ]
+	p( for | extra ...) 	= [1gram] 0.00623134 [ -2.20542 ]
+	p( special | for ...) 	= [1gram] 9.81858e-05 [ -4.00795 ]
+	p( delivery | special ...) 	= [2gram] 0.0756274 [ -1.12132 ]
+	p( . | delivery ...) 	= [2gram] 0.230556 [ -0.637224 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 20 words, 0 OOVs
+0 zeroprobs, logprob= -46.669 ppl= 166.853 ppl1= 215.502
+
+can I charter a boat for a day ?
+	p( can | <s> ) 	= [2gram] 0.0371108 [ -1.4305 ]
+	p( I | can ...) 	= [2gram] 0.403963 [ -0.393658 ]
+	p( charter | I ...) 	= [1gram] 1.69474e-06 [ -5.7709 ]
+	p( a | charter ...) 	= [2gram] 0.562965 [ -0.249519 ]
+	p( boat | a ...) 	= [2gram] 0.000645476 [ -3.19012 ]
+	p( for | boat ...) 	= [2gram] 0.0734302 [ -1.13412 ]
+	p( a | for ...) 	= [2gram] 0.129608 [ -0.887367 ]
+	p( day | a ...) 	= [2gram] 0.00904443 [ -2.04362 ]
+	p( ? | day ...) 	= [2gram] 0.137756 [ -0.86089 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -15.9774 ppl= 39.6044 ppl1= 59.6034
+
+at which window can I make a reservation ?
+	p( at | <s> ) 	= [2gram] 0.00186447 [ -2.72944 ]
+	p( which | at ...) 	= [2gram] 0.00265439 [ -2.57604 ]
+	p( window | which ...) 	= [2gram] 0.00559237 [ -2.2524 ]
+	p( can | window ...) 	= [1gram] 0.000379826 [ -3.42042 ]
+	p( I | can ...) 	= [2gram] 0.403963 [ -0.393658 ]
+	p( make | I ...) 	= [2gram] 0.00425254 [ -2.37135 ]
+	p( a | make ...) 	= [2gram] 0.385758 [ -0.413685 ]
+	p( reservation | a ...) 	= [2gram] 0.0261923 [ -1.58183 ]
+	p( ? | reservation ...) 	= [2gram] 0.088526 [ -1.05293 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 9 words, 0 OOVs
+0 zeroprobs, logprob= -16.8085 ppl= 47.9567 ppl1= 73.7242
+
+what 's that ?
+	p( what | <s> ) 	= [2gram] 0.0403428 [ -1.39423 ]
+	p( 's | what ...) 	= [2gram] 0.206742 [ -0.68457 ]
+	p( that | 's ...) 	= [2gram] 0.00483612 [ -2.3155 ]
+	p( ? | that ...) 	= [2gram] 0.0289344 [ -1.53858 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 4 words, 0 OOVs
+0 zeroprobs, logprob= -5.94963 ppl= 15.4855 ppl1= 30.7191
+
+do I have to dress up ?
+	p( do | <s> ) 	= [2gram] 0.0393819 [ -1.4047 ]
+	p( I | do ...) 	= [2gram] 0.113365 [ -0.94552 ]
+	p( have | I ...) 	= [2gram] 0.0898628 [ -1.04642 ]
+	p( to | have ...) 	= [2gram] 0.0936805 [ -1.02835 ]
+	p( dress | to ...) 	= [2gram] 0.000142026 [ -3.84763 ]
+	p( up | dress ...) 	= [2gram] 0.00622621 [ -2.20578 ]
+	p( ? | up ...) 	= [2gram] 0.0643587 [ -1.19139 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 7 words, 0 OOVs
+0 zeroprobs, logprob= -11.6865 ppl= 28.8946 ppl1= 46.7203
+
+could you tell me how to get to the opera ?
+	p( could | <s> ) 	= [2gram] 0.0360626 [ -1.44294 ]
+	p( you | could ...) 	= [2gram] 0.77203 [ -0.112366 ]
+	p( tell | you ...) 	= [2gram] 0.0565817 [ -1.24732 ]
+	p( me | tell ...) 	= [2gram] 0.877581 [ -0.0567126 ]
+	p( how | me ...) 	= [2gram] 0.0469668 [ -1.32821 ]
+	p( to | how ...) 	= [2gram] 0.0866573 [ -1.06219 ]
+	p( get | to ...) 	= [2gram] 0.0494956 [ -1.30543 ]
+	p( to | get ...) 	= [2gram] 0.153411 [ -0.814144 ]
+	p( the | to ...) 	= [2gram] 0.0957533 [ -1.01885 ]
+	p( opera | the ...) 	= [2gram] 0.00114163 [ -2.94247 ]
+	p( ? | opera ...) 	= [2gram] 0.107556 [ -0.968366 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 11 words, 0 OOVs
+0 zeroprobs, logprob= -12.3158 ppl= 10.6246 ppl1= 13.1709
+
+weren 't you a bit too intoxicated last night , honey ?
+	p( weren | <s> ) 	= [1gram] 2.50861e-06 [ -5.60057 ]
+	p( 't | weren ...) 	= [2gram] 0.409886 [ -0.387337 ]
+	p( you | 't ...) 	= [2gram] 0.0642494 [ -1.19213 ]
+	p( a | you ...) 	= [2gram] 0.0083758 [ -2.07697 ]
+	p( bit | a ...) 	= [2gram] 0.00676971 [ -2.16943 ]
+	p( too | bit ...) 	= [2gram] 0.0296297 [ -1.52827 ]
+	p( <unk> | too ...) 	= [OOV] 0 [ -inf ]
+	p( last | <unk> ...) 	= [1gram] 0.000899599 [ -3.04595 ]
+	p( night | last ...) 	= [2gram] 0.211709 [ -0.674262 ]
+	p( , | night ...) 	= [2gram] 0.0780211 [ -1.10779 ]
+	p( honey | , ...) 	= [2gram] 5.59273e-05 [ -4.25238 ]
+	p( ? | honey ...) 	= [2gram] 0.273257 [ -0.563428 ]
+	p( </s> | ? ...) 	= [2gram] 0.962187 [ -0.0167407 ]
+1 sentences, 12 words, 1 OOVs
+0 zeroprobs, logprob= -22.6153 ppl= 76.6663 ppl1= 113.745
+
+please follow the instructions from our staff .
+	p( please | <s> ) 	= [2gram] 0.0323065 [ -1.49071 ]
+	p( follow | please ...) 	= [1gram] 1.4823e-05 [ -4.82906 ]
+	p( the | follow ...) 	= [2gram] 0.194152 [ -0.711857 ]
+	p( instructions | the ...) 	= [2gram] 4.80718e-05 [ -4.31811 ]
+	p( from | instructions ...) 	= [1gram] 0.00291334 [ -2.53561 ]
+	p( our | from ...) 	= [2gram] 0.00159489 [ -2.79727 ]
+	p( staff | our ...) 	= [2gram] 0.001492 [ -2.82623 ]
+	p( . | staff ...) 	= [2gram] 0.11711 [ -0.931405 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -20.5484 ppl= 191.935 ppl1= 370.295
+
+this is it . please stop here .
+	p( this | <s> ) 	= [2gram] 0.0169763 [ -1.77016 ]
+	p( is | this ...) 	= [2gram] 0.138762 [ -0.85773 ]
+	p( it | is ...) 	= [2gram] 0.0936565 [ -1.02846 ]
+	p( . | it ...) 	= [2gram] 0.0833399 [ -1.07915 ]
+	p( please | . ...) 	= [2gram] 0.00936089 [ -2.02868 ]
+	p( stop | please ...) 	= [2gram] 0.00213634 [ -2.67033 ]
+	p( here | stop ...) 	= [2gram] 0.0746406 [ -1.12703 ]
+	p( . | here ...) 	= [2gram] 0.209246 [ -0.679343 ]
+	p( </s> | . ...) 	= [2gram] 0.779604 [ -0.108126 ]
+1 sentences, 8 words, 0 OOVs
+0 zeroprobs, logprob= -11.349 ppl= 18.239 ppl1= 26.2195
+
+file e-test.txt: 100 sentences, 956 words, 15 OOVs
+0 zeroprobs, logprob= -1710.41 ppl= 43.9588 ppl1= 65.7132
