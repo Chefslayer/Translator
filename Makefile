@@ -14,12 +14,12 @@ OBJ = $(SRC:%cpp=%o)
 CFLAGS = -g
 LDFLAGS = -lz
 
-all: sriTranslate
+all: sriRating
 clean:
 	-rm $(OBJ) phraseTranslate sriTranslate phraseExtract translate rate_translation singleWordExtract hypTest.o lexiconTest.o treeTest.o
 rebuild: clean translate rate_translation
 
-sriTranslate: sriTranslate.cpp ${L}gzstream.C $(OBJ)
+sriRating: sriRating.cpp ${L}gzstream.C $(OBJ)
 	$(CXX) $^ -o $@ -I${SRILM}/include/ -loolm -ldstruct -lflm -lmisc -L${SRILM}/lib/${ARCHITECTURE}/ $(LDFLAGS)
 
 phraseTranslate: phraseTranslate.cpp ${L}gzstream.C $(OBJ)

@@ -1,6 +1,6 @@
 #include <vector>
 #include "hypothesis.h"
-
+#include <iostream>
 using namespace std;
 
 Hypothesis::Hypothesis(Hypothesis *p ,double fCost, double eCost, unsigned int t)
@@ -37,5 +37,7 @@ Hypothesis::Hypothesis(Hypothesis *p ,double fCost, double eCost, vector<unsigne
 
 bool cmp_Hyp(Hypothesis* i, Hypothesis* j)
 {
-	return (i->costs[0] < j->costs[0]);
+	double ic = 0.5*i->costs[0] + 0.5*i->costs[1];
+	double jc = 0.5*j->costs[0] + 0.5*j->costs[1];
+	return (ic<jc);
 }
