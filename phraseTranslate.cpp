@@ -294,6 +294,7 @@ int main(int argc, char* argv[])
 			cout << score <<"#"<< translation << endl;
 			bestHypos.pop();
 		}
+		cout << "#" << endl;
 	}
 
 	return 0; //EXIT_SUCCESS;

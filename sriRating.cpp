@@ -47,20 +47,25 @@ int main(int argc, char* argv[])
 		cerr << "ERROR: Opening translated document ("<< argv[1] <<") failed." << endl;
 		return 1; // EXIT_FAILURE;
 	}
-	ngram = new Ngram(e, defaultNgramOrder);
-	File f = fopen(argv[2], "r");
+
+	ngram = new Ngram(e, 2);
+	File f(argv[2], "r");
 	ngram->read(f, false);
+	string line="";
+	getline(trans_doc, line);
 
-	string line;
-
-	while (getline(trans_doc, line))
+	while (!trans_doc.eof())
 	{
 		double bestScore = numeric_limits<double>::max();
-		vector<string>* bestTrans;
+		string bestTrans = "";
+		bestTrans.clear();
 		vector<string> currentTrans;
 
-		for (unsigned int transCount=0; transCount < KEEP_N_BEST_HYPOS; transCount++)
+		for (unsigned int transCount=0; line!="#"; transCount++)
 		{
+			if (line.size()<=2)
+				continue;
+
 	       		// line is formated like: "<double>#<string> ... <string>"
 			vector<string> line_vec = stringSplit(line, "#");
 
@@ -72,34 +77,37 @@ int main(int argc, char* argv[])
 			currentTrans = stringSplit(line_vec[1], " ");
 
 			// fill buffer
-			VocabIndex* buf = new VocabIndex[currentTrans.size()+3];
-	
+			VocabIndex* buf(new VocabIndex[currentTrans.size()+3]);
+
 			buf[0]=e.seIndex();
-			for (int i=currentTrans.size()-1; i>=0; i--)
+			for (int i=0; i<currentTrans.size(); i++)
 			{
-				buf[i+1]= e.addWord(currentTrans[i].c_str());
+				buf[currentTrans.size()-i]= e.addWord(currentTrans[i].c_str());
 			}
+
 			buf[currentTrans.size()+1] = e.ssIndex();
 			buf[currentTrans.size()+2] = Vocab_None;
 
 			// rate the translation with srilm
-			double sriScore = ngram->wordProb(buf[1], &buf[1+1]);
-			double currentScore = score + sriScore;
+			double sriScore = 0;
+			for (unsigned int i=0; i<currentTrans.size()+1; i++)
+			{
+				sriScore += ngram->wordProb(buf[i], &buf[i+1]);
+			}
+
+			double currentScore = score - sriScore;
 
 			if (currentScore < bestScore)
 			{
+				cout << "a"<<endl;
 				bestScore = currentScore;
-				bestTrans = &currentTrans;
+				bestTrans = line_vec[1];
 			}
-			if (transCount < KEEP_N_BEST_HYPOS-1)
-				getline(trans_doc, line);
+			getline(trans_doc, line);
 		}
-		string bestTranslation = "";
-		for (int i=0; i<bestTrans->size(); i++)
-		{
-			bestTranslation += (bestTranslation==""?"":" ") + (string)(*bestTrans)[i];
-		}
-		cout << bestTranslation << endl;
+
+		cout << bestTrans << endl;
+		getline(trans_doc, line);
 	}
 
 	return 0; //EXIT_SUCCESS;
