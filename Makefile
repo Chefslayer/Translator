@@ -2,9 +2,9 @@ C = classes/
 I = includes/
 L = lib/
 T = test/
-SRILM = srilm/
+#SRILM = srilm/
 #ARCHITECTURE = macosx
-#SRILM = /home/robhei/srilm
+SRILM = /home/robhei/srilm
 ARCHITECTURE = i686
 
 SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(I)Node.cpp $(I)NodeOfTrees.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Tree.cpp $(C)TreeOfTrees.cpp $(C)Alignment.cpp $(I)PhrasePair.cpp
@@ -13,7 +13,7 @@ OBJ = $(SRC:%cpp=%o)
 CFLAGS = -g
 LDFLAGS = -lz
 
-all: phraseTranslate
+all: sriTranslate
 clean:
 	-rm $(OBJ) phraseTranslate sriTranslate phraseExtract translate rate_translation singleWordExtract hypTest.o lexiconTest.o treeTest.o
 rebuild: clean translate rate_translation

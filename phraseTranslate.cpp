@@ -98,7 +98,7 @@ Hypothesis* pruneStack(stack < Hypothesis* > &s)
  */
 Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_tab_struct>  &translationtab)
 {
-	Hypothesis* minCostsHyp;
+	Hypothesis* minCostsHyp=NULL;
 	vector< stack < Hypothesis* > > stacks;
 	stacks.resize((words.size()+1));
 	vector<unsigned int> tmp;
@@ -171,7 +171,8 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 			}
 			stacks[stackNr].pop();
 		}
-		minCostsHyp = pruneStack(stacks[stackNr+1]);
+		if (stacks[stackNr+1].size()>0)
+			minCostsHyp = pruneStack(stacks[stackNr+1]);
 	}
 
 	// return best Hypothesis of the last stack
@@ -208,6 +209,9 @@ int main(int argc, char* argv[])
 	// read trans_tab into trans_phrase_tab_vec
 	while (getline(trans_tab, line))
 	{
+//		if (line.size()<12)
+//			continue;
+
 		struct trans_phrase_tab_struct current;
 		double temp;
        		// line is formatted like: <double> <double> # <string> ... <string> # <string> ... <string>
@@ -229,6 +233,9 @@ int main(int argc, char* argv[])
 		current.relFreqE = temp;
 
 		vector<string> tempV;
+
+//		current.f = f.insertSentence(stringSplit(line_vec[1].substr(1,line_vec[1].size()-2), " "));
+//		current.e = e.insertSentence(stringSplit(line_vec[2].substr(1,line_vec[2].size()-2), " "));
 
 		// insert src phrase
 		tempV.clear();

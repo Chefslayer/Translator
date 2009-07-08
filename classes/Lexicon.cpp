@@ -64,7 +64,7 @@ vector<unsigned int> Lexicon::insertSentence(string line, SingleCount* singlesOb
 string Lexicon::getWord(unsigned int value)
 {
 	if (value >= int2strAssignment.size())
-		return "?";
+		return "(?)";
 	string re = int2strAssignment[value];
 	return re;
 }

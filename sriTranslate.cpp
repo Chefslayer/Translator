@@ -28,7 +28,9 @@
 
 using namespace std;
 
-static Vocab vocab;
+//static Vocab vocab;
+static Vocab f;
+static Vocab e;
 
 /*
  * holds information about a phrasepair from a translation-table.
@@ -227,26 +229,32 @@ int main(int argc, char* argv[])
 		current.relFreqE = temp;
 
 		vector<string> tempV;
-		VocabIndex *vocabBuffer(new VocabIndex[50]);
-		// insert src phras
-		tempV = stringSplit(line_vec[1], " ");
-		// wofür wird das gebraucht und wie ist die syntax?
-		VocabIndex seIndex();
-		for (int j = line_vec[1].size(); j > 0; j--)
-			{
-				current.f.push_back(vocab.addWord(tempV[j].c_str()));
-			}
-		// wofür wird das gebraucht und wie ist die syntax?
+/*		VocabIndex *vocabBuffer(new VocabIndex[50]); -> brauchen wir doch noch gar nicht?!
+		// wofür wird das gebraucht und wie ist die syntax? -> ssIndex = <s>
 		VocabIndex ssIndex();
+		// wofür wird das gebraucht und wie ist die syntax? -> seIndex = </s>
+		VocabIndex seIndex();
+*/
+		// insert src phrase
+		tempV.clear();
+		tempV = stringSplit(line_vec[1], " ");
+		tempV.erase(tempV.begin());
+		tempV.pop_back();
 
+		for (int j = tempV.size()-1; j >= 0; j--)
+		{
+			current.f.push_back(f.addWord(tempV[j].c_str()));
+		}
 
 		// insert target phrase
 		tempV.clear();
 		tempV = stringSplit(line_vec[2], " ");
-		for (int k = line_vec[2].size(); k > 0; k--)
-			{
-				current.e.push_back(vocab.addWord(tempV[k].c_str()));
-			}
+		tempV.erase(tempV.begin());
+
+		for (int k = tempV.size()-1; k >= 0; k--)
+		{
+			current.e.push_back(e.addWord(tempV[k].c_str()));
+		}
 
 		if (i >= trans_phrase_tab_vec.size())
 		{
@@ -272,7 +280,7 @@ int main(int argc, char* argv[])
 
 		for (unsigned int i = 0; i < stringwords.size(); i++)
 		{
-			words[i] = vocab.addWord(stringwords[i].c_str());
+			words[i] = f.addWord(stringwords[i].c_str());
 		}
 
 		Hypothesis* transHyp = searchTranslation(words, trans_phrase_tab_vec);
@@ -283,6 +291,7 @@ int main(int argc, char* argv[])
 			string tmp="";
 			for (unsigned int i = 0; i < transHyp->phraseTrans.size(); ++i ){
 			//	tmp += (tmp== ""?"":" ") + vocab.addWord((transHyp->phraseTrans[i]).c_str());
+				tmp += (tmp== ""?"":" ") + (string)e.getWord(transHyp->phraseTrans[i]);
 			}
 			translation = tmp+" "+translation;
 
