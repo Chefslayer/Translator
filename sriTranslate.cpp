@@ -31,6 +31,7 @@ using namespace std;
 //static Vocab vocab;
 static Vocab f;
 static Vocab e;
+static Ngram* ngram;
 
 /*
  * holds information about a phrasepair from a translation-table.
@@ -171,7 +172,8 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 			}
 			stacks[stackNr].pop();
 		}
-		minCostsHyp = pruneStack(stacks[stackNr+1]);
+		if (stacks[stackNr+1].size()>0)
+			minCostsHyp = pruneStack(stacks[stackNr+1]);
 	}
 
 	// return best Hypothesis of the last stack
@@ -180,9 +182,9 @@ Hypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_t
 
 int main(int argc, char* argv[])
 {
-	if (argc < 3)
+	if (argc < 4)
 	{
-		cerr << "ERROR: not enough parameters" << endl << "Usage: " << argv[0] << " translation-table source-document" << endl;
+		cerr << "ERROR: not enough parameters" << endl << "Usage: " << argv[0] << " translation-table source-document lang-model" << endl;
 		return 0; // EXIT_FAILURE;
 	}
 
@@ -263,18 +265,22 @@ int main(int argc, char* argv[])
 		trans_phrase_tab_vec[i] = current;
 		// cout << f.getWord(current.f) << " " << current.relFreqF << endl;
 		i++;
-		if (i/100==(double)i/(double)100)
-			cout<< "line" << i <<endl;
+//		if (i/100==(double)i/(double)100)
+//			cout<< "line" << i <<endl;
 //		if (i>TRAINING_LINES) break;
 	}
 	trans_phrase_tab_vec.resize(i);
+
+	ngram = new Ngram(&e, int lmOrder);
+	ngram->read(argv[3], false);
+	//double wordProb(buf[pos], &buf[pos+1]);
 
 	// translate src_doc
 	int c = 0;
 	while (getline(src_doc, line))
 	{
 		c++;
-		if (c > 10) break;
+//		if (c > 10) break;
 		vector<string> stringwords = stringSplit(line, " ");
 		vector<VocabIndex> words(stringwords.size(), 0);
 
@@ -289,11 +295,14 @@ int main(int argc, char* argv[])
 		while (transHyp->prevHyp != NULL)
 		{
 			string tmp="";
-			for (unsigned int i = 0; i < transHyp->phraseTrans.size(); ++i ){
-			//	tmp += (tmp== ""?"":" ") + vocab.addWord((transHyp->phraseTrans[i]).c_str());
-				tmp += (tmp== ""?"":" ") + (string)e.getWord(transHyp->phraseTrans[i]);
+			if (transHyp->phraseTrans.size() > 0)
+			{
+				for (int i = transHyp->phraseTrans.size()-1; i > 0 ; i-- ){
+				//	tmp += (tmp== ""?"":" ") + vocab.addWord((transHyp->phraseTrans[i]).c_str());
+					tmp += (tmp== ""?"":" ") + (string)e.getWord(transHyp->phraseTrans[i]);
+				}
+				translation = tmp+" "+translation;
 			}
-			translation = tmp+" "+translation;
 
 			transHyp = transHyp->prevHyp;
 		}

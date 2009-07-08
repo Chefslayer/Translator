@@ -3,10 +3,10 @@ I = includes/
 L = lib/
 T = test/
 #SRILM = srilm/
-#ARCHITECTURE = i686
-ARCHITECTURE = macosx
-#SRILM = /home/robhei/srilm
-SRLIM = /users/jonim/Documents/RWTH/SWP/srlim/
+ARCHITECTURE = i686
+#ARCHITECTURE = macosx
+SRILM = /home/robhei/srilm
+#SRLIM = /users/jonim/Documents/RWTH/SWP/srlim/
 
 SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(I)Node.cpp $(I)NodeOfTrees.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Tree.cpp $(C)TreeOfTrees.cpp $(C)Alignment.cpp $(I)PhrasePair.cpp
 OBJ = $(SRC:%cpp=%o)
@@ -28,11 +28,11 @@ phraseTranslate: phraseTranslate.cpp ${L}gzstream.C $(OBJ)
 phraseExtract: phraseExtract.cpp ${L}gzstream.C $(OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)
 
-translate: translate.cpp $(OBJ)
-	$(CXX) $^ -o $@
+translate: translate.cpp ${L}gzstream.C $(OBJ)
+	$(CXX) $^ -o $@ $(LDFLAGS)
 
-rate_translation: rate_translation.cpp $(OBJ)
-	$(CXX) $^ -o $@
+rate_translation: rate_translation.cpp ${L}gzstream.C $(OBJ)
+	$(CXX) $^ -o $@ $(LDFLAGS)
 
 singleWordExtract: singleWordExtract.cpp ${L}gzstream.C $(OBJ)
 	$(CXX) $^ -o $@ $(LDFLAGS)

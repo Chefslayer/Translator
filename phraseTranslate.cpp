@@ -214,7 +214,7 @@ int main(int argc, char* argv[])
 
 		struct trans_phrase_tab_struct current;
 		double temp;
-       		// line is formatted like: <double> <double> # <string> ... <string> # <string> ... <string>
+       		// line is formatted like: "<double> <double> # <string> ... <string> # <string> ... <string>"
 
 		vector<string> line_vec = stringSplit(line, "#");
 		// watch out for spaces!
@@ -234,7 +234,7 @@ int main(int argc, char* argv[])
 
 		vector<string> tempV;
 
-//		current.f = f.insertSentence(stringSplit(line_vec[1].substr(1,line_vec[1].size()-2), " "));
+//		current.f = f.insertSentence(stringSplit(line_vec[1].substr(1,line_vec[1].size()-3), " "));
 //		current.e = e.insertSentence(stringSplit(line_vec[2].substr(1,line_vec[2].size()-2), " "));
 
 		// insert src phrase
@@ -257,8 +257,8 @@ int main(int argc, char* argv[])
 		trans_phrase_tab_vec[i] = current;
 		// cout << f.getWord(current.f) << " " << current.relFreqF << endl;
 		i++;
-		if (i/100==(double)i/(double)100)
-			cout<< "line" << i <<endl;
+//		if (i/100==(double)i/(double)100)
+//			cout<< "line" << i <<endl;
 //		if (i>TRAINING_LINES) break;
 	}
 	trans_phrase_tab_vec.resize(i);
@@ -268,7 +268,7 @@ int main(int argc, char* argv[])
 	while (getline(src_doc, line))
 	{
 		c++;
-		if (c > 10) break;
+//		if (c > 10) break;
 		vector<string> stringwords = stringSplit(line, " ");
 		vector<unsigned int> words(stringwords.size(), 0);
 
