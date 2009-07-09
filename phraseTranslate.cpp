@@ -108,11 +108,13 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 
 	for (unsigned int stackNr = 0; stackNr < stacks.size()-1; stackNr++)
 	{
+		// search for all phrases for the current stack
+
 		vector<phrase_translation_struct> phrases;
 		phrases.clear();
 
 		bool found_at_least_one_hypo = false;
-		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength<words.size(); phraseLength++)
+		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength-1<words.size(); phraseLength++)
 		{
 			vector<unsigned int> phraseF;
 			phraseF.clear();
@@ -147,13 +149,13 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 		{
 			// insert '?'
 			phrase_translation_struct currentTranslation;
+			vector<unsigned int> tmp;
+			tmp.push_back(0);
 
 			currentTranslation.relFreqF	= 20;
 			currentTranslation.relFreqE	= 20;
 			currentTranslation.phraseLength = 1;
-			vector<unsigned int> tmp(0);
 			currentTranslation.e		= tmp;
-
 			phrases.push_back(currentTranslation);
 		}
 		// create for each hypo in the current stack the new hypos of the current phrases
@@ -211,13 +213,13 @@ int main(int argc, char* argv[])
 
 		struct trans_phrase_tab_struct current;
 		double temp;
-       		// line is formatted like: "<double> <double> # <string> ... <string> # <string> ... <string>"
+       		// line is formatted like: "<double> <double> # <string> ... <string> # <string> ... <string> "
 
 		vector<string> line_vec = stringSplit(line, "#");
 		// watch out for spaces!
 		// line_vec[0] == "<double> <double> "
 		// line_vec[1] == " <string> ... <string> "
-		// line_vec[2] == " <string> ... <string>"
+		// line_vec[2] == " <string> ... <string> "
 
 		vector<string> freqs_vec = stringSplit(line_vec[0], " ");
 
@@ -231,21 +233,22 @@ int main(int argc, char* argv[])
 
 		vector<string> tempV;
 
-//		current.f = f.insertSentence(stringSplit(line_vec[1].substr(1,line_vec[1].size()-3), " "));
-//		current.e = e.insertSentence(stringSplit(line_vec[2].substr(1,line_vec[2].size()-2), " "));
+		current.f = f.insertSentence(stringSplit(line_vec[1].substr(1,line_vec[1].size()-2), " "));
+		current.e = e.insertSentence(stringSplit(line_vec[2].substr(1,line_vec[2].size()-2), " "));
 
 		// insert src phrase
-		tempV.clear();
+/*		tempV.clear();
 		tempV = stringSplit(line_vec[1], " ");
 		tempV.erase(tempV.begin());
 		tempV.pop_back();
 		current.f = f.insertSentence(tempV);
-
+*/
 		// insert target phrase
-		tempV.clear();
+/*		tempV.clear();
 		tempV = stringSplit(line_vec[2], " ");
 		tempV.erase(tempV.begin());
-		current.e = e.insertSentence(tempV);
+		tempV.pop_back();
+		current.e = e.insertSentence(tempV);*/
 
 		if (i >= trans_phrase_tab_vec.size())
 		{
@@ -261,7 +264,14 @@ int main(int argc, char* argv[])
 	trans_phrase_tab_vec.resize(i);
 
 	// translate src_doc
-  	// output line is formated like: "<double>#<string> ... <string>"
+  	/* output line is formated like:
+	 * "<double>#<string> ... <string>"
+	 * "<double>#<string> ... <string>"
+	 * "<double>#<string> ... <string>"
+	 * #
+	 * "<double>#<string> ... <string>"
+	 * ...
+	 */
 	while (getline(src_doc, line))
 	{
 		vector<string> stringwords = stringSplit(line, " ");
@@ -284,7 +294,8 @@ int main(int argc, char* argv[])
 			while (transHyp->prevHyp != NULL)
 			{
 				string tmp="";
-				for (unsigned int i = 0; i < transHyp->phraseTrans.size(); ++i ){
+				for (unsigned int i = 0; i < transHyp->phraseTrans.size(); ++i )
+				{
 					tmp += (tmp== ""?"":" ") + e.getWord(transHyp->phraseTrans[i]);
 				}
 				translation = tmp+" "+translation;

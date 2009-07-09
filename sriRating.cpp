@@ -49,7 +49,7 @@ int main(int argc, char* argv[])
 	}
 
 	ngram = new Ngram(e, 2);
-	File f(argv[2], "r");
+	File f(argv[2], "r+");
 	ngram->read(f, false);
 	string line="";
 	getline(trans_doc, line);
@@ -92,14 +92,16 @@ int main(int argc, char* argv[])
 			double sriScore = 0;
 			for (unsigned int i=0; i<currentTrans.size()+1; i++)
 			{
-				sriScore += ngram->wordProb(buf[i], &buf[i+1]);
+				double tmp =  ngram->wordProb(buf[i], &buf[i+1]);
+				if (tmp != -numeric_limits<double>::infinity())
+					sriScore += tmp;
+//				cout << i<<": " <<sriScore << endl;
 			}
 
 			double currentScore = score - sriScore;
 
 			if (currentScore < bestScore)
 			{
-				cout << "a"<<endl;
 				bestScore = currentScore;
 				bestTrans = line_vec[1];
 			}
