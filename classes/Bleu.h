@@ -31,6 +31,10 @@ class Bleu
 		/// holds the words of the reference
 					ref;
 	public:
+		/// counts all matching ngrams
+		unsigned int nGramsMatchingAll;
+		/// counts all ngrams
+		unsigned int nGramsAll;
 		/**
 		 * Constructor sets up the initial values.
 		 *

@@ -45,13 +45,20 @@ int Bleu::nGramsMatching(unsigned int n)
 			}
 		}
 	}
+
 	return nGramsMatchingCount;
 }
 
 double Bleu::precision(unsigned int n)
 {
 	int nGrams = trans.size() + 1 - n;
-	return (double)nGramsMatching(n)/(double)nGrams;
+
+	unsigned int nGramsMatchingCount = nGramsMatching(n);
+
+	nGramsMatchingAll	+= nGramsMatchingCount;
+	nGramsAll		+= nGrams;
+
+	return (double)nGramsMatchingCount/(double)nGrams;
 }
 
 double Bleu::brevityPenalty()

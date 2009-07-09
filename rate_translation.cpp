@@ -55,6 +55,10 @@ int main(int argc, char* argv[])
 	Levenshtein*	sentence50_lev		= NULL;
 	string		sentence50_trans	= "",
 			sentence50_ref		= "";
+	// akkus for overall BLEU-Score
+	double overallBrevityPenalty = 0;
+	unsigned int overallNGrams = 0;
+	unsigned int overallNGramsMatching = 0;
 
 	while (getline(trans, trans_line) && getline(ref, ref_line))
 	{
@@ -79,6 +83,11 @@ int main(int argc, char* argv[])
 		// sums for avg distances
 		average_levenshtein_dist                += current_lev->getDistance();
 		average_posindependent_levenshtein_dist += current_posindependent_lev->getDistance();
+
+		// overall BLEU
+		overallBrevityPenalty	+= current_bleu->brevityPenalty();
+		overallNGrams		+= current_bleu->nGramsAll;
+		overallNGramsMatching	+= current_bleu->nGramsMatchingAll;
 
 		// output
 		cout	<< "\n***\nBLEU-Score:\t\t"	<< current_bleu->bleuScore(MAX_N_GRAMS)
@@ -119,6 +128,11 @@ int main(int argc, char* argv[])
 
 	cout	<< "\n***\n\n***\naverage levenshtein distance: "     << average_levenshtein_dist
 		<< "\naverage pos.independent levenshtein distance: " << average_posindependent_levenshtein_dist
+		<< endl;
+
+	// Output for overall BLEU-Score
+	
+	cout	<< "\n***\n\n***\nOverall-BLEU-Score: " << overallBrevityPenalty*exp(log((double)overallNGramsMatching/(double)overallNGrams)/(double)MAX_N_GRAMS)
 		<< endl;
 
 	return 0; //EXIT_SUCCESS;
