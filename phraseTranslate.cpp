@@ -288,7 +288,8 @@ int main(int argc, char* argv[])
 		{
 			Hypothesis* transHyp = bestHypos.top();
 
-			double score = (0.5)*(transHyp->costs[0]) + (0.5)*(transHyp->costs[1]);
+//			double score = (0.5)*(transHyp->costs[0]) + (0.5)*(transHyp->costs[1]);
+			double score = transHyp->costs[0] + transHyp->costs[1];
 
 			string translation = "";
 			while (transHyp->prevHyp != NULL)

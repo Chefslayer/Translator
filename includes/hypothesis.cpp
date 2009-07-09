@@ -31,7 +31,7 @@ Hypothesis::Hypothesis(Hypothesis *p ,double fCost, double eCost, vector<unsigne
 
 bool cmp_Hyp(Hypothesis* i, Hypothesis* j)
 {
-	double ic = 0.5*i->costs[0] + 0.5*i->costs[1];
-	double jc = 0.5*j->costs[0] + 0.5*j->costs[1];
+	double ic = i->costs[0] + i->costs[1];
+	double jc = j->costs[0] + j->costs[1];
 	return (ic<jc);
 }

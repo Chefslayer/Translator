@@ -90,11 +90,13 @@ int main(int argc, char* argv[])
 
 			// rate the translation with srilm
 			double sriScore = 0;
-			for (unsigned int i=0; i<currentTrans.size()+1; i++)
+			for (unsigned int i=0; i<currentTrans.size(); i++)
 			{
 				double tmp =  ngram->wordProb(buf[i], &buf[i+1]);
 				if (tmp != -numeric_limits<double>::infinity())
 					sriScore += tmp;
+				else
+					sriScore += -100;
 //				cout << i<<": " <<sriScore << endl;
 			}
 
