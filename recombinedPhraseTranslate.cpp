@@ -24,8 +24,6 @@
 #include "includes/hypothesis.h"
 #include "includes/functions.h"
 #include "includes/output.h"
-//#include <Vocab.h>
-//#include <Ngram.h>
 
 using namespace std;
 
@@ -109,12 +107,10 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 	for (unsigned int stackNr = 0; stackNr < stacks.size()-1; stackNr++)
 	{
 		// search for all phrases for the current stack
-
 		vector<phrase_translation_struct> phrases;
 		phrases.clear();
-
 		bool found_at_least_one_hypo = false;
-		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength-1 < words.size(); phraseLength++)
+		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength-1<words.size(); phraseLength++)
 		{
 			vector<unsigned int> phraseF;
 			phraseF.clear();
@@ -122,7 +118,6 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 			{
 				phraseF.push_back(words[stackNr+k]);
 			}
-			// search for all possible translations and save it for later to create the hypos
 
 			// search for first occurance of phraseF in transtab
 			unsigned int transTabPos = 0;
@@ -135,7 +130,6 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 			{
 				found_at_least_one_hypo = true;
 				phrase_translation_struct currentTranslation;
-
 				currentTranslation.relFreqF = translationtab[transTabPos].relFreqF;
 				currentTranslation.relFreqE = translationtab[transTabPos].relFreqE;
 				currentTranslation.phraseLength = phraseLength;
@@ -145,36 +139,27 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 				transTabPos++;
 			}
 		}
-		if (!found_at_least_one_hypo)
-		{
-			// insert '?'
-			phrase_translation_struct currentTranslation;
-			vector<unsigned int> tmp;
-			tmp.push_back(0);
 
-			currentTranslation.relFreqF = 20;
-			currentTranslation.relFreqE = 20;
-			currentTranslation.phraseLength = 1;
-			currentTranslation.e = tmp;
-			phrases.push_back(currentTranslation);
-		}
-		// create for each hypo in the current stack the new hypos of the current phrases
 		while (!stacks[stackNr].empty())
 		{
-			Hypothesis *prev = stacks[stackNr].top();
 			for (vector<phrase_translation_struct>::iterator it = phrases.begin(); it != phrases.end(); it++)
 			{
-				Hypothesis *h = new Hypothesis(prev, it->relFreqF, it->relFreqE, it->e);
-				stacks[ stackNr + it->phraseLength ].push(h);
+				// check if the Translation already exists
+				if ()
+				{
+				}
+				else
+				{
+					Hypothesis *h = new Hypothesis(prev, it->relFreqF, it->relFreqE, it->e);
+					stacks[stackNr + it->phraseLength].push(h);
+				}
+				stacks[stackNr].pop();
 			}
-			stacks[stackNr].pop();
 		}
-		if (stacks[stackNr+1].size()>0)
-			minCostsHyp = pruneStack(stacks[stackNr+1]);
 	}
+	
 	// return last stack
 	stack<Hypothesis*>s = stacks[stacks.size()-1];
-
 	return s;
 }
 

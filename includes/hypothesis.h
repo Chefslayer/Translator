@@ -14,8 +14,9 @@
 #include <vector>
 
 using namespace std;
-/**
- * The Hypothesis struct holds costs for a specific hypothesis for a word and a pointer to another Hypothesis, so that we're able to build a tree of hypos and to calculate a best one.
+
+/*
+ *The Hypothesis struct holds costs for a specific hypothesis for a word and a pointer to another Hypothesis, so that we're able to build a tree of hypos and to calculate a best one.
  */
 struct Hypothesis
 {
@@ -28,7 +29,7 @@ struct Hypothesis
 	/// holds the code for the word that this hypothesis is for.
 	unsigned int trans;
 	vector<unsigned int> phraseTrans;
-	
+
 	/**
 	 * inits a new Hypothesis with given values.
 	 *
@@ -45,7 +46,8 @@ struct Hypothesis
 	 * \param c costs for this Hypothesis
 	 * \param t vector of words in the target lang / translation
 	 */
-	Hypothesis(Hypothesis *p,double fCost, double eCost, vector<unsigned int> &t);	
+	Hypothesis(Hypothesis *p,double fCost, double eCost, vector<unsigned int> &t);
+
 };
 
 /**

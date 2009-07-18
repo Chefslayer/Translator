@@ -10,6 +10,7 @@
  * Output is the guessed translation line by line.
  */
 
+#include <limits>
 #include <string>
 #include <iostream>
 #include <fstream>
