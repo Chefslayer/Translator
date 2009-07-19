@@ -17,7 +17,7 @@
 #include <vector>
 #include <utility>
 #include <math.h>
-#include <stack>
+#include <list>
 #include <algorithm>
 #include "includes/constants.h"
 #include "classes/Lexicon.h"
@@ -66,22 +66,22 @@ struct phrase_translation_struct
  *   \param s reference to stack of hypthesis
  *   \return reference to best Hypothesis in s
  */
-Hypothesis* pruneStack(stack < Hypothesis* > &s)
+Hypothesis* pruneStack(list < Hypothesis* > &s)
 {
 	vector<Hypothesis*> v;
 	unsigned int size = s.size();
 	v.resize(size);
 	for (unsigned int i=0; !s.empty(); i++)
 	{
-		v[i] = s.top();
-		s.pop();
+		v[i] = s.front();
+		s.pop_front();
 	}
 
 	sort(v.begin(), v.end(), cmp_Hyp);
 
 	for (unsigned int i=0; i<size && i<KEEP_N_BEST_HYPOS ;i++)
 	{
-		s.push(v[i]);
+		s.push_front(v[i]);
 	}
 	//return best Hypo
 	return v[0];
@@ -94,23 +94,23 @@ Hypothesis* pruneStack(stack < Hypothesis* > &s)
  * \param translationtab table of translations
  * \return best Hypothesis
  */
-stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_phrase_tab_struct>  &translationtab)
+list <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_phrase_tab_struct>  &translationtab)
 {
 	Hypothesis* minCostsHyp=NULL;
-	vector< stack < Hypothesis* > > stacks;
-	stacks.resize((words.size()+1));
+	vector< list < Hypothesis* > > lists;
+	lists.resize((words.size()+1));
 	vector<unsigned int> tmp;
 	tmp.push_back(0);
 	Hypothesis* h = new Hypothesis(NULL,0,0,tmp);
-	stacks[0].push(h);
+	lists[0].push_front(h);
 
-	for (unsigned int stackNr = 0; stackNr < stacks.size()-1; stackNr++)
+	for (unsigned int stackNr = 0; stackNr < lists.size()-1; stackNr++)
 	{
 		// search for all phrases for the current stack
 		vector<phrase_translation_struct> phrases;
 		phrases.clear();
 		bool found_at_least_one_hypo = false;
-		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength-1<words.size(); phraseLength++)
+		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength-1 < words.size(); phraseLength++)
 		{
 			vector<unsigned int> phraseF;
 			phraseF.clear();
@@ -118,6 +118,7 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 			{
 				phraseF.push_back(words[stackNr+k]);
 			}
+			// search for all possible translations and save it for later to create the hypos
 
 			// search for first occurance of phraseF in transtab
 			unsigned int transTabPos = 0;
@@ -140,26 +141,43 @@ stack <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_
 			}
 		}
 
-		while (!stacks[stackNr].empty())
+		if (!found_at_least_one_hypo)
 		{
+			// insert '?'
+			phrase_translation_struct currentTranslation;
+			vector<unsigned int> tmp;
+			tmp.push_back(0);
+
+			currentTranslation.relFreqF = 20;
+			currentTranslation.relFreqE = 20;
+			currentTranslation.phraseLength = 1;
+			currentTranslation.e = tmp;
+			phrases.push_back(currentTranslation);
+		}
+		// create for each hypo in the current stack the new hypos of the current phrases
+		while (!lists[stackNr].empty())
+		{
+			Hypothesis* prev = lists[stackNr].front();
 			for (vector<phrase_translation_struct>::iterator it = phrases.begin(); it != phrases.end(); it++)
 			{
 				// check if the Translation already exists
-				if ()
-				{
-				}
-				else
-				{
+				//if ()
+				//{
+				//}
+				//else
+				//{
 					Hypothesis *h = new Hypothesis(prev, it->relFreqF, it->relFreqE, it->e);
-					stacks[stackNr + it->phraseLength].push(h);
-				}
-				stacks[stackNr].pop();
+					lists[stackNr + it->phraseLength].push_front(h);
+				//}
 			}
+			lists[stackNr].pop_front();
 		}
+		if (lists[stackNr+1].size()>0)
+			minCostsHyp = pruneStack(lists[stackNr+1]);
 	}
 	
 	// return last stack
-	stack<Hypothesis*>s = stacks[stacks.size()-1];
+	list<Hypothesis*>s = lists[lists.size()-1];
 	return s;
 }
 
@@ -267,11 +285,11 @@ int main(int argc, char* argv[])
 			words[i] = f.getNum(stringwords[i]);
 		}
 
-		stack<Hypothesis*> bestHypos = searchTranslation(words, trans_phrase_tab_vec);
+		list<Hypothesis*> bestHypos = searchTranslation(words, trans_phrase_tab_vec);
 
 		while (!bestHypos.empty())
 		{
-			Hypothesis* transHyp = bestHypos.top();
+			Hypothesis* transHyp = bestHypos.front();
 
 //			double score = (0.5)*(transHyp->costs[0]) + (0.5)*(transHyp->costs[1]);
 			double score = transHyp->costs[0] + transHyp->costs[1];
@@ -289,7 +307,7 @@ int main(int argc, char* argv[])
 				transHyp = transHyp->prevHyp;
 			}
 			cout << score <<"#"<< translation << endl;
-			bestHypos.pop();
+			bestHypos.pop_front();
 		}
 		cout << "#" << endl;
 	}
