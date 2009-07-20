@@ -2,10 +2,10 @@ C = classes/
 I = includes/
 L = lib/
 T = test/
-SRILM = srilm/
+#SRILM = srilm/
 ARCHITECTURE = i686
 #ARCHITECTURE = macosx
-#SRILM = /home/robhei/srilm
+SRILM = /home/robhei/srilm
 #SRLIM = /users/jonim/Documents/RWTH/SWP/srlim/
 
 SRC = $(C)Lexicon.cpp  $(I)functions.cpp $(I)output.cpp ${I}hypothesis.cpp $(I)Node.cpp $(I)NodeOfTrees.cpp $(C)Bleu.cpp $(C)Levenshtein.cpp $(C)Tree.cpp $(C)TreeOfTrees.cpp $(C)Alignment.cpp $(I)PhrasePair.cpp

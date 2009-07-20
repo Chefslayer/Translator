@@ -21,7 +21,7 @@
 #include <algorithm>
 #include "includes/constants.h"
 #include "classes/Lexicon.h"
-#include "includes/hypothesis.h"
+#include "includes/recombHypothesis.h"
 #include "includes/functions.h"
 #include "includes/output.h"
 
@@ -47,78 +47,64 @@ struct trans_phrase_tab_struct
 };
 
 /**
- * holds information about a translation of a phrase
+ * holds the A* table-row
  */
-struct phrase_translation_struct
+struct A_star_row
 {
-	/// relative Frequence of F
-	double relFreqF;
-	/// relative Frequence of E
-	double relFreqE;
-	/// the length of the phrase in f
-	unsigned int phraseLength;
-	/// word-codes of the target-phrase
-	vector<unsigned int> e;
+	/// pointer to the hypo for a phrase
+	recombHypothesisEntry* hypo;
+
+	/// pointer to the next phrase of the current translation
+	A_star_row* next;
+
+
+	/// score sum
+	double f,
+	/// score: phrase-costs
+		g,
+	///score: best path to hypo
+		h;
+
+	bool operator<(A_star_row& n) const
+	{
+		return f < n.f;
+	};
 };
 
-/** Prunes the Stack to KEEP_N_BEST_HYPOS elements.
- *
- *   \param s reference to stack of hypthesis
- *   \return reference to best Hypothesis in s
- */
-Hypothesis* pruneStack(list < Hypothesis* > &s)
-{
-	vector<Hypothesis*> v;
-	unsigned int size = s.size();
-	v.resize(size);
-	for (unsigned int i=0; !s.empty(); i++)
-	{
-		v[i] = s.front();
-		s.pop_front();
-	}
-
-	sort(v.begin(), v.end(), cmp_Hyp);
-
-	for (unsigned int i=0; i<size && i<KEEP_N_BEST_HYPOS ;i++)
-	{
-		s.push_front(v[i]);
-	}
-	//return best Hypo
-	return v[0];
-}
 
 /**
- * searches a translation for a given line of text.
+ * searches a translation for a given line of texA_star_rowt.
  *
  * \param words a vector of words which will be translatet
  * \param translationtab table of translations
- * \return best Hypothesis
+ * \return last recombHypothesis
  */
-list <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_phrase_tab_struct>  &translationtab)
+recombHypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_phrase_tab_struct>  &translationtab)
 {
-	Hypothesis* minCostsHyp=NULL;
-	vector< list < Hypothesis* > > lists;
-	lists.resize((words.size()+1));
+	vector< recombHypothesis* > hypos;
+	hypos.resize(words.size());
 	vector<unsigned int> tmp;
-	tmp.push_back(0);
-	Hypothesis* h = new Hypothesis(NULL,0,0,tmp);
-	lists[0].push_front(h);
 
-	for (unsigned int stackNr = 0; stackNr < lists.size()-1; stackNr++)
+	for (unsigned int hypoNr=0; hypoNr<hypos.size(); hypoNr++)
 	{
-		// search for all phrases for the current stack
-		vector<phrase_translation_struct> phrases;
-		phrases.clear();
+		hypos[hypoNr] = new recombHypothesis;
+	}
+
+	for (unsigned int hypoNr=0; hypoNr<hypos.size(); hypoNr++)
+	{
+		recombHypothesis* prev = (hypoNr==0) ? NULL : hypos[hypoNr-1];
+
+		// search for all phrases for the current hypo
 		bool found_at_least_one_hypo = false;
-		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && stackNr+phraseLength-1 < words.size(); phraseLength++)
+		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && hypoNr+phraseLength-1 < words.size(); phraseLength++)
 		{
 			vector<unsigned int> phraseF;
 			phraseF.clear();
 			for (unsigned int k = 0; k < phraseLength; k++)
 			{
-				phraseF.push_back(words[stackNr+k]);
+				phraseF.push_back(words[hypoNr+k]);
 			}
-			// search for all possible translations and save it for later to create the hypos
+			// search all possible translations and save them as hypos
 
 			// search for first occurance of phraseF in transtab
 			unsigned int transTabPos = 0;
@@ -126,17 +112,32 @@ list <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_p
 			{
 				transTabPos++;
 			}
+
 			// search for all following occurances of phraseF in transtab
 			while (transTabPos < translationtab.size() && phraseF == translationtab[transTabPos].f)
 			{
 				found_at_least_one_hypo = true;
-				phrase_translation_struct currentTranslation;
-				currentTranslation.relFreqF = translationtab[transTabPos].relFreqF;
-				currentTranslation.relFreqE = translationtab[transTabPos].relFreqE;
-				currentTranslation.phraseLength = phraseLength;
-				currentTranslation.e = translationtab[transTabPos].e;
 
-				phrases.push_back(currentTranslation);
+				recombHypothesisEntry *recombHypoEntry = new recombHypothesisEntry();
+				recombHypoEntry->costs = 0.5*translationtab[transTabPos].relFreqF + 0.5*translationtab[transTabPos].relFreqE;
+
+				recombHypoEntry->trans = translationtab[transTabPos].e;
+				recombHypoEntry->prev = prev;
+
+				vector<recombHypothesisEntry*>* entries = &(hypos[hypoNr+phraseLength-1]->entries);
+
+				// check if this is the best hypo
+
+				double new_costs = ((prev==NULL) ? 0 : prev->costs) + recombHypoEntry->costs;
+
+				if (entries->size() == 0 || hypos[hypoNr]->costs > new_costs)
+				{
+					// safe costs and bestEntry
+					hypos[hypoNr+phraseLength-1]->costs = new_costs;
+					hypos[hypoNr+phraseLength-1]->bestEntry = entries->size();
+				}
+				entries->push_back(recombHypoEntry);
+
 				transTabPos++;
 			}
 		}
@@ -144,41 +145,30 @@ list <Hypothesis*> searchTranslation(vector<unsigned int> &words, vector<trans_p
 		if (!found_at_least_one_hypo)
 		{
 			// insert '?'
-			phrase_translation_struct currentTranslation;
 			vector<unsigned int> tmp;
 			tmp.push_back(0);
+			
+			recombHypothesisEntry *recombHypoEntry = new recombHypothesisEntry();
+			recombHypoEntry->costs = 20;
+			recombHypoEntry->trans = tmp;
+			recombHypoEntry->prev = prev;
 
-			currentTranslation.relFreqF = 20;
-			currentTranslation.relFreqE = 20;
-			currentTranslation.phraseLength = 1;
-			currentTranslation.e = tmp;
-			phrases.push_back(currentTranslation);
-		}
-		// create for each hypo in the current stack the new hypos of the current phrases
-		while (!lists[stackNr].empty())
-		{
-			Hypothesis* prev = lists[stackNr].front();
-			for (vector<phrase_translation_struct>::iterator it = phrases.begin(); it != phrases.end(); it++)
+			vector<recombHypothesisEntry*>* entries = &(hypos[hypoNr]->entries);
+
+			// check if this is the best hypo
+			double new_costs = ((prev==NULL) ? 0 : prev->costs) + recombHypoEntry->costs;
+			if (entries->size() == 0 || hypos[hypoNr]->costs > new_costs)
 			{
-				// check if the Translation already exists
-				//if ()
-				//{
-				//}
-				//else
-				//{
-					Hypothesis *h = new Hypothesis(prev, it->relFreqF, it->relFreqE, it->e);
-					lists[stackNr + it->phraseLength].push_front(h);
-				//}
+				// safe costs and bestEntry
+				hypos[hypoNr]->costs = new_costs;
+				hypos[hypoNr]->bestEntry = entries->size();
 			}
-			lists[stackNr].pop_front();
+			entries->push_back(recombHypoEntry);
 		}
-		if (lists[stackNr+1].size()>0)
-			minCostsHyp = pruneStack(lists[stackNr+1]);
 	}
 	
-	// return last stack
-	list<Hypothesis*>s = lists[lists.size()-1];
-	return s;
+	// return last recombHypo
+	return hypos[hypos.size()-1];
 }
 
 int main(int argc, char* argv[])
@@ -243,7 +233,7 @@ int main(int argc, char* argv[])
 /*		tempV.clear();
 		tempV = stringSplit(line_vec[1], " ");
 		tempV.erase(tempV.begin());
-		tempV.pop_back();
+		is.h:45: error: multiple types in onetempV.pop_back();
 		current.f = f.insertSentence(tempV);
 */
 		// insert target phrase
@@ -285,30 +275,128 @@ int main(int argc, char* argv[])
 			words[i] = f.getNum(stringwords[i]);
 		}
 
-		list<Hypothesis*> bestHypos = searchTranslation(words, trans_phrase_tab_vec);
+		recombHypothesis* lastHypo = searchTranslation(words, trans_phrase_tab_vec);
 
-		while (!bestHypos.empty())
+		// score for complete translation
+		double score = (lastHypo==NULL)?100:lastHypo->costs;
+
+		/************ output best translation ************/
+
+		recombHypothesis* currentHypo = lastHypo;
+		string translation = "";
+		while (currentHypo != NULL)
 		{
-			Hypothesis* transHyp = bestHypos.front();
+			string tmp="";
 
-//			double score = (0.5)*(transHyp->costs[0]) + (0.5)*(transHyp->costs[1]);
-			double score = transHyp->costs[0] + transHyp->costs[1];
-
-			string translation = "";
-			while (transHyp->prevHyp != NULL)
+			vector<unsigned int>* trans = &(currentHypo->entries[currentHypo->bestEntry]->trans);
+			for (unsigned int i = 0; i < trans->size(); ++i )
 			{
-				string tmp="";
-				for (unsigned int i = 0; i < transHyp->phraseTrans.size(); ++i )
-				{
-					tmp += (tmp== ""?"":" ") + e.getWord(transHyp->phraseTrans[i]);
-				}
-				translation = tmp+" "+translation;
-	
-				transHyp = transHyp->prevHyp;
+				tmp += (tmp== ""?"":" ") + e.getWord((*trans)[i]);
 			}
-			cout << score <<"#"<< translation << endl;
-			bestHypos.pop_front();
+			translation = tmp+" "+translation;
+
+			currentHypo = currentHypo->entries[currentHypo->bestEntry]->prev;
 		}
+
+		cout << score <<"#"<< translation << endl;
+
+		/************ A* Search ************/
+		unsigned int hypos_to_print = KEEP_N_BEST_HYPOS-1;
+
+		currentHypo = lastHypo;
+
+		vector<A_star_row> A_star_tab;
+		A_star_row* last_min_f_row = NULL;
+
+		bool end = false;
+
+		while (hypos_to_print && !end)
+		{
+			if (currentHypo != NULL)
+			{
+				// search for new expansions
+				for (unsigned int entryNr=0; entryNr<currentHypo->entries.size(); entryNr++)
+				{
+		
+					recombHypothesisEntry* currentEntry = currentHypo->entries[entryNr];
+		
+					// f = g+h
+					A_star_row row;
+					row.g = currentEntry->costs;
+					row.h = (currentEntry->prev==NULL) ? 0 : currentEntry->prev->costs;
+					row.f = row.g + row.h;
+
+					// Übersetzung der aktuellen Phrase
+					row.hypo = currentEntry;
+					row.next = last_min_f_row;
+
+					A_star_tab.push_back(row);
+				}
+			}
+
+
+			// table empty? => no more translations possible
+			if (A_star_tab.size()==0)
+			{
+				break;
+			}	
+
+			// min f suchen
+			vector<A_star_row>::iterator min_f_row = min_element(A_star_tab.begin(), A_star_tab.end());
+
+			while (min_f_row->h == 0)
+			{
+				// ausgeben
+	
+				string translation = "";
+				A_star_row* row = &(*min_f_row);
+
+				//TODO: Endlosschleife..
+				while (row != NULL)
+				{
+					string tmp="";
+					vector<unsigned int> trans = min_f_row->hypo->trans;
+					for (unsigned int i = 0; i < trans.size(); ++i )
+					{
+						tmp += (tmp== ""?"":" ") + e.getWord(trans[i]);
+					}
+					translation = tmp+" "+translation;
+					row = row->next;
+				}
+				cout << score <<"#"<< translation << endl;
+	
+				// löschen
+				A_star_tab.erase(min_f_row);
+				
+				hypos_to_print--;
+				// table empty? => no more translations possible
+				if (hypos_to_print==0)
+				{
+					end = true;
+					break;
+				}
+
+				min_f_row = min_element(A_star_tab.begin(), A_star_tab.end());
+			}
+
+			// table empty? => no more translations possible
+			if (A_star_tab.size()==0 || end)
+			{
+				break;
+			}
+			// weiter expandieren
+			currentHypo = min_f_row->hypo->prev;
+
+			// speicher aktuelle Übersetzung von Ende bis hier
+			A_star_row tmp;
+			tmp.hypo = min_f_row->hypo;
+			tmp.next = min_f_row->next;
+			last_min_f_row = &tmp;
+
+			// löschen der betrachteten min-f-row
+			A_star_tab.erase(min_f_row);
+		}
+
 		cout << "#" << endl;
 	}
 
