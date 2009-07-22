@@ -54,9 +54,8 @@ struct A_star_row
 	/// pointer to the hypo for a phrase
 	recombHypothesisEntry* hypo;
 
-	/// pointer to the next phrase of the current translation
-	A_star_row* next;
-
+	/// translation of the sentence part from the end to here.
+	string s_trans;
 
 	/// score sum
 	double f,
@@ -64,13 +63,14 @@ struct A_star_row
 		g,
 	///score: best path to hypo
 		h;
+	///costs for the sentence part from the end to here.
+	double costs;
 
 	bool operator<(A_star_row& n) const
 	{
 		return f < n.f;
 	};
 };
-
 
 /**
  * searches a translation for a given line of texA_star_rowt.
@@ -238,10 +238,10 @@ int main(int argc, char* argv[])
 */
 		// insert target phrase
 /*		tempV.clear();
-		tempV = stringSplit(line_vec[2], " ");
+		tempV = stringSpls_transit(line_vec[2], " ");
 		tempV.erase(tempV.begin());
 		tempV.pop_back();
-		current.e = e.insertSentence(tempV);*/
+		current.e = etrans.insertSentence(tempV);*/
 
 		if (i >= trans_phrase_tab_vec.size())
 		{
@@ -306,7 +306,8 @@ int main(int argc, char* argv[])
 		currentHypo = lastHypo;
 
 		vector<A_star_row> A_star_tab;
-		A_star_row* last_min_f_row = NULL;
+		string last_s_trans = "";
+		double last_costs = 0;
 
 		bool end = false;
 
@@ -317,7 +318,6 @@ int main(int argc, char* argv[])
 				// search for new expansions
 				for (unsigned int entryNr=0; entryNr<currentHypo->entries.size(); entryNr++)
 				{
-		
 					recombHypothesisEntry* currentEntry = currentHypo->entries[entryNr];
 		
 					// f = g+h
@@ -325,21 +325,27 @@ int main(int argc, char* argv[])
 					row.g = currentEntry->costs;
 					row.h = (currentEntry->prev==NULL) ? 0 : currentEntry->prev->costs;
 					row.f = row.g + row.h;
+					row.costs = last_costs + currentEntry->costs;
+					row.s_trans = "";
 
 					// Übersetzung der aktuellen Phrase
+					for (unsigned int i = 0; i<currentEntry->trans.size(); i++)
+					{
+						row.s_trans += (row.s_trans==""?"":" ") + e.getWord(currentEntry->trans[i]);
+					}
+					row.s_trans += (row.s_trans==""?"":" ") + last_s_trans;
+
 					row.hypo = currentEntry;
-					row.next = last_min_f_row;
 
 					A_star_tab.push_back(row);
 				}
 			}
 
-
 			// table empty? => no more translations possible
 			if (A_star_tab.size()==0)
 			{
 				break;
-			}	
+			}
 
 			// min f suchen
 			vector<A_star_row>::iterator min_f_row = min_element(A_star_tab.begin(), A_star_tab.end());
@@ -347,51 +353,31 @@ int main(int argc, char* argv[])
 			while (min_f_row->h == 0)
 			{
 				// ausgeben
-	
-				string translation = "";
-				A_star_row* row = &(*min_f_row);
+				cout << min_f_row->costs <<"#"<< min_f_row->s_trans << endl;
 
-				//TODO: Endlosschleife..
-				while (row != NULL)
-				{
-					string tmp="";
-					vector<unsigned int> trans = min_f_row->hypo->trans;
-					for (unsigned int i = 0; i < trans.size(); ++i )
-					{
-						tmp += (tmp== ""?"":" ") + e.getWord(trans[i]);
-					}
-					translation = tmp+" "+translation;
-					row = row->next;
-				}
-				cout << score <<"#"<< translation << endl;
-	
 				// löschen
 				A_star_tab.erase(min_f_row);
-				
 				hypos_to_print--;
 				// table empty? => no more translations possible
-				if (hypos_to_print==0)
+				if (hypos_to_print==0 || A_star_tab.size()==0)
 				{
 					end = true;
 					break;
 				}
-
 				min_f_row = min_element(A_star_tab.begin(), A_star_tab.end());
 			}
-
 			// table empty? => no more translations possible
 			if (A_star_tab.size()==0 || end)
 			{
 				break;
 			}
+
 			// weiter expandieren
 			currentHypo = min_f_row->hypo->prev;
-
+			
 			// speicher aktuelle Übersetzung von Ende bis hier
-			A_star_row tmp;
-			tmp.hypo = min_f_row->hypo;
-			tmp.next = min_f_row->next;
-			last_min_f_row = &tmp;
+			last_s_trans = min_f_row->s_trans;
+			last_costs = min_f_row->costs;
 
 			// löschen der betrachteten min-f-row
 			A_star_tab.erase(min_f_row);
