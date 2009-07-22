@@ -130,7 +130,7 @@ recombHypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_ph
 
 				double new_costs = ((prev==NULL) ? 0 : prev->costs) + recombHypoEntry->costs;
 
-				if (entries->size() == 0 || hypos[hypoNr]->costs > new_costs)
+				if (entries->size() == 0 || hypos[hypoNr+phraseLength-1]->costs > new_costs)
 				{
 					// safe costs and bestEntry
 					hypos[hypoNr+phraseLength-1]->costs = new_costs;
@@ -322,10 +322,9 @@ int main(int argc, char* argv[])
 		
 					// f = g+h
 					A_star_row row;
-					row.g = currentEntry->costs;
+					row.g = currentEntry->costs + last_costs;
 					row.h = (currentEntry->prev==NULL) ? 0 : currentEntry->prev->costs;
 					row.f = row.g + row.h;
-					row.costs = last_costs + currentEntry->costs;
 					row.s_trans = "";
 
 					// Übersetzung der aktuellen Phrase
@@ -353,7 +352,7 @@ int main(int argc, char* argv[])
 			while (min_f_row->h == 0)
 			{
 				// ausgeben
-				cout << min_f_row->costs <<"#"<< min_f_row->s_trans << endl;
+				cout << min_f_row->g <<"#"<< min_f_row->s_trans << endl;
 
 				// löschen
 				A_star_tab.erase(min_f_row);
@@ -374,10 +373,11 @@ int main(int argc, char* argv[])
 
 			// weiter expandieren
 			currentHypo = min_f_row->hypo->prev;
+			min_f_row->hypo->prev;
 			
 			// speicher aktuelle Übersetzung von Ende bis hier
 			last_s_trans = min_f_row->s_trans;
-			last_costs = min_f_row->costs;
+			last_costs = min_f_row->g;
 
 			// löschen der betrachteten min-f-row
 			A_star_tab.erase(min_f_row);
