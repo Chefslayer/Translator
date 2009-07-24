@@ -35,6 +35,7 @@ class Bleu
 		unsigned int nGramsMatchingAll;
 		/// counts all ngrams
 		unsigned int nGramsAll;
+		double Cakku;
 		/**
 		 * Constructor sets up the initial values.
 		 *

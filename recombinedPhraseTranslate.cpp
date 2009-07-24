@@ -66,6 +66,9 @@ struct A_star_row
 	///costs for the sentence part from the end to here.
 	double costs;
 
+	/// counts how many words of the source sentence has been translated
+	unsigned int already_translated_count;
+
 	bool operator<(A_star_row& n) const
 	{
 		return f < n.f;
@@ -95,7 +98,6 @@ recombHypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_ph
 		recombHypothesis* prev = (hypoNr==0) ? NULL : hypos[hypoNr-1];
 
 		// search for all phrases for the current hypo
-		bool found_at_least_one_hypo = false;
 		for (unsigned int phraseLength = 1; phraseLength <= MAX_PHRASE_LENGTH && hypoNr+phraseLength-1 < words.size(); phraseLength++)
 		{
 			vector<unsigned int> phraseF;
@@ -116,13 +118,13 @@ recombHypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_ph
 			// search for all following occurances of phraseF in transtab
 			while (transTabPos < translationtab.size() && phraseF == translationtab[transTabPos].f)
 			{
-				found_at_least_one_hypo = true;
 
 				recombHypothesisEntry *recombHypoEntry = new recombHypothesisEntry();
 				recombHypoEntry->costs = 0.5*translationtab[transTabPos].relFreqF + 0.5*translationtab[transTabPos].relFreqE;
 
 				recombHypoEntry->trans = translationtab[transTabPos].e;
 				recombHypoEntry->prev = prev;
+				recombHypoEntry->phraseLengthF = phraseLength;
 
 				vector<recombHypothesisEntry*>* entries = &(hypos[hypoNr+phraseLength-1]->entries);
 
@@ -142,16 +144,18 @@ recombHypothesis* searchTranslation(vector<unsigned int> &words, vector<trans_ph
 			}
 		}
 
-		if (!found_at_least_one_hypo)
+		if (hypos[hypoNr]->entries.size()==0)
 		{
 			// insert '?'
 			vector<unsigned int> tmp;
+			tmp.clear();
 			tmp.push_back(0);
 			
 			recombHypothesisEntry *recombHypoEntry = new recombHypothesisEntry();
-			recombHypoEntry->costs = 20;
+			recombHypoEntry->costs = 100;
 			recombHypoEntry->trans = tmp;
 			recombHypoEntry->prev = prev;
+			recombHypoEntry->phraseLengthF = 1;
 
 			vector<recombHypothesisEntry*>* entries = &(hypos[hypoNr]->entries);
 
@@ -269,7 +273,6 @@ int main(int argc, char* argv[])
 	{
 		vector<string> stringwords = stringSplit(line, " ");
 		vector<unsigned int> words(stringwords.size(), 0);
-
 		for (unsigned int i = 0; i < stringwords.size(); i++)
 		{
 			words[i] = f.getNum(stringwords[i]);
@@ -284,11 +287,13 @@ int main(int argc, char* argv[])
 
 		recombHypothesis* currentHypo = lastHypo;
 		string translation = "";
+
 		while (currentHypo != NULL)
 		{
 			string tmp="";
 
 			vector<unsigned int>* trans = &(currentHypo->entries[currentHypo->bestEntry]->trans);
+
 			for (unsigned int i = 0; i < trans->size(); ++i )
 			{
 				tmp += (tmp== ""?"":" ") + e.getWord((*trans)[i]);
@@ -308,6 +313,7 @@ int main(int argc, char* argv[])
 		vector<A_star_row> A_star_tab;
 		string last_s_trans = "";
 		double last_costs = 0;
+		unsigned int last_already_translated_count = 0;
 
 		bool end = false;
 
@@ -326,6 +332,7 @@ int main(int argc, char* argv[])
 					row.h = (currentEntry->prev==NULL) ? 0 : currentEntry->prev->costs;
 					row.f = row.g + row.h;
 					row.s_trans = "";
+					row.already_translated_count = currentEntry->phraseLengthF + last_already_translated_count;
 
 					// Übersetzung der aktuellen Phrase
 					for (unsigned int i = 0; i<currentEntry->trans.size(); i++)
@@ -349,7 +356,7 @@ int main(int argc, char* argv[])
 			// min f suchen
 			vector<A_star_row>::iterator min_f_row = min_element(A_star_tab.begin(), A_star_tab.end());
 
-			while (min_f_row->h == 0)
+			while (min_f_row->h == 0 && min_f_row->already_translated_count >= stringwords.size())
 			{
 				// ausgeben
 				cout << min_f_row->g <<"#"<< min_f_row->s_trans << endl;
@@ -365,6 +372,8 @@ int main(int argc, char* argv[])
 				}
 				min_f_row = min_element(A_star_tab.begin(), A_star_tab.end());
 			}
+
+
 			// table empty? => no more translations possible
 			if (A_star_tab.size()==0 || end)
 			{
@@ -378,6 +387,7 @@ int main(int argc, char* argv[])
 			// speicher aktuelle Übersetzung von Ende bis hier
 			last_s_trans = min_f_row->s_trans;
 			last_costs = min_f_row->g;
+			last_already_translated_count = min_f_row->already_translated_count;
 
 			// löschen der betrachteten min-f-row
 			A_star_tab.erase(min_f_row);

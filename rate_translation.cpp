@@ -14,6 +14,7 @@
 #include <fstream>
 #include <vector>
 #include <algorithm>
+#include <math.h>
 #include "includes/constants.h"
 #include "classes/Lexicon.h"
 #include "classes/Bleu.h"
@@ -59,6 +60,10 @@ int main(int argc, char* argv[])
 	double overallBrevityPenalty = 0;
 	unsigned int overallNGrams = 0;
 	unsigned int overallNGramsMatching = 0;
+	unsigned int overallTransSize = 0;
+	unsigned int overallRefSize = 0;
+	double overallPrecision = 0;
+	double overallMaxN = 0;
 
 	while (getline(trans, trans_line) && getline(ref, ref_line))
 	{
@@ -84,11 +89,6 @@ int main(int argc, char* argv[])
 		average_levenshtein_dist                += current_lev->getDistance();
 		average_posindependent_levenshtein_dist += current_posindependent_lev->getDistance();
 
-		// overall BLEU
-		overallBrevityPenalty	+= current_bleu->brevityPenalty();
-		overallNGrams		+= current_bleu->nGramsAll;
-		overallNGramsMatching	+= current_bleu->nGramsMatchingAll;
-
 		// output
 		cout	<< "\n***\nBLEU-Score:\t\t"	<< current_bleu->bleuScore(MAX_N_GRAMS)
 			<< "\nLevenshtein:\t\t"		<< current_lev->getDistance()
@@ -96,6 +96,16 @@ int main(int argc, char* argv[])
 			<< "\n\t t: " << trans_line
 			<< "\n\t r: " << ref_line
 			<< endl;
+		// overall BLEU
+
+		overallTransSize	+= current_trans.size();
+		overallRefSize 		+= current_ref.size();
+		overallNGrams		+= current_bleu->nGramsAll;
+		overallNGramsMatching	+= current_bleu->nGramsMatchingAll;
+		overallPrecision	+= current_bleu->Cakku;
+
+		unsigned int maxN = min((unsigned int)min((unsigned int)MAX_N_GRAMS, (unsigned int)current_trans.size()-1), (unsigned int)current_ref.size()-1);
+		overallMaxN += maxN;
 
 		sentenceCount++;
 
@@ -130,9 +140,21 @@ int main(int argc, char* argv[])
 		<< "\naverage pos.independent levenshtein distance: " << average_posindependent_levenshtein_dist
 		<< endl;
 
+
 	// Output for overall BLEU-Score
-	
-	cout	<< "\n***\n\n***\nOverall-BLEU-Score: " << overallBrevityPenalty*exp(log((double)overallNGramsMatching/(double)overallNGrams)/(double)MAX_N_GRAMS)
+
+	// overallBrevityPenalty	
+	int c = overallTransSize;
+	int r = overallRefSize;
+	overallBrevityPenalty = -1;
+	if (c > r)
+		overallBrevityPenalty = 1;
+	if (c > 0)
+		overallBrevityPenalty = (double)exp(((double)(1-r)/(double)c));
+
+	// (double)overallNGramsMatching/(double)overallNGrams
+	//overallMaxN /= sentenceCount;
+	cout	<< "\n***\n\n***\nOverall-BLEU-Score: " << overallBrevityPenalty*exp(log(overallPrecision)/(double)overallMaxN)
 		<< endl;
 
 	return 0; //EXIT_SUCCESS;

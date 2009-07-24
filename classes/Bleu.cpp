@@ -97,6 +97,7 @@ double Bleu::bleuScore(unsigned int N)
 		if (p>0)
 			akku *= p;
 	}
+	this->Cakku = akku;
 	if (akku<=0)
 		return 0;
 	return brevityPenalty()*exp(log(akku)/(double)maxN);

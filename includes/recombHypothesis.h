@@ -25,6 +25,9 @@ struct recombHypothesisEntry
 	/// holds the translation codes for the phrase that this hypothesis is for.
 	vector<unsigned int> trans;
 
+	/// phrase length in F
+	unsigned int phraseLengthF;
+
 	/// pointer to the previous recombHypothesis.
 	recombHypothesis* prev;
 };

@@ -3,4 +3,4 @@
 #define KEEP_N_BEST_HYPOS	100
 #define MAX_N_GRAMS		4
 #define TRAINING_LINES		500
-#define MAX_PHRASE_LENGTH	3
+#define MAX_PHRASE_LENGTH	4

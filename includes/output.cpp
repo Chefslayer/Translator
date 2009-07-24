@@ -18,7 +18,7 @@ void showFreq( PairCount& pairs, SingleCount& singlesF, SingleCount& singlesE, L
 		pair<unsigned int, unsigned int> wordpair = pairs.current();
 		double relFreq_f = -log(((double)pairs.getFreq(wordpair))/((double)singlesF.getFreq(wordpair.first)));
 		double relFreq_e = -log(((double)pairs.getFreq(wordpair))/((double)singlesE.getFreq(wordpair.second)));
-		cout << relFreq_f << " " << relFreq_e << " # " << f.getWord(wordpair.first) << " # " << e.getWord(wordpair.second) << endl;
+		cout << relFreq_f << " " << relFreq_e << " # " << f.getWord(wordpair.first) << " # " << e.getWord(wordpair.second) << " " <<endl;
  	}
 }
 
@@ -44,7 +44,7 @@ void showFreqPhrases_subTrees_rek(Node *current, const string &s_f, string s_e, 
 			double relFreq_f = -log(((double)current->count)/((double)phrasesF->getCount(v_f)));
 			double relFreq_e = -log(((double)current->count)/((double)phrasesE->getCount(v_e)));
 			// relFreq_e==0 means that we saw the v_e-phrase only if we translated it with the v_f and no other v_f
-			cout << relFreq_f << " " << relFreq_e << " # " << s_f << " # " << s_e << endl;
+			cout << relFreq_f << " " << relFreq_e << " # " << s_f << " # " << s_e << " " << endl;
 		}
 	}
 	set<Node*, ptr_comp<Node> >::iterator it;
