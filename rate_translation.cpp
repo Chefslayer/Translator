@@ -19,6 +19,7 @@
 #include "classes/Lexicon.h"
 #include "classes/Bleu.h"
 #include "classes/Levenshtein.h"
+#include "classes/Bleu2.h"
 
 using namespace std;
 
@@ -65,11 +66,13 @@ int main(int argc, char* argv[])
 	double overallPrecision = 0;
 	double overallMaxN = 0;
 
+	Bleu2 bleu2;
 	while (getline(trans, trans_line) && getline(ref, ref_line))
 	{
 		vector<unsigned int> current_trans = l.insertSentence(trans_line);
 		vector<unsigned int> current_ref   = l.insertSentence(ref_line);
 
+		bleu2.addSentence(MAX_N_GRAMS,current_trans,current_ref);
 		Bleu        *current_bleu = new Bleu       (current_trans, current_ref);
 		Levenshtein *current_lev  = new Levenshtein(current_trans, current_ref);
 
@@ -98,14 +101,14 @@ int main(int argc, char* argv[])
 			<< endl;
 		// overall BLEU
 
-		overallTransSize	+= current_trans.size();
-		overallRefSize 		+= current_ref.size();
-		overallNGrams		+= current_bleu->nGramsAll;
-		overallNGramsMatching	+= current_bleu->nGramsMatchingAll;
-		overallPrecision	+= current_bleu->Cakku;
+//		overallTransSize	+= current_trans.size();
+//		overallRefSize 		+= current_ref.size();
+//		overallNGrams		+= current_bleu->nGramsAll;
+//		overallNGramsMatching	+= current_bleu->nGramsMatchingAll;
+//		overallPrecision	+= current_bleu->Cakku;
 
 		unsigned int maxN = min((unsigned int)min((unsigned int)MAX_N_GRAMS, (unsigned int)current_trans.size()-1), (unsigned int)current_ref.size()-1);
-		overallMaxN += maxN;
+//		overallMaxN += maxN;
 
 		sentenceCount++;
 
@@ -124,14 +127,14 @@ int main(int argc, char* argv[])
 	}
 
 	// Output for sentence 50:
-
+/*
 	cout	<< "\n***\n\n***\nSentence50:\nLevenshtein:\t\t" << sentence50_lev->getDistance()
 		<< "\nLevenshtein-Path:\t" << sentence50_lev->getPathOps()
 		<< "\n" << sentence50_lev->getPath(l)
 		<< "\n\t t: " << sentence50_trans
 		<< "\n\t r: " << sentence50_ref
 		<< endl;
-
+*/
 	// Output the avarages
 	average_levenshtein_dist		/= (double)sentenceCount;
 	average_posindependent_levenshtein_dist /= (double)sentenceCount;
@@ -143,8 +146,8 @@ int main(int argc, char* argv[])
 
 	// Output for overall BLEU-Score
 
-	// overallBrevityPenalty	
-	int c = overallTransSize;
+	// overallBrevityPenalty
+/*	int c = overallTransSize;
 	int r = overallRefSize;
 	overallBrevityPenalty = -1;
 	if (c > r)
@@ -152,10 +155,18 @@ int main(int argc, char* argv[])
 	if (c > 0)
 		overallBrevityPenalty = (double)exp(((double)(1-r)/(double)c));
 
+	// overallPrecision
+	for (int i = 0; i < MaxN; i++)
+	{
+		if (Precision == 0)
+			overallPrecision += 0;
+		else
+			overallPrecision += log(Precision[i])/(double)MaxN
+	}
+*/
 	// (double)overallNGramsMatching/(double)overallNGrams
-	//overallMaxN /= sentenceCount;
-	cout	<< "\n***\n\n***\nOverall-BLEU-Score: " << overallBrevityPenalty*exp(log(overallPrecision)/(double)overallMaxN)
-		<< endl;
+	double temp = bleu2.bleu2(MAX_N_GRAMS);
+	cout << "\n***\n\n***\nOverall-BLEU-score:  " <<  temp << endl;
 
 	return 0; //EXIT_SUCCESS;
 }

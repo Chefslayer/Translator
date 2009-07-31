@@ -255,7 +255,6 @@ int main(int argc, char* argv[])
 			trans_phrase_tab_vec.resize(trans_phrase_tab_vec.size() + VECTOR_RESIZE);
  		}
 		trans_phrase_tab_vec[i] = current;
-		// cout << f.getWord(current.f) << " " << current.relFreqF << endl;
 		i++;
 //		if (i/100==(double)i/(double)100)
 //			cout<< "line" << i <<endl;
@@ -288,8 +287,8 @@ int main(int argc, char* argv[])
 		{
 			Hypothesis* transHyp = bestHypos.top();
 
-//			double score = (0.5)*(transHyp->costs[0]) + (0.5)*(transHyp->costs[1]);
-			double score = transHyp->costs[0] + transHyp->costs[1];
+			double score = (0.5)*(transHyp->costs[0]) + (0.5)*(transHyp->costs[1]);
+//			double score = transHyp->costs[0] + transHyp->costs[1];
 
 			string translation = "";
 			while (transHyp->prevHyp != NULL)
